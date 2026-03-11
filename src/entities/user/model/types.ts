@@ -1,4 +1,4 @@
-import type {UserGender} from "shared/const";
+import type {Country, UserGender} from "shared/const";
 
 export interface IUser {
     id: string;
@@ -7,7 +7,7 @@ export interface IUser {
     firstName: string;
     lastName: string;
     phoneNumber: string;
-    country: string;
+    country: Country;
     birthDate: Date;
     gender: UserGender;
     avatarUrl?: string;

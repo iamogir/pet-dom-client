@@ -1,9 +1,9 @@
-import type {PetSex, PetSpecies} from "shared/const";
+import type {PetBreed, PetSex, PetSpecies} from "shared/const";
 
 export interface IPet {
     id: string;
     species: PetSpecies;
-    breed: string;
+    breed: PetBreed;
     birthDate: Date;
     weight: number;
     sex: PetSex;
