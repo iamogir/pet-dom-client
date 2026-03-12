@@ -1,4 +1,5 @@
-import type {Country, UserGender} from "shared/const";
+import type {Country, UserGender} from "entities/user";
+
 
 export interface IUser {
     id: string;

@@ -1,4 +1,5 @@
-import type {PetBreed, PetSex, PetSpecies} from "shared/const";
+import type {PetBreed, PetSex, PetSpecies} from "entities/pet";
+
 
 export interface IPet {
     id: string;
