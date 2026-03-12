@@ -1,0 +1,1 @@
+export { RegistPage } from './ui/RegistPage'

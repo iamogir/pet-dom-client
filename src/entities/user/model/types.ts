@@ -1,4 +1,5 @@
-import type {UserGender} from "shared/const";
+import type {Country, UserGender} from "entities/user";
+
 
 export interface IUser {
     id: string;
@@ -7,7 +8,7 @@ export interface IUser {
     firstName: string;
     lastName: string;
     phoneNumber: string;
-    country: string;
+    country: Country;
     birthDate: Date;
     gender: UserGender;
     avatarUrl?: string;
