@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import {HomePage} from "pages/homePage";
 import {ErrorPage} from "pages/errorPage";
 import {AuthPage} from "pages/authPage";
@@ -12,11 +12,15 @@ export const router = createBrowserRouter([
         element: <Layout/>,
         children: [
             {
-                path: '/',
+                path: 'home',
                 element: <HomePage/>,
             },
             {
-                path: '/user_profile',
+                path: '/',
+                element: <Navigate to='home' replace />,
+            },
+            {
+                path: 'user_profile',
                 element: <ProfilePage/>,
             },
             {
@@ -27,11 +31,11 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage/>
     },
     {
-        path: '/sign_in',
+        path: 'sign_in',
         element: <AuthPage/>,
     },
     {
-        path: '/sign_up',
+        path: 'sign_up',
         element: <RegistPage/>,
     }
 ])
