@@ -5,6 +5,8 @@ export interface IReminder {
     petId: string;
     reminderReason: ReminderReason;
     manualReason?: string;
+    reminderDate: Date;
+    note?: string;
     createdById: string;
     createdAt: Date;
     editedAt?: Date;
