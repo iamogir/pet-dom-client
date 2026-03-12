@@ -5,11 +5,25 @@ import {AuthPage} from "pages/authPage";
 import {RegistPage} from "pages/registPage";
 import {ProfilePage} from "pages/profilePage";
 import {PetPage} from "pages/petPage";
+import {Layout} from "widgets/layout";
 
 export const router = createBrowserRouter([
     {
-        path: '*',
-        element: <HomePage/>,
+        element: <Layout/>,
+        children: [
+            {
+                path: '*',
+                element: <HomePage/>,
+            },
+            {
+                path: '/user_profile',
+                element: <ProfilePage/>,
+            },
+            {
+                path: 'pet_profile',
+                element: <PetPage/>,
+            }
+        ],
         errorElement: <ErrorPage/>
     },
     {
@@ -19,13 +33,5 @@ export const router = createBrowserRouter([
     {
         path: '/sign_up',
         element: <RegistPage/>,
-    },
-    {
-        path: '/user_profile',
-        element: <ProfilePage/>,
-    },
-    {
-        path: 'pet_profile',
-        element: <PetPage/>,
     }
 ])
