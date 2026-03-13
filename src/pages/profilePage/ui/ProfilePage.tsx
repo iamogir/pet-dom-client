@@ -1,8 +1,9 @@
+import {Link} from "react-router-dom";
 
 export const ProfilePage = () => {
     return (
         <div>
-            ProfilePage
+            <Link to='/home'>to home</Link>
         </div>
     );
 };
