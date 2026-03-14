@@ -1,4 +1,4 @@
-import {type IPet, type IPetDto, petBreed, petSex, petSpecies,} from "entities/pet";
+import {type IAllPets, type IAllPetsDto, type IPet, type IPetDto, petBreed, petSex, petSpecies,} from "entities/pet";
 
 export function fromServerPetObject(obj: IPetDto): IPet {
     const newObj: IPet = {
@@ -13,4 +13,11 @@ export function fromServerPetObject(obj: IPetDto): IPet {
     if (obj.photoUrl)
         newObj.photoUrl = obj.photoUrl;
     return newObj;
+}
+
+export function fromServerArrayPetsObject(obj: IAllPetsDto): IAllPets {
+    return {
+        data: obj.data.map(el => fromServerPetObject(el)),
+        meta: obj.meta
+    }
 }
