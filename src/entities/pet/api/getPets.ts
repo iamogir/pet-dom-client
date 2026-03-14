@@ -1,5 +1,6 @@
 import {fetchClient} from "src/shared";
+import type {IAllPetsDto} from "entities/pet";
 
-export const getPets = () => {
-    return fetchClient<PetsResponse>('/pets')
+export const getAllPets = () => {
+    return fetchClient<IAllPetsDto>('/pets')
 }
