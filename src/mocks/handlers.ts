@@ -1,7 +1,7 @@
 import {http, HttpResponse} from "msw";
 
 export const handlers = [
-    http.get('/api/pets', () => {
+    http.get('/api/all_pets', () => {
         return HttpResponse.json(
             {
                 data: [ {
