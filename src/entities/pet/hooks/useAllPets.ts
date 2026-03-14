@@ -1,9 +1,9 @@
 import {useQuery} from "@tanstack/react-query";
-import {getAllPets} from "entities/pet";
+import {getAllPets, petQueryKeys} from "entities/pet";
 
 export function useAllPets() {
     return useQuery({
-        queryKey: ['all_pets'],
+        queryKey: petQueryKeys.all,
         queryFn: getAllPets
     })
 }
