@@ -15,7 +15,9 @@ export const HomePage = () => {
                     <WelcomePart/>
 
                     <h3>Please, check your pets and their comfort:</h3>
-                    {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                    <div className={style.petCards}>
+                        {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                    </div>
 
                     <Link to='/pet_profile'>to pet pr</Link>
                     <br/>

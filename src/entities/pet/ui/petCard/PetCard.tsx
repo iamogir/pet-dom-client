@@ -1,4 +1,5 @@
 import {imagePlaceholder, type IPet} from "entities/pet/model";
+import style from './petCard.module.css'
 
 interface Props {
     pet: IPet
@@ -9,9 +10,9 @@ export const PetCard = ({ pet }: Props) => {
     const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
 
     return (
-        <div>
-            <div>
-                <img src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'} />
+        <div className={style.box}>
+            <div className={style.imageBox}>
+                <img className={style.image} src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'} />
             </div>
             <h3>{pet.name}</h3>
             <p>
