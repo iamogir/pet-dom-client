@@ -22,7 +22,7 @@ export const WelcomePart = () => {
 
     return (
         <div className={ style.box}>
-            {hello}, my darling! Today {today}/{month}/{year} and outside is so (weather)
+            <h1>{hello}, my darling! Today {today}/{month}/{year} and outside is so (weather)</h1>
         </div>
     );
 };
