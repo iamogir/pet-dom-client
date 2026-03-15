@@ -1,4 +1,4 @@
-import type {NameVaccination} from "entities/vaccination";
+import type {NameVaccination} from "entities/vaccination/model/index.ts";
 
 export interface IVaccination {
     id: string;

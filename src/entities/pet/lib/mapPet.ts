@@ -1,4 +1,12 @@
-import {type IAllPets, type IAllPetsDto, type IPet, type IPetDto, petBreed, petSex, petSpecies,} from "entities/pet";
+import {
+    type IAllPets,
+    type IAllPetsDto,
+    type IPet,
+    type IPetDto,
+    petBreed,
+    petSex,
+    petSpecies
+} from "entities/pet/model";
 
 export function fromServerPetObject(obj: IPetDto): IPet {
     const newObj: IPet = {

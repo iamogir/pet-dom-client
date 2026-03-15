@@ -1,4 +1,4 @@
-import {BASE_URL} from "src/shared";
+import {BASE_URL} from "shared/api/index.ts";
 
 export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promise<T> =
     async (endpoint, options?)=> {

@@ -1,1 +1,0 @@
-export type { IWeightHistory } from './model/types.ts';

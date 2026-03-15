@@ -1,4 +1,4 @@
-import {fetchClient} from "src/shared";
+import {fetchClient} from "shared/api";
 import {fromServerArrayPetsObject, type IAllPets, type IAllPetsDto} from "entities/pet";
 
 export const getAllPets = async (): Promise<IAllPets> => {
