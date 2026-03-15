@@ -11,6 +11,7 @@ import {
 export function fromServerPetObject(obj: IPetDto): IPet {
     const newObj: IPet = {
         id: obj.id,
+        name: obj.name,
         species: petSpecies.find(el => el === obj.species) ? obj.species : null,
         breed: petBreed.find(el => el === obj.breed) ? obj.breed : null,
         birthDate: new Date(obj.birthDate),

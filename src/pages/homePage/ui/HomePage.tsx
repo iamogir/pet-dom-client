@@ -6,19 +6,24 @@ import {useAllPets} from "entities/pet/hooks";
 
 export const HomePage = () => {
 
-    const { data, error, isLoading, isFetching, } = useAllPets();
+    const { data, error, isLoading } = useAllPets();
+
+    console.log(error)
+    console.log(data)
 
     return (
         isLoading ? <h1>Loading...</h1> :
-            <div className={ style.box}>
-                <WelcomePart/>
+            (error ? <h1>Error... {error.message}</h1> :
+                <div className={ style.box}>
+                    <WelcomePart/>
 
-                <h3>Please, check your pets and their comfort:</h3>
-                {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                    <h3>Please, check your pets and their comfort:</h3>
+                    {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
 
-                <Link to='/pet_profile'>to pet pr</Link>
-                <br/>
-                <Link to='/user_profile'>to user</Link>
-            </div>
+                    <Link to='/pet_profile'>to pet pr</Link>
+                    <br/>
+                    <Link to='/user_profile'>to user</Link>
+                </div>
+            )
     );
 };

@@ -3,6 +3,7 @@ import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
 
 export interface IPet {
     id: string;
+    name: string;
     species: PetSpecies;
     breed: PetBreed;
     birthDate: Date;
@@ -13,6 +14,7 @@ export interface IPet {
 
 export interface IPetDto {
     id: string;
+    name: string;
     species: string;
     breed: string;
     birthDate: string;

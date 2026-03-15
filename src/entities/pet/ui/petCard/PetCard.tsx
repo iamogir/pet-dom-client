@@ -1,8 +1,27 @@
+import {imagePlaceholder, type IPet} from "entities/pet/model";
 
-export const PetCard = () => {
+interface Props {
+    pet: IPet
+}
+
+export const PetCard = ({ pet }: Props) => {
+
+    const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
+    console.log('pet')
+
     return (
         <div>
-
+            <div>
+                <img src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'} />
+            </div>
+            <h3>{pet.name}</h3>
+            <p>
+                <span>{petAge} years, </span>
+                <span>{pet.breed}, </span>
+                <span>{pet.weight} kg</span>
+            </p>
+            <h1>Next events ---</h1>
+            {/*<ReminderCard/>*/}
         </div>
     );
 };
