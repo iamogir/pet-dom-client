@@ -7,7 +7,6 @@ interface Props {
 export const PetCard = ({ pet }: Props) => {
 
     const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
-    console.log('pet')
 
     return (
         <div>

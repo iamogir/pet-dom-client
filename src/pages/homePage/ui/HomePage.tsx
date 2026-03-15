@@ -8,9 +8,6 @@ export const HomePage = () => {
 
     const { data, error, isLoading } = useAllPets();
 
-    console.log(error)
-    console.log(data)
-
     return (
         isLoading ? <h1>Loading...</h1> :
             (error ? <h1>Error... {error.message}</h1> :

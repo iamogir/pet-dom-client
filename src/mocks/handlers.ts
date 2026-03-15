@@ -29,7 +29,7 @@ export const handlers = [
                     birthDate: Date.now(),
                     weight: 10,
                     sex: 'female',
-                    photoUrl: 'https://www.akc.org/wp-content/uploads/2016/08/Cardigan-Welsh-Corgi-standing-outdoors.jpg',
+                    photoUrl: 'https://www.dogsnsw.org.au/media/img/BrowseAllBreed/Welsh-Corgi-Cardigan.jpg',
                 } ],
                 meta: {
                     total: 3
