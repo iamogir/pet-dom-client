@@ -1,1 +1,0 @@
-export { WelcomePart } from './ui/WelcomePart.tsx'

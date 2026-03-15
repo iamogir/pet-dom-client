@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {useAllPets} from "entities/pet";
 import style from './homePage.module.css'
-import {WelcomePart} from "pages/welcomePart";
+import {WelcomePart} from "shared/ui/welcomePart";
 
 export const HomePage = () => {
 
