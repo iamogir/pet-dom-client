@@ -1,4 +1,4 @@
-import type {ReminderReason} from "entities/reminder/model/index.ts";
+import type {ReminderReason} from "entities/reminder/model";
 
 export interface IReminder {
     id: string;

@@ -1,4 +1,4 @@
-import type {TypeOfDocument} from "entities/document/model/index.ts";
+import type {TypeOfDocument} from "entities/document/model";
 
 export interface IDocument {
     id: string;

@@ -1,4 +1,4 @@
-import type {Country, UserGender} from "entities/user";
+import type {Country, UserGender} from "entities/user/model";
 
 
 export interface IUser {

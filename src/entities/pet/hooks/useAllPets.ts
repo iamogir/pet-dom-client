@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {getAllPets, petQueryKeys} from "entities/pet";
+import {getAllPets, petQueryKeys} from "entities/pet/api";
 
 export function useAllPets() {
     return useQuery({
