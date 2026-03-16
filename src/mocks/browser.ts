@@ -1,4 +1,4 @@
 import {setupWorker} from "msw/browser";
-import {handlers} from "./handlers.ts";
+import {petHandlers} from "./handlers/petHandlers.ts";
 
-export const worker = setupWorker(...handlers);
+export const worker = setupWorker(...petHandlers);

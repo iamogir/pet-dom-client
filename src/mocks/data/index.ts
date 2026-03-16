@@ -1,0 +1,1 @@
+export { petFirst, petSecond, petThird, allPets  } from './petConst.ts'
