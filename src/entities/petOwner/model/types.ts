@@ -1,4 +1,4 @@
-import type {OwnerRole} from "entities/petOwner";
+import type {OwnerRole} from "entities/petOwner/model";
 
 export interface IPetOwner {
     id: string;
