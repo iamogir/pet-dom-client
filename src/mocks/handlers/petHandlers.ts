@@ -7,7 +7,7 @@ export const petHandlers = [
             {
                 data: allPets,
                 meta: {
-                    total: 3
+                    total: allPets.length
                 }
             }
         )

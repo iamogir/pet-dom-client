@@ -1,1 +1,2 @@
-export { petFirst, petSecond, petThird, allPets  } from './petConst.ts'
+export { allPets  } from './petConst.ts'
+export { allUsers } from './userConst.ts'

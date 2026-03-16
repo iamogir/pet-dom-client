@@ -1,6 +1,5 @@
 import type {Country, UserGender} from "entities/user/model";
 
-
 export interface IUser {
     id: string;
     email: string;
@@ -25,4 +24,14 @@ export interface IUserDto {
     birthDate: string;
     gender: string;
     avatarUrl?: string;
+}
+
+export interface IAllUsers {
+    data: IUser[];
+    meta: { total: number };
+}
+
+export interface IAllUsersDto {
+    data: IUserDto[];
+    meta: { total: number };
 }

@@ -20,8 +20,7 @@ export function fromServerPetObject(obj: IPetDto): IPet {
         sex: petSex.find(el => el === obj.sex) ? obj.sex : null,
     }
 
-    if (obj.photoUrl)
-        newObj.photoUrl = obj.photoUrl;
+    if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
     return newObj;
 }
 
