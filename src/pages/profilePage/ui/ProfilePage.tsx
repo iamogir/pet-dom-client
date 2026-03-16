@@ -1,13 +1,11 @@
 import {Link} from "react-router-dom";
 import {useAllUsers, useUserById} from "entities/user/hooks";
 import {UserCard} from "entities/user/ui/userCard";
-import type {IUser} from "entities/user/model";
 
 export const ProfilePage = () => {
 
     const { isLoading, data, error } = useAllUsers();
-    let data2 = useUserById('20');
-    const data3: IUser = data2.data as IUser;
+    const userQuery = useUserById('20');
 
     return (
         <div>
@@ -17,7 +15,11 @@ export const ProfilePage = () => {
                         {data?.data.map(u => <UserCard key={u.id} user={u} />)}
 
                         <h2>Selected profile</h2>
-                        <UserCard user={data3} />
+                        {userQuery.isLoading ? <p>second...</p> :
+                            (!userQuery.data ? <p>Here are not users like this</p> :
+                                <UserCard user={userQuery.data} />
+                            )
+                        }
                     </div>
                 )
             }
