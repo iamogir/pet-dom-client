@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import {useAllUsers} from "entities/user/hooks";
+import {UserCard} from "entities/user/ui/userCard";
 
 export const ProfilePage = () => {
 
@@ -14,7 +15,6 @@ export const ProfilePage = () => {
                     </div>
                 )
             }
-
 
             <Link to='/home'>to home</Link>
         </div>
