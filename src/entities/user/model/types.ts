@@ -12,8 +12,17 @@ export interface IUser {
     birthDate: Date;
     gender: UserGender;
     avatarUrl?: string;
+}
 
-
-
-
+export interface IUserDto {
+    id: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    country: string;
+    birthDate: string;
+    gender: string;
+    avatarUrl?: string;
 }

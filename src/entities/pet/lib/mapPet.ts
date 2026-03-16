@@ -9,6 +9,7 @@ import {
 } from "entities/pet/model";
 
 export function fromServerPetObject(obj: IPetDto): IPet {
+
     const newObj: IPet = {
         id: obj.id,
         name: obj.name,
