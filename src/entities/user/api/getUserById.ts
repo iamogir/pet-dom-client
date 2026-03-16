@@ -1,3 +1,8 @@
+import {fetchClient} from "shared/api";
+import {fromServerUserDto} from "entities/user/lib";
+import type {IUserDto} from "entities/user/model";
+
 export const getUserById = async (id: string) => {
-    const response = await fetch('user_by_id')
+    const response: IUserDto = await fetchClient('/user_by_id/' + id);
+    return fromServerUserDto(response);
 }
