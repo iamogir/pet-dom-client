@@ -1,4 +1,4 @@
 export const userQueryKeys = {
-    all: 'all_users',
+    all: ['all_users'],
 
 }
