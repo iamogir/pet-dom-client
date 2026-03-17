@@ -7,7 +7,7 @@ import {useAllPetsByOwnerId} from "entities/petOwner/hooks";
 
 export const ProfilePage = () => {
 
-    const userTemp = '01;'
+    const userTemp = '01'
 
     const { isLoading, data, error } = useAllUsers();
     const userQuery = useUserById('01');

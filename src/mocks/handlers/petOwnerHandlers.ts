@@ -14,8 +14,6 @@ export const petOwnerHandlers = [
             }
         })
 
-        console.log(obj)
-
         obj.meta.total = obj.data.length;
 
         return HttpResponse.json(obj);
