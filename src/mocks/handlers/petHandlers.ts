@@ -11,5 +11,8 @@ export const petHandlers = [
                 }
             }
         )
+    }),
+    http.get('/api/pet_by_id/:id', ({ params }) => {
+        return HttpResponse.json(allPets.find(p => p.id === params.id));
     })
 ]
