@@ -5,6 +5,13 @@ export interface IPetOwner {
     userId: string;
     petId: string;
     ownerRole: OwnerRole;
-    invitedById: string;
+    invitedById?: string;
+}
 
+export interface IPetOwnerDto {
+    id: string;
+    userId: string;
+    petId: string;
+    ownerRole: string;
+    invitedById?: string;
 }

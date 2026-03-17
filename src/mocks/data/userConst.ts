@@ -14,7 +14,7 @@ export const allUsers: IUserDto[] = [
         avatarUrl: 'https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/1/0/e/10e6c0a439e17280a6f3fa6ae059819af5517efd.png',
     },
     {
-        id: '20',
+        id: '01',
         email: 'ooo@mppp.com',
         password: '123',
         firstName: 'Inda',
@@ -26,7 +26,7 @@ export const allUsers: IUserDto[] = [
         avatarUrl: 'https://www.pngplay.com/wp-content/uploads/12/Anime-Girl-Pfp-PNG-Background.png',
     },
     {
-        id: '30',
+        id: '02',
         email: 'abc@abc.ru',
         password: '000',
         firstName: 'Lilo',

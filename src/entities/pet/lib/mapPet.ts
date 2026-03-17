@@ -1,6 +1,6 @@
 import {
-    type IAllPets,
-    type IAllPetsDto,
+    type IPets,
+    type IPetsDto,
     type IPet,
     type IPetDto,
 } from "entities/pet/model";
@@ -22,7 +22,7 @@ export function fromServerPetObject(obj: IPetDto): IPet {
     return newObj;
 }
 
-export function fromServerArrayPetsObject(obj: IAllPetsDto): IAllPets {
+export function fromServerArrayPetsObject(obj: IPetsDto): IPets {
     return {
         data: obj.data.map(el => fromServerPetObject(el)),
         meta: obj.meta
