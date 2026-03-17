@@ -9,10 +9,13 @@ export const petOwnerHandlers = [
             meta: { total: 0 },
         }
         allPetOwners.map(el => {
-            if (el.id === params.id)  {
+            if (el.userId === params.id)  {
                 obj.data.push(...allPets.filter(p => p.id === el.petId))
             }
         })
+
+        console.log(obj)
+
         obj.meta.total = obj.data.length;
 
         return HttpResponse.json(obj);

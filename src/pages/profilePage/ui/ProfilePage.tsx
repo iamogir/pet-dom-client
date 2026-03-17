@@ -10,7 +10,7 @@ export const ProfilePage = () => {
     const userTemp = '01;'
 
     const { isLoading, data, error } = useAllUsers();
-    const userQuery = useUserById('20');
+    const userQuery = useUserById('01');
     const petQuery = usePetById('0');
     const petsByUserQuery = useAllPetsByOwnerId(userTemp);
 
