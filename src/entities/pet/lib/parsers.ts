@@ -1,4 +1,4 @@
-import {assertPetSpecies} from "entities/pet/lib";
+import {assertPetBreeds, assertPetSex, assertPetSpecies} from "entities/pet/lib";
 import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
 
 export const parsePetSpecies = (species: string) => {
@@ -7,11 +7,11 @@ export const parsePetSpecies = (species: string) => {
 }
 
 export const parsePetBreed = (breed: string) => {
-    assertPetSpecies(breed);
+    assertPetBreeds(breed);
     return breed as PetBreed;
 }
 
 export const parsePetSex = (sex: string) => {
-    assertPetSpecies(sex);
+    assertPetSex(sex);
     return sex as PetSex;
 }
