@@ -32,7 +32,7 @@ export const ProfilePage = () => {
                 )
             }
 
-            <Link to='/home'>to home</Link>
+            <button><Link to='/home'>to home</Link></button>
         </div>
     );
 };
