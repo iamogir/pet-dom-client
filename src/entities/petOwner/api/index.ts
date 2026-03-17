@@ -1,1 +1,1 @@
-export { getAllPetsByOwnerId } from './getAllPetsByOwnerId.ts'
+export { getAllPetsByUserId } from './getAllPetsByUserId.ts'

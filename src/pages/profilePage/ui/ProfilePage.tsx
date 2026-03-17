@@ -3,7 +3,7 @@ import {useAllUsers, useUserById} from "entities/user/hooks";
 import {UserCard} from "entities/user/ui/userCard";
 import {usePetById} from "entities/pet/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useAllPetsByOwnerId} from "entities/petOwner/hooks";
+import {useAllPetsByUserId} from "entities/petOwner/hooks";
 
 export const ProfilePage = () => {
 
@@ -12,7 +12,7 @@ export const ProfilePage = () => {
     const { isLoading, data, error } = useAllUsers();
     const userQuery = useUserById('01');
     const petQuery = usePetById('0');
-    const petsByUserQuery = useAllPetsByOwnerId(userTemp);
+    const petsByUserQuery = useAllPetsByUserId(userTemp);
 
     return (
         <div>
