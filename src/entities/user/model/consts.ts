@@ -1,2 +1,5 @@
-export type UserGender = 'male' | 'female' | "other";
-export type Country = 'Israel' | 'Russia';
+export const userGender = [ 'male', 'female', "other" ] as const;
+export type UserGender = typeof userGender[number];
+
+export const country = [ 'Israel', 'Russia' ] as const;
+export type Country = typeof country[number];
