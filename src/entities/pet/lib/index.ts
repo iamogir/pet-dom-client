@@ -1,3 +1,3 @@
 export { fromServerPetObject, fromServerArrayPetsObject } from './mapPet.ts'
-export { assertPetSpecies } from './guards.ts'
-export { parsePetSpecies } from "./parsers.ts";
+export { assertPetSpecies, assertPetBreeds, assertPetSex } from './guards.ts'
+export { parsePetSpecies, parsePetBreed, parsePetSex } from "./parsers.ts";

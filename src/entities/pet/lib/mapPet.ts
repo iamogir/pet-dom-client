@@ -3,21 +3,19 @@ import {
     type IAllPetsDto,
     type IPet,
     type IPetDto,
-    petBreed,
-    petSex,
-    petSpecies
 } from "entities/pet/model";
+import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 
 export function fromServerPetObject(obj: IPetDto): IPet {
 
     const newObj: IPet = {
         id: obj.id,
         name: obj.name,
-        species: petSpecies.find(el => el === obj.species) ? obj.species : null,
-        breed: petBreed.find(el => el === obj.breed) ? obj.breed : null,
+        species: parsePetSpecies(obj.species),
+        breed: parsePetBreed(obj.breed),
         birthDate: new Date(obj.birthDate),
         weight: obj.weight,
-        sex: petSex.find(el => el === obj.sex) ? obj.sex : null,
+        sex: parsePetSex(obj.sex),
     }
 
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
