@@ -1,6 +1,6 @@
 export const userQueryKeys = {
     all: ['all_users'],
-    details: () => [...userQueryKeys.all, 'details'],
+    details: () => [...userQueryKeys.all, 'detail'],
     detail: (id: string) => [...userQueryKeys.details(), id],
 
 }
