@@ -1,2 +1,2 @@
-export const reminderReason: ReminderReason[] = [ 'vaccination', 'appointment', 'injection', 'other'];
-export type ReminderReason = string;
+export const reminderReason = [ 'vaccination', 'appointment', 'injection',  'other' ] as const;
+export type ReminderReason = typeof reminderReason[number];

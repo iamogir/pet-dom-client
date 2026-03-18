@@ -1,4 +1,4 @@
-export type { UserGender, Country } from './consts.ts'
-export { userGender, country } from './consts.ts'
+export type { UserGender, UserCountry } from './consts.ts'
+export { userGender, userCountry } from './consts.ts'
 
-export type { IUser } from './types.ts'
+export type { IUser, IUserDto, IUsers, IUsersDto } from './types.ts'

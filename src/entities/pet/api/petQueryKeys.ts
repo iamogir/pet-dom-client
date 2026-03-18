@@ -1,5 +1,7 @@
 export const petQueryKeys = {
     all: ['all_pets'],
+    details: () => [...petQueryKeys.all, 'detail'],
+    detail: (id: string) => [...petQueryKeys.details(), id],
 
 }
 

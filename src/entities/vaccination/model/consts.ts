@@ -1,2 +1,2 @@
-export const nameVaccination: NameVaccination[] = [ 'kalevet', 'DHPPI', 'tulat a-park' ];
-export type NameVaccination = string;
+export const nameVaccination = [ 'kalevet', 'DHPPI', 'tulat a-park' ] as const;
+export type NameVaccination = typeof nameVaccination[number];

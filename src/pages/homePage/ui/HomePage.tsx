@@ -19,9 +19,9 @@ export const HomePage = () => {
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </div>
 
-                    <Link to='/pet_profile'>to pet pr</Link>
+                    <button><Link to='/pet_profile'>to pet pr</Link></button>
                     <br/>
-                    <Link to='/user_profile'>to user</Link>
+                    <button><Link to='/user_profile'>to user</Link></button>
                 </div>
             )
     );

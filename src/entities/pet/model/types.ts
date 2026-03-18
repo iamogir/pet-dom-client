@@ -23,12 +23,12 @@ export interface IPetDto {
     photoUrl?: string;
 }
 
-export interface IAllPets {
+export interface IPets {
     data: IPet[];
     meta: { total: number };
 }
 
-export interface IAllPetsDto {
+export interface IPetsDto {
     data: IPetDto[];
     meta: { total: number };
 }
