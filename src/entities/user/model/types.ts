@@ -1,4 +1,4 @@
-import type {Country, UserGender} from "entities/user/model";
+import type {UserCountry, UserGender} from "entities/user/model";
 
 export interface IUser {
     id: string;
@@ -7,7 +7,7 @@ export interface IUser {
     firstName: string;
     lastName: string;
     phoneNumber: string;
-    country: Country;
+    country: UserCountry;
     birthDate: Date;
     gender: UserGender;
     avatarUrl?: string;

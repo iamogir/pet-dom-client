@@ -1,6 +1,7 @@
 //from server Obj (DTO)
 
-import {country, type IAllUsers, type IAllUsersDto, type IUser, type IUserDto, userGender} from "entities/user/model";
+import {type IUsers, type IUsersDto, type IUser, type IUserDto} from "entities/user/model";
+import {parseUserCountry, parseUserGender} from "entities/user/lib";
 
 export const fromServerUserDto= (obj: IUserDto): IUser => {
     const newObj: IUser = {
@@ -10,9 +11,9 @@ export const fromServerUserDto= (obj: IUserDto): IUser => {
         firstName: obj.firstName,
         lastName: obj.lastName,
         phoneNumber: obj.phoneNumber,
-        country: country.find(c => c === obj.country) ? obj.country : null,
+        country: parseUserCountry(obj.country),
         birthDate: new Date(obj.birthDate),
-        gender: userGender.find(g => g === obj.gender) ? obj.gender : null,
+        gender: parseUserGender(obj.gender),
     }
 
     if (obj.avatarUrl) newObj.avatarUrl = obj.avatarUrl;
@@ -20,7 +21,7 @@ export const fromServerUserDto= (obj: IUserDto): IUser => {
     return newObj;
 }
 
-export const fromServerAllUsersDto = (obj: IAllUsersDto): IAllUsers => {
+export const fromServerAllUsersDto = (obj: IUsersDto): IUsers => {
     return {
         data: obj.data.map((u) => fromServerUserDto(u)),
         meta: obj.meta
