@@ -2,27 +2,26 @@ import {Link} from "react-router-dom";
 import style from './homePage.module.css'
 import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useAllPets} from "entities/pet/hooks";
+import {useAllPetsByUserId} from "entities/petOwner/hooks";
 
 export const HomePage = () => {
 
-    const { data, error, isLoading } = useAllPets();
+    const tempUserId = '00';
+    const { data, error, isLoading } = useAllPetsByUserId(tempUserId);
 
     return (
-        isLoading ? <h1>Loading...</h1> :
-            (error ? <h1>Error... {error.message}</h1> :
-                <div className={ style.box}>
-                    <WelcomePart/>
-
-                    <h3>Please, check your pets and their comfort:</h3>
+        <div>
+            <WelcomePart/>
+            <h3>Please, check your pets and their comfort:</h3>
+            <br/>
+            {isLoading ? <p> One second, checking pets...</p> :
+                error ? <p>Oh, something goes wrong: {error.message}</p> :
                     <div className={style.petCards}>
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </div>
-
-                    <button><Link to='/pet_profile'>to pet pr</Link></button>
-                    <br/>
-                    <button><Link to='/user_profile'>to user</Link></button>
-                </div>
-            )
+            }
+            <h3>Or go to yor profile:</h3>
+            <button><Link to='/user_profile'>to user</Link></button>
+        </div>
     );
 };

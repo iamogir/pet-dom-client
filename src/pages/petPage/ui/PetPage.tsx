@@ -16,7 +16,7 @@ export const PetPage = () => {
                     }
                 </div>
             }
-            <Link to='/home'>to home</Link>
+            <button><Link to='/home'>to home</Link></button>
         </div>
     );
 };
