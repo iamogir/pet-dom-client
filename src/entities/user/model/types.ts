@@ -26,12 +26,12 @@ export interface IUserDto {
     avatarUrl?: string;
 }
 
-export interface IAllUsers {
+export interface IUsers {
     data: IUser[];
     meta: { total: number };
 }
 
-export interface IAllUsersDto {
+export interface IUsersDto {
     data: IUserDto[];
     meta: { total: number };
 }
