@@ -6,6 +6,7 @@ import {RegistPage} from "pages/registPage";
 import {PetPageFromRoute} from "pages/petPage";
 import {Layout} from "widgets/layout";
 import {ProfilePageFromRoute} from "pages/profilePage";
+import {PetListPage} from "pages/petListPage";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,14 @@ export const router = createBrowserRouter([
             {
                 path: 'pet/:id',
                 element: <PetPageFromRoute/>,
+            },
+            {
+                path: 'my_pets',
+                element: <PetListPage/>,
+            },
+            {
+                path: 'pet',
+                element: <Navigate to={'/my_pets'}/>,
             }
         ],
         errorElement: <ErrorPage/>
