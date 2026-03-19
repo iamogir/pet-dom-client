@@ -21,7 +21,7 @@ export const HomePage = () => {
                     </div>
             }
             <h3>Or go to yor profile:</h3>
-            <button><Link to='/user_profile'>to user</Link></button>
+            <Link to='/user_profile'><button>to user</button></Link>
         </div>
     );
 };

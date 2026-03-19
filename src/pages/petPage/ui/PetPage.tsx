@@ -2,9 +2,13 @@ import {Link} from "react-router-dom";
 import {useAllUsersByPetId} from "entities/petOwner/hooks";
 import {UserCard} from "entities/user/ui/userCard";
 
-export const PetPage = () => {
+interface Props {
+    petId: string
+}
 
-    const { isLoading, error, data } = useAllUsersByPetId('0');
+export const PetPage = ({ petId }: Props) => {
+
+    const { isLoading, error, data } = useAllUsersByPetId(petId);
 
     return (
         <div>
@@ -16,7 +20,7 @@ export const PetPage = () => {
                     }
                 </div>
             }
-            <button><Link to='/home'>to home</Link></button>
+            <Link to='/home'><button>to home</button></Link>
         </div>
     );
 };

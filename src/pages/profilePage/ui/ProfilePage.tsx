@@ -30,7 +30,7 @@ export const ProfilePage = () => {
                 )
             }
 
-            <button><Link to='/home'>to home</Link></button>
+            <Link to='/home'><button>to home</button></Link>
         </div>
     );
 };
