@@ -1,8 +1,13 @@
+import {useParams} from "react-router-dom";
+import {PetPage} from "pages/petPage";
 
 export const PetPageFromRoute = () => {
-    return (
-        <div>
 
-        </div>
+    const { id } = useParams();
+
+    if (!id) return <p>NO DATA :(</p>;
+
+    return (
+        <PetPage petId={id} />
     );
 };

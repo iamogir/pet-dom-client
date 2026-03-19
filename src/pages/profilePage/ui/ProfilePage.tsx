@@ -4,12 +4,14 @@ import {UserCard} from "entities/user/ui/userCard";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllPetsByUserId} from "entities/petOwner/hooks";
 
-export const ProfilePage = () => {
+interface Props {
+    id: string
+}
 
-    const userTemp = '00'
+export const ProfilePage = ({ id }: Props) => {
 
-    const { isLoading, data, error } = useUserById(userTemp);
-    const petsByUserQuery = useAllPetsByUserId(userTemp);
+    const { isLoading, data, error } = useUserById(id);
+    const petsByUserQuery = useAllPetsByUserId(id);
 
     return (
         <div>
@@ -20,7 +22,7 @@ export const ProfilePage = () => {
                     <div>
                         {data ? <UserCard key={data.id} user={data} /> : null }
 
-                        <h2>PETS BY USER {userTemp}</h2>
+                        <h2>PETS BY USER {id}</h2>
                         { petsByUserQuery.isLoading ? <p>loading...</p> :
                             (!petsByUserQuery.data ? <p>No data</p> :
                                 petsByUserQuery.data.data.map(p => <PetCard key={p.id} pet={p} />)

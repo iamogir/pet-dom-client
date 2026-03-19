@@ -12,7 +12,7 @@ export const PetCard = ({ pet }: Props) => {
 
     return (
         <div className={style.box}>
-            <Link to={'/pet_profile'}>
+            <Link to={'/pet/' + pet.id}>
                 <div className={style.imageBox}>
                     <img src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'} />
                 </div>

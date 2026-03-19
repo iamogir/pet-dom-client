@@ -3,9 +3,9 @@ import {HomePage} from "pages/homePage";
 import {ErrorPage} from "pages/errorPage";
 import {AuthPage} from "pages/authPage";
 import {RegistPage} from "pages/registPage";
-import {ProfilePage} from "pages/profilePage";
-import {PetPage} from "pages/petPage";
+import {PetPageFromRoute} from "pages/petPage";
 import {Layout} from "widgets/layout";
+import {ProfilePageFromRoute} from "pages/profilePage";
 
 export const router = createBrowserRouter([
     {
@@ -20,12 +20,16 @@ export const router = createBrowserRouter([
                 element: <Navigate to='home' replace />,
             },
             {
-                path: 'user_profile',
-                element: <ProfilePage/>,
+                path: 'user/:id',
+                element: <ProfilePageFromRoute/>,
             },
             {
-                path: 'pet_profile',
-                element: <PetPage/>,
+                path: 'user',
+                element: <Navigate to={'/user/me'} replace/>,
+            },
+            {
+                path: 'pet/:id',
+                element: <PetPageFromRoute/>,
             }
         ],
         errorElement: <ErrorPage/>
