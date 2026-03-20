@@ -1,15 +1,15 @@
-import type {IPetForm} from "entities/pet/model";
-import type {ICreatePetDto} from "entities/pet/model/types.ts";
+import type {IPetForm, ICreatePetDto} from "entities/pet/model";
+import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 
 
 export const toServerPetObject = (obj: IPetForm): ICreatePetDto => {
     const newObj: ICreatePetDto = {
         name: obj.name,
-        species: obj.species,
-        breed: obj.breed,
+        species: parsePetSpecies(obj.species),
+        breed: parsePetBreed(obj.breed),
         birthDate: obj.birthDate,
         weight: obj.weight,
-        sex: obj.sex,
+        sex: parsePetSex(obj.sex),
         confirm: true
     }
 

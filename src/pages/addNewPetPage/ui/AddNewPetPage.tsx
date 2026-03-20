@@ -1,6 +1,7 @@
 import style from './addNewPetPage.module.css'
 import {type ChangeEvent, useState} from "react";
-import type {IPetForm} from "entities/pet/model";
+import type {ICreatePetDto, IPetForm} from "entities/pet/model";
+import {toServerPetObject} from "entities/pet/lib";
 
 export const AddNewPetPage = () => {
 
@@ -11,7 +12,8 @@ export const AddNewPetPage = () => {
         birthDate: '',
         weight: -1,
         sex: '',
-        photoUrl: ''
+        photoUrl: '',
+        confirm: false,
     });
 
 
@@ -23,8 +25,11 @@ export const AddNewPetPage = () => {
     }
 
     const handleSubmit = () => {
+        const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
+        if (!isConfirmed) return;
 
-        //mapPetForm
+        const petObj: ICreatePetDto = toServerPetObject(form);
+
 
     }
 
