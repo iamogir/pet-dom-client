@@ -45,6 +45,12 @@ export const router = createBrowserRouter([
                 path: 'add_pet',
                 element: <AddNewPetPage/>
             }
+            // temp!
+            ,
+            {
+                path: 'all_app_pets',
+                element: <PetListPage/>
+            }
         ],
         errorElement: <ErrorPage/>
     },
