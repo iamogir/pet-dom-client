@@ -1,5 +1,14 @@
 import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
 
+interface IPetBase {
+    name: string;
+    species: string;
+    breed: string;
+    birthDate: string;
+    weight: number;
+    sex: string;
+    photoUrl?: string;
+}
 
 export interface IPet {
     id: string;
@@ -12,25 +21,16 @@ export interface IPet {
     photoUrl?: string;
 }
 
-export interface IPetDto {
+export interface IPetDto extends IPetBase {
     id: string;
-    name: string;
-    species: string;
-    breed: string;
-    birthDate: string;
-    weight: number;
-    sex: string;
-    photoUrl?: string;
 }
 
-export interface IPetForm {
-    name: string;
-    species: string;
-    breed: string;
-    birthDate: string;
-    weight: number;
-    sex: string;
-    photoUrl?: string;
+export interface IPetForm extends IPetBase {
+    confirm: boolean;
+}
+
+export interface ICreatePetDto extends IPetBase{
+    confirm: boolean;
 }
 
 export interface IPets {
