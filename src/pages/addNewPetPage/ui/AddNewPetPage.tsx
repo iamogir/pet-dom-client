@@ -3,8 +3,8 @@ import {type ChangeEvent, useState} from "react";
 import type {ICreatePetDto, IPetForm} from "entities/pet/model";
 import {toServerPetObject} from "entities/pet/lib";
 import {useAddNewPet} from "entities/pet/hooks";
-import {useQueryClient} from "@tanstack/react-query";
-import {petQueryKeys} from "entities/pet/api";
+// import {useQueryClient} from "@tanstack/react-query";
+// import {petQueryKeys} from "entities/pet/api";
 
 export const AddNewPetPage = () => {
 
@@ -18,10 +18,12 @@ export const AddNewPetPage = () => {
         photoUrl: '',
         confirm: false,
     });
-    const queryClient = useQueryClient();
-    const { mutate } = useAddNewPet({
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-    });
+    // const queryClient = useQueryClient();
+    const { mutate } = useAddNewPet(
+    //     {
+    //     onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
+    // }
+    );
 
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
