@@ -1,0 +1,1 @@
+export { AddNewPetPage } from './ui/AddNewPetPage.tsx'

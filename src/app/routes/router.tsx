@@ -7,6 +7,7 @@ import {PetPageFromRoute} from "pages/petPage";
 import {Layout} from "widgets/layout";
 import {ProfilePageFromRoute} from "pages/profilePage";
 import {PetListPage} from "pages/petListPage";
+import {AddNewPetPage} from "pages/addNewPetPage";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: 'pet',
                 element: <Navigate to={'/my_pets'}/>,
+            },
+            {
+                path: 'add_pet',
+                element: <AddNewPetPage/>
             }
         ],
         errorElement: <ErrorPage/>
