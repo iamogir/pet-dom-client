@@ -9,7 +9,8 @@ export const toServerPetObject = (obj: IPetForm): ICreatePetDto => {
         breed: obj.breed,
         birthDate: obj.birthDate,
         weight: obj.weight,
-        sex: obj.sex
+        sex: obj.sex,
+        confirm: true
     }
 
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
