@@ -1,10 +1,11 @@
-import type {ICreatePetDto} from "entities/pet/model";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, type UseMutationOptions} from "@tanstack/react-query";
 import {addNewPet} from "entities/pet/api";
+import type {ICreatePetDto, IPet} from "entities/pet/model";
 
-export const useAddNewPet = (pet: ICreatePetDto) => {
+export const useAddNewPet = (options?: UseMutationOptions<IPet, Error, ICreatePetDto>) => {
     return useMutation({
-        mutationFn: () => addNewPet(pet)
+        mutationFn: addNewPet,
+        ...options,
         }
     )
 }
