@@ -3,8 +3,9 @@ import {type ChangeEvent, useState} from "react";
 import type {ICreatePetDto, IPetForm} from "entities/pet/model";
 import {toServerPetObject} from "entities/pet/lib";
 import {useAddNewPet} from "entities/pet/hooks";
-// import {useQueryClient} from "@tanstack/react-query";
-// import {petQueryKeys} from "entities/pet/api";
+import {useQueryClient} from "@tanstack/react-query";
+import {petQueryKeys} from "entities/pet/api";
+import {useNavigate} from "react-router-dom";
 
 export const AddNewPetPage = () => {
 
@@ -18,12 +19,14 @@ export const AddNewPetPage = () => {
         photoUrl: '',
         confirm: false,
     });
-    // const queryClient = useQueryClient();
+    const queryClient = useQueryClient();
     const { mutate } = useAddNewPet(
-    //     {
-    //     onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-    // }
+        {
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
+    }
     );
+
+    const navigate = useNavigate();
 
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
@@ -33,14 +36,15 @@ export const AddNewPetPage = () => {
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
         const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
         if (!isConfirmed) return;
 
         const petObj: ICreatePetDto = toServerPetObject(form);
         mutate(petObj)
 
-
+        navigate('/my_pets');
     }
 
     return (

@@ -30,6 +30,9 @@ export const petHandlers = [
         if (obj.photoUrl) newPet.photoUrl = obj.photoUrl;
 
         allPets.push(newPet)
+
+        console.log('POST HAND')
+
         return HttpResponse.json(newPet)
     }),
 
