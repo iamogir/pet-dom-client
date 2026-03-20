@@ -1,5 +1,5 @@
 import style from './addNewPetPage.module.css'
-import {type FormEvent, useState} from "react";
+import {type ChangeEvent, useState} from "react";
 import type {IPetForm} from "entities/pet/model";
 
 export const AddNewPetPage = () => {
@@ -15,9 +15,9 @@ export const AddNewPetPage = () => {
     });
 
 
-    const createPetFormObj = (event: FormEvent<HTMLFormElement>): void => {
+    const createPetFormObj = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
         event.preventDefault();
-        const eventTarget = event.target as HTMLFormElement;
+        const eventTarget = event.target;
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
     }
 
