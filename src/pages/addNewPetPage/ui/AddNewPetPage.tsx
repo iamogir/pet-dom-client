@@ -15,37 +15,44 @@ export const AddNewPetPage = () => {
     });
 
 
-    const createPetFormObj = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
         event.preventDefault();
+
         const eventTarget = event.target;
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
+    }
+
+    const handleSubmit = () => {
+
+        //mapPetForm
+
     }
 
     return (
         <div>
             <h2>Write information about your new pet:</h2>
             <br/>
-            <form className={style.box} onSubmit={createPetFormObj}>
-                <label htmlFor={'petName'}>Name: </label>
-                <input type={'text'} name={'petName'} />
+            <form className={style.box} onSubmit={handleSubmit}>
+                <label htmlFor={'name'}>Name: </label>
+                <input type={'text'} name={'name'} onChange={handleChange} />
 
-                <label htmlFor={'petSpecies'}>Species: </label>
-                <input type={'text'} name={'petSpecies'} />
+                <label htmlFor={'species'}>Species: </label>
+                <input type={'text'} name={'species'} onChange={handleChange} />
 
-                <label htmlFor={'petBreed'}>Breed: </label>
-                <input type={'text'} name={'petBreed'} />
+                <label htmlFor={'breed'}>Breed: </label>
+                <input type={'text'} name={'breed'} onChange={handleChange} />
 
-                <label htmlFor={'petBirth'}>Birth date: </label>
-                <input type={'date'} name={'petBirth'} />
+                <label htmlFor={'birthDate'}>Birth date: </label>
+                <input type={'date'} name={'birthDate'} onChange={handleChange} />
 
-                <label htmlFor={'petSex'}>Sex: </label>
-                <input type={'text'} name={'petSex'} />
+                <label htmlFor={'sex'}>Sex: </label>
+                <input type={'text'} name={'sex'} onChange={handleChange} />
 
-                <label htmlFor={'petWeight'}>Weight: </label>
-                <input type={'number'} name={'petWeight'} />
+                <label htmlFor={'weight'}>Weight: </label>
+                <input type={'number'} name={'weight'} onChange={handleChange} />
 
-                <label htmlFor={'petImg'}>Pet photo: </label>
-                <input type={'text'} name={'petImg'} />
+                <label htmlFor={'photoUrl'}>Pet photo: </label>
+                <input type={'text'} name={'photoUrl'} onChange={handleChange} />
 
                 <br/>
                 <button>
