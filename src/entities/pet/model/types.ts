@@ -23,6 +23,16 @@ export interface IPetDto {
     photoUrl?: string;
 }
 
+export interface IPetForm {
+    name: string;
+    species: string;
+    breed: string;
+    birthDate: string;
+    weight: number;
+    sex: string;
+    photoUrl?: string;
+}
+
 export interface IPets {
     data: IPet[];
     meta: { total: number };

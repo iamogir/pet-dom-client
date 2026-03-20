@@ -1,11 +1,31 @@
 import style from './addNewPetPage.module.css'
+import {type FormEvent, useState} from "react";
+import type {IPetForm} from "entities/pet/model";
 
 export const AddNewPetPage = () => {
+
+    const [form, setForm] = useState<IPetForm>({
+        name: '',
+        species: '',
+        breed: '',
+        birthDate: '',
+        weight: -1,
+        sex: '',
+        photoUrl: ''
+    });
+
+
+    const createPetFormObj = (event: FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        const eventTarget = event.target as HTMLFormElement;
+        setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
+    }
+
     return (
         <div>
             <h2>Write information about your new pet:</h2>
             <br/>
-            <form className={style.box} onSubmit={createNewPetObj}>
+            <form className={style.box} onSubmit={createPetFormObj}>
                 <label htmlFor={'petName'}>Name: </label>
                 <input type={'text'} name={'petName'} />
 
@@ -26,6 +46,12 @@ export const AddNewPetPage = () => {
 
                 <label htmlFor={'petImg'}>Pet photo: </label>
                 <input type={'text'} name={'petImg'} />
+
+                <br/>
+                <button>
+                    <label htmlFor={'submit'}>Add new pet</label>
+                    <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
+                </button>
             </form>
 
         </div>
