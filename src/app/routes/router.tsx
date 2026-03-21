@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
                 element: <AddNewPetPage/>
             },
             {
-                path: 'edit_pet',
+                path: 'edit_pet/:id',
                 element: <EditPetPage/>
             }
 
