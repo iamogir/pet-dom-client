@@ -32,5 +32,21 @@ export const petHandlers = [
         allPets.push(newPet)
         return HttpResponse.json(newPet)
     }),
+    http.put('/api/edit_pet/:id', async (req) => {
+        const editedPet: IPetDto = (await req.request.json()) as unknown as IPetDto;
+        allPets.map(p => {
+            if (p.id === req.params.id) {
+                p.name = editedPet.name;
+                p.species = editedPet.species;
+                p.breed = editedPet.breed;
+                p.birthDate = editedPet.birthDate;
+                p.weight = editedPet.weight;
+                p.sex = editedPet.sex;
+                p.photoUrl = editedPet.photoUrl;
+            }
+        })
+        return HttpResponse.json(editedPet);
+
+    }),
 
 ]
