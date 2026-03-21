@@ -8,6 +8,7 @@ import {Layout} from "widgets/layout";
 import {ProfilePageFromRoute} from "pages/profilePage";
 import {PetListPage} from "pages/petListPage";
 import {AddNewPetPage} from "pages/addNewPetPage";
+import {EditPetPage} from "pages/editPetPage";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +45,12 @@ export const router = createBrowserRouter([
             {
                 path: 'add_pet',
                 element: <AddNewPetPage/>
+            },
+            {
+                path: 'edit_pet',
+                element: <EditPetPage/>
             }
+
             // temp!
             ,
             {
