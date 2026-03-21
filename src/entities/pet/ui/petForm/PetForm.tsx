@@ -9,6 +9,8 @@ import {
 import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
+// import {useQueryClient} from "@tanstack/react-query";
+// import {petQueryKeys} from "entities/pet/api";
 
 interface Props {
     pet?: IPet;
@@ -29,6 +31,13 @@ export const PetForm = ({ pet }: Props) => {
         photoUrl: pet?.photoUrl ?? imagePlaceholder,
         confirm: false
     });
+
+    // const queryClient = useQueryClient();
+    // const { mutate } = useAddNewPet(
+    //     {
+    //         onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
+    //     }
+    // );
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault();
