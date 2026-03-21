@@ -22,6 +22,7 @@ export const PetCard = ({ pet }: Props) => {
                     <span>{pet.breed}, </span>
                     <span>{pet.weight} kg</span>
                 </p>
+                <Link to={'/edit_pet/' + pet.id}><button>EDIT</button></Link>
             </Link>
             <h1>Next events ---</h1>
             {/*<ReminderCard/>*/}
