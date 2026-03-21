@@ -54,14 +54,14 @@ export const PetForm = ({ pet }: Props) => {
 
         if (pet) {
 
-            editPet.mutate(toServerPetObjectUpdate(pet.id, form))
+            editPet.mutate(toServerPetObjectUpdate(pet.id, form)) //TODO sending not filled object!!!
 
-            } else {
+        } else {
             const petDto: ICreatePetDto = toServerPetObjectCreate(form);
             addPet.mutate(petDto)
-
-            navigate('/my_pets');
         }
+
+        navigate('/my_pets');
     }
 
     return (
@@ -90,7 +90,7 @@ export const PetForm = ({ pet }: Props) => {
 
                 <br/>
                 <button>
-                    <label htmlFor={'submit'}>Add new pet</label>
+                    <label htmlFor={'submit'}>Confirm</label>
                     <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
                 </button>
             </form>

@@ -18,6 +18,7 @@ export const toServerPetObjectCreate = (obj: IPetForm): ICreatePetDto => {
 
 export const toServerPetObjectUpdate = (id: string, obj: IPetForm): IUpdatedPetDto => {
 
+    console.log(obj)
     const newObj = toServerPetObjectCreate(obj);
     return {
         id: id,
