@@ -5,7 +5,7 @@ import {toServerPetObject} from "entities/pet/lib";
 import {useAddNewPet} from "entities/pet/hooks";
 import {useQueryClient} from "@tanstack/react-query";
 import {petQueryKeys} from "entities/pet/api";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export const AddNewPetPage = () => {
 
@@ -79,6 +79,7 @@ export const AddNewPetPage = () => {
                     <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
                 </button>
             </form>
+            <Link to={'/user'}><button>Back to profile</button></Link>
 
         </div>
     );

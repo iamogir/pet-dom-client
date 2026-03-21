@@ -33,6 +33,16 @@ export interface ICreatePetDto extends IPetBase{
     confirm: boolean;
 }
 
+export interface IUpdatedPetDto {
+    name?: string;
+    species?: string;
+    breed?: string;
+    birthDate?: string;
+    weight?: number;
+    sex?: string;
+    photoUrl?: string;
+}
+
 export interface IPets {
     data: IPet[];
     meta: { total: number };
