@@ -34,6 +34,7 @@ export interface ICreatePetDto extends IPetBase{
 }
 
 export interface IUpdatedPetDto {
+    id: string;
     name?: string;
     species?: string;
     breed?: string;
