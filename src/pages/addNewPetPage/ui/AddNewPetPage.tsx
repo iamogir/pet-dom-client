@@ -1,7 +1,7 @@
 import style from './addNewPetPage.module.css'
 import {type ChangeEvent, useState} from "react";
 import type {ICreatePetDto, IPetForm} from "entities/pet/model";
-import {toServerPetObject} from "entities/pet/lib";
+import {toServerPetObjectCreate} from "entities/pet/lib";
 import {useAddNewPet} from "entities/pet/hooks";
 import {useQueryClient} from "@tanstack/react-query";
 import {petQueryKeys} from "entities/pet/api";
@@ -41,7 +41,7 @@ export const AddNewPetPage = () => {
         const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
         if (!isConfirmed) return;
 
-        const petObj: ICreatePetDto = toServerPetObject(form);
+        const petObj: ICreatePetDto = toServerPetObjectCreate(form);
         mutate(petObj)
 
         navigate('/my_pets');

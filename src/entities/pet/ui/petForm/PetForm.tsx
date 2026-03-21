@@ -1,11 +1,14 @@
 import {useAddNewPet, useEditPet} from "entities/pet/hooks";
 import style from "pages/addNewPetPage/ui/addNewPetPage.module.css";
 import {
+    type ICreatePetDto,
     imagePlaceholder,
     type IPet,
     type IPetForm,
 } from "entities/pet/model";
 import {type ChangeEvent, useState} from "react";
+import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
+import {useNavigate} from "react-router-dom";
 
 interface Props {
     pet?: IPet;
@@ -13,6 +16,7 @@ interface Props {
 
 export const PetForm = ({ pet }: Props) => {
 
+    const navigate = useNavigate();
     const editPet = useEditPet();
     const addPet = useAddNewPet();
     const [form, setForm] = useState<IPetForm>({
@@ -33,8 +37,22 @@ export const PetForm = ({ pet }: Props) => {
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
+        if (!isConfirmed) return;
+        setForm(prev => ({...prev, confirm: true}));
 
+        if (pet) {
+
+            editPet.mutate(toServerPetObjectUpdate(pet.id, form))
+
+            } else {
+            const petDto: ICreatePetDto = toServerPetObjectCreate(form);
+            addPet.mutate(petDto)
+
+            navigate('/my_pets');
+        }
     }
 
     return (
