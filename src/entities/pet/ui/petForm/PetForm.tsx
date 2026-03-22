@@ -21,7 +21,9 @@ export const PetForm = ({ pet }: Props) => {
     const navigate = useNavigate();
     const editPet = useEditPet();
     const addPet = useAddNewPet();
-    const [form, setForm] = useState<IPetForm>({
+    console.log(pet)
+
+    const [form, setForm] = useState({
         name: pet?.name ?? '',
         species: pet?.species?? '',
         breed: pet?.breed ?? '',
@@ -31,6 +33,7 @@ export const PetForm = ({ pet }: Props) => {
         photoUrl: pet?.photoUrl ?? imagePlaceholder,
         confirm: false
     });
+
 
     // const queryClient = useQueryClient();
     // const { mutate } = useAddNewPet(
@@ -59,6 +62,7 @@ export const PetForm = ({ pet }: Props) => {
         } else {
             const petDto: ICreatePetDto = toServerPetObjectCreate(form);
             addPet.mutate(petDto)
+
         }
 
         navigate('/my_pets');
