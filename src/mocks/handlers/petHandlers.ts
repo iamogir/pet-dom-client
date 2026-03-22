@@ -34,8 +34,6 @@ export const petHandlers = [
     }),
     http.patch('/api/edit_pet/:id', async (req) => {
 
-        console.log('HANDLER')
-
         const editedPet: IPetDto = (await req.request.json()) as unknown as IPetDto;
         allPets.map(p => {
             if (p.id === req.params.id) {
