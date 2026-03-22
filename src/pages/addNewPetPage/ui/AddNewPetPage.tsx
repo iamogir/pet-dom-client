@@ -12,16 +12,6 @@ import {PetForm} from "entities/pet/ui/petForm";
 
 export const AddNewPetPage = () => {
 
-    // const [form, setForm] = useState<IPetForm>({
-    //     name: '',
-    //     species: '',
-    //     breed: '',
-    //     birthDate: '',
-    //     weight: -1,
-    //     sex: '',
-    //     photoUrl: '',
-    //     confirm: false,
-    // });
     // const queryClient = useQueryClient();
     // const { mutate } = useAddNewPet(
     //     {
@@ -29,26 +19,6 @@ export const AddNewPetPage = () => {
     // }
     // );
 
-    // const navigate = useNavigate();
-
-
-    // const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
-    //     event.preventDefault();
-    //
-    //     const eventTarget = event.target;
-    //     setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
-    // }
-    //
-    // const handleSubmit = (event: { preventDefault: () => void; }) => {
-    //     event.preventDefault();
-    //     const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
-    //     if (!isConfirmed) return;
-    //
-    //     const petObj: ICreatePetDto = toServerPetObjectCreate(form);
-    //     mutate(petObj)
-    //
-    //     navigate('/my_pets');
-    // }
 
     return (
         <div>

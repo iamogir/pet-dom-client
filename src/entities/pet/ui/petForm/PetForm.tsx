@@ -9,8 +9,8 @@ import {
 import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
-// import {useQueryClient} from "@tanstack/react-query";
-// import {petQueryKeys} from "entities/pet/api";
+import {useQueryClient} from "@tanstack/react-query";
+import {petQueryKeys} from "entities/pet/api";
 
 interface Props {
     pet?: IPet;
@@ -19,11 +19,18 @@ interface Props {
 export const PetForm = ({ pet }: Props) => {
 
     const navigate = useNavigate();
-    const editPet = useEditPet();
-    const addPet = useAddNewPet();
-    console.log(pet)
-
-    const [form, setForm] = useState({
+    const queryClient = useQueryClient();
+    const editPet = useEditPet(
+        {
+            onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
+        }
+    );
+    const addPet = useAddNewPet(
+        {
+            onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
+        }
+    );
+    const [form, setForm] = useState<IPetForm>({
         name: pet?.name ?? '',
         species: pet?.species?? '',
         breed: pet?.breed ?? '',
@@ -33,14 +40,6 @@ export const PetForm = ({ pet }: Props) => {
         photoUrl: pet?.photoUrl ?? imagePlaceholder,
         confirm: false
     });
-
-
-    // const queryClient = useQueryClient();
-    // const { mutate } = useAddNewPet(
-    //     {
-    //         onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-    //     }
-    // );
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault();
