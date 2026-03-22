@@ -1,13 +1,25 @@
 import {Link} from "react-router-dom";
 import {useAllUsersByPetId} from "entities/petOwner/hooks";
 import {UserCard} from "entities/user/ui/userCard";
+import {usePetById} from "entities/pet/hooks";
+import {PetCard} from "entities/pet/ui/petCard";
 
-export const PetPage = () => {
+interface Props {
+    petId: string
+}
 
-    const { isLoading, error, data } = useAllUsersByPetId('0');
+export const PetPage = ({ petId }: Props) => {
+
+    const { isLoading, error, data } = useAllUsersByPetId(petId);
+    const petData = usePetById(petId);
 
     return (
         <div>
+            {petData.isLoading ? <p>loading</p> :
+                petData.error ? <p>{petData.error.message}</p> :
+                    petData.data ? <PetCard pet={petData.data}/> :
+                        <p>NOTHING TO SHOW</p>
+            }
             {isLoading ? <p>one second...</p> :
                 <div>
                     <h2>all users of selected pet:</h2>
@@ -16,7 +28,7 @@ export const PetPage = () => {
                     }
                 </div>
             }
-            <Link to='/home'>to home</Link>
+            <Link to='/home'><button>to home</button></Link>
         </div>
     );
 };

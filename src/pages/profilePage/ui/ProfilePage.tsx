@@ -1,40 +1,28 @@
 import {Link} from "react-router-dom";
-import {useAllUsers, useUserById} from "entities/user/hooks";
+import {useUserById} from "entities/user/hooks";
 import {UserCard} from "entities/user/ui/userCard";
-import {usePetById} from "entities/pet/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllPetsByUserId} from "entities/petOwner/hooks";
 
-export const ProfilePage = () => {
+interface Props {
+    id: string
+}
 
-    const userTemp = '01'
+export const ProfilePage = ({ id }: Props) => {
 
-    const { isLoading, data, error } = useAllUsers();
-    const userQuery = useUserById('01');
-    const petQuery = usePetById('0');
-    const petsByUserQuery = useAllPetsByUserId(userTemp);
+    const { isLoading, data, error } = useUserById(id);
+    const petsByUserQuery = useAllPetsByUserId(id);
 
     return (
         <div>
+            <h2>Welcome to your profile!</h2>
+            <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
             {isLoading ? <p>Loading...</p> :
-                (error ? <p>{error.message}</p> :
+                (error ? <p>Oh, where is the data? Amiss! - {error.message}</p> :
                     <div>
-                        {data?.data.map(u => <UserCard key={u.id} user={u} />)}
+                        {data ? <UserCard key={data.id} user={data} /> : null }
 
-                        <h2>Selected profile</h2>
-                        {userQuery.isLoading ? <p>second...</p> :
-                            (!userQuery.data ? <p>Here are not users like this</p> :
-                                <UserCard user={userQuery.data} />
-                            )
-                        }
-                        { petQuery.isLoading ? <p>loading...</p> :
-                            (!petQuery.data ? <p>No data</p> :
-                                    <PetCard pet={petQuery.data} />
-                            )
-                        }
-                        <br/>
-                        <br/>
-                        <h2>PETS BY USER {userTemp}</h2>
+                        <h2>PETS BY USER {id} --- Or <Link to={'/add_pet'}><button>Add new pet</button></Link></h2>
                         { petsByUserQuery.isLoading ? <p>loading...</p> :
                             (!petsByUserQuery.data ? <p>No data</p> :
                                 petsByUserQuery.data.data.map(p => <PetCard key={p.id} pet={p} />)
@@ -44,7 +32,7 @@ export const ProfilePage = () => {
                 )
             }
 
-            <button><Link to='/home'>to home</Link></button>
+            <Link to='/home'><button>to home</button></Link>
         </div>
     );
 };

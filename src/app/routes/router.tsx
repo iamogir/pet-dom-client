@@ -3,9 +3,12 @@ import {HomePage} from "pages/homePage";
 import {ErrorPage} from "pages/errorPage";
 import {AuthPage} from "pages/authPage";
 import {RegistPage} from "pages/registPage";
-import {ProfilePage} from "pages/profilePage";
-import {PetPage} from "pages/petPage";
+import {PetPageFromRoute} from "pages/petPage";
 import {Layout} from "widgets/layout";
+import {ProfilePageFromRoute} from "pages/profilePage";
+import {PetListPage} from "pages/petListPage";
+import {AddNewPetPage} from "pages/addNewPetPage";
+import {EditPetPage} from "pages/editPetPage";
 
 export const router = createBrowserRouter([
     {
@@ -20,12 +23,39 @@ export const router = createBrowserRouter([
                 element: <Navigate to='home' replace />,
             },
             {
-                path: 'user_profile',
-                element: <ProfilePage/>,
+                path: 'user/:id',
+                element: <ProfilePageFromRoute/>,
             },
             {
-                path: 'pet_profile',
-                element: <PetPage/>,
+                path: 'user',
+                element: <Navigate to={'/user/me'} replace/>,
+            },
+            {
+                path: 'pet/:id',
+                element: <PetPageFromRoute/>,
+            },
+            {
+                path: 'my_pets',
+                element: <PetListPage/>,
+            },
+            {
+                path: 'pet',
+                element: <Navigate to={'/my_pets'}/>,
+            },
+            {
+                path: 'add_pet',
+                element: <AddNewPetPage/>
+            },
+            {
+                path: 'edit_pet/:id',
+                element: <EditPetPage/>
+            }
+
+            // temp!
+            ,
+            {
+                path: 'all_app_pets',
+                element: <PetListPage/>
             }
         ],
         errorElement: <ErrorPage/>
