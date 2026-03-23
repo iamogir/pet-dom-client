@@ -50,15 +50,9 @@ export const petHandlers = [
 
     }),
     http.delete('/api/delete_pet_by_id/:id', ({ params }) => {
-        let pet = {};
-        const petIndex = allPets.findIndex(p => {
-            if( p.id === params.id) {
-                pet = p;
-                return true;
-            }
-        });
-        allPets.splice(petIndex, 1);
-        return HttpResponse.json(pet as IPetDto);
+        const petIndex = allPets.findIndex(p => p.id === params.id);
+        const deletedPet = allPets.splice(petIndex, 1)[0];
+        return HttpResponse.json(deletedPet as IPetDto);
 
     })
 
