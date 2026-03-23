@@ -10,13 +10,13 @@ interface Props {
 export const PetCard = ({ pet }: Props) => {
 
     const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
-    const { mutate } = useDeletePetById();
+    const { mutateAsync } = useDeletePetById();
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         const isConfirmed = confirm("Are you sure you want to delete this pet?");
         if (isConfirmed) {
-            mutate(pet.id);
-            alert('Pet ' + {} + 'was successfully deleted.')
+            const deletedPet = await mutateAsync(pet.id);
+            alert('Pet ' + deletedPet.name + ' was successfully deleted.')
         }
     }
 
