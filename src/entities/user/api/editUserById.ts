@@ -1,5 +1,5 @@
 import {fetchClient} from "shared/api";
-import type {IUpdatedUserDto, IUserDto} from "entities/user/model/types.ts";
+import type {IUpdatedUserDto, IUserDto} from "entities/user/model";
 import {fromServerUserDto} from "entities/user/lib";
 
 export const editUserById = async (data: IUpdatedUserDto) => {
