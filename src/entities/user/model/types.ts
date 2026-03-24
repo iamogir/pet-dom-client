@@ -29,7 +29,15 @@ export interface IUserDto extends IUserBase {
     id: string;
 }
 
-export interface IUserForm extends IUserBase {
+export interface IUserForm {
+
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    country: string;
+    birthDate: string;
+    gender: string;
+    avatarUrl: string;
     confirm: boolean;
 }
 
