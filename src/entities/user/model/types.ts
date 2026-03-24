@@ -1,5 +1,17 @@
 import type {UserCountry, UserGender} from "entities/user/model";
 
+interface IUserBase {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    country: string;
+    birthDate: string;
+    gender: string;
+    avatarUrl?: string;
+}
+
 export interface IUser {
     id: string;
     email: string;
@@ -13,17 +25,15 @@ export interface IUser {
     avatarUrl?: string;
 }
 
-export interface IUserDto {
+export interface IUserDto extends IUserBase {
     id: string;
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    country: string;
-    birthDate: string;
-    gender: string;
-    avatarUrl?: string;
+}
+
+export interface IUpdatedUserDto extends IUserBase{
+    id: string;
+    avatarUrl: string;
+    confirm: boolean;
+
 }
 
 export interface IUsers {
