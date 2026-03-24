@@ -1,9 +1,24 @@
 import style from "./userForm.module.css"
 import {useState} from "react";
+import type {IUser, IUserForm} from "entities/user/model";
+import {imagePlaceholder} from "entities/pet/model";
 
-export const UserForm = () => {
+interface Props {
+    user: IUser
+}
 
-    const [form, setForm] = useState({})
+export const UserForm = ({user} : Props) => {
+
+    const [form, setForm] = useState<IUserForm>({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phoneNumber: user.phoneNumber,
+        country: user.country,
+        birthDate: user.birthDate.toString(),
+        gender: user.gender,
+        avatarUrl: user.avatarUrl ?? imagePlaceholder,
+        confirm: false
+    })
 
     const handleChange = () => {
 
@@ -17,13 +32,10 @@ export const UserForm = () => {
         <div>
             <form className={style.box} onSubmit={handleSubmit}>
                 <label htmlFor={'firstName'}>Name: </label>
-                <input type={'text'} name={'firstName'} onChange={handleChange} value={form.name} placeholder={'First Name'} />
+                <input type={'text'} name={'firstName'} onChange={handleChange} value={form.firstName} placeholder={'First Name'} />
 
                 <label htmlFor={'lastName'}>Species: </label>
                 <input type={'text'} name={'lastName'} onChange={handleChange} value={form.lastName} placeholder={'Last Name'} />
-
-                <label htmlFor={'email'}>Breed: </label>
-                <input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'Email'} />
 
                 <label htmlFor={'phoneNumber'}>Birth date: </label>
                 <input type={'text'} name={'phoneNumber'} onChange={handleChange} value={form.phoneNumber} placeholder={'Phone Number'} />
