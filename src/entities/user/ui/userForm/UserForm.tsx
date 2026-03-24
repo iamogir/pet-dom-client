@@ -31,25 +31,25 @@ export const UserForm = ({user} : Props) => {
     return (
         <div>
             <form className={style.box} onSubmit={handleSubmit}>
-                <label htmlFor={'firstName'}>Name: </label>
+                <label htmlFor={'firstName'}>First name: </label>
                 <input type={'text'} name={'firstName'} onChange={handleChange} value={form.firstName} placeholder={'First Name'} />
 
-                <label htmlFor={'lastName'}>Species: </label>
+                <label htmlFor={'lastName'}>Last name: </label>
                 <input type={'text'} name={'lastName'} onChange={handleChange} value={form.lastName} placeholder={'Last Name'} />
 
-                <label htmlFor={'phoneNumber'}>Birth date: </label>
+                <label htmlFor={'phoneNumber'}>Phone: </label>
                 <input type={'text'} name={'phoneNumber'} onChange={handleChange} value={form.phoneNumber} placeholder={'Phone Number'} />
 
-                <label htmlFor={'country'}>Sex: </label>
+                <label htmlFor={'country'}>Living country: </label>
                 <input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />
 
-                <label htmlFor={'gender'}>Weight: </label>
-                <input type={'number'} name={'gender'} onChange={handleChange} value={form.gender} placeholder={'gender'} />
+                <label htmlFor={'gender'}>gender: </label>
+                <input type={'text'} name={'gender'} onChange={handleChange} value={form.gender} placeholder={'gender'} />
 
-                <label htmlFor={'birthDate'}>Weight: </label>
+                <label htmlFor={'birthDate'}>B-day: </label>
                 <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth Date'} />
 
-                <label htmlFor={'avatarUrl'}>Pet photo: </label>
+                <label htmlFor={'avatarUrl'}>Profile photo: </label>
                 <input type={'text'} name={'avatarUrl'} onChange={handleChange} value={form.avatarUrl} placeholder={'Avatar'} />
 
                 <br/>
