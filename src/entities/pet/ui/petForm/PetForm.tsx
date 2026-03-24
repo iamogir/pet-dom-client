@@ -56,7 +56,7 @@ export const PetForm = ({ pet }: Props) => {
 
         if (pet) {
 
-            editPet.mutate(toServerPetObjectUpdate(pet.id, form)) //TODO sending not filled object!!!
+            editPet.mutate(toServerPetObjectUpdate(pet.id, form))
 
         } else {
             const petDto: ICreatePetDto = toServerPetObjectCreate(form);

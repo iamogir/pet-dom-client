@@ -1,7 +1,10 @@
 import style from "./userForm.module.css"
-import {useState} from "react";
+import {type ChangeEvent, useState} from "react";
 import type {IUser, IUserForm} from "entities/user/model";
 import {imagePlaceholder} from "entities/pet/model";
+import {useEditUserById} from "entities/user/hooks";
+import {toServerUserObjectUpdate} from "entities/user/lib";
+import {useNavigate} from "react-router-dom";
 
 interface Props {
     user: IUser
@@ -9,6 +12,8 @@ interface Props {
 
 export const UserForm = ({user} : Props) => {
 
+    const navigate = useNavigate();
+    const { mutate } = useEditUserById();
     const [form, setForm] = useState<IUserForm>({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -20,12 +25,21 @@ export const UserForm = ({user} : Props) => {
         confirm: false
     })
 
-    const handleChange = () => {
-
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        event.preventDefault();
+        const eventTarget = event.target;
+        setForm(prev => ({...prev,  [eventTarget.name]: eventTarget.value }))
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
 
+        const isConfirmed = confirm('Are you sure?');
+        if (!isConfirmed) return;
+
+        mutate(toServerUserObjectUpdate(user.id, form));
+
+        navigate("/user/" + user.id);
     }
 
     return (
