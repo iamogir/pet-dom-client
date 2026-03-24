@@ -34,8 +34,6 @@ export const petHandlers = [
     }),
     http.patch('/api/edit_pet/:id', async (req) => {
 
-        console.log('HANDLER')
-
         const editedPet: IPetDto = (await req.request.json()) as unknown as IPetDto;
         allPets.map(p => {
             if (p.id === req.params.id) {
@@ -51,5 +49,11 @@ export const petHandlers = [
         return HttpResponse.json(editedPet);
 
     }),
+    http.delete('/api/delete_pet_by_id/:id', ({ params }) => {
+        const petIndex = allPets.findIndex(p => p.id === params.id);
+        const deletedPet = allPets.splice(petIndex, 1)[0];
+        return HttpResponse.json(deletedPet as IPetDto);
+
+    })
 
 ]
