@@ -9,7 +9,7 @@ import {ProfilePageFromRoute} from "pages/profilePage";
 import {PetListPage} from "pages/petListPage";
 import {AddNewPetPage} from "pages/addNewPetPage";
 import {EditPetPage} from "pages/editPetPage";
-import {UserForm} from "entities/user/ui/userForm";
+import {EditProfilePage} from "pages/editProfilePage";
 
 export const router = createBrowserRouter([
     {
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'edit_user/:id',
-                element: <UserForm/>
+                element: <EditProfilePage/>
             }
 
             // temp!
