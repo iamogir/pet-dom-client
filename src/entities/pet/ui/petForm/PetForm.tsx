@@ -1,5 +1,5 @@
 import {useAddNewPet, useEditPet} from "entities/pet/hooks";
-import style from "pages/addNewPetPage/ui/addNewPetPage.module.css";
+import style from "./petForm.module.css";
 import {
     type ICreatePetDto,
     imagePlaceholder,
