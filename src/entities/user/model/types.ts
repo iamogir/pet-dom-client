@@ -29,6 +29,10 @@ export interface IUserDto extends IUserBase {
     id: string;
 }
 
+export interface IUserForm extends IUserBase {
+    confirm: boolean;
+}
+
 export interface IUpdatedUserDto extends IUserBase{
     id: string;
     avatarUrl: string;
