@@ -15,7 +15,7 @@ export const useDeletePetById = (options?: UseMutationOptions<IPet, Error, strin
             await queryClient.cancelQueries({ queryKey: petQueryKeys.all });
             const prev = queryClient.getQueryData<IPetDto[]>(petQueryKeys.all);
 
-            queryClient.setQueryData(petQueryKeys.all, (old: IPetDto[] = []) => old.filter(p => p.id !== petId));
+            queryClient.setQueryData(petQueryKeys.all, (old: IPetDto[] = []) => old.filter(p => p.id !== petId)); //TODO WTF
             return { prev };
         },
         onError: (_error, _petId, context) => {
