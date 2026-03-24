@@ -12,13 +12,8 @@ interface IUserBase {
     avatarUrl?: string;
 }
 
-export interface IUser {
+export interface IUser extends Omit<IUserBase, 'birthDate'> {
     id: string;
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
     country: UserCountry;
     birthDate: Date;
     gender: UserGender;
@@ -29,23 +24,14 @@ export interface IUserDto extends IUserBase {
     id: string;
 }
 
-export interface IUserForm {
+export interface IUserForm extends Omit<IUserBase, 'email' | 'password'>{
 
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    country: string;
-    birthDate: string;
-    gender: string;
     avatarUrl: string;
     confirm: boolean;
 }
 
-export interface IUpdatedUserDto extends IUserBase{
+export interface IUpdatedUserDto extends IUserForm{
     id: string;
-    avatarUrl: string;
-    confirm: boolean;
-
 }
 
 export interface IUsers {
