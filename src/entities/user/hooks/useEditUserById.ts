@@ -10,6 +10,6 @@ export const useEditUserById = (options?: UseMutationOptions<IUser, Error, IUpda
     return useMutation({
         mutationFn: editUserById,
         ...options,
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: userQueryKeys.all })
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: userQueryKeys.all }) //depends on the current page!!!
     })
 }
