@@ -3,7 +3,7 @@ import {getUserById, userQueryKeys} from "entities/user/api";
 
 export const useUserById = (id: string) => {
     return useQuery({
-        queryKey: userQueryKeys.detail(id),
+        queryKey: userQueryKeys.single(id),
         queryFn: () => getUserById(id)
     })
 }

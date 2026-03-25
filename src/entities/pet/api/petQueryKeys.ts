@@ -2,8 +2,9 @@ export const petQueryKeys = {
     all: ['all_pets'],
     details: () => [...petQueryKeys.all, 'detail'],                     //all_pets, detail
     lists: () => [...petQueryKeys.all, 'list'],                         //all_pets, list
-    detail: (petId: string) => [...petQueryKeys.details(), petId],      //all_pets, detail, id (for one pet)
-    list: (userId: string) => [...petQueryKeys.lists(), userId],          //all_pets, list, petId (for one user)
+    detail: (petId: string) => [...petQueryKeys.details(), petId],      //all_pets, detail, id (all users for one pet)
+    list: (userId: string) => [...petQueryKeys.lists(), userId],        //all_pets, list, petId (all pets for one user)
+    single: (petId: string) => [...petQueryKeys.all, 'single', petId],  //all_pets, single, petId (single pet)
 
 }
 

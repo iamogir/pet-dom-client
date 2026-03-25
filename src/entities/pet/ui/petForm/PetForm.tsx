@@ -1,5 +1,5 @@
 import {useAddNewPet, useEditPet} from "entities/pet/hooks";
-import style from "pages/addNewPetPage/ui/addNewPetPage.module.css";
+import style from "./petForm.module.css";
 import {
     type ICreatePetDto,
     imagePlaceholder,
@@ -9,8 +9,6 @@ import {
 import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
-import {useQueryClient} from "@tanstack/react-query";
-import {petQueryKeys} from "entities/pet/api";
 
 interface Props {
     pet?: IPet;
@@ -19,17 +17,8 @@ interface Props {
 export const PetForm = ({ pet }: Props) => {
 
     const navigate = useNavigate();
-    const queryClient = useQueryClient();
-    const editPet = useEditPet(
-        {
-            onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-        }
-    );
-    const addPet = useAddNewPet(
-        {
-            onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-        }
-    );
+    const editPet = useEditPet();
+    const addPet = useAddNewPet();
     const [form, setForm] = useState<IPetForm>({
         name: pet?.name ?? '',
         species: pet?.species?? '',
@@ -48,7 +37,7 @@ export const PetForm = ({ pet }: Props) => {
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
     }
 
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
+    const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
         if (!isConfirmed) return;
@@ -56,7 +45,7 @@ export const PetForm = ({ pet }: Props) => {
 
         if (pet) {
 
-            editPet.mutate(toServerPetObjectUpdate(pet.id, form)) //TODO sending not filled object!!!
+            await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
 
         } else {
             const petDto: ICreatePetDto = toServerPetObjectCreate(form);
