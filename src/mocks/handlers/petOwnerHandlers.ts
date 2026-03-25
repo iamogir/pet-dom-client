@@ -3,6 +3,8 @@ import {allPetOwners, allPets, allUsers} from "src/mocks/data";
 import type {IPetsDto} from "entities/pet/model";
 import type {IUsersDto} from "entities/user/model";
 
+//TODO check connections with perOwner
+
 export const petOwnerHandlers = [
     http.get('/api/all_pets_by_owner_id/:id', ({ params }) => {
         const obj: IPetsDto = {
