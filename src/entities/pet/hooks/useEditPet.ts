@@ -1,10 +1,22 @@
-import {useMutation, type UseMutationOptions} from "@tanstack/react-query";
-import {editPet} from "entities/pet/api";
-import type {IPet, IUpdatedPetDto} from "entities/pet/model";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {editPet, petQueryKeys} from "entities/pet/api";
+import type {IPet} from "entities/pet/model";
 
-export const useEditPet = (options?: UseMutationOptions<IPet, Error, IUpdatedPetDto>) => {
+export const useEditPet = () => {
+
+    const queryClient = useQueryClient();
+
     return useMutation({
         mutationFn: editPet,
-        ...options,
+        // onSuccess: (updatedPet:IPet) => {
+        //     queryClient.setQueryData(userQueryKeys.all,
+        //         (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
+        //     )
+        // }
+        // onSuccess: (updatedPet:IPet) => {
+        //     queryClient.setQueryData(petQueryKeys.lists(),
+        //         (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
+        //     )
+        // }
     })
 }
