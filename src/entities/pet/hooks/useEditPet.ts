@@ -9,14 +9,15 @@ export const useEditPet = () => {
     return useMutation({
         mutationFn: editPet,
         // onSuccess: (updatedPet:IPet) => {
-        //     queryClient.setQueryData(userQueryKeys.all,
+        //     queryClient.setQueryData(petQueryKeys.all,
         //         (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
         //     )
         // }
-        // onSuccess: (updatedPet:IPet) => {
-        //     queryClient.setQueryData(petQueryKeys.lists(),
-        //         (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
-        //     )
-        // }
+        onSuccess: (updatedPet:IPet) => {
+            queryClient.setQueryData(petQueryKeys.single(updatedPet.id),
+                // (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
+                updatedPet
+            )
+        }
     })
 }

@@ -1,4 +1,4 @@
-import {useAddNewPet, useEditPet} from "entities/pet/hooks";
+import {useAddNewPet, useEditPet, usePetById} from "entities/pet/hooks";
 import style from "./petForm.module.css";
 import {
     type ICreatePetDto,
@@ -9,12 +9,15 @@ import {
 import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
+import {PetCard} from "entities/pet/ui/petCard";
 
 interface Props {
     pet?: IPet;
 }
 
 export const PetForm = ({ pet }: Props) => {
+
+    const { data } = usePetById(pet?.id);
 
     const navigate = useNavigate();
     const editPet = useEditPet();
@@ -53,11 +56,12 @@ export const PetForm = ({ pet }: Props) => {
 
         }
 
-        navigate('/my_pets');
+        // navigate('/my_pets');
     }
 
     return (
         <div>
+            <PetCard pet={data}/>
             <form className={style.box} onSubmit={handleSubmit}>
                 <label htmlFor={'name'}>Name: </label>
                 <input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />

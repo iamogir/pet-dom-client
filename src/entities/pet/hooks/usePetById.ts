@@ -3,7 +3,7 @@ import {getPetById, petQueryKeys} from "entities/pet/api";
 
 export const usePetById = (id: string) =>  {
     return useQuery({
-        queryKey: petQueryKeys.detail(id),
+        queryKey: petQueryKeys.single(id),
         queryFn: () => getPetById(id)
     })
 }
