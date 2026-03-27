@@ -11,7 +11,8 @@ export const petOwnerHandlers = [
         }
         allPetOwners.map(el => {
             if (el.userId === params.id)  {
-                obj.data.push(...allPets.filter(p => p.id === el.petId))
+                obj.data.push(...allPets.filter(p => p.id === el.petId)) //TODO check how it works
+                // obj.data.push(allPets.find(p => p.id === el.petId))
             }
         })
 
