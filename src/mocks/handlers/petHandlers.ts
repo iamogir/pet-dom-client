@@ -1,6 +1,7 @@
 import {http, HttpResponse} from "msw";
-import {allPets} from "src/mocks/data";
+import {allPetOwners, allPets} from "src/mocks/data";
 import type {ICreatePetDto, IPetDto} from "entities/pet/model";
+import type {IPetOwnerDto} from "entities/petOwner/model";
 
 export const petHandlers = [
     http.get('/api/all_pets', () => {
@@ -28,8 +29,16 @@ export const petHandlers = [
             sex: obj.sex,
         }
         if (obj.photoUrl) newPet.photoUrl = obj.photoUrl;
-
         allPets.push(newPet)
+
+        const newPetOwner: IPetOwnerDto = {
+            id: '000' + obj.weight,
+            userId: obj.ownerId,
+            petId: newPet.id,
+            ownerRole: 'owner'
+        }
+        allPetOwners.push(newPetOwner);
+
         return HttpResponse.json(newPet)
     }),
     http.patch('/api/edit_pet/:id', async (req) => {
