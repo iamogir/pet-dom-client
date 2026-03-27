@@ -1,29 +1,33 @@
-import type {IPetForm, ICreatePetDto, IUpdatedPetDto} from "entities/pet/model";
+import type {IPetForm, ICreatePetDto, IUpdatedPetDto, IPetParsed} from "entities/pet/model";
 import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 
-export const toServerPetObjectCreate = (obj: IPetForm): ICreatePetDto => {
-    const newObj : ICreatePetDto = {
+const parsePetObject = (obj: IPetForm): IPetParsed => {
+    const newObj : IPetParsed = {
         name: obj.name,
         species: parsePetSpecies(obj.species),
         breed: parsePetBreed(obj.breed),
         birthDate: obj.birthDate.toString(),
         weight: obj.weight,
         sex: parsePetSex(obj.sex),
-        confirm: true,
     }
 
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
     return newObj;
 }
 
-export const toServerPetObjectUpdate = (id: string, obj: IPetForm): IUpdatedPetDto => {
+export const toServerPetObjectCreate = (obj: IPetForm, ownerId: string): ICreatePetDto => {
+    const newObj = parsePetObject(obj);
+    return { ...newObj, ownerId };
+}
 
-    console.log(obj)
-    const newObj = toServerPetObjectCreate(obj);
+export const toServerPetObjectUpdate = (petId: string, obj: IPetForm): IUpdatedPetDto => {
+
+    const newObj = parsePetObject(obj);
     return {
-        id: id,
+        id: petId,
         ...newObj,
-        photoUrl: obj.photoUrl ?? ''
+        photoUrl: obj.photoUrl ?? '',
+        confirm: true,
     };
 
 }
