@@ -25,17 +25,18 @@ export interface IPetDto extends IPetBase {
     id: string;
 }
 
+export interface IPetParsed extends IPetBase {}
+
 export interface IPetForm extends IPetBase {
     confirm: boolean;
 }
 
 export interface ICreatePetDto extends IPetBase{
-    confirm: boolean;
+    ownerId: string;
 }
 
 export interface IUpdatedPetDto extends IPetBase{
     id: string;
-    photoUrl: string;
     confirm: boolean;
 }
 
