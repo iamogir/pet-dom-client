@@ -13,13 +13,15 @@ export const PetListPage = () => {
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
 
+    console.log(pO.data)
+
     return (
         <div>
             {pO.isLoading ? <p>loaaaaaading</p> :
                 pO.error ? <p>oooooopppssss : {pO.error.message}</p> :
                     <div>
                         {pO.data?.data.map((el) =>
-                            <div>
+                            <div key={el.id}>
                                 <p>pet {el.petId}</p>
                                 <p>user {el.userId}</p>
                                 <p>role {el.ownerRole}</p>
