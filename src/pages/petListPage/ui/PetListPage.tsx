@@ -13,8 +13,6 @@ export const PetListPage = () => {
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
 
-    console.log(pO.data)
-
     return (
         <div>
             {pO.isLoading ? <p>loaaaaaading</p> :
