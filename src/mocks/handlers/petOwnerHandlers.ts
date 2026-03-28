@@ -37,5 +37,11 @@ export const petOwnerHandlers = [
         obj.meta.total = obj.data.length;
 
         return HttpResponse.json(obj);
-    })
+    }),
+    http.get('/api/all_pet_owners', ()  => {
+        return HttpResponse.json({
+            data: allPetOwners,
+            meta: { total: allPetOwners.length }
+        })
+    }),
 ]
