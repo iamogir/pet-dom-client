@@ -9,6 +9,7 @@ const parsePetObject = (obj: IPetForm): IPetParsed => {
         birthDate: obj.birthDate.toString(),
         weight: obj.weight,
         sex: parsePetSex(obj.sex),
+        isParsed: true
     }
 
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
@@ -26,8 +27,7 @@ export const toServerPetObjectUpdate = (petId: string, obj: IPetForm): IUpdatedP
     return {
         id: petId,
         ...newObj,
-        photoUrl: obj.photoUrl ?? '',
-        confirm: true,
+        photoUrl: obj.photoUrl ?? undefined
     };
 
 }
