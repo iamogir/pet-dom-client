@@ -22,14 +22,16 @@ export const useDeletePetById = (options?: UseMutationOptions<IPet, Error, strin
             const prevPet = queryClient.getQueryData<IPetsDto>(petQueryKeys.all);
             const prevOwner = queryClient.getQueryData<IPetOwnersDto>(petOwnerQueryKeys.all);
 
-            queryClient.setQueryData(petQueryKeys.all, (old: IPetsDto):IPetsDto => {
-                const newData = old.data.filter(p => p.id !== petId);
+            queryClient.setQueryData(petQueryKeys.all, (old: IPetsDto = {data: [], meta: {total: 0}}):IPetsDto => {
+                const safeOld = old ?? { data: [], meta: { total: 0 } };
+
+                const newData = safeOld.data.filter(p => p.id !== petId);
                 return {
                     data: newData,
                     meta: {total: newData.length}
                 }
             });
-            queryClient.setQueryData(petOwnerQueryKeys.all, (old: IPetOwnersDto): IPetOwnersDto => {
+            queryClient.setQueryData(petOwnerQueryKeys.all, (old: IPetOwnersDto = {data: [], meta: {total: 0}}): IPetOwnersDto => {
                 const newData = old.data.filter(c => c.petId !== petId);
                 return {
                     data: newData,
