@@ -1,4 +1,5 @@
 import type {IPetOwner, IPetOwnerDto, IPetOwnersDto} from "entities/petOwner/model";
+import {parseOwnerRole} from "entities/petOwner/lib/parsers.ts";
 
 export const fromServerObjectPetOwners = (obj: IPetOwnerDto) => {
 
@@ -6,7 +7,7 @@ export const fromServerObjectPetOwners = (obj: IPetOwnerDto) => {
         id: obj.id,
         userId: obj.userId,
         petId: obj.petId,
-        ownerRole: obj.ownerRole
+        ownerRole: parseOwnerRole(obj.ownerRole),
     }
     if (obj.invitedById) newObj.invitedById = obj.invitedById;
 
