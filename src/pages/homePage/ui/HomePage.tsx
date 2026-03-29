@@ -4,6 +4,7 @@ import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllPetsByUserId} from "entities/petOwner/hooks";
 import {useLogin} from "features/auth/hooks";
+import {setToken} from "features/auth/utils";
 
 export const HomePage = () => {
 
@@ -18,6 +19,7 @@ export const HomePage = () => {
         })
 
         console.log(res)
+        setToken(res.token)
     }
 
     return (
