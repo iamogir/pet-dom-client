@@ -12,9 +12,10 @@ import {useNavigate} from "react-router-dom";
 
 interface Props {
     pet?: IPet;
+    ownerId: string;
 }
 
-export const PetForm = ({ pet }: Props) => {
+export const PetForm = ({ pet, ownerId }: Props) => {
 
     const navigate = useNavigate();
     const editPet = useEditPet();
@@ -48,7 +49,7 @@ export const PetForm = ({ pet }: Props) => {
             await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
 
         } else {
-            const petDto: ICreatePetDto = toServerPetObjectCreate(form);
+            const petDto: ICreatePetDto = toServerPetObjectCreate(form, ownerId);
             addPet.mutate(petDto)
 
         }

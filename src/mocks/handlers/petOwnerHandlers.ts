@@ -9,9 +9,11 @@ export const petOwnerHandlers = [
             data: [],
             meta: { total: 0 },
         }
-        allPetOwners.map(el => {
+        allPetOwners.forEach(el => {
             if (el.userId === params.id)  {
-                obj.data.push(...allPets.filter(p => p.id === el.petId))
+                // obj.data.push(...allPets.filter(p => p.id === el.petId))
+                const pet = allPets.find(p => p.id === el.petId);
+                if (pet) obj.data.push(pet);
             }
         })
 
@@ -24,14 +26,22 @@ export const petOwnerHandlers = [
             data: [],
             meta: { total: 0 }
         };
-        allPetOwners.map(el => {
+        allPetOwners.forEach(el => {
             if (el.petId === params.id) {
-                obj.data.push(...allUsers.filter(u => u.id === el.userId))
+                // obj.data.push(...allUsers.filter(u => u.id === el.userId))
+                const user = allUsers.find(u => u.id === el.userId);
+                if (user) obj.data.push(user);
             }
         });
 
         obj.meta.total = obj.data.length;
 
         return HttpResponse.json(obj);
-    })
+    }),
+    http.get('/api/all_pet_owners', ()  => {
+        return HttpResponse.json({
+            data: allPetOwners,
+            meta: { total: allPetOwners.length }
+        })
+    }),
 ]

@@ -1,6 +1,7 @@
 import {http, HttpResponse} from "msw";
-import {allPets} from "src/mocks/data";
+import {allPetOwners, allPets} from "src/mocks/data";
 import type {ICreatePetDto, IPetDto} from "entities/pet/model";
+import type {IPetOwnerDto} from "entities/petOwner/model";
 
 export const petHandlers = [
     http.get('/api/all_pets', () => {
@@ -28,8 +29,16 @@ export const petHandlers = [
             sex: obj.sex,
         }
         if (obj.photoUrl) newPet.photoUrl = obj.photoUrl;
-
         allPets.push(newPet)
+
+        const newPetOwner: IPetOwnerDto = {
+            id: '000' + obj.weight,
+            userId: obj.ownerId,
+            petId: newPet.id,
+            ownerRole: 'owner'
+        }
+        allPetOwners.push(newPetOwner);
+
         return HttpResponse.json(newPet)
     }),
     http.patch('/api/edit_pet/:id', async (req) => {
@@ -52,6 +61,13 @@ export const petHandlers = [
     http.delete('/api/delete_pet_by_id/:id', ({ params }) => {
         const petIndex = allPets.findIndex(p => p.id === params.id);
         const deletedPet = allPets.splice(petIndex, 1)[0];
+
+        for (let i = allPetOwners.length - 1; i > -1; i--) { //TODO check this!
+            if (allPetOwners[i].petId === params.id) {
+                allPetOwners.splice(i, 1);
+            }
+        }
+
         return HttpResponse.json(deletedPet as IPetDto);
 
     })
