@@ -2,7 +2,7 @@ import {createBrowserRouter, Navigate} from "react-router-dom";
 import {HomePage} from "pages/homePage";
 import {ErrorPage} from "pages/errorPage";
 import {AuthPage} from "pages/authPage";
-import {RegistPage} from "pages/registPage";
+import {RegistrationPage} from "pages/registPage";
 import {PetPageFromRoute} from "pages/petPage";
 import {Layout} from "widgets/layout";
 import {ProfilePageFromRoute} from "pages/profilePage";
@@ -82,6 +82,6 @@ export const router = createBrowserRouter([
     },
     {
         path: 'sign_up',
-        element: <RegistPage/>,
+        element: <RegistrationPage/>,
     }
 ])
