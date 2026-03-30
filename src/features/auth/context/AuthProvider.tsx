@@ -1,12 +1,11 @@
-import {createContext, useState} from "react";
-import type {IAuthContext, IUserCurrent} from "features/auth/types";
+import {useState} from "react";
+import type {IUserCurrent} from "features/auth/types";
 import * as React from "react";
+import { AuthContext } from "./auth.context";
 
 interface Props {
     children: React.ReactNode;
 }
-
-const AuthContext = createContext<IAuthContext | null>(null);
 
 export const AuthProvider = ({children}: Props) => {
 
