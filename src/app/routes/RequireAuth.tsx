@@ -10,7 +10,7 @@ export const RequireAuth = ({ children }: Props) => {
 
     const { user } = useAuth();
 
-    if (!user) return <Navigate to={'/login'} replace/>
+    if (!user) return <Navigate to={'/sign_in'} replace/>
 
     return children;
 };
