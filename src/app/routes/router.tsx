@@ -10,6 +10,7 @@ import {PetListPage} from "pages/petListPage";
 import {AddNewPetPage} from "pages/addNewPetPage";
 import {EditPetPage} from "pages/editPetPage";
 import {EditProfilePage} from "pages/editProfilePage";
+import {RequireAuth} from "app/routes/RequireAuth.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'user/:id',
-                element: <ProfilePageFromRoute/>,
+                element: <RequireAuth>
+                            <ProfilePageFromRoute/>
+                        </RequireAuth>,
             },
             {
                 path: 'user',
@@ -37,7 +40,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'my_pets',
-                element: <PetListPage/>,
+                element: <RequireAuth>
+                            <PetListPage/>
+                        </RequireAuth>,
             },
             {
                 path: 'pet',
@@ -45,15 +50,21 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'add_pet',
-                element: <AddNewPetPage/>
+                element: <RequireAuth>
+                            <AddNewPetPage/>
+                        </RequireAuth>
             },
             {
                 path: 'edit_pet/:id',
-                element: <EditPetPage/>
+                element: <RequireAuth>
+                            <EditPetPage/>
+                        </RequireAuth>
             },
             {
                 path: 'edit_user/:id',
-                element: <EditProfilePage/>
+                element: <RequireAuth>
+                            <EditProfilePage/>
+                        </RequireAuth>
             }
 
             // temp!
