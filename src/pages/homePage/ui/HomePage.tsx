@@ -12,7 +12,7 @@ export const HomePage = () => {
     const tempUserId = '00';
     const { data, error, isLoading } = useAllPetsByUserId(tempUserId);
     const { mutateAsync } = useLogin();
-    const { setUser } = useAuth();
+    const { user, setUser } = useAuth();
 
     const handleLogin = async () => {
         const res = await mutateAsync({
@@ -24,8 +24,10 @@ export const HomePage = () => {
         setToken(res.token)
         setUser(res.user)
 
-        console.log(res.user)
+
     }
+
+    console.log(user)
 
     return (
         <div>
