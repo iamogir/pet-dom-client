@@ -12,7 +12,7 @@ export const HomePage = () => {
     const tempUserId = '00';
     const { data, error, isLoading } = useAllPetsByUserId(tempUserId);
     const { mutateAsync } = useLogin();
-    const { user, setUser } = useAuth();
+    const { user, setUser, logout } = useAuth();
 
     const handleLogin = async () => {
         const res = await mutateAsync({
@@ -27,11 +27,16 @@ export const HomePage = () => {
 
     }
 
+    const handleLogout = () => {
+        logout()
+    }
+
     console.log(user)
 
     return (
         <div>
             <button onClick={handleLogin}>l o g i n</button>
+            <button onClick={handleLogout}>Sign o u t</button>
             <WelcomePart/>
             <h3>Please, check your pets and their comfort:</h3>
             <br/>

@@ -7,4 +7,5 @@ export interface IUserCurrent {
 export interface IAuthContext {
     user: IUserCurrent | null,
     setUser: (user: IUserCurrent | null) => void,
+    logout: () => void,
 }
