@@ -8,3 +8,17 @@ export const login = async (email: string, password: string) => {
         }
     }
 }
+
+export const register = async( data: { email: string, password: string, name: string }) => {
+    await new Promise((res) => {setTimeout(res, 500)});
+
+    return {
+        token: 'fake-token',
+        user: {
+            id: '01',
+            email: data.email,
+            password: data.password,
+            name: data.name,
+        }
+    }
+}
