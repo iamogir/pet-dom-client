@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
-import style from './registrationPage.module.css'
+import style from './registerPage.module.css'
 
-export const RegistrationPage = () => {
+export const RegisterPage = () => {
 
     const handleSignUp = (event) => {
         event.preventDefault()
