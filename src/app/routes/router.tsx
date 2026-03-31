@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
                 path: 'user/:id',
                 element: <RequireAuth>
                             <ProfilePageFromRoute/>
-                        </RequireAuth>,
+                         </RequireAuth>,
             },
             {
                 path: 'user',
@@ -52,19 +52,19 @@ export const router = createBrowserRouter([
                 path: 'add_pet',
                 element: <RequireAuth>
                             <AddNewPetPage/>
-                        </RequireAuth>
+                         </RequireAuth>
             },
             {
                 path: 'edit_pet/:id',
                 element: <RequireAuth>
                             <EditPetPage/>
-                        </RequireAuth>
+                         </RequireAuth>
             },
             {
                 path: 'edit_user/:id',
                 element: <RequireAuth>
                             <EditProfilePage/>
-                        </RequireAuth>
+                         </RequireAuth>
             }
 
             // temp!
