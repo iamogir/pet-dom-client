@@ -1,10 +1,24 @@
-import type {IRegisterDto, IRegisterForm, IUserResponse, IUserResponseDto} from "features/auth/types";
+import type {
+    ILoginDto,
+    ILoginForm,
+    IRegisterDto,
+    IRegisterForm,
+    IUserResponse,
+    IUserResponseDto
+} from "features/auth/types";
 
 export const toServerFormRegister = (obj: IRegisterForm): IRegisterDto => {
     return {
         email: obj.email,
         password: obj.password,
         name: obj.name,
+    }
+}
+
+export const toServerFormLoginDto = (obj: ILoginForm): ILoginDto => {
+    return {
+        email: obj.email,
+        password: obj.password,
     }
 }
 

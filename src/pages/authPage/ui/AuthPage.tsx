@@ -3,15 +3,15 @@ import style from './authPage.module.css'
 import {type ChangeEvent, useState} from "react";
 import {useLogin} from "features/auth/hooks";
 import {useAuth} from "features/auth/context";
-import {setToken} from "features/auth/utils";
-import type {ILoginDto} from "features/auth/types";
+import {fromServerUserResponseDto, setToken, toServerFormLoginDto} from "features/auth/utils";
+import type {ILoginForm, IUserResponse, IUserResponseDto} from "features/auth/types";
 
 export const AuthPage = () => {
 
     const { mutateAsync } = useLogin();
     const { setUser } = useAuth();
     const navigate = useNavigate();
-    const [form, setForm] = useState<ILoginDto>({
+    const [form, setForm] = useState<ILoginForm>({
         email: '',
         password: '',
     })
@@ -19,17 +19,15 @@ export const AuthPage = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault()
 
-        setForm((prev: ILoginDto) => ({ ...prev, [event.target.name]: event.target.value }))
+        setForm((prev: ILoginForm) => ({ ...prev, [event.target.name]: event.target.value }))
 
     }
 
     const handleLogIn = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
 
-        const res = await mutateAsync({
-            email: form.email,
-            password: form.password,
-        });
+        const resDto: IUserResponseDto = await mutateAsync(toServerFormLoginDto(form));
+        const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
         setUser(res.user);
