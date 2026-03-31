@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
 import style from './authPage.module.css'
 import type {ILogin} from "pages/homePage";
-import {type ChangeEvent, type FormEvent, useState} from "react";
+import {type ChangeEvent, useState} from "react";
 import {useLogin} from "features/auth/hooks";
 import {useAuth} from "features/auth/context";
 import {setToken} from "features/auth/utils";
@@ -16,7 +16,7 @@ export const AuthPage = () => {
         password: '',
     })
 
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault()
 
         setForm(prev => ({ ...prev, [event.target.name]: event.target.value }))
@@ -25,7 +25,7 @@ export const AuthPage = () => {
 
     console.log(form)
 
-    const handleLogIn = async (event: SubmitEvent) => {
+    const handleLogIn = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
 
         const res = await mutateAsync({
