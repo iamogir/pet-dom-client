@@ -26,3 +26,13 @@ export interface IAuthContext {
     setUser: (user: IUserCurrent | null) => void,
     logout: () => void,
 }
+
+export interface IUserResponse {
+    token: string;
+    user: IUserCurrent
+}
+
+export interface IUserResponseDto {
+    token: string;
+    user: IUserCurrent
+}

@@ -3,8 +3,8 @@ import style from './registerPage.module.css'
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
 import {useRegister} from "features/auth/hooks";
 import {useAuth} from "features/auth/context";
-import {setToken} from "features/auth/utils";
-import type {IRegisterForm} from "features/auth/types";
+import {fromServerUserResponseDto, setToken, toServerFormRegister} from "features/auth/utils";
+import type {IRegisterForm, IUserResponse, IUserResponseDto} from "features/auth/types";
 
 export const RegisterPage = () => {
 
@@ -26,7 +26,9 @@ export const RegisterPage = () => {
     const handleSignUp = async (event: SubmitEvent) => {
         event.preventDefault()
 
-        const res = await mutateAsync(toServerFormRegister(form));
+        const resDto: IUserResponseDto = await mutateAsync(toServerFormRegister(form));
+
+        const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
         setUser(res.user);
