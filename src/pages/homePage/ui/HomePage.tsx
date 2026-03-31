@@ -3,39 +3,20 @@ import style from './homePage.module.css'
 import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllPetsByUserId} from "entities/petOwner/hooks";
-import {useLogin} from "features/auth/hooks";
-import {setToken} from "features/auth/utils";
 import {useAuth} from "features/auth/context";
 
 export const HomePage = () => {
 
     const tempUserId = '00';
     const { data, error, isLoading } = useAllPetsByUserId(tempUserId);
-    const { mutateAsync } = useLogin();
-    const { user, setUser, logout } = useAuth();
-
-    const handleLogin = async () => {
-        const res = await mutateAsync({
-            email: 'email',
-            password: 'password',
-        })
-
-        console.log(res)
-        setToken(res.token)
-        setUser(res.user)
-
-
-    }
+    const { logout } = useAuth();
 
     const handleLogout = () => {
         logout()
     }
 
-    console.log(user)
-
     return (
         <div>
-            <button onClick={handleLogin}>l o g i n</button>
             <button onClick={handleLogout}>Sign o u t</button>
             <WelcomePart/>
             <h3>Please, check your pets and their comfort:</h3>
