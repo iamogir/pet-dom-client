@@ -1,1 +1,1 @@
-export { login, register } from './auth.api.ts'
+export { login, register, getMe } from './auth.api.ts'

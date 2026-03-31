@@ -6,5 +6,6 @@ export type {
     IRegisterDto,
     ILoginDto,
     IUserResponse,
-    IUserResponseDto
+    IUserResponseDto,
+    IUserCurrentDto
 } from './auth.types.ts'

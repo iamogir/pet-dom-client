@@ -2,7 +2,7 @@ import type {
     ILoginDto,
     ILoginForm,
     IRegisterDto,
-    IRegisterForm,
+    IRegisterForm, IUserCurrent, IUserCurrentDto,
     IUserResponse,
     IUserResponseDto
 } from "features/auth/types";
@@ -25,10 +25,14 @@ export const toServerFormLoginDto = (obj: ILoginForm): ILoginDto => {
 export const fromServerUserResponseDto = (dto: IUserResponseDto): IUserResponse => {
     return {
         token: dto.token,
-        user: {
-            id: dto.user.id,
-            name: dto.user.name,
-            email: dto.user.email
-        }
+        user: fromServerCurrentUserDto(dto.user)
+    }
+}
+
+export const fromServerCurrentUserDto = (dto: IUserCurrentDto): IUserCurrent => {
+    return {
+        id: dto.id,
+        email: dto.email,
+        name: dto.name,
     }
 }

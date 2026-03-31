@@ -19,6 +19,8 @@ export interface IUserCurrent {
     name: string,
 }
 
+export type IUserCurrentDto = IUserCurrent
+
 export interface IAuthContext {
     user: IUserCurrent | null,
     setUser: (user: IUserCurrent | null) => void,
@@ -31,5 +33,5 @@ export interface IUserResponse {
 }
 export interface IUserResponseDto {
     token: string;
-    user: IUserCurrent
+    user: IUserCurrentDto
 }
