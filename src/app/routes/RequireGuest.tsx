@@ -10,7 +10,7 @@ export const RequireGuest = ({ children }: Props) => {
 
     const { user } = useAuth();
 
-    if (!user) return <Navigate to={'/my_pets'} replace/>
+    if (user) return <Navigate to={'/my_pets'} replace/>
 
     return children;
 };

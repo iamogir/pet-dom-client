@@ -10,7 +10,7 @@ import {PetListPage} from "pages/petListPage";
 import {AddNewPetPage} from "pages/addNewPetPage";
 import {EditPetPage} from "pages/editPetPage";
 import {EditProfilePage} from "pages/editProfilePage";
-import {RequireAuth} from "app/routes/RequireAuth.tsx";
+import {RequireAuth, RequireGuest} from "app/routes";
 
 export const router = createBrowserRouter([
     {
@@ -78,10 +78,14 @@ export const router = createBrowserRouter([
     },
     {
         path: 'sign_in',
-        element: <AuthPage/>,
+        element: <RequireGuest>
+                     <AuthPage/>
+                 </RequireGuest>,
     },
     {
         path: 'sign_up',
-        element: <RegisterPage/>,
+        element: <RequireGuest>
+                     <RegisterPage/>
+                 </RequireGuest>,
     }
 ])
