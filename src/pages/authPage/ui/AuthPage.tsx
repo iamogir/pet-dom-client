@@ -4,14 +4,14 @@ import {type ChangeEvent, useState} from "react";
 import {useLogin} from "features/auth/hooks";
 import {useAuth} from "features/auth/context";
 import {setToken} from "features/auth/utils";
-import type {ILogin} from "pages/authPage";
+import type {ILoginDto} from "features/auth/types";
 
 export const AuthPage = () => {
 
     const { mutateAsync } = useLogin();
     const { setUser } = useAuth();
     const navigate = useNavigate();
-    const [form, setForm] = useState<ILogin>({
+    const [form, setForm] = useState<ILoginDto>({
         email: '',
         password: '',
     })
@@ -19,7 +19,7 @@ export const AuthPage = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault()
 
-        setForm((prev: ILogin) => ({ ...prev, [event.target.name]: event.target.value }))
+        setForm((prev: ILoginDto) => ({ ...prev, [event.target.name]: event.target.value }))
 
     }
 

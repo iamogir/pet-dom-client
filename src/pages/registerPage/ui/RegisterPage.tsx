@@ -1,17 +1,17 @@
 import {Link, useNavigate} from "react-router-dom";
 import style from './registerPage.module.css'
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
-import type {IRegister} from "pages/registerPage";
 import {useRegister} from "features/auth/hooks";
 import {useAuth} from "features/auth/context";
 import {setToken} from "features/auth/utils";
+import type {IRegisterForm} from "features/auth/types";
 
 export const RegisterPage = () => {
 
     const { mutateAsync } = useRegister();
     const { setUser } = useAuth();
     const navigate = useNavigate();
-    const [form, setForm] = useState<IRegister>({
+    const [form, setForm] = useState<IRegisterForm>({
         email: '',
         password: '',
         name: ''
@@ -26,7 +26,7 @@ export const RegisterPage = () => {
     const handleSignUp = async (event: SubmitEvent) => {
         event.preventDefault()
 
-        const res = await mutateAsync(form);
+        const res = await mutateAsync(toServerFormRegister(form));
 
         setToken(res.token);
         setUser(res.user);

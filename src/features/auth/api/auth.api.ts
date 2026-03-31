@@ -1,9 +1,9 @@
-export const login = async (email: string, password: string) => {
+export const login = async (data: { email: string, password: string }) => {
     return {
         token: 'fake-token',
         user: {
             id: '00',
-            email,
+            email: data.email,
             name: 'Lady Di'
         }
     }

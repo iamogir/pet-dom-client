@@ -1,1 +1,1 @@
-export type { IUserCurrent, IAuthContext } from './types.ts'
+export type { IUserCurrent, IAuthContext, ILoginForm, IRegisterForm, IRegisterDto, ILoginDto } from './auth.types.ts'
