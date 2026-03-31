@@ -2,15 +2,15 @@ import {Link, useNavigate} from "react-router-dom";
 import style from './registerPage.module.css'
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
 import {useRegister} from "features/auth/hooks";
-import {useAuth} from "features/auth/context";
 import {fromServerUserResponseDto, setToken, toServerFormRegister} from "features/auth/utils";
 import type {IRegisterForm, IUserResponse, IUserResponseDto} from "features/auth/types";
+import {useQueryClient} from "@tanstack/react-query";
 
 export const RegisterPage = () => {
 
     const { mutateAsync } = useRegister();
-    const { setUser } = useAuth();
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
     const [form, setForm] = useState<IRegisterForm>({
         email: '',
         password: '',
@@ -31,7 +31,7 @@ export const RegisterPage = () => {
         const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
-        setUser(res.user);
+        queryClient.setQueryData(['me'], res.user);
 
         navigate("/");
 

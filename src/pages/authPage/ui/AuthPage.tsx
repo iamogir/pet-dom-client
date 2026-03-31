@@ -2,15 +2,16 @@ import {Link, useNavigate} from "react-router-dom";
 import style from './authPage.module.css'
 import {type ChangeEvent, useState} from "react";
 import {useLogin} from "features/auth/hooks";
-import {useAuth} from "features/auth/context";
 import {fromServerUserResponseDto, setToken, toServerFormLoginDto} from "features/auth/utils";
 import type {ILoginForm, IUserResponse, IUserResponseDto} from "features/auth/types";
+import {useQueryClient} from "@tanstack/react-query";
 
 export const AuthPage = () => {
 
     const { mutateAsync } = useLogin();
-    const { setUser } = useAuth();
+    // const { setUser } = useAuth();
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
     const [form, setForm] = useState<ILoginForm>({
         email: '',
         password: '',
@@ -30,7 +31,7 @@ export const AuthPage = () => {
         const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
-        setUser(res.user);
+        queryClient.setQueryData(['me'], res.user);
 
         navigate("/");
 

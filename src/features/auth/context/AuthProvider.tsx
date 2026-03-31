@@ -1,8 +1,8 @@
-import {useState} from "react";
-import type {IUserCurrent} from "features/auth/types";
 import * as React from "react";
 import { AuthContext } from "./auth.context";
-import {getToken, removeToken} from "features/auth/utils";
+import {removeToken} from "features/auth/utils";
+import {useMe} from "features/auth/hooks";
+import {useQueryClient} from "@tanstack/react-query";
 
 interface Props {
     children: React.ReactNode;
@@ -10,27 +10,18 @@ interface Props {
 
 export const AuthProvider = ({children}: Props) => {
 
-    const [user, setUser] = useState<IUserCurrent | null>(() => {
-        const token = getToken();
-        if (token) {
-            return {
-                id: '01',
-                email: 'email',
-                name: 'Name'
-            }
-        }
-
-        return null;
-    });
-
+    const { data, isLoading } = useMe();
+    const queryClient = useQueryClient();
 
     const logout = () => {
         removeToken();
-        setUser(null);
+        queryClient.removeQueries({ queryKey: ['me'] });
     };
 
+    if (isLoading) return (<p>Loading...</p>);
+
     return (
-        <AuthContext.Provider value={{ user, setUser, logout }}>
+        <AuthContext.Provider value={{ user: data ?? null, logout }}>
             {children}
         </AuthContext.Provider>
     );
