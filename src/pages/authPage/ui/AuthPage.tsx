@@ -1,10 +1,10 @@
 import {Link, useNavigate} from "react-router-dom";
 import style from './authPage.module.css'
-import type {ILogin} from "pages/homePage";
 import {type ChangeEvent, useState} from "react";
 import {useLogin} from "features/auth/hooks";
 import {useAuth} from "features/auth/context";
 import {setToken} from "features/auth/utils";
+import type {ILogin} from "pages/authPage";
 
 export const AuthPage = () => {
 
@@ -19,11 +19,9 @@ export const AuthPage = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault()
 
-        setForm(prev => ({ ...prev, [event.target.name]: event.target.value }))
+        setForm((prev: ILogin) => ({ ...prev, [event.target.name]: event.target.value }))
 
     }
-
-    console.log(form)
 
     const handleLogIn = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
