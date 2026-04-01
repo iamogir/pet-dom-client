@@ -7,7 +7,7 @@ export const ProfilePageFromRoute = () => {
     const { data } = useMe();
     const { id } = useParams();
 
-    if (!id || id === 'me') return <ProfilePage id={data?.id}/>
+    if (!id || id === 'me') return (data ? <ProfilePage id={data?.id}/> : <p>No data</p>);
 
     return (
         <ProfilePage id={id}/>
