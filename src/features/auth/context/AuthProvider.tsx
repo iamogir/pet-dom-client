@@ -15,7 +15,7 @@ export const AuthProvider = ({children}: Props) => {
 
     const logout = () => {
         removeToken();
-        queryClient.removeQueries({ queryKey: ['me'] });
+        queryClient.clear();
     };
 
     if (isLoading) return (<p>Loading...</p>);

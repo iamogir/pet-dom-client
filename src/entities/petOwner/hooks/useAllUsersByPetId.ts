@@ -4,7 +4,7 @@ import {getAllUsersByPetId} from "entities/petOwner/api";
 
 export const useAllUsersByPetId = (id:string) => {
     return useQuery({
-        queryKey: userQueryKeys.detail(id),
+        queryKey: userQueryKeys.list(id),
         queryFn: () => getAllUsersByPetId(id),
     })
 }

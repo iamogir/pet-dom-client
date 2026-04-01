@@ -5,11 +5,11 @@ import {useLogin} from "features/auth/hooks";
 import {fromServerUserResponseDto, setToken, toServerFormLoginDto} from "features/auth/utils";
 import type {ILoginForm, IUserResponse, IUserResponseDto} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
+import {userQueryKeys} from "entities/user/api";
 
 export const AuthPage = () => {
 
     const { mutateAsync } = useLogin();
-    // const { setUser } = useAuth();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
     const [form, setForm] = useState<ILoginForm>({
@@ -31,7 +31,7 @@ export const AuthPage = () => {
         const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
-        queryClient.setQueryData(['me'], res.user);
+        queryClient.setQueryData(userQueryKeys.me(), res.user);
 
         navigate("/");
 

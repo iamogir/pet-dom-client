@@ -5,6 +5,7 @@ import {useRegister} from "features/auth/hooks";
 import {fromServerUserResponseDto, setToken, toServerFormRegister} from "features/auth/utils";
 import type {IRegisterForm, IUserResponse, IUserResponseDto} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
+import {userQueryKeys} from "entities/user/api";
 
 export const RegisterPage = () => {
 
@@ -31,7 +32,7 @@ export const RegisterPage = () => {
         const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
-        queryClient.setQueryData(['me'], res.user);
+        queryClient.setQueryData(userQueryKeys.me(), res.user);
 
         navigate("/");
 
