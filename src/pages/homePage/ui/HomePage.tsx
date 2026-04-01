@@ -2,14 +2,13 @@ import {Link} from "react-router-dom";
 import style from './homePage.module.css'
 import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useAllPetsByUserId} from "entities/petOwner/hooks";
 import {useAuth} from "features/auth/context";
+import {useMyPets} from "entities/pet/hooks";
 
 export const HomePage = () => {
 
-    const tempUserId = '00';
-    const { data, error, isLoading } = useAllPetsByUserId(tempUserId);
-    const { logout } = useAuth();
+    const {data, isLoading, error} = useMyPets();
+    const {logout} = useAuth();
 
     const handleLogout = () => {
         logout()
@@ -18,6 +17,7 @@ export const HomePage = () => {
     return (
         <div>
             <button onClick={handleLogout}>Sign o u t</button>
+            <Link to={'/user/'}><button>My profile</button></Link>
             <WelcomePart/>
             <h3>Please, check your pets and their comfort:</h3>
             <br/>
@@ -27,8 +27,6 @@ export const HomePage = () => {
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </div>
             }
-            <h3>Or go to yor profile:</h3>
-            <Link to={'/user/' + tempUserId}><button>to user</button></Link>
         </div>
     );
 };

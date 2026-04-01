@@ -1,8 +1,8 @@
 import * as React from "react";
 import { AuthContext } from "./auth.context";
 import {removeToken} from "features/auth/utils";
-import {useMe} from "features/auth/hooks";
 import {useQueryClient} from "@tanstack/react-query";
+import {userQueryKeys} from "entities/user/api";
 
 interface Props {
     children: React.ReactNode;
@@ -10,18 +10,15 @@ interface Props {
 
 export const AuthProvider = ({children}: Props) => {
 
-    const { data, isLoading } = useMe();
     const queryClient = useQueryClient();
 
     const logout = () => {
         removeToken();
-        queryClient.clear();
+        queryClient.removeQueries({ queryKey: userQueryKeys.me() });
     };
 
-    if (isLoading) return (<p>Loading...</p>);
-
     return (
-        <AuthContext.Provider value={{ user: data ?? null, logout }}>
+        <AuthContext.Provider value={ { logout }}>
             {children}
         </AuthContext.Provider>
     );

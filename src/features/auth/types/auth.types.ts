@@ -22,7 +22,7 @@ export interface IUserCurrent {
 export type IUserCurrentDto = IUserCurrent
 
 export interface IAuthContext {
-    user: IUserCurrent | null,
+    // user: IUserCurrent | null,
     // setUser: (user: IUserCurrent | null) => void,
     logout: () => void,
 }
