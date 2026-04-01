@@ -15,6 +15,7 @@ export const AuthProvider = ({children}: Props) => {
     const logout = () => {
         removeToken();
         queryClient.removeQueries({ queryKey: userQueryKeys.me() });
+
     };
 
     return (

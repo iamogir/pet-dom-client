@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import style from './homePage.module.css'
 import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
@@ -10,10 +10,12 @@ export const HomePage = () => {
 
     const user = useMe();
     const {data, isLoading, error} = useMyPets();
+    const navigate = useNavigate();
     const {logout} = useAuth();
 
     const handleLogout = () => {
         logout()
+        navigate("/sign_in");
     }
 
     return (
