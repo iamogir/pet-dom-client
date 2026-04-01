@@ -31,7 +31,7 @@ export const getMe = async (): Promise<IUserCurrentDto> => {
     if (!token) throw new Error("Unauthorized");
 
     return {
-        id: '01',
+        id: '00',
         email: 'email',
         name: 'Lady Di'
     }

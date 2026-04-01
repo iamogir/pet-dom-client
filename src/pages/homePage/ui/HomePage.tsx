@@ -4,9 +4,11 @@ import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAuth} from "features/auth/context";
 import {useMyPets} from "entities/pet/hooks";
+import {useMe} from "features/auth/hooks";
 
 export const HomePage = () => {
 
+    const user = useMe();
     const {data, isLoading, error} = useMyPets();
     const {logout} = useAuth();
 
@@ -17,7 +19,7 @@ export const HomePage = () => {
     return (
         <div>
             <button onClick={handleLogout}>Sign o u t</button>
-            <Link to={'/user/'}><button>My profile</button></Link>
+            <Link to={'/user/' + user.data?.id}><button>My profile</button></Link>
             <WelcomePart/>
             <h3>Please, check your pets and their comfort:</h3>
             <br/>

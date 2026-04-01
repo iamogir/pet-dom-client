@@ -27,6 +27,8 @@ export const AuthPage = () => {
     const handleLogIn = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
 
+        console.log('login')
+
         const resDto: IUserResponseDto = await mutateAsync(toServerFormLoginDto(form));
         const res: IUserResponse = fromServerUserResponseDto(resDto);
 

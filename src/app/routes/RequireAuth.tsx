@@ -1,6 +1,6 @@
 import type {ReactNode} from "react";
-import {useAuth} from "features/auth/context";
 import {Navigate} from "react-router-dom";
+import {useMe} from "features/auth/hooks";
 
 interface Props {
     children: ReactNode
@@ -8,9 +8,9 @@ interface Props {
 
 export const RequireAuth = ({ children }: Props) => {
 
-    const { user } = useAuth();
+    const { data } = useMe();
 
-    if (!user) return <Navigate to={'/sign_in'} replace/>
+    if (!data) return <Navigate to={'/sign_in'} replace/>
 
     return children;
 };
