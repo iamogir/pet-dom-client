@@ -2,7 +2,7 @@ import {createBrowserRouter, Navigate} from "react-router-dom";
 import {HomePage} from "pages/homePage";
 import {ErrorPage} from "pages/errorPage";
 import {AuthPage} from "pages/authPage";
-import {RegistPage} from "pages/registPage";
+import {RegisterPage} from "pages/registerPage";
 import {PetPageFromRoute} from "pages/petPage";
 import {Layout} from "widgets/layout";
 import {ProfilePageFromRoute} from "pages/profilePage";
@@ -10,6 +10,7 @@ import {PetListPage} from "pages/petListPage";
 import {AddNewPetPage} from "pages/addNewPetPage";
 import {EditPetPage} from "pages/editPetPage";
 import {EditProfilePage} from "pages/editProfilePage";
+import {RequireAuth, RequireGuest} from "app/routes";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'user/:id',
-                element: <ProfilePageFromRoute/>,
+                element: <RequireAuth>
+                            <ProfilePageFromRoute/>
+                         </RequireAuth>,
             },
             {
                 path: 'user',
@@ -37,7 +40,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'my_pets',
-                element: <PetListPage/>,
+                element: <RequireAuth>
+                            <PetListPage/>
+                        </RequireAuth>,
             },
             {
                 path: 'pet',
@@ -45,15 +50,21 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'add_pet',
-                element: <AddNewPetPage/>
+                element: <RequireAuth>
+                            <AddNewPetPage/>
+                         </RequireAuth>
             },
             {
                 path: 'edit_pet/:id',
-                element: <EditPetPage/>
+                element: <RequireAuth>
+                            <EditPetPage/>
+                         </RequireAuth>
             },
             {
                 path: 'edit_user/:id',
-                element: <EditProfilePage/>
+                element: <RequireAuth>
+                            <EditProfilePage/>
+                         </RequireAuth>
             }
 
             // temp!
@@ -67,10 +78,14 @@ export const router = createBrowserRouter([
     },
     {
         path: 'sign_in',
-        element: <AuthPage/>,
+        element: <RequireGuest>
+                     <AuthPage/>
+                 </RequireGuest>,
     },
     {
         path: 'sign_up',
-        element: <RegistPage/>,
+        element: <RequireGuest>
+                     <RegisterPage/>
+                 </RequireGuest>,
     }
 ])
