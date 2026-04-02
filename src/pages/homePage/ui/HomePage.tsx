@@ -19,7 +19,7 @@ export const HomePage = () => {
     }
 
     return (
-        <div>
+        <>
             <button onClick={handleLogout}>Sign o u t</button>
             <Link to={'/user/' + user.data?.id}><button>My profile</button></Link>
             <WelcomePart/>
@@ -31,6 +31,6 @@ export const HomePage = () => {
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </div>
             }
-        </div>
+        </>
     );
 };

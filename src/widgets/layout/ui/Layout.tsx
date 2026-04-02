@@ -7,19 +7,26 @@ import {Navigation} from "widgets/navigation";
 
 export const Layout = () => {
     return (
-        <div className={style.layout}>
-            layout
-            <div>
+        <>
+            <nav aria-label="Sidebar navigation">
                 <Sidebar/>
+            </nav>
+
+            <div className={style.layout}>
+                <header>
+                    <Header/>
+                </header>
+                <main>
+                    <Outlet/>
+                </main>
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
 
-            <header><Header/></header>
-            <main><Outlet/></main>
-            <footer><Footer/></footer>
-
-            <div className={style.hide}>
+            <nav aria-label="Mobile navigation" className={style.hide}>
                 <Navigation/>
-            </div>
-        </div>
+            </nav>
+        </>
     );
 };
