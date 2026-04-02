@@ -21,8 +21,9 @@ export const WelcomePart = () => {
     }
 
     return (
-        <div className={ style.box}>
-            <h1>{hello}, my darling! Today {today}/{month}/{year} and outside is so (weather)</h1>
-        </div>
+        // <div className={style.box}>
+            <h1 className={style.weather}>{hello}, my darling! Today {today}/{month}/{year} and outside is so
+            (weather)</h1>
+        // </div>
     );
 };

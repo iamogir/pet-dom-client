@@ -18,7 +18,7 @@ export const HomePage = () => {
     return (
         <>
             <WelcomePart/>
-            <h3>Please, check your pets and their comfort:</h3>
+            <h2>Please, check your pets and their comfort:</h2>
             <br/>
             {isLoading ? <p> One second, checking pets...</p> :
                 error ? <p>Oh, something goes wrong: {error.message}</p> :
