@@ -28,7 +28,7 @@ export const PetCard = ({ pet }: Props) => {
     }
 
     return (
-        <div className={style.box}>
+        <article className={style.box}>
             <Link to={'/pet/' + pet.id}>
                 <div className={style.imageBox}>
                     <img src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'} />
@@ -45,6 +45,6 @@ export const PetCard = ({ pet }: Props) => {
             <h1>Next events ---</h1>
             {/*<ReminderCard/>*/}
             <br/>
-        </div>
+        </article>
     );
 };

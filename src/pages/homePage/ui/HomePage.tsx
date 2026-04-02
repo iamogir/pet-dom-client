@@ -21,9 +21,9 @@ export const HomePage = () => {
             <h2>Please, check your pets and their comfort:</h2>
             {isLoading ? <p> One second, checking pets...</p> :
                 error ? <p>Oh, something goes wrong: {error.message}</p> :
-                    <div className={style.petCards}>
+                    <section className={style.petCards}>
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
-                    </div>
+                    </section>
             }
         </>
     );
