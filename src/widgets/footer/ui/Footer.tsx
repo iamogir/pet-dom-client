@@ -1,7 +1,8 @@
+import style from './footer.module.css'
 
 export const Footer = () => {
     return (
-        <div>
+        <div className={style.box}>
             Footer
         </div>
     );

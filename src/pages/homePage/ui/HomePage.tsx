@@ -19,7 +19,6 @@ export const HomePage = () => {
         <>
             <WelcomePart/>
             <h2>Please, check your pets and their comfort:</h2>
-            <br/>
             {isLoading ? <p> One second, checking pets...</p> :
                 error ? <p>Oh, something goes wrong: {error.message}</p> :
                     <div className={style.petCards}>
