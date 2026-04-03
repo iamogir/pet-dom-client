@@ -26,10 +26,13 @@ export const ProfilePage = ({ id }: Props) => {
                     <section className={style.cards}>
                         {data ? <UserCard key={data.id} user={data} /> : null }
 
-                        <h2>PETS BY USER {data?.firstName} --- Want to
-                            <button onClick={() => navigate('/add_pet')}>add new pet</button>
-                            ?
-                        </h2>
+                        <div className={style.block}>
+                            <h3>Your pets, {data?.firstName}, be careful...</h3>
+                            <p>Not enough? Want to
+                                <button onClick={() => navigate('/add_pet')}>add new pet</button>
+                                ?
+                            </p>
+                        </div>
                         { petsByUserQuery.isLoading ? <p>loading...</p> :
                             (!petsByUserQuery.data ? <p>No data</p> :
                                 petsByUserQuery.data.data.map(p => <PetCard key={p.id} pet={p} />)
