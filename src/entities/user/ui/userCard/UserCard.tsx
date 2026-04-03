@@ -22,12 +22,13 @@ export const UserCard = ( { user }: Props ) => {
                     <li>age: {age}</li>
                 </ul>
             </Link>
-            <button onClick={() => navigate('/edit_user/' + user.id)}>edit profile</button>
+
             <section>
                 <h3>{user.firstName} {user.lastName}</h3>
                 <p>{user.email}</p>
                 <div className={style.boxImage}>
                     <img src={user.avatarUrl} alt={user.firstName + ' photocard'}/>
+                    <button onClick={() => navigate('/edit_user/' + user.id)}>edit profile</button>
                 </div>
             </section>
 
