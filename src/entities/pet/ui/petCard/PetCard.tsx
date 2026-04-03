@@ -40,8 +40,8 @@ export const PetCard = ({ pet }: Props) => {
                     <Link to={'/pet/' + pet.id}>
                         <li className={style.petName}>{pet.name}</li>
                     </Link>
-                    <li>{petAge} years,</li>
-                    <li>{pet.breed},</li>
+                    <li>{petAge} years</li>
+                    <li>{pet.breed}</li>
                     <li>{pet.weight} kg</li>
                 </ul>
             </section>
@@ -49,7 +49,7 @@ export const PetCard = ({ pet }: Props) => {
                 <h3>Next events ---</h3>
                 {/*<ReminderCard/>*/}
             </section>
-            <section>
+            <section className={style.btn}>
                 <button onClick={() => navigate('/edit_pet/' + pet.id)}>EDIT</button>
                 <button onClick={handleDelete}>DELETE</button>
             </section>

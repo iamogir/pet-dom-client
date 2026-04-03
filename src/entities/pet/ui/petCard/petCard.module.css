@@ -12,7 +12,6 @@
 a {
     text-decoration: none;
     color: white;
-
 }
 
 .imageBox {
@@ -44,4 +43,14 @@ a {
     font-size: xx-large;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn > button {
+    height: 100%;
 }
