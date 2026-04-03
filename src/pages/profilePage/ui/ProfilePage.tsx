@@ -3,6 +3,7 @@ import {useUserById} from "entities/user/hooks";
 import {UserCard} from "entities/user/ui/userCard";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllPetsByUserId} from "entities/petOwner/hooks";
+import style from './profilePage.module.css'
 
 interface Props {
     id: string
@@ -32,7 +33,7 @@ export const ProfilePage = ({ id }: Props) => {
                 )
             }
 
-            <Link to='/home'><button>to home</button></Link>
+
         </div>
     );
 };
