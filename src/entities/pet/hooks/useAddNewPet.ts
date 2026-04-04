@@ -11,7 +11,9 @@ export const useAddNewPet = (
     return useMutation({
         mutationFn: addNewPet,
         // ...options,
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-        }
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all}),
+        onSettled: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all}),
+        },
+
     )
 }
