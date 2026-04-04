@@ -39,10 +39,10 @@ export const RegisterPage = () => {
     }
 
     return (
-        <div className={style.box}>
-            <p>Welcome, let's get acquainted or <Link to={'/sign_in'}><span>sign in</span></Link></p> to your account!
-            <div className={style.content}>
-                <h2>SIGN UP</h2>
+        <main className={style.box}>
+            <h2>Welcome, let's get acquainted or <Link to={'/sign_in'}><span>sign in</span></Link> to your account!</h2>
+            <section className={style.content}>
+                <h1>SIGN UP</h1>
                 <form onSubmit={handleSignUp}>
 
                     <label htmlFor={'name'}>name:
@@ -56,7 +56,7 @@ export const RegisterPage = () => {
 
                     <button type="submit" className={style.btn}>Sign up</button>
                 </form>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 };

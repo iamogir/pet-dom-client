@@ -1,6 +1,6 @@
 import './styles/App.css'
 import {RouterProvider} from "react-router-dom";
-import {router} from "app/routes/router.tsx";
+import {router} from "app/routes/Router.tsx";
 import {AuthProvider} from "features/auth/context";
 
 function App() {

@@ -1,6 +1,6 @@
 import {imagePlaceholder, type IPet} from "entities/pet/model";
 import style from './petCard.module.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDeletePetById} from "entities/pet/hooks";
 import {useQueryClient} from "@tanstack/react-query";
 import {petQueryKeys} from "entities/pet/api";
@@ -13,6 +13,7 @@ export const PetCard = ({ pet }: Props) => {
 
     const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
     const { mutateAsync } = useDeletePetById({
         onSuccess: () =>
             queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
@@ -28,23 +29,30 @@ export const PetCard = ({ pet }: Props) => {
     }
 
     return (
-        <div className={style.box}>
-            <Link to={'/pet/' + pet.id}>
-                <div className={style.imageBox}>
-                    <img src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'} />
-                </div>
-                <h3>{pet.name}</h3>
-                <p>
-                    <span>{petAge} years, </span>
-                    <span>{pet.breed}, </span>
-                    <span>{pet.weight} kg</span>
-                </p>
-            </Link>
-            <Link to={'/edit_pet/' + pet.id}><button>EDIT</button></Link>
-            <button onClick={handleDelete}>DELETE</button>
-            <h1>Next events ---</h1>
-            {/*<ReminderCard/>*/}
-            <br/>
-        </div>
+        <article className={style.box}>
+            <section className={style.info}>
+                <Link to={'/pet/' + pet.id}>
+                    <div className={style.imageBox}>
+                        <img src={pet.photoUrl ? pet.photoUrl : imagePlaceholder} alt={pet.breed + ' image'}/>
+                    </div>
+                </Link>
+                <ul>
+                    <Link to={'/pet/' + pet.id}>
+                        <li className={style.petName}>{pet.name}</li>
+                    </Link>
+                    <li>{petAge} years</li>
+                    <li>{pet.breed}</li>
+                    <li>{pet.weight} kg</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Next events ---</h3>
+                {/*<ReminderCard/>*/}
+            </section>
+            <section className={style.btn}>
+                <button onClick={() => navigate('/edit_pet/' + pet.id)}>EDIT</button>
+                <button onClick={handleDelete}>DELETE</button>
+            </section>
+        </article>
     );
 };

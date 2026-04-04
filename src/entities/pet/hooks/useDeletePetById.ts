@@ -46,6 +46,7 @@ export const useDeletePetById = (options?: UseMutationOptions<IPet, Error, strin
             queryClient.setQueryData(petQueryKeys.all, context?.prevPet);
             queryClient.setQueryData(petOwnerQueryKeys.all, context?.prevOwner)
         },
+        onSettled: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all }),
         mutationFn: deletePetById,
         ...options
     })

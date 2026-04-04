@@ -1,0 +1,6 @@
+.box {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 30px;
+    /*margin-bottom: 70px;*/
+}
