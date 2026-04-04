@@ -17,7 +17,6 @@ export const useDeletePetById = (options?: UseMutationOptions<IPet, Error, strin
         onMutate: async (petId): Promise<IContext> => {
             await Promise.all([
                 queryClient.cancelQueries({ queryKey: petQueryKeys.all }),
-
                 queryClient.cancelQueries({ queryKey: petOwnerQueryKeys.all })
             ]);
             const prevPet = queryClient.getQueryData<IPetsDto>(petQueryKeys.all);

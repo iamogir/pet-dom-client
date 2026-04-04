@@ -18,6 +18,7 @@ export const useEditPet = () => {
                 // (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
                 updatedPet
             )
-        }
+        },
+        onSettled: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
     })
 }
