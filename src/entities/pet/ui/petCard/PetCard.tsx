@@ -20,7 +20,7 @@ export const PetCard = ({ pet }: Props) => {
 
     });
 
-    //TODO check his answer!
+
 
     const handleDelete = async () => {
         const isConfirmed = confirm("Are you sure you want to delete this pet?");
