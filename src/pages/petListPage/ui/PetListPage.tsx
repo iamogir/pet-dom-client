@@ -20,7 +20,19 @@ export const PetListPage = () => {
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
 
+    const handleFilterChange = (event) => {
+        setSearchParams(prev => {
+            const params = new URLSearchParams(prev);
+            const eventTarget = event.target;
+            const value = eventTarget.value;
+            const name = eventTarget.name;
 
+            if (value) params.set(name, value);
+                else params.delete(name);
+
+            return params;
+        })
+    }
 
     return (
         <div>
@@ -50,7 +62,7 @@ export const PetListPage = () => {
                 {petSpecies.map(sp => <option key={sp}>{sp}</option>)}
             </select>
             <p>Breed filter</p>
-            <select>
+            <select value={breed} name={'breed'} onChange={handleFilterChange}>
                 <option value="">all breeds</option>
                 {petBreed.map(br => <option key={br}>{br}</option>)}
             </select>
