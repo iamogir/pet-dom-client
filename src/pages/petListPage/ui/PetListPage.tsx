@@ -3,15 +3,23 @@ import style from "pages/homePage/ui/homePage.module.css";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllPets} from "entities/pet/hooks";
 import {useAllPetOwners} from "entities/petOwner/hooks/useAllPetOwners.ts";
+import {useMe} from "features/auth/hooks";
+import {useSearchParams} from "react-router-dom";
 
 
 export const PetListPage = () => {
 
-    const currentUserId = '00';
+    const [searchParams, setSearchParams] = useSearchParams();
+    const name = searchParams.get("name") || '';
+    const type = searchParams.get("type") || '';
+    const breed = searchParams.get("breed") || '';
 
-    const { data, error, isLoading } = useAllPetsByUserId(currentUserId);
+    const me = useMe();
+    const user = useAllPetsByUserId(me.data?.id);
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
+
+
 
     return (
         <div>
@@ -28,10 +36,10 @@ export const PetListPage = () => {
                         )}
                     </div>
             }
-            {isLoading ? <p> One second, checking pets...</p> :
-                error ? <p>Oh, something goes wrong: {error.message}</p> :
+            {user.isLoading ? <p> One second, checking pets...</p> :
+                user.error ? <p>Oh, something goes wrong: {user.error.message}</p> :
                     <div className={style.petCards}>
-                        {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                        {user.data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </div>
             }
             <h1>ALL APP PETS</h1>
