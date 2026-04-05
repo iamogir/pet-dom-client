@@ -11,7 +11,7 @@ import {petBreed, petSpecies} from "entities/pet/model";
 export const PetListPage = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const name = searchParams.get("name") || '';
+    const name = searchParams.get("search_name") || '';
     const type = searchParams.get("type") || '';
     const breed = searchParams.get("breed") || '';
 
@@ -32,6 +32,22 @@ export const PetListPage = () => {
 
             return params;
         })
+    }
+
+    const handleSearch = (event) => {
+
+        setSearchParams(prev => {
+            const params = new URLSearchParams(prev);
+            const eventTarget = event.target;
+            const value = eventTarget.value;
+            const name = eventTarget.name;
+
+            if (value) params.set(name, value);
+            else params.delete(name);
+
+            return params;
+        })
+
     }
 
     return (
@@ -56,16 +72,23 @@ export const PetListPage = () => {
                     </div>
             }
             <h1>ALL APP PETS</h1>
+
+            <label htmlFor={'search'}>
+                <input type={'text'} name={'search_name'} onChange={handleSearch} value={name} placeholder={'search...'} />
+            </label>
+
             <p> Type filter</p>
-            <select>
+            <select value={type} name={'type'} onChange={handleFilterChange}>
                 <option value="">all pet types</option>
                 {petSpecies.map(sp => <option key={sp}>{sp}</option>)}
             </select>
+
             <p>Breed filter</p>
             <select value={breed} name={'breed'} onChange={handleFilterChange}>
                 <option value="">all breeds</option>
                 {petBreed.map(br => <option key={br}>{br}</option>)}
             </select>
+
             {petsQuery.isLoading ? <p>Loading...</p> :
                 petsQuery.error ? <p>{petsQuery.error.message}</p> :
                     <div className={style.petCards}>
