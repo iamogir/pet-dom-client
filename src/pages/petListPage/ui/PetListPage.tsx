@@ -5,6 +5,7 @@ import {useAllPets} from "entities/pet/hooks";
 import {useAllPetOwners} from "entities/petOwner/hooks/useAllPetOwners.ts";
 import {useMe} from "features/auth/hooks";
 import {useSearchParams} from "react-router-dom";
+import {petBreed, petSpecies} from "entities/pet/model";
 
 
 export const PetListPage = () => {
@@ -43,6 +44,16 @@ export const PetListPage = () => {
                     </div>
             }
             <h1>ALL APP PETS</h1>
+            <p> Type filter</p>
+            <select>
+                <option value="">all pet types</option>
+                {petSpecies.map(sp => <option key={sp}>{sp}</option>)}
+            </select>
+            <p>Breed filter</p>
+            <select>
+                <option value="">all breeds</option>
+                {petBreed.map(br => <option key={br}>{br}</option>)}
+            </select>
             {petsQuery.isLoading ? <p>Loading...</p> :
                 petsQuery.error ? <p>{petsQuery.error.message}</p> :
                     <div className={style.petCards}>
