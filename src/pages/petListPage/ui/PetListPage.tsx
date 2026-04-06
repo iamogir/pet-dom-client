@@ -20,12 +20,12 @@ export const PetListPage = () => {
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
 
-    const filterResults = petsQuery.data?.data.filter(el => {
-        const isType = type ? el.species === type : true;
-        const isBreed = breed ? el.breed === breed : true;
-
-        return isType && isBreed;
-    })
+    // const filterResults = petsQuery.data?.data.filter(el => {
+    //     const isType = type ? el.species === type : true;
+    //     const isBreed = breed ? el.breed === breed : true;
+    //
+    //     return isType && isBreed;
+    // })
 
     const handleFilterChange = (event) => {
         setSearchParams(prev => {
@@ -86,19 +86,19 @@ export const PetListPage = () => {
                 <input type={'text'} name={'search_name'} onChange={handleSearch} value={name} placeholder={'search...'} />
             </label>
 
-            <p> Type filter</p>
-            <select value={type} name={'type'} onChange={handleFilterChange}>
-                <option value="">all pet types</option>
-                {petSpecies.map(sp => <option key={sp}>{sp}</option>)}
-            </select>
+            {/*<p> Type filter</p>*/}
+            {/*<select value={type} name={'type'} onChange={handleFilterChange}>*/}
+            {/*    <option value="">all pet types</option>*/}
+            {/*    {petSpecies.map(sp => <option key={sp}>{sp}</option>)}*/}
+            {/*</select>*/}
 
-            <p>Breed filter</p>
-            <select value={breed} name={'breed'} onChange={handleFilterChange}>
-                <option value="">all breeds</option>
-                {petBreed.map(br => <option key={br}>{br}</option>)}
-            </select>
+            {/*<p>Breed filter</p>*/}
+            {/*<select value={breed} name={'breed'} onChange={handleFilterChange}>*/}
+            {/*    <option value="">all breeds</option>*/}
+            {/*    {petBreed.map(br => <option key={br}>{br}</option>)}*/}
+            {/*</select>*/}
 
-            { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
+            {/*{ filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}*/}
 
             {petsQuery.isLoading ? <p>Loading...</p> :
                 petsQuery.error ? <p>{petsQuery.error.message}</p> :
