@@ -50,7 +50,7 @@ export const PetListPage = () => {
 
     }
 
-    //TODO continue
+
 
     return (
         <div>
