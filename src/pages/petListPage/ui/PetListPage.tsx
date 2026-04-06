@@ -20,6 +20,13 @@ export const PetListPage = () => {
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
 
+    const filterResults = petsQuery.data?.data.filter(el => {
+        const isType = type ? el.species === type : true;
+        const isBreed = breed ? el.breed === breed : true;
+
+        return isType && isBreed;
+    })
+
     const handleFilterChange = (event) => {
         setSearchParams(prev => {
             const params = new URLSearchParams(prev);
@@ -90,6 +97,8 @@ export const PetListPage = () => {
                 <option value="">all breeds</option>
                 {petBreed.map(br => <option key={br}>{br}</option>)}
             </select>
+
+            { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
 
             {petsQuery.isLoading ? <p>Loading...</p> :
                 petsQuery.error ? <p>{petsQuery.error.message}</p> :
