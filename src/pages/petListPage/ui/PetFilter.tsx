@@ -14,8 +14,8 @@ export const PetFilter = ({ petType, petBreed, filterFn }: Props) => {
 
 
     const filterResults = petsQuery.data?.data.filter(el => {
-        const isType = type ? el.species === type : true;
-        const isBreed = breed ? el.breed === breed : true;
+        const isType = petType ? el.species === petType : true;
+        const isBreed = petBreed ? el.breed === petBreed : true;
 
         return isType && isBreed;
     })
@@ -23,7 +23,7 @@ export const PetFilter = ({ petType, petBreed, filterFn }: Props) => {
     return (
         <section>
             <p> Type filter</p>
-            <select value={type} name={'type'} onChange={filterFn}>
+            <select value={petType} name={'type'} onChange={filterFn}>
                 <option value="">all pet types</option>
                 {petSpecies.map(sp => <option key={sp}>{sp}</option>)}
             </select>

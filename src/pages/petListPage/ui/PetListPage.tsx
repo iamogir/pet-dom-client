@@ -5,7 +5,7 @@ import {useAllPets} from "entities/pet/hooks";
 import {useAllPetOwners} from "entities/petOwner/hooks/useAllPetOwners.ts";
 import {useMe} from "features/auth/hooks";
 import {useSearchParams} from "react-router-dom";
-import {petBreed, petSpecies} from "entities/pet/model";
+import {PetFilter} from "pages/petListPage";
 
 
 export const PetListPage = () => {
@@ -85,6 +85,8 @@ export const PetListPage = () => {
             <label htmlFor={'search'}>
                 <input type={'text'} name={'search_name'} onChange={handleSearch} value={name} placeholder={'search...'} />
             </label>
+
+            <PetFilter petType={type} petBreed={breed} filterFn={handleFilterChange}/>
 
             {/*<p> Type filter</p>*/}
             {/*<select value={type} name={'type'} onChange={handleFilterChange}>*/}
