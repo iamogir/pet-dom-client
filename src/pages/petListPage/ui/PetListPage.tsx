@@ -5,7 +5,7 @@ import {useAllPets} from "entities/pet/hooks";
 import {useAllPetOwners} from "entities/petOwner/hooks/useAllPetOwners.ts";
 import {useMe} from "features/auth/hooks";
 import {useSearchParams} from "react-router-dom";
-import {PetFilter} from "pages/petListPage";
+import {PetFilter, PetSearch} from "pages/petListPage";
 import type {ChangeEvent} from "react";
 
 
@@ -24,8 +24,10 @@ export const PetListPage = () => {
     const filterResults = petsQuery.data?.data.filter(el => {
         const isType = type ? el.species === type : true;
         const isBreed = breed ? el.breed === breed : true;
-
-        return isType && isBreed;
+        console.log(searchName)
+        const isSearch = searchName ? el.name.toLowerCase().includes(searchName.toLowerCase()) : true;
+        console.log(isSearch)
+        return isType && isBreed && isSearch;
     })
 
     const handleFilterChange= (event: ChangeEvent<HTMLSelectElement>) => {
@@ -42,7 +44,7 @@ export const PetListPage = () => {
         })
     }
 
-    const handleSearch: (event: ChangeEvent<HTMLInputElement>) => void = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
 
         setSearchParams(prev => {
             const params = new URLSearchParams(prev);
@@ -83,11 +85,9 @@ export const PetListPage = () => {
             }
             <h1>ALL APP PETS</h1>
 
-            <label htmlFor={'search'}>
-                <input type={'text'} name={'search_name'} onChange={handleSearch} value={searchName} placeholder={'search...'} />
-            </label>
 
-            {/*<PetSearch/>*/}
+
+            <PetSearch value={searchName} searchFn={handleSearch}/>
             <PetFilter petType={type} petBreeds={breed} filterFn={handleFilterChange}/>
             { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
 
