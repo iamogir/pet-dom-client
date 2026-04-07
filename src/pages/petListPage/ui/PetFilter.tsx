@@ -1,6 +1,4 @@
 import {petBreed, petSpecies} from "entities/pet/model";
-import {useAllPets} from "entities/pet/hooks";
-import {PetCard} from "entities/pet/ui/petCard";
 import type {ChangeEvent} from "react";
 
 interface Props {
@@ -10,16 +8,6 @@ interface Props {
 }
 
 export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
-
-    const petsQuery = useAllPets();
-
-
-    const filterResults = petsQuery.data?.data.filter(el => {
-        const isType = petType ? el.species === petType : true;
-        const isBreed = petBreeds ? el.breed === petBreeds : true;
-
-        return isType && isBreed;
-    })
 
     return (
         <section>
@@ -35,7 +23,6 @@ export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
                 {petBreed.map(br => <option key={br}>{br}</option>)}
             </select>
 
-            { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
         </section>
     );
 };

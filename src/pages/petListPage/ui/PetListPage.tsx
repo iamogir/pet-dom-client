@@ -21,6 +21,13 @@ export const PetListPage = () => {
     const petsQuery = useAllPets();
     const pO = useAllPetOwners();
 
+    const filterResults = petsQuery.data?.data.filter(el => {
+        const isType = type ? el.species === type : true;
+        const isBreed = breed ? el.breed === breed : true;
+
+        return isType && isBreed;
+    })
+
     const handleFilterChange= (event: ChangeEvent<HTMLSelectElement>) => {
         setSearchParams(prev => {
             const params = new URLSearchParams(prev);
@@ -82,13 +89,14 @@ export const PetListPage = () => {
 
             {/*<PetSearch/>*/}
             <PetFilter petType={type} petBreeds={breed} filterFn={handleFilterChange}/>
+            { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
 
-            {petsQuery.isLoading ? <p>Loading...</p> :
-                petsQuery.error ? <p>{petsQuery.error.message}</p> :
-                    <div className={style.petCards}>
-                        {petsQuery.data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
-                    </div>
-            }
+            {/*{petsQuery.isLoading ? <p>Loading...</p> :*/}
+            {/*    petsQuery.error ? <p>{petsQuery.error.message}</p> :*/}
+            {/*        <div className={style.petCards}>*/}
+            {/*            {petsQuery.data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}*/}
+            {/*        </div>*/}
+            {/*}*/}
         </div>
     );
 };
