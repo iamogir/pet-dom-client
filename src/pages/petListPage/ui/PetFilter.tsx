@@ -1,11 +1,12 @@
 import {petBreed, petSpecies} from "entities/pet/model";
 import {useAllPets} from "entities/pet/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
+import type {ChangeEvent} from "react";
 
 interface Props {
-    petType?: string,
-    petBreeds?: string,
-    filterFn: (event: any) => void
+    petType: string,
+    petBreeds: string,
+    filterFn: (event: ChangeEvent<HTMLSelectElement>) => void
 }
 
 export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
