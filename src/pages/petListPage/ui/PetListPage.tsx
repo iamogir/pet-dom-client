@@ -58,8 +58,6 @@ export const PetListPage = () => {
 
     }
 
-
-
     return (
         <div>
             {pO.isLoading ? <p>loaaaaaading</p> :
@@ -82,9 +80,6 @@ export const PetListPage = () => {
                     </div>
             }
             <h1>ALL APP PETS</h1>
-
-
-
             <PetSearch value={searchName} searchFn={handleSearch}/>
             <PetFilter petType={type} petBreeds={breed} filterFn={handleFilterChange}/>
             { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
