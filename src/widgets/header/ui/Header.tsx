@@ -18,6 +18,7 @@ export const Header = () => {
         <div className={style.box}>
             <button onClick={() => navigate('/home')}>Home</button>
             <button onClick={() => navigate('/user/' + user.data?.id)}>My profile</button>
+            <button onClick={() => navigate('/my_pets')}>Global pets</button>
             <button onClick={handleLogout}>Sign o u t</button>
         </div>
     );
