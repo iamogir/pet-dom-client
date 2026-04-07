@@ -17,6 +17,7 @@ export const HomePage = () => {
 
     return (
         <>
+            <h1 style={{ color: 'red' }}>. . . news block . . .</h1>
             <WelcomePart/>
             <h2>Please, check your pets and their comfort:</h2>
             {isLoading ? <p> One second, checking pets...</p> :
@@ -25,6 +26,7 @@ export const HomePage = () => {
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </section>
             }
+            <h1 style={{ color: 'red' }}>. . . ask ai . . .</h1>
         </>
     );
 };

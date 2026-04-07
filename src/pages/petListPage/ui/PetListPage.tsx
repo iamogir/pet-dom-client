@@ -24,9 +24,7 @@ export const PetListPage = () => {
     const filterResults = petsQuery.data?.data.filter(el => {
         const isType = type ? el.species === type : true;
         const isBreed = breed ? el.breed === breed : true;
-        console.log(searchName)
         const isSearch = searchName ? el.name.toLowerCase().includes(searchName.toLowerCase()) : true;
-        console.log(isSearch)
         return isType && isBreed && isSearch;
     })
 
