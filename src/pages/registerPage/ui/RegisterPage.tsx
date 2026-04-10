@@ -27,9 +27,9 @@ export const RegisterPage = () => {
     const handleSignUp = async (event: SubmitEvent) => {
         event.preventDefault()
 
-        const resDto: IUserResponseDto = await mutateAsync(toServerFormRegister(form));
+        const res: IUserResponse = await mutateAsync(toServerFormRegister(form));
 
-        const res: IUserResponse = fromServerUserResponseDto(resDto);
+        // const res: IUserResponse = fromServerUserResponseDto(resDto);
 
         setToken(res.token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
