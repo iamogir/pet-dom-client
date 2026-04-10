@@ -16,9 +16,8 @@ const parsePetObject = (obj: IPetForm): IPetParsed => {
     return newObj;
 }
 
-export const toServerPetObjectCreate = (obj: IPetForm, ownerId: string): ICreatePetDto => {
-    const newObj = parsePetObject(obj);
-    return { ...newObj, ownerId };
+export const toServerPetObjectCreate = (obj: IPetForm): ICreatePetDto => {
+    return parsePetObject(obj);
 }
 
 export const toServerPetObjectUpdate = (petId: string, obj: IPetForm): IUpdatedPetDto => {

@@ -33,9 +33,7 @@ export interface IPetForm extends IPetBase {
     confirm: boolean;
 }
 
-export interface ICreatePetDto extends IPetBase{
-    ownerId: string;
-}
+export type ICreatePetDto = IPetBase;
 
 export interface IUpdatedPetDto extends IPetBase{
     id: string;
