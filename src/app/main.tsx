@@ -5,7 +5,7 @@ import {QueryProvider} from "app/providers/QueryProvider.tsx";
 import {worker} from '../mocks/browser.ts';
 
 const enableMocking = async () => {
-    if (import.meta.env.DEV) {
+    if (import.meta.env.DEV && import.meta.env.VITE_USE_MOCKS === 'true') {
         await worker.start()
     }
 }
