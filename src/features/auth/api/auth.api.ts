@@ -15,6 +15,7 @@ export const login = async (data: ILoginDto):Promise<IUserResponseDto> => {
 
 export const register = async( data: IRegisterDto): Promise<IUserResponseDto> => {
     // await new Promise((res) => {setTimeout(res, 500)});
+
     const response: IUserResponseDto = await fetchClient('auth/register', {method: 'POST', body: JSON.stringify(data)});
     return fromServerUserResponseDto(response)
     // {
