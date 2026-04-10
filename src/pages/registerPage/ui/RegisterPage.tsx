@@ -28,7 +28,7 @@ export const RegisterPage = () => {
         event.preventDefault()
 
         const res: IUserResponse = await mutateAsync(toServerFormRegister(form));
-        setToken(res.token);
+        setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 
         navigate("/");

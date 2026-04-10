@@ -32,7 +32,7 @@ export const AuthPage = () => {
         const resDto: IUserResponseDto = await mutateAsync(toServerFormLoginDto(form));
         const res: IUserResponse = fromServerUserResponseDto(resDto);
 
-        setToken(res.token);
+        setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 
         navigate("/");

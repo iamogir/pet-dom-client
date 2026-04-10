@@ -28,10 +28,10 @@ export interface IAuthContext {
 }
 
 export interface IUserResponse {
-    token: string;
+    access_token: string;
     user: IUserCurrent
 }
 export interface IUserResponseDto {
-    token: string;
+    access_token: string;
     user: IUserCurrentDto
 }

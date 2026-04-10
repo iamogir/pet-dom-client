@@ -24,7 +24,7 @@ export const toServerFormLoginDto = (obj: ILoginForm): ILoginDto => {
 
 export const fromServerUserResponseDto = (dto: IUserResponseDto): IUserResponse => {
     return {
-        token: dto.token,
+        access_token: dto.access_token,
         user: fromServerCurrentUserDto(dto.user)
     }
 }
