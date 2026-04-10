@@ -6,25 +6,14 @@ export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promis
     async (endpoint, options?)=> {
 
     const token = getToken();
+    const headers = new Headers(options?.headers);
 
-    const headers = new Headers();
-
-        if (options?.body) {
-            headers.set('Content-Type', 'application/json');
-        }
-    if (token) {
+    if (options?.body && !headers.has('Content-Type')) {
+        headers.set('Content-Type', 'application/json');
+    }
+    if (token && !headers.has('Authorization')) {
         headers.set('Authorization', `Bearer ${token}`);
     }
-    if (options?.headers) {
-        Object.entries(options.headers).forEach(([key, value]) => {
-            headers.set(key, value as string);
-        });
-    }
-
-        console.log('BODY TYPE:', typeof options?.body);
-        console.log('BODY VALUE:', options?.body);
-
-        console.log(headers.keys())
 
     const response = await fetch(BASE_URL + endpoint, {
         ...options,

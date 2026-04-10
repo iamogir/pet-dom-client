@@ -2,8 +2,8 @@ import {Link, useNavigate} from "react-router-dom";
 import style from './registerPage.module.css'
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
 import {useRegister} from "features/auth/hooks";
-import {fromServerUserResponseDto, setToken, toServerFormRegister} from "features/auth/utils";
-import type {IRegisterForm, IUserResponse, IUserResponseDto} from "features/auth/types";
+import {setToken, toServerFormRegister} from "features/auth/utils";
+import type {IRegisterForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
 
@@ -28,9 +28,6 @@ export const RegisterPage = () => {
         event.preventDefault()
 
         const res: IUserResponse = await mutateAsync(toServerFormRegister(form));
-
-        // const res: IUserResponse = fromServerUserResponseDto(resDto);
-
         setToken(res.token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 
