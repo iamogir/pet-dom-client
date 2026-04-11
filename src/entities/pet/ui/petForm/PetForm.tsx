@@ -49,9 +49,7 @@ export const PetForm = ({ pet }: Props) => {
 
         } else {
             const petDto: ICreatePetDto = toServerPetObjectCreate(form);
-            const res = addPet.mutate(petDto)
-            console.log(res)
-
+            addPet.mutate(petDto)
         }
 
         navigate('/my_pets');
