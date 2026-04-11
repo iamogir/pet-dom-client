@@ -1,5 +1,5 @@
 import type {ILoginDto, IRegisterDto, IUserCurrentDto, IUserResponseDto} from "features/auth/types";
-import {fromServerUserResponseDto, getToken} from "features/auth/utils";
+import {fromServerCurrentUserDto, fromServerUserResponseDto, getToken} from "features/auth/utils";
 import {fetchClient} from "shared/api";
 
 export const login = async (data: ILoginDto):Promise<IUserResponseDto> => {
@@ -21,13 +21,9 @@ export const register = async( data: IRegisterDto): Promise<IUserResponseDto> =>
 }
 
 export const getMe = async (): Promise<IUserCurrentDto> => {
-    await new Promise((res) => {setTimeout(res, 500)});
     const token = getToken();
     if (!token) throw new Error("Unauthorized");
+    const me: IUserCurrentDto = await fetchClient('user/me');
 
-    return {
-        id: '00',
-        email: 'email',
-        name: 'Lady Di'
-    }
+    return fromServerCurrentUserDto(me);
 }
