@@ -27,7 +27,13 @@ export const AuthPage = () => {
     const handleLogIn = async (event: { preventDefault: () => void; }) => {
         event.preventDefault()
 
+        if (form.email === '' || form.password === '') {
+            alert('Try again.');
+            return;
+        }
+
         const res: IUserResponse = await mutateAsync(toServerFormLoginDto(form));
+
         setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 
