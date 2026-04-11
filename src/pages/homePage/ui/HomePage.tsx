@@ -1,14 +1,16 @@
 import style from './homePage.module.css'
 import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useMyPets} from "entities/pet/hooks";
+import {useAllPetsByUserId, useMyPets} from "entities/pet/hooks";
 
 export const HomePage = () => {
 
     const {data, isLoading, error} = useMyPets();
+    const temp = useAllPetsByUserId("292060dd-24dd-48e5-b2be-be1d6f2855cd");
 
     return (
         <>
+            { temp.data?.data.map((el) => <PetCard key={el.id} pet={el}/>)}
             <h1 style={{ color: 'red' }}>. . . news block . . .</h1>
             <WelcomePart/>
             <h2>Please, check your pets and their comfort:</h2>

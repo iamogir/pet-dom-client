@@ -2,8 +2,8 @@ import {useNavigate} from "react-router-dom";
 import {useUserById} from "entities/user/hooks";
 import {UserCard} from "entities/user/ui/userCard";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useAllPetsByUserId} from "entities/petOwner/hooks";
 import style from './profilePage.module.css'
+import {useAllPetsByUserId} from "entities/pet/hooks";
 
 interface Props {
     id: string
