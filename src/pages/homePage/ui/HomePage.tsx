@@ -5,15 +5,7 @@ import {useMyPets} from "entities/pet/hooks";
 
 export const HomePage = () => {
 
-    // const user = useMe();
     const {data, isLoading, error} = useMyPets();
-    // const navigate = useNavigate();
-    // const {logout} = useAuth();
-
-    // const handleLogout = () => {
-    //     logout()
-    //     navigate("/sign_in");
-    // }
 
     return (
         <>
