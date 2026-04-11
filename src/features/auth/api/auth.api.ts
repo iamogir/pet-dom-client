@@ -24,11 +24,7 @@ export const register = async( data: IRegisterDto): Promise<IUserResponse> => {
 export const getMe = async (): Promise<IUserCurrent> => {
     const token = getToken();
     if (!token) throw new Error("Unauthorized");
-    console.log('token ')
-    console.log(token);
     const me: IUserCurrentDto = await fetchClient('user/me');
-
-    console.log(me)
 
     return fromServerCurrentUserDto(me);
 }
