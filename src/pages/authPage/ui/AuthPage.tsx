@@ -1,8 +1,8 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import style from './authPage.module.css'
 import {type ChangeEvent, useState} from "react";
 import {useLogin} from "features/auth/hooks";
-import {setToken, toServerFormLoginDto} from "features/auth/utils";
+import {getToken, setToken, toServerFormLoginDto} from "features/auth/utils";
 import type {ILoginForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
@@ -16,6 +16,11 @@ export const AuthPage = () => {
         email: '',
         password: '',
     })
+    const token = getToken();
+    if (token) {
+        return <Navigate to={`/home`} />
+    }
+
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault()
@@ -33,7 +38,6 @@ export const AuthPage = () => {
         }
 
         const res: IUserResponse = await mutateAsync(toServerFormLoginDto(form));
-
         setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 

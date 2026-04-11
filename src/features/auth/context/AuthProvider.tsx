@@ -2,7 +2,7 @@ import * as React from "react";
 import { AuthContext } from "./auth.context";
 import {removeToken} from "features/auth/utils";
 import {useQueryClient} from "@tanstack/react-query";
-import {userQueryKeys} from "entities/user/api";
+// import {userQueryKeys} from "entities/user/api";
 
 interface Props {
     children: React.ReactNode;
@@ -14,7 +14,9 @@ export const AuthProvider = ({children}: Props) => {
 
     const logout = () => {
         removeToken();
-        queryClient.removeQueries({ queryKey: userQueryKeys.me() });
+        // queryClient.removeQueries({ queryKey: userQueryKeys.me() });
+        // queryClient.removeQueries({ queryKey: ['my_pets']});
+        queryClient.clear();
 
     };
 

@@ -1,8 +1,8 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import style from './registerPage.module.css'
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
 import {useRegister} from "features/auth/hooks";
-import {setToken, toServerFormRegister} from "features/auth/utils";
+import {getToken, setToken, toServerFormRegister} from "features/auth/utils";
 import type {IRegisterForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
@@ -17,6 +17,10 @@ export const RegisterPage = () => {
         password: '',
         name: ''
     })
+    const token = getToken();
+    if (token) {
+        return <Navigate to={`/home`} />
+    }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault();

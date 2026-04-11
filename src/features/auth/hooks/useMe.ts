@@ -4,6 +4,7 @@ import {getToken} from "features/auth/utils";
 import {userQueryKeys} from "entities/user/api";
 
 export const useMe = () => {
+
     return useQuery({
         queryKey: userQueryKeys.me(),
         queryFn: getMe,
