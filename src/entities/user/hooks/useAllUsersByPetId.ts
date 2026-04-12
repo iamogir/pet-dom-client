@@ -1,6 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
-import {userQueryKeys} from "entities/user/api";
-import {getAllUsersByPetId} from "entities/petOwner/api";
+import {getAllUsersByPetId, userQueryKeys} from "entities/user/api";
+
 
 export const useAllUsersByPetId = (id:string) => {
     return useQuery({
