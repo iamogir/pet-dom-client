@@ -19,21 +19,27 @@ export const PetForm = ({ pet }: Props) => {
     const navigate = useNavigate();
     const editPet = useEditPet();
     const addPet = useAddNewPet();
-    const [form, setForm] = useState<IPetForm>({
-        name: pet?.name ?? '',
-        species: pet?.species?? '',
-        breed: pet?.breed ?? '',
-        birthDate: pet?.birthDate.toString() ?? '',
-        weight: pet?.weight ?? -1,
-        sex: pet?.sex ?? '',
-        photoUrl: pet?.photoUrl ?? imagePlaceholder,
-        confirm: false
+    const [form, setForm] = useState<IPetForm>(() => {
+        const bDay = pet?.birthDate.getFullYear() + '-' +
+            String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
+            String(pet?.birthDate.getDate()).padStart(2, '0');
+        return {
+            name: pet?.name ?? '',
+            species: pet?.species?? '',
+            breed: pet?.breed ?? '',
+            birthDate:  bDay ?? '',
+            weight: pet?.weight ?? -1,
+            sex: pet?.sex ?? '',
+            photoUrl: pet?.photoUrl ?? imagePlaceholder,
+            confirm: false
+        }
     });
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault();
 
         const eventTarget = event.target;
+        console.log(eventTarget.value)
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
     }
 
