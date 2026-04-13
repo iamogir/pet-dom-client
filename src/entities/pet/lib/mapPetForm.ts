@@ -4,9 +4,9 @@ import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 const parsePetObject = (obj: IPetForm): IPetParsed => {
     const newObj : IPetParsed = {
         name: obj.name,
-        species: parsePetSpecies(obj.species),          //TODO check types everywhere
+        species: parsePetSpecies(obj.species),
         breed: parsePetBreed(obj.breed),
-        birthDate: obj.birthDate.toString(),
+        birthDate: obj.birthDate,
         weight: obj.weight,
         sex: parsePetSex(obj.sex),
         isParsed: true
