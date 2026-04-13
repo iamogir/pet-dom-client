@@ -6,7 +6,7 @@ interface IAuthBase {
 export interface IRegisterForm extends IAuthBase {
     firstName: string;
     lastName: string;
-    phoneNumber: string;
+    phone: string;
     country: string;
     birthDate: string;
     gender: string;

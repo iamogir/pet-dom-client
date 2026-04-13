@@ -17,7 +17,7 @@ export const RegisterPage = () => {
         password: '',
         firstName: '',
         lastName: '',
-        phoneNumber: '',
+        phone: '',
         country: '',
         birthDate: '1990-01-01',
         gender: '',
@@ -64,8 +64,8 @@ export const RegisterPage = () => {
                     <label htmlFor={'password'}>password:
                         <input type={'password'} name={'password'} value={form.password} onChange={handleChange} placeholder={'*****'} /></label>
 
-                    <label htmlFor={'phoneNumber'}>phone number:
-                        <input type={'tel'} name={'phoneNumber'} value={form.phoneNumber} onChange={handleChange} placeholder={'+972 54 851 99 65'} /></label>
+                    <label htmlFor={'phone'}>phone number:
+                        <input type={'tel'} name={'phone'} value={form.phone} onChange={handleChange} placeholder={'+972 54 851 99 65'} /></label>
 
                     <label htmlFor={'country'}>country:
                         <input type={'text'} name={'country'} value={form.country} onChange={handleChange} placeholder={'Israel'} /></label>

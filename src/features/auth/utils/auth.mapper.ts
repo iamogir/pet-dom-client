@@ -11,7 +11,13 @@ export const toServerFormRegister = (obj: IRegisterForm): IRegisterDto => {
     return {
         email: obj.email,
         password: obj.password,
-        name: obj.name,
+        firstName: obj.firstName,
+        lastName: obj.lastName,
+        phone: obj.phone,
+        country: obj.country,
+        birthDate: obj.birthDate,
+        gender: obj.gender,
+        avatarUrl: obj.avatarUrl,
     }
 }
 
