@@ -15,7 +15,13 @@ export const RegisterPage = () => {
     const [form, setForm] = useState<IRegisterForm>({
         email: '',
         password: '',
-        name: ''
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        country: '',
+        birthDate: '',
+        gender: '',
+        avatarUrl: '',
     })
     const token = getToken();
     if (token) {
@@ -47,7 +53,7 @@ export const RegisterPage = () => {
                 <form onSubmit={handleSignUp}>
 
                     <label htmlFor={'name'}>name:
-                        <input type={'text'} name={'name'} value={form.name} onChange={handleChange} placeholder={'Zina'} /></label>
+                        <input type={'text'} name={'name'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} /></label>
 
                     <label htmlFor={'email'}>e-mail:
                         <input type={'email'} name={'email'} value={form.email} onChange={handleChange} placeholder={'abc@mail.com'} /></label>

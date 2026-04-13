@@ -4,12 +4,15 @@ interface IAuthBase {
 }
 
 export interface IRegisterForm extends IAuthBase {
-    name: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    country: string;
+    birthDate: string;
+    gender: string;
+    avatarUrl?: string;
 }
-export interface IRegisterDto extends IAuthBase {
-    name: string;
-}
-
+export type IRegisterDto = IRegisterForm
 export type ILoginForm = IAuthBase
 export type ILoginDto = IAuthBase
 
