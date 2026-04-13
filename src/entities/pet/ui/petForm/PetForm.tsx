@@ -39,7 +39,6 @@ export const PetForm = ({ pet }: Props) => {
         event.preventDefault();
 
         const eventTarget = event.target;
-        console.log(eventTarget.value)
         setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
     }
 

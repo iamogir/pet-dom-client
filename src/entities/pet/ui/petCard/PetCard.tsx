@@ -12,7 +12,7 @@ interface Props {
 export const PetCard = ({ pet }: Props) => {
 
     const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
-    const bDay: string = pet.birthDate.getDate() + '/' + (pet.birthDate.getMonth() + 1) + '/' + pet.birthDate.getFullYear();
+    const bDay: string = String(pet.birthDate.getDate()).padStart(2, '0') + '/' + String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '/' + pet.birthDate.getFullYear();
     // const queryClient = useQueryClient();
     const navigate = useNavigate();
     // const { mutateAsync } = useDeletePetById({
