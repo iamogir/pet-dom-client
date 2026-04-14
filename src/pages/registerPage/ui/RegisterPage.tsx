@@ -78,6 +78,7 @@ export const RegisterPage = () => {
                         <label htmlFor={'female'}>female </label>
                         <input type={'radio'} id={'female'} checked={form.gender === 'female'} name={'gender'} value={'female'} onChange={handleChange}/>
                     </div>
+                    {/*TODO: universal radio, drop menu*/}
 
                     <button type="submit" className={style.btn}>Sign up</button>
                 </form>
