@@ -29,8 +29,6 @@ export const RegisterPage = () => {
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        // event.preventDefault();
-
         setForm(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
