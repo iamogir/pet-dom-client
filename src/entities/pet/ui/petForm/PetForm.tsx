@@ -28,7 +28,7 @@ export const PetForm = ({ pet }: Props) => {
             species: pet?.species?? '',
             breed: pet?.breed ?? '',
             birthDate:  bDay ?? '',
-            weight: pet?.weight ?? -1,
+            weight: pet?.weight ?? 0,
             sex: pet?.sex ?? '',
             photoUrl: pet?.photoUrl ?? imagePlaceholder,
             confirm: false
@@ -81,8 +81,8 @@ export const PetForm = ({ pet }: Props) => {
                 <label htmlFor={'weight'}>Weight: </label>
                 <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
 
-                <label htmlFor={'photoUrl'}>Pet photo: </label>
-                <input type={'text'} name={'photoUrl'} onChange={handleChange} value={form.photoUrl} placeholder={'Photo'} />
+                {/*<label htmlFor={'photoUrl'}>Pet photo: </label>*/}
+                {/*<input type={'text'} name={'photoUrl'} onChange={handleChange} value={form.photoUrl} placeholder={'Photo'} />*/}
 
                 <br/>
                 <button>
