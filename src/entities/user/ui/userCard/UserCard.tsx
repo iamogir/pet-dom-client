@@ -27,7 +27,7 @@ export const UserCard = ( { user }: Props ) => {
                 <h3>{user.firstName} {user.lastName}</h3>
                 <p>{user.email}</p>
                 <div className={style.boxImage}>
-                    <img src={user.avatarUrl} alt={user.firstName + ' photocard'}/>
+                    <img src={user.avatarUrl || 'https://zornet.ru/_fr/19/4335033.png'} alt={user.firstName + ' photocard'}/>
                     <button onClick={() => navigate('/edit_user/' + user.id)}>edit profile</button>
                 </div>
             </section>
