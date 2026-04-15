@@ -36,9 +36,17 @@ export const RegisterPage = () => {
         event.preventDefault()
 
         const res: IUserResponse = await mutateAsync(toServerFormRegister(form));
+
+        if (!res) {
+            alert('Failed to register');
+        }
         setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 
+        const answer = confirm('Want to add pet now?');
+        if (answer) {
+            navigate('/add_pet');
+        }
         navigate("/");
 
     }
