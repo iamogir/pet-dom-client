@@ -4,7 +4,7 @@ import {fromServerArrayPetsObject} from "entities/pet/lib";
 
 export const getAllPets = async (): Promise<IPets> => {
 
-    const response: IPetsDto = await fetchClient<IPetsDto>('/all_pets');
+    const response: IPetsDto = await fetchClient<IPetsDto>('pet');
 
     return fromServerArrayPetsObject(response);
 }
