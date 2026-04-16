@@ -15,7 +15,6 @@ export const PetListPage = () => {
 
     const userPets = useMyPets();
     const petsQuery = useAllPets();
-    console.log(petsQuery.data);
 
     const filterResults = petsQuery.data?.data.filter(el => {
         const isType = type ? el.species === type : true;
