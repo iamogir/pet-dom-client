@@ -1,13 +1,8 @@
-import {
-    type IPets,
-    type IPetsDto,
-    type IPet,
-    type IPetDto,
-} from "entities/pet/model";
+import {type IPet, type IPetDto, type IPets, type IPetsDto,} from "entities/pet/model";
 import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 
 export function fromServerPetObject(obj: IPetDto): IPet {
-
+    console.log('fromServerPetObject');
     const newObj: IPet = {
         id: obj.id,
         name: obj.name,
@@ -26,5 +21,5 @@ export function fromServerArrayPetsObject(obj: IPetsDto): IPets {
     return {
         data: obj.data.map(el => fromServerPetObject(el)),
         meta: obj.meta
-    }
+    };
 }
