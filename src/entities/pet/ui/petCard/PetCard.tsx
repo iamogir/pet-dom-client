@@ -15,11 +15,13 @@ export const PetCard = ({ pet }: Props) => {
     const bDay: string = String(pet.birthDate.getDate()).padStart(2, '0') + '/' + String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '/' + pet.birthDate.getFullYear();
     const queryClient = useQueryClient();
     const navigate = useNavigate();
-    const { mutateAsync } = useDeletePetById({
+    const { mutateAsync } = useDeletePetById(
+        {
         onSuccess: () =>
             queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
 
-    });
+    }
+    );
 
 
 
