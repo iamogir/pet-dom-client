@@ -1,5 +1,3 @@
-//from server Obj (DTO)
-
 import {type IUsers, type IUsersDto, type IUser, type IUserDto} from "entities/user/model";
 import {parseUserCountry, parseUserGender} from "entities/user/lib";
 
@@ -7,10 +5,9 @@ export const fromServerUserDto= (obj: IUserDto): IUser => {
     const newObj: IUser = {
         id: obj.id,
         email: obj.email,
-        password: obj.password,
         firstName: obj.firstName,
         lastName: obj.lastName,
-        phoneNumber: obj.phoneNumber,
+        phone: obj.phone,
         country: parseUserCountry(obj.country),
         birthDate: new Date(obj.birthDate),
         gender: parseUserGender(obj.gender),

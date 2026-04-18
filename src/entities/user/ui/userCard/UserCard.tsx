@@ -18,7 +18,7 @@ export const UserCard = ( { user }: Props ) => {
                 <ul>
                     <li>{user.country}</li>
                     <li>{user.gender}</li>
-                    <li>{user.phoneNumber}</li>
+                    <li>{user.phone}</li>
                     <li>age: {age}</li>
                 </ul>
             </Link>

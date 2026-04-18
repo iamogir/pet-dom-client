@@ -5,7 +5,7 @@ export const toServerUserObjectUpdate = (obj: IUserForm): IUpdatedUserDto => {
     return {
         firstName: obj.firstName,
         lastName: obj.lastName,
-        phoneNumber: obj.phoneNumber,
+        phone: obj.phone,
         country: obj.country,
         birthDate: obj.birthDate,
         gender: obj.gender,
