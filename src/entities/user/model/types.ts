@@ -21,15 +21,12 @@ export interface IUser extends Omit<IUserBase, 'birthDate'> {
 }
 
 export type IUserDto = IUserBase
+export type IUpdatedUserDto = IUserForm
 
 export interface IUserForm extends Omit<IUserBase, 'email' | 'password'>{
 
     avatarUrl: string;
     confirm: boolean;
-}
-
-export interface IUpdatedUserDto extends IUserForm{
-    id: string;
 }
 
 export interface IUsers {

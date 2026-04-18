@@ -26,7 +26,7 @@ export const UserForm = ({user} : Props) => {
     })
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        event.preventDefault();
+        // event.preventDefault();
         const eventTarget = event.target;
         setForm(prev => ({...prev,  [eventTarget.name]: eventTarget.value }))
     }
@@ -37,7 +37,7 @@ export const UserForm = ({user} : Props) => {
         const isConfirmed = confirm('Are you sure?');
         if (!isConfirmed) return;
 
-        mutate(toServerUserObjectUpdate(user.id, form));
+        mutate(toServerUserObjectUpdate(form));
 
         navigate("/user/" + user.id);
     }
