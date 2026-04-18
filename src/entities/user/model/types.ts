@@ -20,9 +20,7 @@ export interface IUser extends Omit<IUserBase, 'birthDate'> {
     avatarUrl?: string;
 }
 
-export interface IUserDto extends IUserBase {
-    id: string;
-}
+export type IUserDto = IUserBase
 
 export interface IUserForm extends Omit<IUserBase, 'email' | 'password'>{
 
