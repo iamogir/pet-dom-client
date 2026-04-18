@@ -18,8 +18,6 @@ export const UserForm = ({user} : Props) => {
         const bDay = user?.birthDate.getFullYear() + '-' +
             String(user?.birthDate ? (user?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
             String(user?.birthDate.getDate()).padStart(2, '0');
-
-        console.log(user)
         return {
             firstName: user.firstName,
             lastName: user.lastName,
