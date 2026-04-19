@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
-import {useAllUsersByPetId} from "entities/petOwner/hooks";
 import {UserCard} from "entities/user/ui/userCard";
 import {usePetById} from "entities/pet/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
+import {useAllUsersByPetId} from "entities/user/hooks";
 
 interface Props {
     petId: string

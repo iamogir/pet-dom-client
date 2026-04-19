@@ -4,12 +4,15 @@ interface IAuthBase {
 }
 
 export interface IRegisterForm extends IAuthBase {
-    name: string;
+    firstName: string;
+    lastName: string;
+    phone: string;
+    country: string;
+    birthDate: string;
+    gender: string;
+    avatarUrl?: string;
 }
-export interface IRegisterDto extends IAuthBase {
-    name: string;
-}
-
+export type IRegisterDto = IRegisterForm
 export type ILoginForm = IAuthBase
 export type ILoginDto = IAuthBase
 
@@ -22,16 +25,14 @@ export interface IUserCurrent {
 export type IUserCurrentDto = IUserCurrent
 
 export interface IAuthContext {
-    // user: IUserCurrent | null,
-    // setUser: (user: IUserCurrent | null) => void,
     logout: () => void,
 }
 
 export interface IUserResponse {
-    token: string;
+    access_token: string;
     user: IUserCurrent
 }
 export interface IUserResponseDto {
-    token: string;
+    access_token: string;
     user: IUserCurrentDto
 }

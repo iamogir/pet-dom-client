@@ -6,7 +6,7 @@ const parsePetObject = (obj: IPetForm): IPetParsed => {
         name: obj.name,
         species: parsePetSpecies(obj.species),
         breed: parsePetBreed(obj.breed),
-        birthDate: obj.birthDate.toString(),
+        birthDate: obj.birthDate,
         weight: obj.weight,
         sex: parsePetSex(obj.sex),
         isParsed: true
@@ -16,9 +16,8 @@ const parsePetObject = (obj: IPetForm): IPetParsed => {
     return newObj;
 }
 
-export const toServerPetObjectCreate = (obj: IPetForm, ownerId: string): ICreatePetDto => {
-    const newObj = parsePetObject(obj);
-    return { ...newObj, ownerId };
+export const toServerPetObjectCreate = (obj: IPetForm): ICreatePetDto => {
+    return parsePetObject(obj);
 }
 
 export const toServerPetObjectUpdate = (petId: string, obj: IPetForm): IUpdatedPetDto => {

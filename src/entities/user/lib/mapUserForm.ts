@@ -1,12 +1,11 @@
-import type {IUserForm} from "entities/user/model";
+import type {IUpdatedUserDto, IUserForm} from "entities/user/model";
 
-export const toServerUserObjectUpdate = (id: string, obj: IUserForm) => {
+export const toServerUserObjectUpdate = (obj: IUserForm): IUpdatedUserDto => {
 
     return {
-        id: id,
         firstName: obj.firstName,
         lastName: obj.lastName,
-        phoneNumber: obj.phoneNumber,
+        phone: obj.phone,
         country: obj.country,
         birthDate: obj.birthDate,
         gender: obj.gender,

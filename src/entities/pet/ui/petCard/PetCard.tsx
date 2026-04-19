@@ -12,13 +12,16 @@ interface Props {
 export const PetCard = ({ pet }: Props) => {
 
     const petAge = new Date().getFullYear() - pet.birthDate.getFullYear();
+    const bDay: string = String(pet.birthDate.getDate()).padStart(2, '0') + '/' + String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '/' + pet.birthDate.getFullYear();
     const queryClient = useQueryClient();
     const navigate = useNavigate();
-    const { mutateAsync } = useDeletePetById({
+    const { mutateAsync } = useDeletePetById(
+        {
         onSuccess: () =>
             queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
 
-    });
+    }
+    );
 
 
 
@@ -45,6 +48,7 @@ export const PetCard = ({ pet }: Props) => {
                     <li>{petAge} years</li>
                     <li>{pet.breed}</li>
                     <li>{pet.weight} kg</li>
+                    <li>Birth-d: {bDay}</li>
                 </ul>
             </section>
             <section>

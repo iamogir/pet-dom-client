@@ -24,7 +24,7 @@ export const userHandlers = [
             if (u.id === req.params.id) {
                 u.firstName = editedUser.firstName;
                 u.lastName = editedUser.lastName;
-                u.phoneNumber = editedUser.phoneNumber;
+                u.phone = editedUser.phone;
                 u.country = editedUser.country;
                 u.birthDate = editedUser.birthDate;
                 u.gender = editedUser.gender;

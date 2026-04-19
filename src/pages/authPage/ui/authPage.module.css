@@ -6,6 +6,14 @@
     padding: 150px 0;
 }
 
+.box > h2, .box > h2 > a {
+    color: rgba(114,72,73,0.81);
+}
+
+.box > h2 > a {
+    text-decoration: underline;
+}
+
 .content {
     margin: 10px 0;
     padding: 50px 130px 100px 130px;

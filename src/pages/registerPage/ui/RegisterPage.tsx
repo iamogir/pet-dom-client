@@ -1,9 +1,9 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import style from './registerPage.module.css'
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
 import {useRegister} from "features/auth/hooks";
-import {fromServerUserResponseDto, setToken, toServerFormRegister} from "features/auth/utils";
-import type {IRegisterForm, IUserResponse, IUserResponseDto} from "features/auth/types";
+import {getToken, setToken, toServerFormRegister} from "features/auth/utils";
+import type {IRegisterForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
 
@@ -15,25 +15,38 @@ export const RegisterPage = () => {
     const [form, setForm] = useState<IRegisterForm>({
         email: '',
         password: '',
-        name: ''
+        firstName: '',
+        lastName: '',
+        phone: '',
+        country: '',
+        birthDate: '1990-01-01',
+        gender: '',
+        avatarUrl: '',
     })
+    const token = getToken();
+    if (token) {
+        return <Navigate to={`/home`} />
+    }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        event.preventDefault();
-
         setForm(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
     const handleSignUp = async (event: SubmitEvent) => {
         event.preventDefault()
 
-        const resDto: IUserResponseDto = await mutateAsync(toServerFormRegister(form));
+        const res: IUserResponse = await mutateAsync(toServerFormRegister(form));
 
-        const res: IUserResponse = fromServerUserResponseDto(resDto);
-
-        setToken(res.token);
+        if (!res) {
+            alert('Failed to register');
+        }
+        setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
 
+        const answer = confirm('Want to add pet now?');
+        if (answer) {
+            navigate('/add_pet');
+        }
         navigate("/");
 
     }
@@ -45,14 +58,34 @@ export const RegisterPage = () => {
                 <h1>SIGN UP</h1>
                 <form onSubmit={handleSignUp}>
 
-                    <label htmlFor={'name'}>name:
-                        <input type={'text'} name={'name'} value={form.name} onChange={handleChange} placeholder={'Zina'} /></label>
+                    <label htmlFor={'firstName'}>first name:
+                        <input type={'text'} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} /></label>
+
+                    <label htmlFor={'lastName'}>last name:
+                        <input type={'text'} name={'lastName'} value={form.lastName} onChange={handleChange} placeholder={'Babuskina'} /></label>
 
                     <label htmlFor={'email'}>e-mail:
                         <input type={'email'} name={'email'} value={form.email} onChange={handleChange} placeholder={'abc@mail.com'} /></label>
 
                     <label htmlFor={'password'}>password:
                         <input type={'password'} name={'password'} value={form.password} onChange={handleChange} placeholder={'*****'} /></label>
+
+                    <label htmlFor={'phone'}>phone number:
+                        <input type={'tel'} name={'phone'} value={form.phone} onChange={handleChange} placeholder={'+972 54 851 99 65'} /></label>
+
+                    <label htmlFor={'country'}>country:
+                        <input type={'text'} name={'country'} value={form.country} onChange={handleChange} placeholder={'Israel'} /></label>
+
+                    <label htmlFor={'birthDate'}>b-day:
+                        <input type={'date'} name={'birthDate'} value={form.birthDate} onChange={handleChange} placeholder={'1990-02-01'} /></label>
+
+                    <div>
+                        <span> gender: </span>
+                        <label htmlFor={'male'}>male </label>
+                        <input type={'radio'} id={'male'} checked={form.gender === 'male'} name={'gender'} value={'male'} onChange={handleChange}/>
+                        <label htmlFor={'female'}>female </label>
+                        <input type={'radio'} id={'female'} checked={form.gender === 'female'} name={'gender'} value={'female'} onChange={handleChange}/>
+                    </div>
 
                     <button type="submit" className={style.btn}>Sign up</button>
                 </form>

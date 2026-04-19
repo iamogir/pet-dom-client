@@ -1,6 +1,5 @@
 import {useQuery, type UseQueryOptions} from "@tanstack/react-query";
-import {petQueryKeys} from "entities/pet/api";
-import {getAllPetsByUserId} from "entities/petOwner/api";
+import {getAllPetsByUserId, petQueryKeys} from "entities/pet/api";
 import type {IPets} from "entities/pet/model";
 
 type QueryOptions = Omit<

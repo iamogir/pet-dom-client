@@ -5,14 +5,14 @@ interface IUserBase {
     password: string;
     firstName: string;
     lastName: string;
-    phoneNumber: string;
+    phone: string;
     country: string;
     birthDate: string;
     gender: string;
     avatarUrl?: string;
 }
 
-export interface IUser extends Omit<IUserBase, 'birthDate'> {
+export interface IUser extends Omit<IUserBase, 'birthDate' | 'password'> {
     id: string;
     country: UserCountry;
     birthDate: Date;
@@ -23,15 +23,12 @@ export interface IUser extends Omit<IUserBase, 'birthDate'> {
 export interface IUserDto extends IUserBase {
     id: string;
 }
+export type IUpdatedUserDto = IUserForm
 
 export interface IUserForm extends Omit<IUserBase, 'email' | 'password'>{
 
     avatarUrl: string;
     confirm: boolean;
-}
-
-export interface IUpdatedUserDto extends IUserForm{
-    id: string;
 }
 
 export interface IUsers {

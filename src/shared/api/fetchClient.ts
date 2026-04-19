@@ -6,18 +6,18 @@ export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promis
     async (endpoint, options?)=> {
 
     const token = getToken();
-    const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-        ...(options?.headers as Record<string, string>),
-    };
+    const headers = new Headers(options?.headers);
 
-    if (token) {
-        headers.Authorization = `Bearer ${token}`;
+    if (options?.body && !headers.has('Content-Type')) {
+        headers.set('Content-Type', 'application/json');
+    }
+    if (token && !headers.has('Authorization')) {
+        headers.set('Authorization', `Bearer ${token}`);
     }
 
     const response = await fetch(BASE_URL + endpoint, {
-        ...headers,
         ...options,
+        headers,
     })
     if (!response.ok) {
         const error = await response.text()

@@ -12,23 +12,27 @@ import {useNavigate} from "react-router-dom";
 
 interface Props {
     pet?: IPet;
-    ownerId: string;
 }
 
-export const PetForm = ({ pet, ownerId }: Props) => {
+export const PetForm = ({ pet }: Props) => {
 
     const navigate = useNavigate();
     const editPet = useEditPet();
     const addPet = useAddNewPet();
-    const [form, setForm] = useState<IPetForm>({
-        name: pet?.name ?? '',
-        species: pet?.species?? '',
-        breed: pet?.breed ?? '',
-        birthDate: pet?.birthDate.toString() ?? '',
-        weight: pet?.weight ?? -1,
-        sex: pet?.sex ?? '',
-        photoUrl: pet?.photoUrl ?? imagePlaceholder,
-        confirm: false
+    const [form, setForm] = useState<IPetForm>(() => {
+        const bDay = pet?.birthDate.getFullYear() + '-' +
+            String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
+            String(pet?.birthDate.getDate()).padStart(2, '0');
+        return {
+            name: pet?.name ?? '',
+            species: pet?.species?? '',
+            breed: pet?.breed ?? '',
+            birthDate:  bDay ?? '',
+            weight: pet?.weight ?? 0,
+            sex: pet?.sex ?? '',
+            photoUrl: pet?.photoUrl ?? imagePlaceholder,
+            confirm: false
+        }
     });
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -49,9 +53,8 @@ export const PetForm = ({ pet, ownerId }: Props) => {
             await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
 
         } else {
-            const petDto: ICreatePetDto = toServerPetObjectCreate(form, ownerId);
+            const petDto: ICreatePetDto = toServerPetObjectCreate(form);
             addPet.mutate(petDto)
-
         }
 
         navigate('/my_pets');
@@ -78,8 +81,8 @@ export const PetForm = ({ pet, ownerId }: Props) => {
                 <label htmlFor={'weight'}>Weight: </label>
                 <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
 
-                <label htmlFor={'photoUrl'}>Pet photo: </label>
-                <input type={'text'} name={'photoUrl'} onChange={handleChange} value={form.photoUrl} placeholder={'Photo'} />
+                {/*<label htmlFor={'photoUrl'}>Pet photo: </label>*/}
+                {/*<input type={'text'} name={'photoUrl'} onChange={handleChange} value={form.photoUrl} placeholder={'Photo'} />*/}
 
                 <br/>
                 <button>

@@ -5,18 +5,12 @@ import {useMyPets} from "entities/pet/hooks";
 
 export const HomePage = () => {
 
-    // const user = useMe();
     const {data, isLoading, error} = useMyPets();
-    // const navigate = useNavigate();
-    // const {logout} = useAuth();
-
-    // const handleLogout = () => {
-    //     logout()
-    //     navigate("/sign_in");
-    // }
+    // const temp = useAllPetsByUserId("292060dd-24dd-48e5-b2be-be1d6f2855cd");
 
     return (
         <>
+            {/*{ temp.data?.data.map((el) => <PetCard key={el.id} pet={el}/>)}*/}
             <h1 style={{ color: 'red' }}>. . . news block . . .</h1>
             <WelcomePart/>
             <h2>Please, check your pets and their comfort:</h2>

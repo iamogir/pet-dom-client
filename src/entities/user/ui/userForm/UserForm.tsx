@@ -14,19 +14,24 @@ export const UserForm = ({user} : Props) => {
 
     const navigate = useNavigate();
     const { mutate } = useEditUserById();
-    const [form, setForm] = useState<IUserForm>({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phoneNumber: user.phoneNumber,
-        country: user.country,
-        birthDate: user.birthDate.toString(),
-        gender: user.gender,
-        avatarUrl: user.avatarUrl ?? imagePlaceholder,
-        confirm: false
+    const [form, setForm] = useState<IUserForm>(() => {
+        const bDay = user?.birthDate.getFullYear() + '-' +
+            String(user?.birthDate ? (user?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
+            String(user?.birthDate.getDate()).padStart(2, '0');
+        return {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phone: user.phone,
+            country: user.country,
+            birthDate: bDay,
+            gender: user.gender,
+            avatarUrl: user.avatarUrl ?? imagePlaceholder,
+            confirm: false
+        }
     })
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        event.preventDefault();
+        // event.preventDefault();
         const eventTarget = event.target;
         setForm(prev => ({...prev,  [eventTarget.name]: eventTarget.value }))
     }
@@ -37,7 +42,7 @@ export const UserForm = ({user} : Props) => {
         const isConfirmed = confirm('Are you sure?');
         if (!isConfirmed) return;
 
-        mutate(toServerUserObjectUpdate(user.id, form));
+        mutate(toServerUserObjectUpdate(form));
 
         navigate("/user/" + user.id);
     }
@@ -52,7 +57,7 @@ export const UserForm = ({user} : Props) => {
                 <input type={'text'} name={'lastName'} onChange={handleChange} value={form.lastName} placeholder={'Last Name'} />
 
                 <label htmlFor={'phoneNumber'}>Phone: </label>
-                <input type={'text'} name={'phoneNumber'} onChange={handleChange} value={form.phoneNumber} placeholder={'Phone Number'} />
+                <input type={'tel'} name={'phoneNumber'} onChange={handleChange} value={form.phone} placeholder={'+972 54 851 99 65'} />
 
                 <label htmlFor={'country'}>Living country: </label>
                 <input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />

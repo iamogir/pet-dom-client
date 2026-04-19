@@ -1,10 +1,12 @@
-import {useAllPetsByUserId} from "entities/petOwner/hooks";
-import {useMe} from "features/auth/hooks";
+import {useQuery} from "@tanstack/react-query";
+import {getMyPets} from "entities/pet/api/getMyPets.ts";
+import {getToken} from "features/auth/utils";
+import {petQueryKeys} from "entities/pet/api";
 
 export const useMyPets = () => {
-    const { data } = useMe();
-
-    return useAllPetsByUserId(data?.id, {
-        enabled: !!data,
+    return useQuery({
+        queryKey: petQueryKeys.myPets(),
+        queryFn: getMyPets,
+        enabled: !!getToken(),
     })
 }

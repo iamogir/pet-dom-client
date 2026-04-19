@@ -3,6 +3,6 @@ import {fromServerPetObject} from "entities/pet/lib";
 import type {IPetDto} from "entities/pet/model";
 
 export const deletePetById = async (id: string) => {
-    const response: IPetDto = await fetchClient('/delete_pet_by_id/' + id, {method: 'DELETE'});
+    const response: IPetDto = await fetchClient('pet/' + id, {method: 'DELETE'});
     return fromServerPetObject(response);
 }
