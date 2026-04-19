@@ -3,16 +3,15 @@ import {type ChangeEvent, useState} from "react";
 import type {IUser, IUserForm} from "entities/user/model";
 import {imagePlaceholder} from "entities/pet/model";
 import {useEditUserById} from "entities/user/hooks";
-import {toServerUserObjectUpdate} from "entities/user/lib";
+import {toServerUserObjectUpdate, userGender} from "entities/user/lib";
 import {useNavigate} from "react-router-dom";
+import {DropMenu} from "shared/ui/dropMenu";
 
 interface Props {
     user: IUser
 }
 
 export const UserForm = ({user} : Props) => {
-
-    console.log(user)
 
     const navigate = useNavigate();
     const { mutate } = useEditUserById();
@@ -66,6 +65,8 @@ export const UserForm = ({user} : Props) => {
 
                 <label htmlFor={'gender'}>gender: </label>
                 <input type={'text'} name={'gender'} onChange={handleChange} value={form.gender} placeholder={'gender'} />
+
+                <DropMenu values={userGender}/>
 
                 <label htmlFor={'birthDate'}>B-day: </label>
                 <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth Date'} />
