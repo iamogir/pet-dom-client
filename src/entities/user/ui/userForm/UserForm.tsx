@@ -12,6 +12,8 @@ interface Props {
 
 export const UserForm = ({user} : Props) => {
 
+    console.log(user)
+
     const navigate = useNavigate();
     const { mutate } = useEditUserById();
     const [form, setForm] = useState<IUserForm>(() => {
