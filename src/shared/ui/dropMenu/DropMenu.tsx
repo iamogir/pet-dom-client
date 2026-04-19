@@ -7,9 +7,16 @@ interface Props {
 }
 
 export const DropMenu = ({ values, func }: Props) => {
+
+    const selectValueHandler = (event) => {
+        const input = event.target.parentElement.previousElementSibling;
+        input.value = event.target.key
+        console.log(input)
+    }
+
     return (
         <div className={style.border}>
-            {values.map(el => <input type={'text'} name={'gender'} onChange={func} value={el} placeholder={'gender'} />)}
+            {values.map(el => <div key={el} value={el} onClick={func}>{el}</div>)}
         </div>
     );
 };
