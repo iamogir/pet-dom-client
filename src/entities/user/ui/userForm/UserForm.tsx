@@ -53,6 +53,10 @@ export const UserForm = ({user} : Props) => {
         navigate("/user/" + user.id);
     }
 
+    const showBlock = (event) => {
+        event.target.classList.toggle('hide');
+    }
+
     return (
         <div>
             <form className={style.box} onSubmit={handleSubmit}>
@@ -69,7 +73,7 @@ export const UserForm = ({user} : Props) => {
                 <input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />
 
                 <label htmlFor={'gender'}>gender: </label>
-                <input type={'text'} disabled={true} name={'gender'} placeholder={form.gender} />
+                <input type={'text'} readOnly={true} value={form.gender} name={'gender'} onClick={showBlock} />
 
                 <DropMenu values={userGender}  onSelect={(value: string) => doSetForm('gender', value)}/>
 

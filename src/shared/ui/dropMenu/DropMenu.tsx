@@ -7,10 +7,8 @@ interface Props {
 
 export const DropMenu = ({ values, onSelect }: Props) => {
 
-
-
     return (
-        <div className={style.hide}>
+        <div className={style.hide} >
             <div className={style.border}>
                 {values.map(el => <div key={el} onClick={() => onSelect(el)}>{el}</div>)}
             </div>
