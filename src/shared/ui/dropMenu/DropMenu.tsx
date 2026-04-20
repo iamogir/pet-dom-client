@@ -1,9 +1,10 @@
 import style from './dropMenu.module.css'
 import type {ChangeEvent} from "react";
+import type {IUserForm} from "entities/user/model";
 
 interface Props {
     values: string[],
-    func: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void,
+    func: any
 }
 
 export const DropMenu = ({ values, func }: Props) => {
@@ -12,11 +13,14 @@ export const DropMenu = ({ values, func }: Props) => {
         const input = event.target.parentElement.previousElementSibling;
         input.value = event.target.key
         console.log(input)
+
+        const eventTarget = event.target;
+        func((prev: IUserForm) => ({...prev,  [input.name]: eventTarget.key }))
     }
 
     return (
         <div className={style.border}>
-            {values.map(el => <div key={el} value={el} onClick={func}>{el}</div>)}
+            {values.map(el => <div key={el} value={el} onClick={selectValueHandler}>{el}</div>)}
         </div>
     );
 };

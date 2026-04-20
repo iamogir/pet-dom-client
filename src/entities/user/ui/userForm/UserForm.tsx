@@ -66,7 +66,7 @@ export const UserForm = ({user} : Props) => {
                 <label htmlFor={'gender'}>gender: </label>
                 <input type={'text'} name={'gender'} onChange={handleChange} value={form.gender} placeholder={form.gender} />
 
-                <DropMenu values={userGender} func={handleChange}/>
+                <DropMenu values={userGender} func={setForm}/>
 
                 <label htmlFor={'birthDate'}>B-day: </label>
                 <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth Date'} />
