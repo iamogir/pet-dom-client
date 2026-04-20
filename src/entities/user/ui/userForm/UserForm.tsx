@@ -34,7 +34,12 @@ export const UserForm = ({user} : Props) => {
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         // event.preventDefault();
         const eventTarget = event.target;
-        setForm(prev => ({...prev,  [eventTarget.name]: eventTarget.value }))
+        // setForm(prev => ({...prev,  [eventTarget.name]: eventTarget.value }))
+        doSetForm(eventTarget.name, eventTarget.value);
+    }
+
+    const doSetForm = (name: string, value: string) => {
+        setForm(prev => ({...prev,  [name]: value }))
     }
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
@@ -66,7 +71,7 @@ export const UserForm = ({user} : Props) => {
                 <label htmlFor={'gender'}>gender: </label>
                 <input type={'text'} name={'gender'} onChange={handleChange} value={form.gender} placeholder={form.gender} />
 
-                <DropMenu values={userGender} func={setForm}/>
+                <DropMenu values={userGender}  onSelect={(value: string) => doSetForm('gender', value)}/>
 
                 <label htmlFor={'birthDate'}>B-day: </label>
                 <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth Date'} />
