@@ -69,7 +69,7 @@ export const UserForm = ({user} : Props) => {
                 <input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />
 
                 <label htmlFor={'gender'}>gender: </label>
-                <input type={'text'} name={'gender'} onChange={handleChange} value={form.gender} placeholder={form.gender} />
+                <input type={'text'} disabled={true} name={'gender'} placeholder={form.gender} />
 
                 <DropMenu values={userGender}  onSelect={(value: string) => doSetForm('gender', value)}/>
 
