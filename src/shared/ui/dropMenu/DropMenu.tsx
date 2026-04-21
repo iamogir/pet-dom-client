@@ -13,9 +13,7 @@ export const DropMenu = ({ values, onSelect, value, name }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
-    const showBlock = (event) => {
-        event.target.classList.toggle('hide');
-    }
+    const showBlock = () => setIsOpen(prev => !prev);
 
     return (
         <div ref={ref} >
