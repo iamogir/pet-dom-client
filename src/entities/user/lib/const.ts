@@ -1,11 +1,11 @@
 export const userCountry = [
     {
         key: 'IL',
-        namu: 'Israel'
+        name: 'Israel'
     },
     {
         key: 'RU',
-        namu: 'Russia'
+        name: 'Russia'
     }
 ]
 export const userGender = [ 'male', 'female' ];

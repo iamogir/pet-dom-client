@@ -3,7 +3,7 @@ import {type ChangeEvent, useState} from "react";
 import type {IUser, IUserForm} from "entities/user/model";
 import {imagePlaceholder} from "entities/pet/model";
 import {useEditUserById} from "entities/user/hooks";
-import {toServerUserObjectUpdate, userGender} from "entities/user/lib";
+import {toServerUserObjectUpdate, userCountry, userGender} from "entities/user/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
 
@@ -65,11 +65,14 @@ export const UserForm = ({user} : Props) => {
                 <label htmlFor={'phoneNumber'}>Phone: </label>
                 <input type={'tel'} name={'phoneNumber'} onChange={handleChange} value={form.phone} placeholder={'+972 54 851 99 65'} />
 
-                <label htmlFor={'country'}>Living country: </label>
-                <input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />
+                {/*<label htmlFor={'country'}>Living country: </label>*/}
+                {/*<input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />*/}
 
-                {/*<label htmlFor={'gender'}>gender: </label>*/}
-                {/*<input type={'text'} readOnly={true} value={form.gender} name={'gender'} onClick={showBlock} />*/}
+                <DropMenu values={userCountry.map(el => el.name)}
+                          onSelect={(value: string) => doSetForm('country', value)}
+                          value={form.country}
+                          name={'country'}
+                />
 
                 <DropMenu values={userGender}
                           onSelect={(value: string) => doSetForm('gender', value)}
