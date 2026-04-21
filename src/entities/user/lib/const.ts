@@ -8,4 +8,4 @@ export const userCountry = [
         name: 'Russia'
     }
 ]
-export const userGender = [ 'male', 'female' ];
+export const userGender = [ 'male', 'female', 'other' ];
