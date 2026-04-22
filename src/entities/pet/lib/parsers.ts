@@ -1,5 +1,5 @@
 import {assertPetBreeds, assertPetSex, assertPetSpecies} from "entities/pet/lib";
-import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
+import type {BirdBreed, PetSex, PetSpecies} from "entities/pet/model";
 
 export const parsePetSpecies = (species: string) => {
     assertPetSpecies(species);
@@ -8,7 +8,7 @@ export const parsePetSpecies = (species: string) => {
 
 export const parsePetBreed = (breed: string) => {
     assertPetBreeds(breed);
-    return breed as PetBreed;
+    return breed as BirdBreed;
 }
 
 export const parsePetSex = (sex: string) => {

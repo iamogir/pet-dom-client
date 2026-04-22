@@ -1,4 +1,4 @@
-import {petBreed, petSpecies} from "entities/pet/model";
+import {birdBreed, petType} from "entities/pet/model";
 import type {ChangeEvent} from "react";
 
 interface Props {
@@ -14,13 +14,13 @@ export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
             <p> Type filter</p>
             <select value={petType} name={'type'} onChange={filterFn}>
                 <option value="">all pet types</option>
-                {petSpecies.map(sp => <option key={sp}>{sp}</option>)}
+                {petType.map(sp => <option key={sp}>{sp}</option>)}
             </select>
 
             <p>Breed filter</p>
             <select value={petBreeds} name={'breed'} onChange={filterFn}>
                 <option value="">all breeds</option>
-                {petBreed.map(br => <option key={br}>{br}</option>)}
+                {birdBreed.map(br => <option key={br}>{br}</option>)}
             </select>
 
         </section>

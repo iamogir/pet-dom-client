@@ -1,4 +1,4 @@
-import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
+import type {BirdBreed, PetSex, PetSpecies} from "entities/pet/model";
 
 interface IPetBase {
     name: string;
@@ -14,7 +14,7 @@ export interface IPet {
     id: string;
     name: string;
     species: PetSpecies;
-    breed: PetBreed;
+    breed: BirdBreed;
     birthDate: Date;
     weight: number;
     sex: PetSex;
