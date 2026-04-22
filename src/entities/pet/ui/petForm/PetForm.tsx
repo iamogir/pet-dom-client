@@ -83,7 +83,7 @@ export const PetForm = ({ pet }: Props) => {
                 {/*<label htmlFor={'breed'}>Breed: </label>*/}
                 {/*<input type={'text'} name={'breed'} onChange={handleChange} value={form.breed} placeholder={'Breed'} />*/}
 
-                <DropMenu values={petSpecies.find((el) => el.name === form.species)!.breeds}
+                <DropMenu values={petSpecies.find((el) => el.name === form.species)?.breeds || []}
                           onSelect={(value: string) => doSetForm('breed', value)}
                           value={form.breed}
                           name={'breed'}
