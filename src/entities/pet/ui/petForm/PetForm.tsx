@@ -7,7 +7,7 @@ import {
     type IPetForm,
 } from "entities/pet/model";
 import {type ChangeEvent, useState} from "react";
-import {petSex, petSpecies, toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
+import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
 
