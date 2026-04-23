@@ -28,6 +28,12 @@ export const petBreedMap = {
     birdBreed: birdBreed,
 } as const;
 
+export type PetSpecies = keyof typeof petBreedMap;
+export type PetBreed<T extends PetSpecies> = (typeof petBreedMap)[T][number];
+
+// type Dog = PetBreed<'dog'>;
+// type Cat = PetBreed<'cat'>;
+
 // export const petType = [
 //     {
 //         name: 'cat',
@@ -56,11 +62,10 @@ export const petBreedMap = {
 // ] as const;
 
 // export const petSpecies = [ 'cat', 'dog', 'bird', 'rabbit' ] as const;
-export const petSpecies = petType.map(el => el.name);
-export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
+// export const petSpecies = petType.map(el => el.name);
+// export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
 
-// export type PetBreed<T extends PetSpecies> =
-//     (typeof petBreedMap)[T][number];
+
 
 // export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
 

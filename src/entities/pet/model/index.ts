@@ -4,7 +4,7 @@ export type {
     RabbitBreed, HareBreed, PetBreed
 } from './consts.ts'
 
-export { petSex, petType, imagePlaceholder, petSpecies } from './consts.ts';
+export { petSex, petBreedMap, imagePlaceholder } from './consts.ts';
 
 export type { IPet, IPetDto, IPetParsed,
     IPetForm, ICreatePetDto, IUpdatedPetDto,
