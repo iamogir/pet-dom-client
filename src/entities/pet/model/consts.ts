@@ -48,7 +48,7 @@ export const petType = [
 
 // export const petSpecies = [ 'cat', 'dog', 'bird', 'rabbit' ] as const;
 export const petSpecies = petType.map(el => el.name);
-export type PetSpecies = typeof petSpecies[number];
+export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
 
 export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
 
