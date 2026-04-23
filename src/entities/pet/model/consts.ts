@@ -50,6 +50,9 @@ export const petType = [
 export const petSpecies = petType.map(el => el.name);
 export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
 
-export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
+export type PetBreed<T extends PetSpecies> =
+    (typeof petBreedMap)[T][number];
+
+// export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
 
 export const imagePlaceholder = 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-cat-one-line-drawing-vector-illustration-minimalism-style-png-image_5330621.jpg';
