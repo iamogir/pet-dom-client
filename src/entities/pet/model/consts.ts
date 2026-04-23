@@ -50,8 +50,8 @@ export const petType = [
 export const petSpecies = petType.map(el => el.name);
 export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
 
-export type PetBreed<T extends PetSpecies> =
-    (typeof petBreedMap)[T][number];
+// export type PetBreed<T extends PetSpecies> =
+//     (typeof petBreedMap)[T][number];
 
 // export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
 
