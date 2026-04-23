@@ -5,12 +5,13 @@ import {
     petType,
     type PetSpecies,
     petSpecies,
-    type PetBreed
+    type PetBreed, petBreedMap
 } from "entities/pet/model";
 
 
 export const assertPetSpecies: (species: string) => void = (species: string): asserts species is PetSpecies => {
-    if (!(petSpecies.includes(species as PetSpecies))) throw new Error('invalid species!!! ' + species);
+    const temp = Object.values(petBreedMap);
+    if (!(temp.includes(species as PetSpecies))) throw new Error('invalid species!!! ' + species);
 }
 
 export const assertPetBreeds: (breeds: string) => void = (breeds: string): asserts breeds is PetBreed => {
