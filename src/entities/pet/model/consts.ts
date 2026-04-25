@@ -25,7 +25,7 @@ export const petBreedMap = {
     hamster: hamsterBreed,
     rabbit: rabbitBreed,
     hare: hareBreed,
-    birdBreed: birdBreed,
+    bird: birdBreed,
 } as const;
 
 export type PetSpecies = keyof typeof petBreedMap;
