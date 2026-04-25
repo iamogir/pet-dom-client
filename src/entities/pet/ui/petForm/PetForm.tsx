@@ -4,7 +4,7 @@ import {
     type ICreatePetDto,
     imagePlaceholder,
     type IPet,
-    type IPetForm,
+    type IPetForm, petBreedMap, petSex,
 } from "entities/pet/model";
 import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
@@ -35,6 +35,11 @@ export const PetForm = ({ pet }: Props) => {
             confirm: false
         }
     });
+    const species = Object.keys(petBreedMap);
+    const breeds = [];
+    for (const [key, value] of Object.entries(petBreedMap)) {
+        breeds.push(key === form.species ? value : []);
+    }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault();
@@ -74,7 +79,7 @@ export const PetForm = ({ pet }: Props) => {
                 {/*<label htmlFor={'species'}>Species: </label>*/}
                 {/*<input type={'text'} name={'species'} onChange={handleChange} value={form.species} placeholder={'Species'} />*/}
 
-                <DropMenu values={petSpecies.map(el => el.name)}
+                <DropMenu values={species}
                           onSelect={(value: string) => doSetForm('species', value)}
                           value={form.species}
                           name={'species'}
@@ -83,7 +88,7 @@ export const PetForm = ({ pet }: Props) => {
                 {/*<label htmlFor={'breed'}>Breed: </label>*/}
                 {/*<input type={'text'} name={'breed'} onChange={handleChange} value={form.breed} placeholder={'Breed'} />*/}
 
-                <DropMenu values={petSpecies.find((el) => el.name === form.species)?.breeds || []}
+                <DropMenu values={breeds as unknown as readonly string[]}
                           onSelect={(value: string) => doSetForm('breed', value)}
                           value={form.breed}
                           name={'breed'}
@@ -95,7 +100,7 @@ export const PetForm = ({ pet }: Props) => {
                 {/*<label htmlFor={'sex'}>Sex: </label>*/}
                 {/*<input type={'text'} name={'sex'} onChange={handleChange} value={form.sex} placeholder={'Sex'} />*/}
 
-                <DropMenu values={petSex}
+                <DropMenu values={[...petSex]}
                           onSelect={(value: string) => doSetForm('sex', value)}
                           value={form.sex}
                           name={'sex'}

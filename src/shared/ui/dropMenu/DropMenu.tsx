@@ -2,7 +2,7 @@ import style from './dropMenu.module.css'
 import {useEffect, useRef, useState} from "react";
 
 interface Props {
-    values: string[],
+    values: readonly string[],
     onSelect: (value: string) => void,
     value: string
     name: string
