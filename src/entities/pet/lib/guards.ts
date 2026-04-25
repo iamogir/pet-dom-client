@@ -14,7 +14,7 @@ export const assertPetSpecies: (species: string) => void = (species: string): as
 }
 
 export const assertPetBreeds = <T extends PetSpecies> (species: T, breeds: string): asserts breeds is PetBreed<T> => {
-    const validBreeds = petBreedMap[species];
+    const validBreeds = petBreedMap[species] as readonly string[];
     if (!validBreeds.includes(breeds as (typeof validBreeds)[number])) throw new Error('invalid breed!!!');
 }
 
