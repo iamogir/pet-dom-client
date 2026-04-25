@@ -10,8 +10,7 @@ import {
 
 
 export const assertPetSpecies: (species: string) => void = (species: string): asserts species is PetSpecies => {
-    const temp = Object.values(petBreedMap);
-    if (!(temp.includes(species as PetSpecies))) throw new Error('invalid species!!! ' + species);
+    if (!(Object.values(petBreedMap).includes(species as PetSpecies))) throw new Error('invalid species!!! ' + species);
 }
 
 export const assertPetBreeds = <T extends PetSpecies> (species: T, breeds: string): asserts breeds is PetBreed<T> => {
