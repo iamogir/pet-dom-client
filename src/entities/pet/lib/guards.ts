@@ -1,19 +1,17 @@
 import {
-    type BirdBreed,
     petSex,
     type PetSex,
-    petType,
     type PetSpecies,
-    petSpecies,
-    type PetBreed, petBreedMap
+    type PetBreed,
+    petBreedMap
 } from "entities/pet/model";
 
 
 export const assertPetSpecies: (species: string) => void = (species: string): asserts species is PetSpecies => {
-    if (!(species in petSpecies)) throw new Error('invalid species!!! ' + species);
+    if (!(species in petBreedMap)) throw new Error('invalid species!!! ' + species);
 }
 
-export const assertPetBreeds = <T extends PetSpecies> (species: T, breeds: string): asserts breeds is PetBreed<T> => {
+export const assertPetBreeds: <T extends PetSpecies>(species: T, breed: string) => asserts breed is PetBreed<T> = (species, breeds) => {
     const validBreeds = petBreedMap[species] as readonly string[];
     if (!validBreeds.includes(breeds as (typeof validBreeds)[number])) throw new Error('invalid breed!!!');
 }
