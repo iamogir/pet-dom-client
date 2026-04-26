@@ -9,7 +9,9 @@ interface Props {
 
 export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
 
-    const breedsArr = petBreeds.toLowerCase() as keyof typeof petBreedMap;
+    const breedsArr = petType.toLowerCase() as keyof typeof petBreedMap;
+
+    console.log(petBreedMap[breedsArr])
 
     return (
         <section>
@@ -22,7 +24,7 @@ export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
             <p>Breed filter</p>
             <select value={petBreeds} name={'breed'} onChange={filterFn}>
                 <option value="">all breeds</option>
-                {petBreedMap[breedsArr].map(br => <option key={br}>{br}</option>)}
+                {petBreedMap[breedsArr]?.map(br => <option key={br}>{br}</option>)}
             </select>
 
         </section>
