@@ -38,7 +38,7 @@ export const PetForm = ({ pet }: Props) => {
     const species = Object.keys(petBreedMap);
     const breeds = [];
     for (const [key, value] of Object.entries(petBreedMap)) {
-        breeds.push(key === form.species ? value : []);
+        if (key === form.species) breeds.push(...value);
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
