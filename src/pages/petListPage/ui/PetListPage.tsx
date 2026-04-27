@@ -56,7 +56,7 @@ export const PetListPage = () => {
     return (
         <div>
             {userPets.isLoading ? <p> One second, checking pets...</p> :
-                userPets.error ? <p>Oh, something goes wrong: {userPets.error.message}</p> :
+                userPets.error ? <p>Oh, something goes wrong: {userPets.error.message + ' ' + userPets.error}</p> :
                     <div className={style.petCards}>
                         {userPets.data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </div>
