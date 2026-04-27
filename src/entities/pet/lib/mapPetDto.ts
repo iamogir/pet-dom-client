@@ -2,16 +2,17 @@ import {type IPet, type IPetDto, type IPets, type IPetsDto,} from "entities/pet/
 import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 
 export function fromServerPetObject(obj: IPetDto): IPet {
+    console.log(obj.species + " PPPPPPPP")
+    const species = parsePetSpecies(obj.species);
     const newObj: IPet = {
         id: obj.id,
         name: obj.name,
-        species: parsePetSpecies(obj.species),
-        breed: parsePetBreed(obj.breed),
+        species: species,
+        breed: parsePetBreed(species, obj.breed),
         birthDate: new Date(obj.birthDate),
         weight: obj.weight,
         sex: parsePetSex(obj.sex),
     }
-
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
     return newObj;
 }
