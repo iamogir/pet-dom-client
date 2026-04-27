@@ -11,8 +11,6 @@ export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
 
     const breedsArr = petType.toLowerCase() as keyof typeof petBreedMap;
 
-    console.log(petBreedMap[breedsArr])
-
     return (
         <section>
             <p> Type filter</p>
