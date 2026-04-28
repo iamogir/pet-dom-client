@@ -32,9 +32,7 @@ export const UserForm = ({user} : Props) => {
     })
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        // event.preventDefault();
         const eventTarget = event.target;
-        // setForm(prev => ({...prev,  [eventTarget.name]: eventTarget.value }))
         doSetForm(eventTarget.name, eventTarget.value);
     }
 
