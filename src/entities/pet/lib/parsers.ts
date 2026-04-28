@@ -6,9 +6,9 @@ export const parsePetSpecies = (species: string) => {
     return species as PetSpecies;
 }
 
-export const parsePetBreed = (breed: string) => {
-    assertPetBreeds(breed);
-    return breed as PetBreed;
+export const parsePetBreed = <T extends PetSpecies>(species: T, breed: string): PetBreed<T> => {
+    assertPetBreeds(species, breed);
+    return breed as PetBreed<T>;
 }
 
 export const parsePetSex = (sex: string) => {

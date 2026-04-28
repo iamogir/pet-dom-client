@@ -1,10 +1,74 @@
 export const petSex = [ 'male',  'female' ] as const;
 export type PetSex = typeof petSex[number];
 
-export const petSpecies = [ 'cat', 'dog', 'bird', 'rabbit' ] as const;
-export type PetSpecies = typeof petSpecies[number];
+const dogBreed = [ 'corgi', 'beagle', 'spaniel', 'jack' ] as const;
+export type DogBreed = typeof dogBreed[number];
 
-export const petBreed = [ 'beagle', 'corgi', 'jack', 'spaniel' , 'cheshir'] as const;
-export type PetBreed = typeof petBreed[number];
+const catBreed = [ 'cheerio', 'munchkin'] as const;
+export type CatBreed = typeof catBreed[number];
+
+const birdBreed = [ 'kanareyka', 'korella' ] as const;
+export type BirdBreed = typeof birdBreed[number];
+
+const hamsterBreed = [ 'somebody', 'smth'] as const;
+export type HamsterBreed = typeof hamsterBreed[number];
+
+const rabbitBreed = ['black', 'white'] as const;
+export type RabbitBreed = typeof rabbitBreed[number];
+
+const hareBreed = [ 'breed', 'hare breed'] as const;
+export type HareBreed = typeof hareBreed[number];
+
+export const petBreedMap = {
+    cat: catBreed,
+    dog: dogBreed,
+    hamster: hamsterBreed,
+    rabbit: rabbitBreed,
+    hare: hareBreed,
+    bird: birdBreed,
+} as const;
+
+export type PetSpecies = keyof typeof petBreedMap;
+export type PetBreed<T extends PetSpecies> = (typeof petBreedMap)[T][number];
+
+// type Dog = PetBreed<'dog'>;
+// type Cat = PetBreed<'cat'>;
+
+// export const petType = [
+//     {
+//         name: 'cat',
+//         breeds: catBreed
+//     },
+//     {
+//         name: 'dog',
+//         breeds: dogBreed
+//     },
+//     {
+//         name: 'hamster',
+//         breeds: hamsterBreed
+//     },
+//     {
+//         name: 'rabbit',
+//         breeds: rabbitBreed
+//     },
+//     {
+//         name: 'hare',
+//         breeds: hareBreed
+//     },
+//     {
+//         name: 'bird',
+//         breeds: birdBreed
+//     }
+// ] as const;
+
+// export const petSpecies = [ 'cat', 'dog', 'bird', 'rabbit' ] as const;
+// export const petSpecies = petType.map(el => el.name);
+// export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
+
+
+
+// export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
+
+
 
 export const imagePlaceholder = 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-cat-one-line-drawing-vector-illustration-minimalism-style-png-image_5330621.jpg';

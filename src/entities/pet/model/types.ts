@@ -10,11 +10,11 @@ interface IPetBase {
     photoUrl?: string;
 }
 
-export interface IPet {
+export interface IPet<T extends PetSpecies = PetSpecies> {
     id: string;
     name: string;
-    species: PetSpecies;
-    breed: PetBreed;
+    species: T;
+    breed: PetBreed<T>;
     birthDate: Date;
     weight: number;
     sex: PetSex;

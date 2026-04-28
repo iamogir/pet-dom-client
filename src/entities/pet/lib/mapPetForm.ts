@@ -2,10 +2,11 @@ import type {IPetForm, ICreatePetDto, IUpdatedPetDto, IPetParsed} from "entities
 import {parsePetBreed, parsePetSex, parsePetSpecies} from "entities/pet/lib";
 
 const parsePetObject = (obj: IPetForm): IPetParsed => {
+    const species = parsePetSpecies(obj.species);
     const newObj : IPetParsed = {
         name: obj.name,
-        species: parsePetSpecies(obj.species),
-        breed: parsePetBreed(obj.breed),
+        species: species,
+        breed: parsePetBreed(species, obj.breed),
         birthDate: obj.birthDate,
         weight: obj.weight,
         sex: parsePetSex(obj.sex),

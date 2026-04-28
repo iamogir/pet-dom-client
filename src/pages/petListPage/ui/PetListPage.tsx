@@ -1,6 +1,8 @@
-import style from "pages/homePage/ui/homePage.module.css";
+// import style from "pages/homePage/ui/homePage.module.css";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useAllPets, useMyPets} from "entities/pet/hooks";
+import {useAllPets,
+    // useMyPets
+} from "entities/pet/hooks";
 import {useSearchParams} from "react-router-dom";
 import {PetFilter, PetSearch} from "pages/petListPage";
 import type {ChangeEvent} from "react";
@@ -13,7 +15,7 @@ export const PetListPage = () => {
     const type = searchParams.get("type") || '';
     const breed = searchParams.get("breed") || '';
 
-    const userPets = useMyPets();
+    // const userPets = useMyPets();
     const petsQuery = useAllPets();
 
     const filterResults = petsQuery.data?.data.filter(el => {
@@ -53,14 +55,18 @@ export const PetListPage = () => {
 
     }
 
+    //change line
+    //ask what to do
+    //check parse user
+
     return (
         <div>
-            {userPets.isLoading ? <p> One second, checking pets...</p> :
-                userPets.error ? <p>Oh, something goes wrong: {userPets.error.message}</p> :
-                    <div className={style.petCards}>
-                        {userPets.data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
-                    </div>
-            }
+            {/*{userPets.isLoading ? <p> One second, checking pets...</p> :*/}
+            {/*    userPets.error ? <p>Oh, something goes wrong: {userPets.error.message + ' ' + userPets.error}</p> :*/}
+            {/*        <div className={style.petCards}>*/}
+            {/*            {userPets.data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}*/}
+            {/*        </div>*/}
+            {/*}*/}
             <h1>ALL APP PETS</h1>
             <PetSearch value={searchName} searchFn={handleSearch}/>
             <PetFilter petType={type} petBreeds={breed} filterFn={handleFilterChange}/>
