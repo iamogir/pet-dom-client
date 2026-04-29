@@ -39,21 +39,21 @@ export const PetListPage = () => {
     //     })
     // }
 
-    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-
-        setSearchParams(prev => {
-            const params = new URLSearchParams(prev);
-            const eventTarget = event.target;
-            const value = eventTarget.value;
-            const name = eventTarget.name;
-
-            if (value) params.set(name, value);
-            else params.delete(name);
-
-            return params;
-        })
-
-    }
+    // const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    //
+    //     setSearchParams(prev => {
+    //         const params = new URLSearchParams(prev);
+    //         const eventTarget = event.target;
+    //         const value = eventTarget.value;
+    //         const name = eventTarget.name;
+    //
+    //         if (value) params.set(name, value);
+    //         else params.delete(name);
+    //
+    //         return params;
+    //     })
+    //
+    // }
 
     //TODO common fn for handle here
 
