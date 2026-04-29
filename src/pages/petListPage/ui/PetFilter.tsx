@@ -4,7 +4,7 @@ import {petBreedMap} from "entities/pet/model";
 interface Props {
     petType: string,
     petBreeds: string,
-    filterFn: (event: ChangeEvent<HTMLSelectElement>) => void
+    filterFn: (event: ChangeEvent<HTMLSelectElement>) => void,
 }
 
 export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {

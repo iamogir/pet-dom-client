@@ -1,7 +1,7 @@
 import type {ChangeEvent} from "react";
 
 interface Props {
-    searchFn: (event: ChangeEvent<HTMLInputElement>) => void
+    searchFn: (event: ChangeEvent<HTMLInputElement>) => void,
     value: string
 }
 export const PetSearch = ({ searchFn, value }: Props) => {
