@@ -57,6 +57,20 @@ export const PetListPage = () => {
 
     //TODO common fn for handle here
 
+    const handleSearchFilter = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setSearchParams(prev => {
+            const params = new URLSearchParams(prev);
+            const eventTarget = event.target;
+            const value = eventTarget.value;
+            const name = eventTarget.name;
+
+            if (value) params.set(name, value);
+            else params.delete(name);
+
+            return params;
+        })
+    }
+
     return (
         <div>
             {/*{userPets.isLoading ? <p> One second, checking pets...</p> :*/}
@@ -66,8 +80,8 @@ export const PetListPage = () => {
             {/*        </div>*/}
             {/*}*/}
             <h1>ALL APP PETS</h1>
-            <PetSearch value={searchName} searchFn={handleSearch}/>
-            <PetFilter petType={type} petBreeds={breed} filterFn={handleFilterChange}/>
+            <PetSearch value={searchName} searchFn={handleSearchFilter}/>
+            <PetFilter petType={type} petBreeds={breed} filterFn={handleSearchFilter}/>
             { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
         </div>
     );
