@@ -25,19 +25,19 @@ export const PetListPage = () => {
         return isType && isBreed && isSearch;
     })
 
-    const handleFilterChange= (event: ChangeEvent<HTMLSelectElement>) => {
-        setSearchParams(prev => {
-            const params = new URLSearchParams(prev);
-            const eventTarget = event.target;
-            const value = eventTarget.value;
-            const name = eventTarget.name;
-
-            if (value) params.set(name, value);
-                else params.delete(name);
-
-            return params;
-        })
-    }
+    // const handleFilterChange= (event: ChangeEvent<HTMLSelectElement>) => {
+    //     setSearchParams(prev => {
+    //         const params = new URLSearchParams(prev);
+    //         const eventTarget = event.target;
+    //         const value = eventTarget.value;
+    //         const name = eventTarget.name;
+    //
+    //         if (value) params.set(name, value);
+    //             else params.delete(name);
+    //
+    //         return params;
+    //     })
+    // }
 
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
 
