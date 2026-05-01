@@ -10,7 +10,6 @@ interface Props {
 export const PetFilter = ({ petType, petBreeds, filterFn }: Props) => {
 
     const breedsArr = petType.toLowerCase() as keyof typeof petBreedMap;
-
     return (
         <section>
             <p> Type filter</p>
