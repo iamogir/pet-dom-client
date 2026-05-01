@@ -55,10 +55,6 @@ export const PetListPage = () => {
     //
     // }
 
-    //TODO common fn for handle here
-    //TODO check working
-    //check base and back
-
     const handleSearchFilter = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setSearchParams(prev => {
             const params = new URLSearchParams(prev);
