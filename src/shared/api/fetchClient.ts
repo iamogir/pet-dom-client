@@ -22,6 +22,7 @@ export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promis
     })
     if (response.status === 401) {
        removeToken();
+        console.log('Unauthorized');
     }
 
     // if (!response.ok) {
