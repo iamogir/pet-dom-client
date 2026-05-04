@@ -17,4 +17,8 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit) => {
         removeToken();
         throw new Error('Unauthorized');
     }
+    if (!response.ok) {
+        const error = await response.text()
+        throw new Error(error)
+    }
 }
