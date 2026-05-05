@@ -1,5 +1,6 @@
 import {getToken, removeToken} from "features/auth/utils";
 import {fetchClient} from "shared/api/fetchClient.ts";
+import {AuthError} from "shared/api/errors.ts";
 
 export const apiClient = async <T>(endpoint: string, options?: RequestInit) => {
     const token = getToken();
@@ -19,6 +20,8 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit) => {
     }
     if (!response.ok) {
         const error = await response.text()
-        throw new Error(error)
+        throw new AuthError(error)
     }
+
+    return response.json();
 }
