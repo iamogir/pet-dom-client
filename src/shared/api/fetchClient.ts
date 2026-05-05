@@ -1,9 +1,7 @@
 import {BASE_URL} from "shared/const";
 
 
-export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promise<T> =
-
-    async (endpoint, options?)=> {
+export const fetchClient = async (endpoint: string, options?: RequestInit)=> {
 
     // const token = getToken();
     const headers = new Headers(options?.headers);
@@ -15,10 +13,6 @@ export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promis
     //     headers.set('Authorization', `Bearer ${token}`);
     // }
 
-    const response = await fetch(BASE_URL + endpoint, {
-        ...options,
-        headers,
-    })
     // if (response.status === 401) {
     //    removeToken();
     //     console.log('Unauthorized');
@@ -29,5 +23,8 @@ export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promis
     //     throw new Error(error)
     // }
 
-    return response.json();
+    return await fetch(BASE_URL + endpoint, {
+        ...options,
+        headers,
+    });
 }
