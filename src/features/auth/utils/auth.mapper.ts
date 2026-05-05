@@ -36,6 +36,7 @@ export const fromServerUserResponseDto = (dto: IUserResponseDto): IUserResponse 
 }
 
 export const fromServerCurrentUserDto = (dto: IUserCurrentDto): IUserCurrent => {
+    console.log(dto)
     return {
         id: dto.id,
         email: dto.email,

@@ -13,6 +13,10 @@ export const fetchClient = async (endpoint: string, options?: RequestInit)=> {
     //     headers.set('Authorization', `Bearer ${token}`);
     // }
 
+    const response = await fetch(BASE_URL + endpoint, {
+        ...options,
+        headers,
+    })
     // if (response.status === 401) {
     //    removeToken();
     //     console.log('Unauthorized');
@@ -23,8 +27,5 @@ export const fetchClient = async (endpoint: string, options?: RequestInit)=> {
     //     throw new Error(error)
     // }
 
-    return await fetch(BASE_URL + endpoint, {
-        ...options,
-        headers,
-    });
+    return response;
 }
