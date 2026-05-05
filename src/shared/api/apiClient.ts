@@ -1,8 +1,8 @@
 import {getToken, removeToken} from "features/auth/utils";
 import {fetchClient} from "shared/api/fetchClient.ts";
-import {AuthError} from "shared/api/errors.ts";
+import {ApiError, AuthError} from "shared/api/errors.ts";
 
-export const apiClient = async <T>(endpoint: string, options?: RequestInit) => {
+export const apiClient = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
     const token = getToken();
 
     const response: Response = await fetchClient(endpoint, {
@@ -16,11 +16,11 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit) => {
 
     if (response.status === 401) {
         removeToken();
-        throw new Error('Unauthorized');
+        throw new AuthError();
     }
     if (!response.ok) {
         const error = await response.text()
-        throw new AuthError(error)
+        throw new ApiError(error)
     }
 
     return response.json();
