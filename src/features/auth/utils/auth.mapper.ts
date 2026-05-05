@@ -6,6 +6,7 @@ import type {
     IUserResponse,
     IUserResponseDto
 } from "features/auth/types";
+import {parseUserCountry, parseUserGender} from "entities/user/lib";
 
 export const toServerFormRegister = (obj: IRegisterForm): IRegisterDto => {
     return {
@@ -36,10 +37,14 @@ export const fromServerUserResponseDto = (dto: IUserResponseDto): IUserResponse 
 }
 
 export const fromServerCurrentUserDto = (dto: IUserCurrentDto): IUserCurrent => {
-    console.log(dto)
     return {
         id: dto.id,
         email: dto.email,
-        name: dto.name,
+        firstName: dto.firstName,
+        lastName: dto.lastName,
+        phone: dto.phone,
+        country: parseUserCountry(dto.country),
+        birthDate: new Date(dto.birthDate),
+        gender: parseUserGender(dto.gender),
     }
 }
