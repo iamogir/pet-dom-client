@@ -4,6 +4,11 @@ import {ApiError, AuthError} from "shared/api/errors.ts";
 
 export const apiClient = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
     const token = getToken();
+    const headers = new Headers(options?.headers);
+
+    if (token && !headers.has('Authorization')) {
+        headers.set('Authorization', `Bearer ${token}`);
+    }
 
     const response: Response = await fetchClient(endpoint, {
         ...options,
