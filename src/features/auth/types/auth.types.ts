@@ -19,7 +19,8 @@ export type ILoginDto = IAuthBase
 export interface IUserCurrent {
     id: string,
     email: string,
-    name: string,
+    firstName: string,
+    lastName: string,
 }
 
 export type IUserCurrentDto = IUserCurrent
