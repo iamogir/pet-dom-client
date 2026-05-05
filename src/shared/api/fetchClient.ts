@@ -1,5 +1,4 @@
 import {BASE_URL} from "shared/const";
-import {getToken} from "features/auth/utils";
 
 
 export const fetchClient: <T>(endpoint: string, options?: RequestInit) => Promise<T> =
