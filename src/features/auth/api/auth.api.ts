@@ -11,7 +11,6 @@ import {apiClient} from "shared/api";
 
 export const login = async (data: ILoginDto):Promise<IUserResponse> => {
     const me: IUserResponseDto = await apiClient('auth/login', {method: 'POST', body: JSON.stringify(data)});
-    console.log(me)
     return fromServerUserResponseDto(me);
 }
 
