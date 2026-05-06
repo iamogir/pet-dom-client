@@ -68,11 +68,11 @@ export const router = createBrowserRouter([
             }
 
             // temp!
-            ,
-            {
-                path: 'all_app_pets',
-                element: <PetListPage/>
-            }
+            // ,
+            // {
+            //     path: 'all_app_pets',
+            //     element: <PetListPage/>
+            // }
         ],
         errorElement: <ErrorPage/>
     },
