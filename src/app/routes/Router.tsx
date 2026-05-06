@@ -31,12 +31,6 @@ export const router = createBrowserRouter([
                          </RequireAuth>,
             },
             {
-                path: 'user/me', //TODO check this !
-                element: <RequireAuth>
-                            <ProfilePageFromRoute/>
-                         </RequireAuth>
-            },
-            {
                 path: 'user',
                 element: <Navigate to={'/user/me'} replace/>,
             },
