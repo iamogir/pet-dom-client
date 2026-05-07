@@ -1,3 +1,5 @@
+import type {UserCountry, UserGender} from "entities/user/model";
+
 interface IAuthBase {
     email: string,
     password: string
@@ -19,10 +21,21 @@ export type ILoginDto = IAuthBase
 export interface IUserCurrent {
     id: string,
     email: string,
-    name: string,
+
+    firstName: string;
+    lastName: string;
+    phone: string;
+    country: UserCountry;
+    birthDate: Date;
+    gender: UserGender;
+    avatarUrl?: string;
 }
 
-export type IUserCurrentDto = IUserCurrent
+export interface IUserCurrentDto extends Omit<IUserCurrent, 'birthDate' | 'gender' | 'country'> {
+    country: string,
+    birthDate: string,
+    gender: string,
+}
 
 export interface IAuthContext {
     logout: () => void,

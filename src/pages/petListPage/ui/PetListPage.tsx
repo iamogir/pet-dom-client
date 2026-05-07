@@ -25,22 +25,7 @@ export const PetListPage = () => {
         return isType && isBreed && isSearch;
     })
 
-    const handleFilterChange= (event: ChangeEvent<HTMLSelectElement>) => {
-        setSearchParams(prev => {
-            const params = new URLSearchParams(prev);
-            const eventTarget = event.target;
-            const value = eventTarget.value;
-            const name = eventTarget.name;
-
-            if (value) params.set(name, value);
-                else params.delete(name);
-
-            return params;
-        })
-    }
-
-    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-
+    const handleSearchFilter = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setSearchParams(prev => {
             const params = new URLSearchParams(prev);
             const eventTarget = event.target;
@@ -52,12 +37,7 @@ export const PetListPage = () => {
 
             return params;
         })
-
     }
-
-    //change line
-    //ask what to do
-    //check parse user
 
     return (
         <div>
@@ -68,8 +48,8 @@ export const PetListPage = () => {
             {/*        </div>*/}
             {/*}*/}
             <h1>ALL APP PETS</h1>
-            <PetSearch value={searchName} searchFn={handleSearch}/>
-            <PetFilter petType={type} petBreeds={breed} filterFn={handleFilterChange}/>
+            <PetSearch value={searchName} searchFn={handleSearchFilter}/>
+            <PetFilter petType={type} petBreeds={breed} filterFn={handleSearchFilter}/>
             { filterResults?.map(el => <PetCard key={el.id} pet={el}/>)}
         </div>
     );

@@ -2,6 +2,7 @@ import {type IUsers, type IUsersDto, type IUser, type IUserDto} from "entities/u
 import {parseUserCountry, parseUserGender} from "entities/user/lib";
 
 export const fromServerUserDto= (obj: IUserDto): IUser => {
+    console.log(obj)
     const newObj: IUser = {
         id: obj.id,
         email: obj.email,

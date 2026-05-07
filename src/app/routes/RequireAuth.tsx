@@ -8,8 +8,9 @@ interface Props {
 
 export const RequireAuth = ({ children }: Props) => {
 
-    const { data } = useMe();
+    const { data, isLoading } = useMe();
 
+    if (isLoading) return <p>Loading...</p>;
     if (!data) return <Navigate to={'/sign_in'} replace/>
 
     return children;
