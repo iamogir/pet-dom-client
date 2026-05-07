@@ -47,7 +47,7 @@ export const Weather = () => {
         99: { icon: "⛈️🧊", description: "Thunderstorm with heavy hail" }
     };
 
-    const [weather, setWeather] = useState({temp: 0, state: 'unknown weather'});
+    const [weather, setWeather] = useState({temp: 0, icon: '', state: 'unknown weather', format: ''});
     const urlData = 'https://nominatim.openstreetmap.org/search?q=' + city + '&format=json&limit=1';
 
     const fn3 = async () => {
@@ -64,7 +64,7 @@ export const Weather = () => {
 
         console.log(json);
 
-        return { temp: json.current.temperature_2m, state:  json.current_units.temperature_2m };
+        return { temp: json.current.temperature_2m, state:  json.current.weather_code, format: json.current_units.temperature_2m };
     }
 
     useEffect(() => {
@@ -73,14 +73,14 @@ export const Weather = () => {
             const res = await fn();
             console.log(res)
 
-            setWeather({ temp: res.temp, state: res.state });
+            setWeather({ temp: res.temp, state: weatherCodes[res.state].description, format: res.format, icon: weatherCodes[res.state].icon });
         }
         fn2();
     }, [])
 
     return (
         <>
-            {weather.state} ({weather.temp + weather.state})
+            {weather.state.toLowerCase()} ({weather.temp + weather.format + ' ' + weather.icon})
         </>
     );
 };
