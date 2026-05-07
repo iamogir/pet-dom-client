@@ -3,11 +3,23 @@ import {useEffect, useState} from "react";
 
 export const Weather = () => {
 
-    const [weather, setWeather] = useState({temp: 0, state: 'unknown weather'});
-    const url = 'https://api.weather.gov/points/40.7128,-74.0060';
+    const city = 'New+York';
+
+    const [weather, setWeather] = useState({temp: '0', state: 'unknown weather'});
+    const url = 'https://api.weather.gov/points/';
+    const urlData = 'https://nominatim.openstreetmap.org/search?q=' + city + '&format=json&limit=1';
+    console.log(urlData);
+
+    const fn3 = async () => {
+        const resp = await fetch(urlData);
+        const json = await resp.json();
+        return [json[0].lat, json[0].lon];
+    }
 
     const fn = async () => {
-        const response = await fetch(url);
+        const data = await fn3();
+
+        const response = await fetch(url + data[0] + ',' + data[1]);
         const json = await response.json();
         const forecastUrl = json.properties.forecast;
         const forecastRes = await fetch(forecastUrl);
@@ -18,19 +30,26 @@ export const Weather = () => {
         return { temp: current.temperature, state: current.shortForecast };
     }
 
+    const tempToC = (f) => {
+        // (32 °F − 32) × 5/9 = 0 °C
+        return (f - 32) * 5/9;
+
+    }
+
     useEffect(() => {
         console.log(weather);
         const fn2 = async () => {
             const res = await fn();
             console.log(res)
-            setWeather(res);
+
+            setWeather({ temp: tempToC(res.temp).toFixed(), state: res.state.toLowerCase() });
         }
         fn2();
     }, [])
 
     return (
         <>
-            {weather.state.toLowerCase()} ({weather.temp + 'F'})
+            {weather.state} ({weather.temp + ' C'})
         </>
     );
 };
