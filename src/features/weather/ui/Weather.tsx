@@ -75,7 +75,7 @@ export const Weather = () => {
             const res = await fn();
             console.log(res)
 
-            setWeather({ temp: res.temp, state: weatherCodes[res.state].description, format: res.format, icon: weatherCodes[res.state].icon });
+            setWeather({ temp: res.temp, state: weatherCodes[res.state].description, format: res.format, icon: weatherCodes[res.state].icon }); //delete warning
         }
         fn2();
     }, [])
