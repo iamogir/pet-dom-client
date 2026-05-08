@@ -6,7 +6,7 @@ export const Weather = () => {
     //make good elements
 
     const city = 'Haifa';
-    const weatherCodes = {
+    const weatherCodes = { // const
         0:  { icon: "☀️",  description: "Clear sky" },
 
         1:  { icon: "🌤️", description: "Mainly clear" },
