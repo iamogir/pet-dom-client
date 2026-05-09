@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 
 export const Weather = () => {
 
-    //make good elements
 
     const city = 'Haifa';
     const weatherCodes = { // const
