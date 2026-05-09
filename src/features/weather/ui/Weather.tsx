@@ -4,14 +4,10 @@ import type {WeatherData, WeatherResponse} from "features/weather/types";
 import type {Coordinates} from "features/weather/types/weather.types.ts";
 
 interface Props {
-    cityTemp: string
+    city: string
 }
 
-export const Weather = ({ cityTemp } : Props) => {
-
-    console.log(cityTemp)
-
-    const city = 'Haifa';
+export const Weather = ({ city } : Props) => {
 
     const [weather, setWeather] = useState<WeatherData>({
         temperature: 0,
@@ -19,10 +15,10 @@ export const Weather = ({ cityTemp } : Props) => {
         description: 'unknown weather',
         format: ''
     });
-    const urlData = 'https://nominatim.openstreetmap.org/search?q=' + city + '&format=json&limit=1';
+    const urlCoordinates = 'https://nominatim.openstreetmap.org/search?q=' + city + '&format=json&limit=1';
 
     const getCoordinates = async () => {
-        const response = await fetch(urlData);
+        const response = await fetch(urlCoordinates);
         const json = await response.json();
 
         return { lat: json[0].lat, lon: json[0].lon };
@@ -40,7 +36,6 @@ export const Weather = ({ cityTemp } : Props) => {
     }
 
     useEffect(() => {
-        console.log(weather);
         const updateWeather = async () => {
             const res: WeatherResponse = await getWeather();
 
