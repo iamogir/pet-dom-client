@@ -3,6 +3,11 @@ export interface WeatherBase {
     description: string;
 }
 
+export interface WeatherData extends WeatherBase {
+    temperature: number;
+    format: string;
+}
+
 export type WeatherCode =
     0 |
     1 | 2 | 3 |
@@ -17,3 +22,8 @@ export type WeatherCode =
     85 | 86 |
     95 |
     96 | 99;
+
+export interface Coordinates {
+    lat: string;
+    lon: string
+}
