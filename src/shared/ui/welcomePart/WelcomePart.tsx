@@ -24,12 +24,15 @@ export const WelcomePart = () => {
         hello = 'Good night';
     }
 
+    if (isLoading) {
+        return (<h1>LOADING...</h1>)
+    }
+
     return (
         // <div className={style.box}>
             <h1 className={style.weather}>
-                { isLoading ? 'loading...' :
-                    `${hello}, my darling! Today ${today}/${month}/${year} and ${<br/>} outside is so
-                ${<span style={{ color: 'red' }}> <Weather city={data?.country ?? ''}/></span>} now` }
+                {hello}, my darling! Today {today}/{month}/{year} and <br/> outside is so
+                <span style={{ color: 'red' }}> <Weather cityTemp={data?.country ?? ''}/></span> now
             </h1>
         // </div>
     );

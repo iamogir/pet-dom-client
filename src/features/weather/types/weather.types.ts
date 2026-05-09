@@ -8,6 +8,8 @@ export interface WeatherData extends WeatherBase {
     format: string;
 }
 
+export response
+
 export type WeatherCode =
     0 |
     1 | 2 | 3 |

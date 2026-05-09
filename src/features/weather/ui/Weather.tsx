@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {weatherCodes} from "features/weather/const";
-import type {WeatherData} from "features/weather/types";
+import type {WeatherCode, WeatherData} from "features/weather/types";
 import type {Coordinates} from "features/weather/types/weather.types.ts";
 
 interface Props {
@@ -23,30 +23,37 @@ export const Weather = ({ cityTemp } : Props) => {
 
     const getCoordinates = async () => {
         const response = await fetch(urlData);
-        const json: Coordinates[] = await response.json();
-        return [json[0].lat, json[0].lon];
+        const json = await response.json();
+        return { lat: json[0].lat, lon: json[0].lon };
     }
 
     const getWeather = async () => {
-        const data = await getCoordinates();
+        const data: Coordinates = await getCoordinates();
 
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + data[0] + '&longitude=' + data[1] + '&current=temperature_2m,weather_code');
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + data.lat + '&longitude=' + data.lon + '&current=temperature_2m,weather_code');
         const json = await response.json();
 
         console.log(json);
 
-        return { temp: json.current.temperature_2m, state:  json.current.weather_code, format: json.current_units.temperature_2m };
+        return { temperature: json.current.temperature_2m, description:  json.current.weather_code, format: json.current_units.temperature_2m };
     }
 
     useEffect(() => {
         console.log(weather);
-        const fn2 = async () => {
-            const res = await getWeather();
-            console.log(res)
+        const updateWeather = async () => {
+            const res: {
+                temperature: number;
+                description: WeatherCode;
+                format: string;
+            } = await getWeather();
 
-            setWeather({ temp: res.temp, state: weatherCodes[res.state].description, format: res.format, icon: weatherCodes[res.state].icon }); //delete warning
+            setWeather({
+                temperature: res.temperature,
+                description: weatherCodes[res.description].description,
+                format: res.format,
+                icon: weatherCodes[res.description].icon });
         }
-        fn2();
+        updateWeather();
     }, [])
 
     return (
