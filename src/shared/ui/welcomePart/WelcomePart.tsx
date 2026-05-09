@@ -1,5 +1,6 @@
 import style from './welcomePart.module.css'
 import {Weather} from "features/weather/ui";
+import {useMe} from "features/auth/hooks";
 
 export const WelcomePart = () => {
 
@@ -8,6 +9,8 @@ export const WelcomePart = () => {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const time = date.getHours()
+
+    const { data, isLoading } = useMe();
 
     let hello: string; //TODO: put in the store! Redux !!!
 
@@ -23,8 +26,11 @@ export const WelcomePart = () => {
 
     return (
         // <div className={style.box}>
-            <h1 className={style.weather}>{hello}, my darling! Today {today}/{month}/{year} and <br/> outside is so
-            <span style={{ color: 'red' }}> <Weather/></span> now</h1>
+            <h1 className={style.weather}>
+                { isLoading ? 'loading...' :
+                    `${hello}, my darling! Today ${today}/${month}/${year} and ${<br/>} outside is so
+                ${<span style={{ color: 'red' }}> <Weather city={data?.country ?? ''}/></span>} now` }
+            </h1>
         // </div>
     );
 };
