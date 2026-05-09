@@ -8,7 +8,9 @@ export interface WeatherData extends WeatherBase {
     format: string;
 }
 
-export response
+export interface WeatherResponse extends Omit<WeatherData, 'description' | 'icon'> {
+    description: WeatherCode;
+}
 
 export type WeatherCode =
     0 |

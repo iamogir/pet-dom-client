@@ -1,1 +1,1 @@
-export type { WeatherBase, WeatherCode, WeatherData } from './weather.types.ts'
+export type { WeatherBase, WeatherCode, WeatherData, WeatherResponse } from './weather.types.ts'
