@@ -32,7 +32,7 @@ export const WelcomePart = () => {
         // <div className={style.box}>
             <h1 className={style.weather}>
                 {hello}, my darling! Today {today}/{month}/{year} and <br/> outside is so
-                <span style={{ color: 'red' }}> <Weather cityTemp={data?.country ?? ''}/></span> now
+                <span style={{ color: 'red' }}> <Weather city={data?.country ?? ''}/></span> now
             </h1>
         // </div>
     );
