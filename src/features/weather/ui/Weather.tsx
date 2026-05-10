@@ -48,6 +48,8 @@ export const Weather = ({ city } : Props) => {
         updateWeather();
     }, [])
 
+    //todo ask him about managment
+
     return (
         <>
             {weather.description.toLowerCase()} ({weather.temperature + weather.format + ' ' + weather.icon})
