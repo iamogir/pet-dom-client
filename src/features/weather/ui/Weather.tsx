@@ -36,7 +36,7 @@ export const Weather = ({ city } : Props) => {
     }
 
     useEffect(() => {
-        const updateWeather = async () => {
+        const updateWeather: () => void = async () => {
             const res: WeatherResponse = await getWeather();
 
             setWeather({
