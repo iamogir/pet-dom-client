@@ -31,3 +31,7 @@ export interface Coordinates {
     lat: string;
     lon: string
 }
+
+export interface WeatherResponse {
+
+}

@@ -15,7 +15,7 @@ export const Weather = ({ city } : Props) => {
         description: 'unknown weather',
         format: ''
     });
-    const urlCoordinates = 'https://nominatim.openstreetmap.org/search?q=' + city + '&format=json&limit=1';
+    const urlCoordinates = 'https://nominatim.openstreetmap.org/search?q=' + (city ?? 'Israel')  + '&format=json&limit=1';
 
     const getCoordinates = async () => {
         const response = await fetch(urlCoordinates);
