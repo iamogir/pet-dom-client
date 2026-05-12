@@ -12,7 +12,7 @@ export interface WeatherResponse extends Omit<WeatherData, 'description' | 'icon
     description: WeatherCode;
 }
 
-export type WeatherCode =
+export type WeatherCode = //todo make dynamic?
     0 |
     1 | 2 | 3 |
     45 | 48 |
