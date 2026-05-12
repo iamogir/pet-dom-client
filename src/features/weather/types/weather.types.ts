@@ -32,6 +32,6 @@ export interface Coordinates {
     lon: string
 }
 
-export interface WeatherResponse {
-
-}
+// export interface WeatherResponse {
+//
+// }
