@@ -33,7 +33,7 @@ export const WelcomePart = () => {
             <h1 className={style.weather}>
                 {hello}, my darling! Today {today}/{month}/{year} and <br/> outside is so
                 <span style={{ color: 'red' }}> <Weather
-                    // city={data?.city ?? data?.country ?? 'Israel'
+                    city={data?.city ?? data?.country ?? 'Israel'
                 }/></span> now
             </h1>
         // </div>
