@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {weatherCodes} from "features/weather/const";
 import type {WeatherData, WeatherResponse} from "features/weather/types";
-import type {Coordinates} from "features/weather/types/weather.types.ts";
+import type {Coordinates, CoordinatesResponse} from "features/weather/types/weather.types.ts";
 
 interface Props {
     city: string
@@ -19,7 +19,7 @@ export const Weather = ({ city } : Props) => {
 
     const getCoordinates = async () => {
         const response = await fetch(urlCoordinates);
-        const json = await response.json();
+        const json: CoordinatesResponse[] = await response.json();
 
         console.log(json)
 
