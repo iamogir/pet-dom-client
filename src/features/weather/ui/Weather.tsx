@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {weatherCodes} from "features/weather/const";
-import type {WeatherData, WeatherResponse} from "features/weather/types";
-import type {Coordinates, CoordinatesResponse} from "features/weather/types/weather.types.ts";
+import type {Coordinates, CoordinatesResponse, WeatherData, WeatherMapped} from "features/weather/types";
 
 interface Props {
     city: string
@@ -30,7 +29,7 @@ export const Weather = ({ city } : Props) => {
         const data: Coordinates = await getCoordinates();
 
         const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + data.lat + '&longitude=' + data.lon + '&current=temperature_2m,weather_code');
-        const json = await response.json();
+        const json: WeatherMapped = await response.json();
 
         console.log(json);
 
@@ -39,7 +38,7 @@ export const Weather = ({ city } : Props) => {
 
     useEffect(() => {
         const updateWeather: () => void = async () => {
-            const res: WeatherResponse = await getWeather();
+            const res: WeatherMapped = await getWeather();
 
             setWeather({
                 temperature: res.temperature,

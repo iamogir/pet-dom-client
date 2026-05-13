@@ -8,8 +8,12 @@ export interface WeatherData extends WeatherBase {
     format: string;
 }
 
-export interface WeatherResponse extends Omit<WeatherData, 'description' | 'icon'> {
+export interface WeatherMapped extends Omit<WeatherData, 'description' | 'icon'> {
     description: WeatherCode;
+}
+
+export interface WeatherResponse {
+
 }
 
 export type WeatherCode = //todo make dynamic?
