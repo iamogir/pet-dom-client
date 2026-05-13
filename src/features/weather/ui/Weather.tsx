@@ -21,6 +21,8 @@ export const Weather = ({ city } : Props) => {
         const response = await fetch(urlCoordinates);
         const json = await response.json();
 
+        console.log(json)
+
         return { lat: json[0].lat, lon: json[0].lon };
     }
 
