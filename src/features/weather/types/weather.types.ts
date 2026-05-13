@@ -13,7 +13,13 @@ export interface WeatherMapped extends Omit<WeatherData, 'description' | 'icon'>
 }
 
 export interface WeatherResponse {
-
+    current: {
+        temperature_2m: number;
+        weather_code: WeatherCode;
+    };
+    current_units: {
+        temperature_2m: string;
+    }
 }
 
 export type WeatherCode = //todo make dynamic?
