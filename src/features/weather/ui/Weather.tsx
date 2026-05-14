@@ -32,7 +32,7 @@ export const Weather = ({ city } : Props) => {
         const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + data.lat + '&longitude=' + data.lon + '&current=temperature_2m,weather_code');
         const json: WeatherResponse = await response.json();
 
-        console.log(json);
+        // console.log(json);
 
         return { temperature: json.current.temperature_2m, description:  json.current.weather_code, format: json.current_units.temperature_2m };
     }
