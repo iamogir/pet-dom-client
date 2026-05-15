@@ -1,7 +1,7 @@
 import type {WeatherBase} from "features/weather/types";
 
 export const weatherCodes = {
-    '0':  { icon: "☀️",  description: "Clear sky" },
+    0:  { icon: "☀️",  description: "Clear sky" },
 
     1:  { icon: "🌤️", description: "Mainly clear" },
     2:  { icon: "⛅",  description: "Partly cloudy" },
