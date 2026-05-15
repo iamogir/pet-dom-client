@@ -1,7 +1,7 @@
-import type {WeatherBase, WeatherCode} from "features/weather/types";
+import type {WeatherBase} from "features/weather/types";
 
-export const weatherCodes: Record<WeatherCode, WeatherBase> = {
-    0:  { icon: "☀️",  description: "Clear sky" },
+export const weatherCodes = {
+    '0':  { icon: "☀️",  description: "Clear sky" },
 
     1:  { icon: "🌤️", description: "Mainly clear" },
     2:  { icon: "⛅",  description: "Partly cloudy" },
@@ -41,4 +41,4 @@ export const weatherCodes: Record<WeatherCode, WeatherBase> = {
 
     96: { icon: "⛈️🧊", description: "Thunderstorm with slight hail" },
     99: { icon: "⛈️🧊", description: "Thunderstorm with heavy hail" }
-};
+} satisfies Record<number, WeatherBase>;
