@@ -25,7 +25,7 @@ export interface WeatherResponse {
 }
 
 export type WeatherCode = keyof typeof weatherCodes;
-//todo make dynamic?
+// make dynamic?
 //     0 |
 //     1 | 2 | 3 |
 //     45 | 48 |
