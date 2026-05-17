@@ -50,6 +50,7 @@ export const Weather = ({ city } : Props) => {
 
     //todo ask him about managment
     //todo delete this tomorrow
+    //todo check what to do next
 
 
     return (
