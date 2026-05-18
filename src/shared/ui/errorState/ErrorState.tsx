@@ -1,0 +1,8 @@
+export const ErrorState = () => {
+    return (
+        <div>
+            <h1>Something went wrong!</h1>
+            <p>Try again :)</p>
+        </div>
+    );
+};
