@@ -6,10 +6,11 @@ import {getToken, setToken, toServerFormRegister} from "features/auth/utils";
 import type {IRegisterForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
+import {ValidationError} from "shared/api";
 
 export const RegisterPage = () => {
 
-    const { mutateAsync } = useRegister();
+    const { mutateAsync, error } = useRegister();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
     const [form, setForm] = useState<IRegisterForm>({
@@ -51,7 +52,7 @@ export const RegisterPage = () => {
 
     }
 
-    return (
+    return ( error instanceof ValidationError ? <p>{error.message}</p> :
         <main className={style.box}>
             <h2>Welcome, let's get acquainted or <Link to={'/sign_in'}><span>sign in</span></Link> to your account!</h2>
             <section className={style.content}>
