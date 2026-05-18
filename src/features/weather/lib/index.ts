@@ -1,1 +1,1 @@
-export { fromCoordinatesDto } from './weather.mapper.ts'
+export { fromCoordinatesDto, fromWeatherDto } from './weather.mapper.ts'
