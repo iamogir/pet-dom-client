@@ -1,6 +1,6 @@
 import type {EmptyVariant} from "features/emptyState/types/types.ts";
 
-const EMPTY_CONFIG: Record<EmptyVariant, {title: string, description?: string}> = {
+export const EMPTY_CONFIG: Record<EmptyVariant, {title: string, description?: string}> = {
     pets: {
         title: 'No pets yet',
         description: 'Add your pet!'
