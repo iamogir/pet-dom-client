@@ -1,1 +1,1 @@
-export { useGetCoordinates } from './useGetCoordinates.ts'
+export { useGetWeather } from './useGetWeather.ts'

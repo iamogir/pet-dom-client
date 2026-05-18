@@ -1,7 +1,5 @@
-import {useEffect, useState} from "react";
 import {weatherCodes} from "features/weather/const";
-import type {Coordinates, CoordinatesResponse, WeatherData, WeatherMapped} from "features/weather/types";
-import type {WeatherResponse} from "features/weather/types/weather.types.ts";
+import {useGetWeather} from "features/weather/hooks";
 
 interface Props {
     city: string
@@ -9,48 +7,11 @@ interface Props {
 
 export const Weather = ({ city } : Props) => {
 
-    const [weather, setWeather] = useState<WeatherData>({
-        temperature: 0,
-        icon: '',
-        description: 'unknown weather',
-        format: ''
-    });
-    const urlCoordinates = 'https://nominatim.openstreetmap.org/search?q=' + (city ?? 'Israel')  + '&format=json&limit=1';
-
-    const getCoordinates = async () => {
-        const response = await fetch(urlCoordinates);
-        const json: CoordinatesResponse[] = await response.json();
-
-
-
-        return { lat: json[0].lat, lon: json[0].lon };
-    }
-
-    const getWeather = async () => {
-        const data: Coordinates = await getCoordinates();
-
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + data.lat + '&longitude=' + data.lon + '&current=temperature_2m,weather_code');
-        const json: WeatherResponse = await response.json();
-
-        return { temperature: json.current.temperature_2m, description:  json.current.weather_code, format: json.current_units.temperature_2m };
-    }
-
-    useEffect(() => {
-        const updateWeather = async () => {
-            const res: WeatherMapped = await getWeather();
-
-            setWeather({
-                temperature: res.temperature,
-                description: weatherCodes[res.description].description,
-                format: res.format,
-                icon: weatherCodes[res.description].icon });
-        }
-        updateWeather();
-    }, [city])
-
+    const { data, isLoading} = useGetWeather(city);
     return (
+        (isLoading || !data) ? <p>L O A D I N G</p> :
         <span>
-            {weather.description.toLowerCase()} ({weather.temperature + weather.format + ' ' + weather.icon})
+            {weatherCodes[data.description].description.toLowerCase()} ({data.temperature + data.format + ' ' + weatherCodes[data.description].icon})
         </span>
     );
 };

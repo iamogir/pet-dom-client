@@ -1,1 +1,1 @@
-export { getCoordinates } from './weather.api.ts'
+export { getCoordinates, getWeather } from './weather.api.ts'
