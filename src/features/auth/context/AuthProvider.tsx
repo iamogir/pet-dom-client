@@ -1,7 +1,6 @@
 import * as React from "react";
 import { AuthContext } from "./auth.context";
-import {removeToken} from "features/auth/utils";
-import {useQueryClient} from "@tanstack/react-query";
+import {logout} from "features/auth/service";
 // import {userQueryKeys} from "entities/user/api";
 
 interface Props {
@@ -10,15 +9,15 @@ interface Props {
 
 export const AuthProvider = ({children}: Props) => {
 
-    const queryClient = useQueryClient();
+    // const queryClient = useQueryClient();
 
-    const logout = () => {
-        removeToken();
-        // queryClient.removeQueries({ queryKey: userQueryKeys.me() });
-        // queryClient.removeQueries({ queryKey: ['my_pets']});
-        queryClient.clear();
-
-    };
+    // const logout = () => {
+    //     removeToken();
+    //     // queryClient.removeQueries({ queryKey: userQueryKeys.me() });
+    //     // queryClient.removeQueries({ queryKey: ['my_pets']});
+    //     queryClient.clear();
+    //
+    // };
 
     return (
         <AuthContext.Provider value={ { logout }}>

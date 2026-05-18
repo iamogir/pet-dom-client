@@ -1,4 +1,4 @@
-import {getToken, removeToken} from "features/auth/utils";
+import {getToken} from "features/auth/utils";
 import {fetchClient, ServerError, ValidationError} from "shared/api";
 import {ApiError, AuthError} from "shared/api"
 
@@ -20,7 +20,7 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit): Pro
     });
 
     if (response.status === 401) {
-        removeToken();
+        // removeToken();
         throw new AuthError();
     }
 
