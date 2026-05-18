@@ -1,0 +1,1 @@
+export { fromCoordinatesDto } from './weather.mapper.ts'
