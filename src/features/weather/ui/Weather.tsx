@@ -36,7 +36,7 @@ export const Weather = ({ city } : Props) => {
     }
 
     useEffect(() => {
-        const updateWeather: () => void = async () => {
+        const updateWeather = async () => {
             const res: WeatherMapped = await getWeather();
 
             setWeather({
@@ -46,11 +46,11 @@ export const Weather = ({ city } : Props) => {
                 icon: weatherCodes[res.description].icon });
         }
         updateWeather();
-    }, [])
+    }, [city])
 
     return (
-        <>
+        <span>
             {weather.description.toLowerCase()} ({weather.temperature + weather.format + ' ' + weather.icon})
-        </>
+        </span>
     );
 };
