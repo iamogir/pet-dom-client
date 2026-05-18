@@ -1,0 +1,1 @@
+export { getCoordinates, getWeather } from './weather.api.ts'
