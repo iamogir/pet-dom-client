@@ -1,13 +1,9 @@
 import {AuthError} from "shared/api/errors.ts";
-import {removeToken} from "features/auth/utils";
+import {fullLogout} from "features/auth/adapter";
 
 export const handleGlobalError = (error: unknown) => {
-
-
     if (error instanceof AuthError) {
-        removeToken();
-        //queryClient.clear();
-        window.location.href = '/sign_in';
+        fullLogout();
         return;
     }
 
