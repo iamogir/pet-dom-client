@@ -1,6 +1,6 @@
 import {getToken, removeToken} from "features/auth/utils";
-import {fetchClient} from "shared/api/fetchClient.ts";
-import {ApiError, AuthError} from "shared/api/errors.ts";
+import {fetchClient, ServerError, ValidationError} from "shared/api";
+import {ApiError, AuthError} from "shared/api"
 
 export const apiClient = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
     const token = getToken();
@@ -23,6 +23,16 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit): Pro
         removeToken();
         throw new AuthError();
     }
+
+    if (response.status === 400) {
+        const message = await response.text();
+        throw new ValidationError(message);
+    }
+
+    if (response.status === 500) {
+        throw new ServerError();
+    }
+
     if (!response.ok) {
         const error = await response.text()
         throw new ApiError(error)
