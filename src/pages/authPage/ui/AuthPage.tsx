@@ -6,10 +6,11 @@ import {getToken, setToken, toServerFormLoginDto} from "features/auth/utils";
 import type {ILoginForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
+import {ErrorState} from "shared/ui/errorState";
 
 export const AuthPage = () => {
 
-    const { mutateAsync } = useLogin();
+    const { mutateAsync, error } = useLogin();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
     const [form, setForm] = useState<ILoginForm>({
@@ -45,7 +46,7 @@ export const AuthPage = () => {
 
     }
 
-    return (
+    return ( error ? <ErrorState/> :
         <main className={style.box}>
             <h2>Welcome, please, sign in to your account or <Link to={'/sign_up'}><span>sign up</span></Link></h2>
             <section className={style.content}>
