@@ -1,28 +1,35 @@
-import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {useMutation, type UseMutationOptions, useQueryClient} from "@tanstack/react-query";
 import {addNewPet, petQueryKeys} from "entities/pet/api";
-import type {IPet} from "entities/pet/model";
+import type {ICreatePetDto, IPet, IPetsDto} from "entities/pet/model";
 import * as crypto from "node:crypto";
-// import type {ICreatePetDto, IPet} from "entities/pet/model";
 
-export const useAddNewPet = (
-    // options?: UseMutationOptions<IPet, Error, ICreatePetDto>
-) => {
+interface IContext {
+    prevPet?: ICreatePetDto;
+}
+
+export const useAddNewPet = (options?: UseMutationOptions<IPet, Error, ICreatePetDto, IContext>) => {
 
     const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: addNewPet,
-        onMutate: async (newPet) => {
+        onMutate: async (newPet: ICreatePetDto) => {
             await queryClient.cancelQueries({ queryKey: petQueryKeys.all});
-            const prevPets = queryClient.getQueryData<IPet[]>(petQueryKeys.all);
-            queryClient.setQueryData<IPet[]>(petQueryKeys.all,
-                (old = []): IPet[] => [
-                    ...old,
-                    {
-                        id: crypto.randomUUID(),
-                        ...newPet}
-                ]
+            const prevPets = queryClient.getQueryData<IPetsDto>(petQueryKeys.all);
+
+            queryClient.setQueriesData({ queryKey: petQueryKeys.all }, (old: IPetsDto = {data: [], meta: {total: 0}}): IPetsDto => {
+                ...
+                    old,
+                        {
+                            id: crypto.randomUUID(),
+                            ...newPet
+                        }
+                }
             )
+            return { prevPets };
+        },
+        onError: () => {
+
         },
         onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all}),
         },
