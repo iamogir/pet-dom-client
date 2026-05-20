@@ -18,8 +18,6 @@ export const ProfilePage = ({ id }: Props) => {
     const petsByUserQuery = useAllPetsByUserId(id);
     const navigate = useNavigate();
 
-    //small checkout
-
     return (
         <div>
             <section className={style.upper}>
