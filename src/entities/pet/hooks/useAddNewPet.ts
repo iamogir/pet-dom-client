@@ -19,6 +19,7 @@ export const useAddNewPet = (options?: UseMutationOptions<IPet, Error, ICreatePe
             queryClient.setQueriesData({ queryKey: petQueryKeys.all }, (old: IPetsDto = {data: [], meta: {total: 0}}): IPetsDto => {
                 const newPetDto: IPetDto = {
                     id: '123e4567-e89b-12d3-a456-426655440000',
+                    //todo check this
                     ...newPet,
                 }
                 old.data.push(newPetDto);
