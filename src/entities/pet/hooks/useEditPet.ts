@@ -18,9 +18,9 @@ export const useEditPet = () => {
             await queryClient.cancelQueries({ queryKey: petQueryKeys.all });
             const prevPets = queryClient.getQueryData<IPets>(petQueryKeys.all);
 
-            queryClient.setQueriesData({ queryKey: petQueryKeys.all }, (old: IPets = {data: [], meta: {total: 0}}): IPets => {
-                const saveOld = old ?? {data: [], meta: {total: 0}};
-                const newData = saveOld.data.map((el) => el.id === updatedPet.id ? fromServerPetObject(updatedPet) : el);
+            queryClient.setQueryData(petQueryKeys.all, (old: IPets = {data: [], meta: {total: 0}}): IPets => {
+                const safeOld = old ?? {data: [], meta: {total: 0}};
+                const newData = safeOld.data.map((el) => el.id === updatedPet.id ? fromServerPetObject(updatedPet) : el);
 
                 return {
                     data: newData,
