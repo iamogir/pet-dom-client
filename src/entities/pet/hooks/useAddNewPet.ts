@@ -36,7 +36,6 @@ export const useAddNewPet = (options?: UseMutationOptions<IPet, Error, ICreatePe
             queryClient.setQueryData(petQueryKeys.all, context?.prevPets)
 
         },
-        //add options
         onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all}),
         },
 
