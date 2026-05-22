@@ -1,9 +1,9 @@
 import {useMutation, type UseMutationOptions, useQueryClient} from "@tanstack/react-query";
 import {deletePetById, petQueryKeys} from "entities/pet/api";
-import type {IPet, IPetsDto} from "entities/pet/model";
+import type {IPet, IPets} from "entities/pet/model";
 
 interface IContext {
-    prevPet?: IPetsDto;
+    prevPet?: IPets;
 }
 
 export const useDeletePetById = (options?: UseMutationOptions<IPet, Error, string, IContext>) => {
@@ -12,16 +12,12 @@ export const useDeletePetById = (options?: UseMutationOptions<IPet, Error, strin
 
     return useMutation({
         onMutate: async (petId): Promise<IContext> => {
-            console.log('MUTATE')
             await queryClient.cancelQueries({ queryKey: petQueryKeys.all });
-            const prevPet = queryClient.getQueryData<IPetsDto>(petQueryKeys.all);
+            const prevPet = queryClient.getQueryData<IPets>(petQueryKeys.all);
 
-            queryClient.setQueriesData({ queryKey: petQueryKeys.all }, (old: IPetsDto = {data: [], meta: {total: 0}}):IPetsDto => {
+            queryClient.setQueriesData({ queryKey: petQueryKeys.all }, (old: IPets = {data: [], meta: {total: 0}}):IPets => {
                 const safeOld = old ?? { data: [], meta: { total: 0 } };
                 const newData = safeOld.data.filter(p => p.id !== petId);
-
-
-                console.log(newData);
 
                 return {
                     data: newData,

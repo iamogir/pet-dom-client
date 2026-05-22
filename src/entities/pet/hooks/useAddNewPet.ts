@@ -1,13 +1,9 @@
-import {useMutation, type UseMutationOptions, useQueryClient} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {addNewPet, petQueryKeys} from "entities/pet/api";
 import type {ICreatePetDto, IPet, IPets} from "entities/pet/model";
 import {fromServerPetObject} from "entities/pet/lib";
 
-interface IContext {
-    prevPet?: ICreatePetDto;
-}
-
-export const useAddNewPet = (options?: UseMutationOptions<IPet, Error, ICreatePetDto, IContext>) => {
+export const useAddNewPet = () => {
 
     const queryClient = useQueryClient();
 
@@ -35,6 +31,5 @@ export const useAddNewPet = (options?: UseMutationOptions<IPet, Error, ICreatePe
         },
         onSuccess: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all}),
         },
-
     )
 }
