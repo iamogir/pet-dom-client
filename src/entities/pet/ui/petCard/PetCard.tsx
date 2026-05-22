@@ -23,8 +23,6 @@ export const PetCard = ({ pet }: Props) => {
     }
     );
 
-
-
     const handleDelete = async () => {
         const isConfirmed = confirm("Are you sure you want to delete this pet?");
         if (isConfirmed) {
