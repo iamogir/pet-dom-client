@@ -57,6 +57,22 @@
 
     --text-caption: 400 12px/16px 'Quicksand', system-ui, sans-serif;
 
+    /* BUTTON TOKENS */
+
+    --btn-height-sm: 32px;
+
+    --btn-height-md: 40px;
+
+    --btn-height-lg: 48px;
+
+    --btn-radius: 12px;
+
+    --btn-padding-x: 16px;
+
+    --btn-padding-y: 10px;
+
+    --btn-font: var(--text-body-sm);
+
     /* SHADOWS */
 
     --shadow-sm:
