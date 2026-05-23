@@ -4,12 +4,16 @@
 
     --color-bg: #f8f4ed;
     --color-surface: #ffffff;
+    --color-bg-pink: #f7ddd1;
+    --color-bg-blue: #c1e4eb;
 
     --color-primary: #EA7946;
     --color-primary-hover: #FFB597;
 
-    --color-text: #3F4B55;
+    --color-text: #386685;
     --color-text-secondary: #916053;
+    --color-text-primary: #141d25;
+    --color-text-third: #758695;
 
     --color-border: #3F4B55;
 

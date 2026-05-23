@@ -3,6 +3,14 @@
 /*}*/
 
 .weather {
-    text-align: center;
     margin-bottom: 30px;
+    background: linear-gradient(to right, var(--color-bg-pink), var(--color-bg-blue));
+    border-radius: 10px;
+    height: 200px;
+    color: var(--color-text-third);
+    font: var(--text-h1);
+    text-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
