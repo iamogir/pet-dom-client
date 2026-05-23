@@ -2,6 +2,8 @@ import style from './homePage.module.css'
 import {WelcomePart} from "shared/ui/welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useMyPets} from "entities/pet/hooks";
+import {EmptyState} from "features/emptyState/ui";
+import {Loader} from "shared/ui/loader";
 
 export const HomePage = () => {
 
@@ -14,8 +16,8 @@ export const HomePage = () => {
             <h1 style={{ color: 'red' }}>. . . news block . . .</h1>
             <WelcomePart/>
             <h2>Please, check your pets and their comfort:</h2>
-            {isLoading ? <p> One second, checking pets...</p> :
-                error ? <p>Oh, something goes wrong: {error.message}</p> :
+            {isLoading ? <Loader/> :
+                error ? <EmptyState variant={'pets'}/> :
                     <section className={style.petCards}>
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
                     </section>

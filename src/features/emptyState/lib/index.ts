@@ -1,0 +1,1 @@
+export { EMPTY_CONFIG } from './consts.ts'

@@ -1,0 +1,1 @@
+export { fullLogout } from './auth.adapter.ts'

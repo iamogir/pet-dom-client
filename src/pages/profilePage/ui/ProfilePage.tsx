@@ -4,6 +4,9 @@ import {UserCard} from "entities/user/ui/userCard";
 import {PetCard} from "entities/pet/ui/petCard";
 import style from './profilePage.module.css'
 import {useAllPetsByUserId} from "entities/pet/hooks";
+import {Loader} from "shared/ui/loader";
+import {ErrorState} from "shared/ui/errorState";
+import {EmptyState} from "features/emptyState/ui";
 
 interface Props {
     id: string
@@ -21,8 +24,8 @@ export const ProfilePage = ({ id }: Props) => {
                 <h2>Welcome to your profile!</h2>
                 <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
             </section>
-            {isLoading ? <p>Loading...</p> :
-                (error ? <p>Oh, where is the data? Amiss! - {error.message}</p> :
+            {isLoading ? <Loader/> :
+                (error ? <ErrorState/> :
                     <section className={style.cards}>
                         {data ? <UserCard key={data.id} user={data} /> : null }
 
@@ -33,8 +36,8 @@ export const ProfilePage = ({ id }: Props) => {
                                 ?
                             </p>
                         </div>
-                        { petsByUserQuery.isLoading ? <p>loading...</p> :
-                            (!petsByUserQuery.data ? <p>No data</p> :
+                        { petsByUserQuery.isLoading ? <Loader/> :
+                            (!petsByUserQuery.data ? <EmptyState variant={"pets"}/> :
                                 petsByUserQuery.data.data.map(p => <PetCard key={p.id} pet={p} />)
                             )
                         }
