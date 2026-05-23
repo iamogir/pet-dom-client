@@ -2,6 +2,7 @@ import style from './header.module.css'
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "features/auth/context";
 // import {useMe} from "features/auth/hooks";
+import SignOut from '../../../shared/assert/icons/sign-out.svg?react'
 
 export const Header = () => {
 
@@ -16,10 +17,13 @@ export const Header = () => {
 
     return (
         <div className={style.box}>
-            <button onClick={() => navigate('/home')}>Home</button>
-            <button onClick={() => navigate('/user/me')}>My profile</button>
-            <button onClick={() => navigate('/my_pets')}>Global pets</button>
-            <button onClick={handleLogout}>Sign o u t</button>
+            <h1>PETDOM</h1>
+            <div>
+                <button className={style.btn} onClick={() => navigate('/home')}>Home</button>
+                <button className={style.btn} onClick={() => navigate('/my_pets')}>Global pets</button>
+            </div>
+                <button className={style.btn} onClick={() => navigate('/user/me')}>My profile</button>
+                <SignOut className={style.icon} />
         </div>
     );
 };
