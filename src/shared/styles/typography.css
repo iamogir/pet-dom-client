@@ -1,0 +1,23 @@
+.text-h1 {
+    font: var(--text-h1);
+}
+
+.text-h2 {
+    font: var(--text-h2);
+}
+
+.text-h3 {
+    font: var(--text-h3);
+}
+
+.text-body {
+    font: var(--text-body);
+}
+
+.text-body-sm {
+    font: var(--text-body-sm);
+}
+
+.text-caption {
+    font: var(--text-caption);
+}
