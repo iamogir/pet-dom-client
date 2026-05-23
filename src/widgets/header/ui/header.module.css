@@ -2,13 +2,21 @@
     display: flex;
     justify-content: space-between;
     padding: 16px 30px;
-    /*margin-bottom: 70px;*/
     box-shadow: var(--shadow-sm)
 }
 
 .box > div {
     display: flex;
     justify-content: space-between;
+
+}
+
+.menu {
+    width: 30%;
+}
+
+.icons {
+    width: 3%;
 }
 
 .btn {
@@ -32,11 +40,11 @@
 
 }
 
-.icon {
+.icon, .profile {
     width: 16px;
     color: var(--color-primary);
     cursor: pointer;
 }
-.icon:hover {
+.icon:hover, .profile:hover {
     color: var(--color-primary-hover);
 }
