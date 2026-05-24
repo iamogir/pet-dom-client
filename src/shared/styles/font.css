@@ -47,3 +47,66 @@
     font-style: normal;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-ExtraBold.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-Black.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-Bold.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-Light.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-Medium.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-SemiBold.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'YouTube Sans Dark';
+    src:
+        url('/public/fonts/YouTubeSansDark-Regular.woff2') format('woff2'),
+        url('/public/fonts/YouTubeSansDark-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

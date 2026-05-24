@@ -1,16 +1,21 @@
-/*.box {*/
-    /*text-align: center;*/
-/*}*/
-
-.weather {
+.box {
     margin-bottom: 30px;
+    padding-left: 30px;
     background: linear-gradient(to right, var(--color-bg-pink), var(--color-bg-blue));
     border-radius: 10px;
     height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box > h1 {
     color: var(--color-text-third);
     font: var(--text-h1);
     text-align: start;
-    display: flex;
-    align-items: center;
-    justify-content: start;
+
+}
+
+.box > p {
+    width: 100%;
 }

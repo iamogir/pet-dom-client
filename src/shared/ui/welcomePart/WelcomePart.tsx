@@ -29,13 +29,16 @@ export const WelcomePart = () => {
     }
 
     return (
-        // <div className={style.box}>
-            <h1 className={style.weather}>
-                {hello}, {data?.firstName}! Today {today}/{month}/{year} and <br/> outside is so
-                <span style={{ color: 'red' }}> <Weather
+        <div className={style.box}>
+            <h1>
+                {hello}, {data?.firstName}!
+            </h1>
+            <p>
+                Today {today}/{month}/{year} and outside is so
+                <span> <Weather
                     city={data?.city ?? data?.country ?? 'Israel'
                 }/></span> now
-            </h1>
-        // </div>
+            </p>
+        </div>
     );
 };

@@ -36,7 +36,7 @@
 
     /* TYPOGRAPHY */
 
-    --font-family: 'Quicksand', system-ui, sans-serif;
+    --font-family: 'YouTube Sans Dark', system-ui, sans-serif;
 
     --font-size-sm: 14px;
     --font-size-md: 16px;
@@ -51,15 +51,15 @@
 
     /* TYPOGRAPHY SCALE */
 
-    --text-h1: 700 32px/40px 'Quicksand', system-ui, sans-serif;
-    --text-h2: 700 24px/32px 'Quicksand', system-ui, sans-serif;
+    --text-h1: 700 32px/40px 'YouTube Sans Dark', system-ui, sans-serif;
+    --text-h2: 700 24px/32px 'YouTube Sans Dark', system-ui, sans-serif;
 
-    --text-h3: 600 20px/28px 'Quicksand', system-ui, sans-serif;
+    --text-h3: 600 20px/28px 'YouTube Sans Dark', system-ui, sans-serif;
 
-    --text-body: 400 16px/24px 'Quicksand', system-ui, sans-serif;
-    --text-body-sm: 400 14px/20px 'Quicksand', system-ui, sans-serif;
+    --text-body: 400 16px/24px 'YouTube Sans Dark', system-ui, sans-serif;
+    --text-body-sm: 400 14px/20px 'YouTube Sans Dark', system-ui, sans-serif;
 
-    --text-caption: 400 12px/16px 'Quicksand', system-ui, sans-serif;
+    --text-caption: 400 12px/16px 'YouTube Sans Dark', system-ui, sans-serif;
 
     /* BUTTON TOKENS */
 
