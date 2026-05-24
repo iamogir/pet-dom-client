@@ -1,7 +1,6 @@
 import style from "./userForm.module.css"
 import {type ChangeEvent, useState} from "react";
 import type {IUser, IUserForm} from "entities/user/model";
-import {imagePlaceholder} from "entities/pet/model";
 import {useEditUserById} from "entities/user/hooks";
 import {toServerUserObjectUpdate, userCountry, userGender} from "entities/user/lib";
 import {useNavigate} from "react-router-dom";
@@ -26,7 +25,7 @@ export const UserForm = ({user} : Props) => {
             country: user.country,
             birthDate: bDay,
             gender: user.gender,
-            avatarUrl: user.avatarUrl ?? imagePlaceholder,
+            avatarUrl: user.avatarUrl ?? '',
             confirm: false
         }
     })

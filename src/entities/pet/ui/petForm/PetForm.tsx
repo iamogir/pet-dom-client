@@ -2,7 +2,6 @@ import {useAddNewPet, useEditPet} from "entities/pet/hooks";
 import style from "./petForm.module.css";
 import {
     type ICreatePetDto,
-    imagePlaceholder,
     type IPet,
     type IPetForm, petBreedMap, petSex,
 } from "entities/pet/model";
@@ -31,7 +30,7 @@ export const PetForm = ({ pet }: Props) => {
             birthDate:  bDay ?? '',
             weight: pet?.weight ?? 0,
             sex: pet?.sex ?? '',
-            photoUrl: pet?.photoUrl ?? imagePlaceholder,
+            photoUrl: pet?.photoUrl ?? '',
             confirm: false
         }
     });

@@ -31,4 +31,4 @@ export const petBreedMap = {
 export type PetSpecies = keyof typeof petBreedMap;
 export type PetBreed<T extends PetSpecies> = (typeof petBreedMap)[T][number];
 
-export const imagePlaceholder = 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-cat-one-line-drawing-vector-illustration-minimalism-style-png-image_5330621.jpg';
+// export const imagePlaceholder = 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-cat-one-line-drawing-vector-illustration-minimalism-style-png-image_5330621.jpg';
