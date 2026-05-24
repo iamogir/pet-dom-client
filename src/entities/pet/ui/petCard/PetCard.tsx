@@ -31,6 +31,10 @@ export const PetCard = ({ pet }: Props) => {
         }
     }
 
+    const checkAnimal = () => {
+
+    }
+
     return (
         <article className={style.box}>
             <section className={style.info}>
