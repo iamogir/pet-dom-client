@@ -37,7 +37,7 @@ export const WelcomePart = () => {
                 Today {today}/{month}/{year} and outside is so
                 <span> <Weather
                     city={data?.city ?? data?.country ?? 'Israel'
-                }/></span> now
+                }/></span> now.
             </p>
         </div>
     );
