@@ -1,18 +1,10 @@
 .box {
-    /*border: 1px solid black;*/
-    /*background-color: #a48686;*/
-    /*border-radius: 10px;*/
-    /*margin: 10px 0;*/
-    /*padding: 15px 30px;*/
-    /*display: flex;*/
-    /*justify-content: space-between;*/
-    /*color: rgba(255, 255, 255, 0.52);;*/
-
     height: 200px;
     width: 250px;
     background-color: var(--color-surface);
     margin: 10px 20px 10px 0;
-    border-radius: var(--radius-md)
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .box > a {
@@ -22,21 +14,25 @@
 
 .imageBox {
     height: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 ;
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
+    background-color: #571d0b;
+    padding: 5px;
 }
 
 .imageBox > div {
-    padding: 5px 10px;
-    margin: 5px;
+    padding: 0 10px;
     width: max-content;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: var(--radius-sm);
+    height: 16px;
+    display: flex;
+    align-items: center;
 
 }
 
 .imageBox > div > span {
     opacity: 100%;
-    font-size: 10px;
+    font-size: 8px;
 }

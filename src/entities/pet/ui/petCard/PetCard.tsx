@@ -33,20 +33,20 @@ export const PetCard = ({ pet }: Props) => {
 
     return (
         <article className={style.box}>
-            {/*<section className={style.info}>*/}
-                <Link to={'/pet/' + pet.id}>
-                    <section className={style.imageBox} style={ {backgroundImage: `url(${pet.photoUrl ? pet.photoUrl : getPetAvatar(pet.species)})`}}>
-                        <div>
-                            <span>{pet.species.toUpperCase()}</span>
-                        </div>
-                    </section>
-                </Link>
-                <ul>
-                    <li className={style.petName}>{pet.name}</li>
-                    <li>{petAge} years</li>
-                    <li>{pet.breed}</li>
-                </ul>
-            {/*</section>*/}
+            <Link to={'/pet/' + pet.id}>
+                <section className={style.imageBox}
+                    // style={ {backgroundImage: `url(${pet.photoUrl ? pet.photoUrl : getPetAvatar(pet.species)})`}}
+                >
+                    <div>
+                        <span>{pet.species.toUpperCase()}</span>
+                    </div>
+                </section>
+            </Link>
+            <ul>
+                <li className={style.petName}>{pet.name}</li>
+                <li>{petAge} years</li>
+                <li>{pet.breed}</li>
+            </ul>
         </article>
     );
 };
