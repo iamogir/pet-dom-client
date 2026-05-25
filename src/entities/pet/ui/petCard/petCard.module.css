@@ -7,7 +7,7 @@
     box-shadow: var(--shadow-sm);
 }
 
-.box > a {
+.link {
     text-decoration: none;
     color: var(--color-text-primary);
 }
@@ -15,9 +15,10 @@
 .imageBox {
     height: 70%;
     border-radius: var(--radius-md) var(--radius-md) 0 0 ;
-    /*background-repeat: no-repeat;*/
-    /*background-size: contain;*/
-    background-color: #571d0b;
+    background-repeat: no-repeat;
+    background-size: auto 150px;
+    background-position: center;
+    background-color: var(--color-surface-secondary);
     padding: 5px;
 }
 
@@ -48,17 +49,19 @@
 .info {
     display: flex;
     justify-content: start;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .info > div {
     display: flex;
     margin-right: 20px;
+    align-items: center;
+    color: var(--color-text-third);
 }
 
 .icon {
     width: 14px;
     height: 14px;
-    color: var(--color-text-primary);
-    margin-right: 8px;
+    color: var(--color-text-third);
+    margin-right: 6px;
 }

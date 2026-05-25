@@ -37,6 +37,7 @@
 
 .box > h1 {
     font: var(--text-h1);
+    color: var(--color-text-secondary);
 
 }
 

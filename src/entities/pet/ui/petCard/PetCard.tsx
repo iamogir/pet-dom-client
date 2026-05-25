@@ -35,29 +35,31 @@ export const PetCard = ({ pet }: Props) => {
 
     return (
         <article className={style.box}>
-            <Link to={'/pet/' + pet.id}>
-                <section className={style.imageBox}
-                    // style={ {backgroundImage: `url(${pet.photoUrl ? pet.photoUrl : getPetAvatar(pet.species)})`}}
-                >
+        <Link className={style.link} to={'/pet/' + pet.id}>
+
+
+                <section className={style.imageBox} style={ {backgroundImage: `url(${pet.photoUrl ? pet.photoUrl : getPetAvatar(pet.species)})`}}>
                     <div>
                         <span>{pet.species.toUpperCase()}</span>
                     </div>
                 </section>
-            </Link>
-            <section className={style.infoBox}>
-                <p className={style.petName}>{pet.name.toUpperCase()}</p>
-                <div className={style.info}>
-                    <div>
-                        <Paw className={style.icon}/>
-                        <p>{pet.breed}</p>
-                    </div>
-                    <div>
-                        <Calendar className={style.icon}/>
-                        <p>{petAge} years</p>
-                    </div>
-                </div>
-            </section>
 
+                <section className={style.infoBox}>
+                    <p className={style.petName}>{pet.name.toUpperCase()}</p>
+                    <div className={style.info}>
+                        <div>
+                            <Paw className={style.icon}/>
+                            <p>{pet.breed}</p>
+                        </div>
+                        <div>
+                            <Calendar className={style.icon}/>
+                            <p>{petAge} years</p>
+                        </div>
+                    </div>
+                </section>
+
+
+        </Link>
         </article>
     );
 };
