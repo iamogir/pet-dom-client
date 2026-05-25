@@ -20,3 +20,38 @@
 .box > p {
     color: var(--color-text);
 }
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 1024px) {
+
+    .box {
+        margin-bottom: 30px;
+        padding-left: 30px;
+        background: linear-gradient(to right, var(--color-bg-pink), var(--color-bg-blue));
+        border-radius: 10px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: var(--shadow-sm)
+    }
+
+    .box > h1 {
+        color: var(--color-text-secondary);
+        font: var(--text-h1);
+        text-align: start;
+
+    }
+
+    .box > p {
+        color: var(--color-text);
+    }
+
+}
+
+@media (min-width: 1440px) {
+
+}
