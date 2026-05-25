@@ -1,9 +1,44 @@
+.petCards {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* for Firefox */
+}
+
+.petCards::-webkit-scrollbar {
+    display: none; /* for Chrome и Safari */
+}
+
 @media (min-width: 768px) {
+
+    .petCards {
+        display: grid;
+        /*grid-template-columns: repeat(2, 1fr);*/
+        grid-template-columns: repeat(3, max-content);
+        justify-content: space-between;
+        width: 100%;
+
+        /*overflow-x: unset;*/
+        gap: 15px;
+
+    }
 
 }
 
+@media (min-width: 1024px) {
 
-/*.petCards {*/
-/*    display: flex;*/
-/*    width: 100%;*/
-/*}*/
+    .petCards {
+        overflow-x: unset;
+    }
+
+
+}
+
+@media (min-width: 1440px) {
+
+    .petCards {
+        grid-template-columns: repeat(4, max-content);
+    }
+}

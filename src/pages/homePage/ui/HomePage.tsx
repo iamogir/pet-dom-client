@@ -16,15 +16,15 @@ export const HomePage = () => {
             <h1 style={{ color: 'red' }}>. . . news block . . .</h1>
             <WelcomePart/>
             <h2>Please, check your pets and their comfort:</h2>
-            {/*{isLoading ? <Loader/> :*/}
-            {/*    error ? <EmptyState variant={'pets'}/> :*/}
-            {/*        <section className={style.petCards}>*/}
-            {/*            {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}*/}
-            {/*            <div>*/}
-            {/*                Add new pet +*/}
-            {/*            </div>*/}
-            {/*        </section>*/}
-            {/*}*/}
+            {isLoading ? <Loader/> :
+                error ? <EmptyState variant={'pets'}/> :
+                    <section className={style.petCards}>
+                        {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                        <div>
+                            Add new pet +
+                        </div>
+                    </section>
+            }
             <h1 style={{ color: 'red' }}>. . . ask ai . . .</h1>
         </>
     );

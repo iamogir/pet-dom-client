@@ -65,3 +65,21 @@
     color: var(--color-text-third);
     margin-right: 6px;
 }
+
+@media (min-width: 768px) {
+
+    .box {
+        margin: 10px 0;
+    }
+
+
+}
+
+@media (min-width: 1024px) {
+
+
+}
+
+@media (min-width: 1440px) {
+
+}
