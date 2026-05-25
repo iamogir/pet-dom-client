@@ -53,10 +53,12 @@
 
 .info > div {
     display: flex;
+    margin-right: 20px;
 }
 
 .icon {
     width: 14px;
     height: 14px;
     color: var(--color-text-primary);
+    margin-right: 8px;
 }
