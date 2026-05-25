@@ -5,6 +5,8 @@ import {useDeletePetById} from "entities/pet/hooks";
 import {useQueryClient} from "@tanstack/react-query";
 import {petQueryKeys} from "entities/pet/api";
 import {getPetAvatar} from "entities/pet/lib";
+import Paw from '../../../../shared/assert/icons/paw.svg?react'
+import Calendar from '../../../../shared/assert/icons/calendar.svg?react'
 
 interface Props {
     pet: IPet
@@ -42,11 +44,20 @@ export const PetCard = ({ pet }: Props) => {
                     </div>
                 </section>
             </Link>
-            <ul>
-                <li className={style.petName}>{pet.name}</li>
-                <li>{petAge} years</li>
-                <li>{pet.breed}</li>
-            </ul>
+            <section className={style.infoBox}>
+                <p className={style.petName}>{pet.name.toUpperCase()}</p>
+                <div className={style.info}>
+                    <div>
+                        <Paw className={style.icon}/>
+                        <p>{pet.breed}</p>
+                    </div>
+                    <div>
+                        <Calendar className={style.icon}/>
+                        <p>{petAge} years</p>
+                    </div>
+                </div>
+            </section>
+
         </article>
     );
 };

@@ -1,6 +1,6 @@
 .box {
-    height: 200px;
-    width: 250px;
+    height: 250px;
+    width: 350px;
     background-color: var(--color-surface);
     margin: 10px 20px 10px 0;
     border-radius: var(--radius-md);
@@ -35,4 +35,28 @@
 .imageBox > div > span {
     opacity: 100%;
     font-size: 8px;
+}
+
+.infoBox {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+    justify-content: space-between;
+    height: 30%;
+}
+
+.info {
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
+}
+
+.info > div {
+    display: flex;
+}
+
+.icon {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-primary);
 }
