@@ -20,44 +20,33 @@ export const PetCard = ({ pet }: Props) => {
         {
         onSuccess: () =>
             queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-
-    }
+        }
     );
 
-    const handleDelete = async () => {
-        const isConfirmed = confirm("Are you sure you want to delete this pet?");
-        if (isConfirmed) {
-            const deletedPet = await mutateAsync(pet.id);
-            alert('Pet ' + deletedPet.name + ' was successfully deleted.')
-        }
-    }
+    // const handleDelete = async () => {
+    //     const isConfirmed = confirm("Are you sure you want to delete this pet?");
+    //     if (isConfirmed) {
+    //         const deletedPet = await mutateAsync(pet.id);
+    //         alert('Pet ' + deletedPet.name + ' was successfully deleted.')
+    //     }
+    // }
 
     return (
         <article className={style.box}>
-            <section className={style.info}>
+            {/*<section className={style.info}>*/}
                 <Link to={'/pet/' + pet.id}>
-                    <div className={style.imageBox}>
-                        <img src={pet.photoUrl ? pet.photoUrl : getPetAvatar(pet.species)} alt={pet.breed + ' image'}/>
-                    </div>
+                    <section className={style.imageBox} style={ {backgroundImage: `url(${pet.photoUrl ? pet.photoUrl : getPetAvatar(pet.species)})`}}>
+                        <div>
+                            <span>{pet.species.toUpperCase()}</span>
+                        </div>
+                    </section>
                 </Link>
                 <ul>
-                    <Link to={'/pet/' + pet.id}>
-                        <li className={style.petName}>{pet.name}</li>
-                    </Link>
+                    <li className={style.petName}>{pet.name}</li>
                     <li>{petAge} years</li>
                     <li>{pet.breed}</li>
-                    <li>{pet.weight} kg</li>
-                    <li>Birth-d: {bDay}</li>
                 </ul>
-            </section>
-            <section>
-                <h3>Next events ---</h3>
-                {/*<ReminderCard/>*/}
-            </section>
-            <section className={style.btn}>
-                <button onClick={() => navigate('/edit_pet/' + pet.id)}>EDIT</button>
-                <button onClick={handleDelete}>DELETE</button>
-            </section>
+            {/*</section>*/}
         </article>
     );
 };

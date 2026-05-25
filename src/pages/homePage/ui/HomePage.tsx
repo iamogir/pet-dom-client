@@ -20,6 +20,9 @@ export const HomePage = () => {
                 error ? <EmptyState variant={'pets'}/> :
                     <section className={style.petCards}>
                         {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                        <div>
+                            Add new pet +
+                        </div>
                     </section>
             }
             <h1 style={{ color: 'red' }}>. . . ask ai . . .</h1>
