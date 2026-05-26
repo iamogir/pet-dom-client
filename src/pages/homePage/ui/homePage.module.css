@@ -11,19 +11,31 @@
     display: none; /* for Chrome и Safari */
 }
 
+.container {
+    position: relative;
+}
+
 .btn {
-    /*border: none;*/
-    padding: 0 10px;
-    width: max-content;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
-    height: 16px;
-    display: flex;
-    align-items: center;
+    height: 30px;
+    width: 30px;
+    color: var(--color-border);
+    position: absolute;
+    top: 120px;
+    right: 0;
+    opacity: 50%;
+
 }
 
 .btnLeft {
     transform: rotate(180deg);
+    left: 0;
+}
+
+.btn:hover {
+    cursor: pointer;
+    opacity: 100%;
 }
 
 @media (min-width: 768px) {

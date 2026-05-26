@@ -54,7 +54,7 @@ export const HomePage = () => {
             <h2>Please, check your pets and their comfort:</h2>
             {isLoading ? <Loader/> :
                 error ? <EmptyState variant={'pets'}/> :
-                    <div>
+                    <div className={style.container}>
                         { showLeft && <Arrow className={`${style.btn} ${style.btnLeft}`} onClick={() => scrollBox(-scrollAmount)}>LEFT</Arrow>}
                         { showRight && <Arrow className={style.btn} onClick={() => scrollBox(scrollAmount)}/>}
                         <section className={style.petCards} ref={petBox} onScroll={toggleButtons}>
