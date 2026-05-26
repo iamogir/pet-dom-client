@@ -7,12 +7,8 @@
     box-shadow: var(--shadow-sm);
     flex: 0 0 250px;
 
-    overflow: visible;
-
     transition:
-
             transform 0.2s ease,
-
             box-shadow 0.2s ease;
 }
 
