@@ -22,7 +22,7 @@
     width: 30px;
     color: var(--color-border);
     position: absolute;
-    top: 120px;
+    top: 65px;
     right: 0;
     opacity: 50%;
 
@@ -40,32 +40,15 @@
 
 @media (min-width: 768px) {
 
-    .petCards {
-        /*display: grid;*/
-        /*grid-template-columns: repeat(2, 1fr);*/
-        /*grid-template-columns: repeat(3, max-content);*/
-        /*justify-content: space-between;*/
-        /*width: 100%;*/
-
-
-        /*gap: 15px;*/
-
-    }
-
 }
 
 @media (min-width: 1024px) {
 
-    .petCards {
-        overflow-x: unset;
+    .btn {
+        top: 120px;
     }
-
 
 }
 
 @media (min-width: 1440px) {
-
-    .petCards {
-        /*grid-template-columns: repeat(4, max-content);*/
-    }
 }

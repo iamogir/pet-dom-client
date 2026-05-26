@@ -14,7 +14,7 @@ export const HomePage = () => {
     const petBox = useRef<HTMLDivElement | null>(null);
     const [showLeft, setShowLeft] = useState(false);
     const [showRight, setShowRight] = useState(false);
-    const scrollAmount = 150;
+    const scrollAmount = window.innerWidth < 1024 ? 270 : 370;
 
     const scrollBox = (value: number) => {
         const box = petBox.current;
