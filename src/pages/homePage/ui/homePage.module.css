@@ -6,6 +6,9 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* for Firefox */
     margin-top: 10px;
+
+    padding-inline: 10px;
+    padding-block: 10px;
 }
 
 .petCards::-webkit-scrollbar {
@@ -23,6 +26,7 @@
     width: 30px;
     color: var(--color-border);
     position: absolute;
+    z-index: 10;
     top: 65px;
     right: 0;
     opacity: 50%;

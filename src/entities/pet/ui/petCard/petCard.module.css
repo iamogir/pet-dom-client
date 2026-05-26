@@ -6,6 +6,18 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     flex: 0 0 250px;
+
+    overflow: visible;
+
+    transition:
+
+            transform 0.2s ease,
+
+            box-shadow 0.2s ease;
+}
+
+.box:hover {
+    transform: translateY(-4px) scale(1.02);
 }
 
 .link {
