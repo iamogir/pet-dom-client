@@ -5,6 +5,7 @@ import {useMyPets} from "entities/pet/hooks";
 import {EmptyState} from "features/emptyState/ui";
 import {Loader} from "shared/ui/loader";
 import {useEffect, useRef, useState} from "react";
+import Arrow from '../../../shared/assert/icons/arrow.svg?react'
 
 export const HomePage = () => {
 
@@ -53,15 +54,17 @@ export const HomePage = () => {
             <h2>Please, check your pets and their comfort:</h2>
             {isLoading ? <Loader/> :
                 error ? <EmptyState variant={'pets'}/> :
-                    <section className={style.petCards} ref={petBox} onScroll={toggleButtons}>
-                        {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
-                        <div>
-                            Add new pet +
-                        </div>
-                    </section>
+                    <div>
+                        { showLeft && <Arrow className={`${style.btn} ${style.btnLeft}`} onClick={() => scrollBox(-scrollAmount)}>LEFT</Arrow>}
+                        { showRight && <Arrow className={style.btn} onClick={() => scrollBox(scrollAmount)}/>}
+                        <section className={style.petCards} ref={petBox} onScroll={toggleButtons}>
+                            {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
+                            <div>
+                                Add new pet +
+                            </div>
+                        </section>
+                    </div>
             }
-            { showLeft && <button onClick={() => scrollBox(-scrollAmount)}>LEFT</button>}
-            { showRight && <button onClick={() => scrollBox(scrollAmount)}>RIGHT</button>}
             <h1 style={{ color: 'red' }}>. . . ask ai . . .</h1>
         </>
     );
