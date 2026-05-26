@@ -5,6 +5,7 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* for Firefox */
+    margin-top: 10px;
 }
 
 .petCards::-webkit-scrollbar {

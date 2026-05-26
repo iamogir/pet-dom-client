@@ -6,6 +6,7 @@ import {EmptyState} from "features/emptyState/ui";
 import {Loader} from "shared/ui/loader";
 import {useEffect, useRef, useState} from "react";
 import Arrow from '../../../shared/assert/icons/arrow.svg?react'
+import {NewPetButton} from "entities/pet/ui/newPetButton";
 
 export const HomePage = () => {
 
@@ -53,9 +54,7 @@ export const HomePage = () => {
                         { showRight && <Arrow className={style.btn} onClick={() => scrollBox(scrollAmount)}/>}
                         <section className={style.petCards} ref={petBox} onScroll={toggleButtons}>
                             {data?.data.map((pet) => <PetCard key={pet.id} pet={pet}/>)}
-                            <div>
-                                Add new pet +
-                            </div>
+                            <NewPetButton/>
                         </section>
                     </div>
             }

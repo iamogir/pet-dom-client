@@ -9,6 +9,7 @@
 
     --color-bg: #f8f4ed;
     --color-surface: #ffffff;
+    --color-surface-opacity: rgba(255, 255, 255, 0.5);
     --color-surface-secondary: #dddddd;
     --color-bg-pink: #f7ddd1;
     --color-bg-blue: #c1e4eb;
