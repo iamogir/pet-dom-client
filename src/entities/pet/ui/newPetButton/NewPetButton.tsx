@@ -8,6 +8,7 @@ export const NewPetButton = () => {
     return (
         <div className={style.box} onClick={() => navigate(('/add_pet'))}>
             <Add className={style.addBtn}/>
+            <p>ADD NEW PET</p>
         </div>
     );
 };

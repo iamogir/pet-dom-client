@@ -3,6 +3,7 @@
     flex: 0 0 250px;
     /*background-color: red;*/
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: var(--color-primary) dashed 2px;
@@ -17,14 +18,28 @@
 }
 
 .addBtn {
-    width: 30px;
-    height: 30px;
-    color: var(--color-primary);
+    width: 35px;
+    height: 35px;
+    color: var(--color-text);
+    background-color: var(--color-bg-blue);
+    border-radius: 50%;
+    padding: 5px;
 
 }
 
 .box:hover > .addBtn {
-    color: var(--color-primary-hover);
+    color: var(--color-bg-blue);
+    background-color: rgb(193, 228, 235, 0.5);
+}
+
+.box > p {
+    color: var(--color-text);
+    margin-top: 10px;
+
+}
+
+.box:hover > p {
+    color: var(--color-bg-blue);
 }
 
 @media (min-width: 768px){

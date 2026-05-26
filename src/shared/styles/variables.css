@@ -12,7 +12,7 @@
     --color-surface-opacity: rgba(255, 255, 255, 0.5);
     --color-surface-secondary: #dddddd;
     --color-bg-pink: #f7ddd1;
-    --color-bg-blue: #c1e4eb;
+    --color-bg-blue: rgb(193, 228, 235);
 
     --color-primary: #EA7946;
     --color-primary-hover: #FFB597;
