@@ -1,5 +1,5 @@
 .box {
-    height: 150px;
+    height: 200px;
     width: 250px;
     background-color: var(--color-surface);
     margin: 10px 20px 10px 0;
@@ -42,7 +42,7 @@
 .infoBox {
     display: flex;
     flex-direction: column;
-    padding: 15px 10px;
+    padding: 10px 10px;
     justify-content: space-between;
     height: 30%;
 }
@@ -50,7 +50,7 @@
 .info {
     display: flex;
     justify-content: start;
-    margin-top: 6px;
+    margin-top: 2px;
 }
 
 .info > div {
@@ -82,6 +82,14 @@
 
     .imageBox {
         background-size: auto 150px;
+    }
+
+    .infoBox {
+        padding: 15px 10px;
+    }
+
+    .info {
+        margin-top: 6px;
     }
 
 
