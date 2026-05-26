@@ -11,14 +11,13 @@ export const HomePage = () => {
 
     const {data, isLoading, error} = useMyPets();
     // const temp = useAllPetsByUserId("292060dd-24dd-48e5-b2be-be1d6f2855cd");
-    const petBox = useRef(null);
+    const petBox = useRef<HTMLDivElement | null>(null);
     const [showLeft, setShowLeft] = useState(false);
     const [showRight, setShowRight] = useState(false);
-
     const scrollAmount = 150;
 
     const scrollBox = (value: number) => {
-        const box = petBox.current as unknown as HTMLElement;
+        const box = petBox.current;
         if (box) {
             box.scrollBy({
                 left: value,
@@ -28,7 +27,7 @@ export const HomePage = () => {
     }
 
     const toggleButtons = () => {
-        const box = petBox.current as unknown as HTMLElement;
+        const box = petBox.current;
         if (box) {
             const { scrollLeft, scrollWidth, clientWidth } = box;
             setShowLeft(scrollLeft > 1);
@@ -38,13 +37,8 @@ export const HomePage = () => {
     }
 
     useEffect(() => {
-        toggleButtons();
-        window.addEventListener('resize', toggleButtons);
-
-        return () => {
-            window.removeEventListener('resize', toggleButtons);
-        };
-    }, [])
+        requestAnimationFrame(toggleButtons);
+    }, [data])
 
     return (
         <>
