@@ -1,3 +1,31 @@
+.text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnAll {
+    display: flex;
+    justify-content: space-between;
+    width: max-content;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btnAll:hover {
+    color: var(--color-text-third);
+}
+
+.arrowAll {
+    height: 17px;
+    width: 17px;
+    stroke: var(--color-text-primary);
+}
+
+.btnAll:hover > .arrowAll {
+    color: var(--color-text-third);
+    stroke: var(--color-text-third);
+}
+
 .petCards {
     display: flex;
     max-width: 100%;

@@ -7,11 +7,13 @@ import {Loader} from "shared/ui/loader";
 import {useEffect, useRef, useState} from "react";
 import Arrow from '../../../shared/assert/icons/arrow.svg?react'
 import {NewPetButton} from "entities/pet/ui/newPetButton";
+import {useNavigate} from "react-router-dom";
 
 export const HomePage = () => {
 
     const {data, isLoading, error} = useMyPets();
     // const temp = useAllPetsByUserId("292060dd-24dd-48e5-b2be-be1d6f2855cd");
+    const navigate = useNavigate();
     const petBox = useRef<HTMLDivElement | null>(null);
     const [showLeft, setShowLeft] = useState(false);
     const [showRight, setShowRight] = useState(false);
@@ -46,7 +48,10 @@ export const HomePage = () => {
             {/*{ temp.data?.data.map((el) => <PetCard key={el.id} pet={el}/>)}*/}
             <h1 style={{ color: 'red' }}>. . . news block . . .</h1>
             <WelcomePart/>
-            <h2>Please, check your pets and their comfort:</h2>
+            <div className={style.text}>
+                <p>MY PETS</p>
+                <p className={style.btnAll} onClick={() => navigate('/my_pets')}>View all  <Arrow className={style.arrowAll}/></p>
+            </div>
             {isLoading ? <Loader/> :
                 error ? <EmptyState variant={'pets'}/> :
                     <div className={style.container}>
