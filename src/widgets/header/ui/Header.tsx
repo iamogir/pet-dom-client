@@ -4,6 +4,7 @@ import {useAuth} from "features/auth/context";
 // import {useMe} from "features/auth/hooks";
 import SignOut from '../../../shared/assert/icons/sign-out.svg?react'
 import Profile from '../../../shared/assert/icons/profile.svg?react'
+import {Navigation} from "widgets/navigation";
 
 
 export const Header = () => {
@@ -20,12 +21,7 @@ export const Header = () => {
     return (
         <div className={style.box}>
             <h1>PETDOM</h1>
-            <div className={style.menu}>
-                <button className={style.btn} onClick={() => navigate('/home')}>Home</button>
-                <button className={style.btn} onClick={() => navigate('/my_pets')}>My pets</button>
-                <button className={style.btn} onClick={() => navigate('#')}>Notifications</button>
-                <button className={style.btn} onClick={() => navigate('#')}>Documents</button>
-            </div>
+            <Navigation/>
             <div className={style.icons}>
                 <Profile className={style.profile} onClick={() => navigate('/user/me')}/>
                 <SignOut className={style.icon} onClick={handleLogout}/>
