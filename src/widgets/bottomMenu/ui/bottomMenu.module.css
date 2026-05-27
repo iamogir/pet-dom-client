@@ -17,6 +17,14 @@
     flex: 1;
     border: none;
     background: var(--color-bg);
+    cursor: pointer;
+
+}
+
+.menu > button:hover {
+
+    border-right: 1px solid black;
+    border-left: 1px solid black;
 
 }
 
