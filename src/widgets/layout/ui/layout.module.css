@@ -11,17 +11,24 @@ header {
 main {
     flex: 1;
     margin: 20px 30px;
+
+
 }
 
 footer {
     background-color: #571d0b;
+    padding-bottom: 90px;
 }
 
-.hide {
-    display: none;
-}
+/*.hide {*/
+/*    display: none;*/
+/*}*/
 
 @media (min-width: 768px){
+
+    footer {
+        padding-bottom: 0;
+    }
 
 }
 

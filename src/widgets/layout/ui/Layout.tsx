@@ -4,11 +4,12 @@ import {Footer} from "widgets/footer";
 import {Outlet} from "react-router-dom";
 import {Sidebar} from "widgets/sidebar";
 import {Navigation} from "widgets/navigation";
+import {BottomMenu} from "widgets/bottomMenu";
 
 export const Layout = () => {
     return (
         <>
-            <nav aria-label="Sidebar navigation">
+            <nav aria-label="Sidebar navigation" style={{ display: 'none'}}>
                 <Sidebar/>
             </nav>
 
@@ -24,9 +25,7 @@ export const Layout = () => {
                 </footer>
             </div>
 
-            <nav aria-label="Mobile navigation" className={style.hide}>
-                <Navigation/>
-            </nav>
+            <BottomMenu/>
         </>
     );
 };
