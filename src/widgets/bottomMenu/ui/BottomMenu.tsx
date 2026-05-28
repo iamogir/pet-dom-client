@@ -1,20 +1,21 @@
-import {useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import style from './bottomMenu.module.css'
-import Home from '../../../shared/assert/icons/home.svg?react'
-import PawBtn from '../../../shared/assert/icons/pawBtn.svg?react'
-import Settings from '../../../shared/assert/icons/settings.svg?react'
-import Profile from '../../../shared/assert/icons/profile.svg?react'
+import {navItems} from "shared/const";
 
 export const BottomMenu = () => {
 
-    const navigate = useNavigate();
-
     return (
         <nav className={style.menu}>
-            <button onClick={() => navigate('/home')}><Home/></button>
-            <button onClick={() => navigate('/my_pets')}><PawBtn/></button>
-            <button onClick={() => navigate('/user/me')}><Profile/></button>
-            <button onClick={() => navigate('#')}><Settings/></button>
+        {navItems.map(el =>
+            <NavLink key={el.to} to={el.to}>
+                {( {isActive} ) => {
+                    const Icon = isActive ? el.activeIcon : el.icon;
+                    return (
+                        <Icon className={style.btn}/>
+                    )
+                }}
+            </NavLink>
+        )}
         </nav>
     );
 };

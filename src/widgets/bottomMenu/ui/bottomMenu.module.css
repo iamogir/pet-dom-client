@@ -13,22 +13,23 @@
 
 }
 
-.menu > button {
+.menu > a {
     flex: 1;
-    /*border: none;*/
     background: var(--color-bg);
-    cursor: pointer;
     border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
-.menu > button:hover {
+.menu > a:hover {
     border-right-color: var(--color-text);
     border-left-color: var(--color-text);
 
 }
 
-.menu > button > svg {
+.btn {
     width: 30px;
     height: 30px;
     color: var(--color-text);

@@ -1,17 +1,17 @@
-import Home from '../assert/icons/home.svg'
-import HomeActive from '../assert/icons/home-filled.svg'
-import Paw from '../assert/icons/pawBtn.svg'
-import PawActive from '../assert/icons/paw-filled.svg'
-import Profile from '../assert/icons/profile.svg'
-import ProgileActive from '../assert/icons/profile-filled.svg'
-import Settings from '../assert/icons/settings.svg'
-import SettingsActive from '../assert/icons/settings-filled.svg'
+import Home from '../assert/icons/home.svg?react'
+import HomeActive from '../assert/icons/home-filled.svg?react'
+import Paw from '../assert/icons/pawBtn.svg?react'
+import PawActive from '../assert/icons/paw-filled.svg?react'
+import Profile from '../assert/icons/profile.svg?react'
+import ProfileActive from '../assert/icons/profile-filled.svg?react'
+import Settings from '../assert/icons/settings.svg?react'
+import SettingsActive from '../assert/icons/settings-filled.svg?react'
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL || '/api';
 
 export const navItems = [
     {
-        to: '/',
+        to: '/home',
         label: 'Home',
         icon: Home,
         activeIcon: HomeActive,
@@ -28,7 +28,7 @@ export const navItems = [
         to: '/user/me',
         label: 'My Profile',
         icon: Profile,
-        activeIcon: ProgileActive,
+        activeIcon: ProfileActive,
     },
 
     {
