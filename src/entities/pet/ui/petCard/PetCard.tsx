@@ -5,7 +5,7 @@ import {useDeletePetById} from "entities/pet/hooks";
 import {useQueryClient} from "@tanstack/react-query";
 import {petQueryKeys} from "entities/pet/api";
 import {getPetAvatar} from "entities/pet/lib";
-import Paw from '../../../../shared/assert/icons/paw.svg?react'
+import Paw from 'shared/assert/icons/paw-filled.svg?react'
 import Calendar from '../../../../shared/assert/icons/calendar.svg?react'
 
 interface Props {
