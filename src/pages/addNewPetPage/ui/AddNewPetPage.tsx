@@ -5,8 +5,9 @@ export const AddNewPetPage = () => {
 
     return (
         <div>
-            <h2>Write information about your new pet:</h2>
-            <br/>
+            <h1>New Companion</h1>
+            <p>Let's create a profile for your new best friend.</p>
+            <p>loading</p>
             <PetForm/>
             <Link to={'/user'}><button>Back to profile</button></Link>
 
