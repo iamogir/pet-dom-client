@@ -1,3 +1,5 @@
+
+
 @media (min-width: 768px) {
 
     .menu {
@@ -6,32 +8,73 @@
         width: 60%;
     }
 
-    .menu > button {
+    .items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+
+    }
+
+    .items > a {
         border: none;
+        text-decoration: none;
         color: var(--color-primary);
-        cursor: pointer;
-        outline: none;
         font-family: var(--font-family), system-ui, sans-serif;
         font-weight: var(--font-weight-regular);
         font-size: var(--font-size-md);
         background-color: var(--color-bg);
     }
 
-    .menu > button:hover {
+    .items > a:hover {
         color: var(--color-primary-hover);
         border-bottom: 1px solid var(--color-primary-hover);
+    }
+
+    .icons {
+        width: 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 3px;
+    }
+
+    .icon {
+        padding-bottom: 3px;
+    }
+
+    .icon, .profile {
+        width: 16px;
+        color: var(--color-primary);
+        cursor: pointer;
+    }
+
+    .icon:hover, .profile:hover {
+        color: var(--color-primary-hover);
     }
 
 }
 
 @media (min-width: 1024px) {
 
-    .menu {
-        width: 30%;
+    .items {
+        width: 50%;
+    }
+
+    .icons {
+        width: 7%;
     }
 
 }
 
 @media (min-width: 1440px) {
+
+    .items {
+        width: 40%;
+    }
+
+    .icons {
+        width: 4%;
+    }
 
 }

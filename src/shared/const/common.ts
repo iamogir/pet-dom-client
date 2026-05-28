@@ -9,7 +9,7 @@ import SettingsActive from '../assert/icons/settings-filled.svg?react'
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL || '/api';
 
-export const navItems = [
+export const navItemsMobile = [
     {
         to: '/home',
         label: 'Home',
@@ -36,5 +36,31 @@ export const navItems = [
         label: 'Settings',
         icon: Settings,
         activeIcon: SettingsActive,
+    }
+]
+
+export const navItemsDesk = [
+    {
+        to: '/home',
+        label: 'Home',
+        icon: Home,
+    },
+
+    {
+        to: '/my_pets',
+        label: 'My Pets',
+        icon: Paw,
+    },
+
+    {
+        to: '/user/me',
+        label: 'My Profile',
+        icon: Profile,
+    },
+
+    {
+        to: '#',
+        label: 'Notifications',
+        icon: Settings,
     }
 ]

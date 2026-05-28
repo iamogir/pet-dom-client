@@ -12,44 +12,18 @@
         box-shadow: var(--shadow-sm)
     }
 
-    .box > div {
-        display: flex;
-        justify-content: space-between;
-
-    }
-
-    .icons {
-        width: 6%;
-    }
-
     .box > h1 {
         font: var(--text-h1);
         color: var(--color-text-secondary);
 
     }
 
-    .icon, .profile {
-        width: 16px;
-        color: var(--color-primary);
-        cursor: pointer;
-    }
-
-    .icon:hover, .profile:hover {
-        color: var(--color-primary-hover);
-    }
-
 }
 
 @media (min-width: 1024px) {
 
-    .icons {
-        width: 4%;
-    }
-
 }
 
 @media (min-width: 1440px) {
-    .icons {
-        width: 3%;
-    }
+
 }
