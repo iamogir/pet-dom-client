@@ -11,7 +11,6 @@ export const Header = () => {
 
     return (
         <div className={style.box}>
-            <
             <h1>PETDOM</h1>
             <Navigation/>
         </div>
