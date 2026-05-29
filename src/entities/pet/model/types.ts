@@ -33,7 +33,9 @@ export interface IPetForm extends IPetBase {
     confirm: boolean;
 }
 
-export type ICreatePetDto = IPetBase;
+export type ICreatePetDto = Omit<IPetBase, 'birthDate' | 'sex' | 'weight'>;
+export type IPetFormCreate = ICreatePetDto;
+export type IPetParsedCreate = ICreatePetDto;
 
 export interface IUpdatedPetDto extends IPetBase{
     id: string;

@@ -1,9 +1,10 @@
 import {useState} from "react";
+import type {IPetFormCreate} from "entities/pet/model";
 
 export const useAddPetForm = () => {
 
     const [step, setStep] = useState(0);
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<IPetFormCreate>({
         name: '',
         species: '',
         breed: '',

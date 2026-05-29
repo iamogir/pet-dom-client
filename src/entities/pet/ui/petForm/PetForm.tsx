@@ -1,12 +1,11 @@
-import {useAddNewPet, useEditPet} from "entities/pet/hooks";
+import {useEditPet} from "entities/pet/hooks";
 import style from "./petForm.module.css";
 import {
-    type ICreatePetDto,
     type IPet,
     type IPetForm, petBreedMap, petSex,
 } from "entities/pet/model";
 import {type ChangeEvent, useState} from "react";
-import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
+import {toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
 
@@ -18,7 +17,6 @@ export const PetForm = ({ pet }: Props) => {
 
     const navigate = useNavigate();
     const editPet = useEditPet();
-    // const addPet = useAddNewPet();
     const [form, setForm] = useState<IPetForm>(() => {
         const bDay = pet?.birthDate.getFullYear() + '-' +
             String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
@@ -54,12 +52,7 @@ export const PetForm = ({ pet }: Props) => {
         setForm(prev => ({...prev, confirm: true}));
 
         if (pet) {
-
             await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
-
-        } else {
-            const petDto: ICreatePetDto = toServerPetObjectCreate(form);
-            addPet.mutate(petDto)
         }
 
         navigate('/my_pets');
