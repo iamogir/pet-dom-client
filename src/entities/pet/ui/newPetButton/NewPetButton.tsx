@@ -1,17 +1,20 @@
 import style from './newPetButton.module.css'
 import Add from '../../../../shared/assert/icons/add.svg?react'
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export const NewPetButton = () => {
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
 
     const openAddPet = () => {
-        navigate('/add_pet', {
-            state: {
-                backgroundLocation: location
-            }
-        });
+        navigate('/add_pet'
+        //     ,
+        //     {
+        //     state: {
+        //         backgroundLocation: location
+        //     }
+        // }
+        );
     };
 
     return (

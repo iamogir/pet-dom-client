@@ -1,4 +1,5 @@
 import style from './modal.module.css'
+import * as React from "react";
 
 interface Props {
     children: React.ReactNode;
