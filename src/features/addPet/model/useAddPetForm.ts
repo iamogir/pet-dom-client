@@ -18,11 +18,26 @@ export const useAddPetForm = () => {
         setStep((prev) => prev - 1);
     }
 
+    const setFormFields = (field: keyof FormData, value: string) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+    }
+
+    const resetForm = () => {
+        setFormData({
+            name: '',
+            species: '',
+            breed: '',
+            photoUrl: ''
+        })
+    }
+
     return {
         step,
         formData,
         nextStep,
-        prevStep
+        prevStep,
+        setFormFields,
+        resetForm
     }
 
 }

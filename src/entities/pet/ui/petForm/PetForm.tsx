@@ -9,7 +9,7 @@ import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
-import {useAddPetForm} from "features/addPet";
+import {AvatarStep, NameStep, TypeBreedStep, useAddPetForm} from "features/addPet";
 
 interface Props {
     pet?: IPet;
@@ -19,58 +19,58 @@ export const PetForm = ({ pet }: Props) => {
 
     const form = useAddPetForm();
 
-    const navigate = useNavigate();
-    const editPet = useEditPet();
-    const addPet = useAddNewPet();
-    const [form, setForm] = useState<IPetForm>(() => {
-        const bDay = pet?.birthDate.getFullYear() + '-' +
-            String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
-            String(pet?.birthDate.getDate()).padStart(2, '0');
-        return {
-            name: pet?.name ?? '',
-            species: pet?.species?? '',
-            breed: pet?.breed ?? '',
-            birthDate:  bDay ?? '',
-            weight: pet?.weight ?? 0,
-            sex: pet?.sex ?? '',
-            photoUrl: pet?.photoUrl ?? '',
-            confirm: false
-        }
-    });
-    const species = Object.keys(petBreedMap);
-    const breeds = [];
-    for (const [key, value] of Object.entries(petBreedMap)) {
-        if (key === form.species) breeds.push(...value);
-    }
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        event.preventDefault();
-
-        const eventTarget = event.target;
-        setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
-    }
-
-    const handleSubmit = async (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
-        const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
-        if (!isConfirmed) return;
-        setForm(prev => ({...prev, confirm: true}));
-
-        if (pet) {
-
-            await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
-
-        } else {
-            const petDto: ICreatePetDto = toServerPetObjectCreate(form);
-            addPet.mutate(petDto)
-        }
-
-        navigate('/my_pets');
-    }
-
-    const doSetForm = (name: string, value: string) => {
-        setForm(prev => ({...prev,  [name]: value }))
-    }
+    // const navigate = useNavigate();
+    // const editPet = useEditPet();
+    // const addPet = useAddNewPet();
+    // const [form, setForm] = useState<IPetForm>(() => {
+    //     const bDay = pet?.birthDate.getFullYear() + '-' +
+    //         String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
+    //         String(pet?.birthDate.getDate()).padStart(2, '0');
+    //     return {
+    //         name: pet?.name ?? '',
+    //         species: pet?.species?? '',
+    //         breed: pet?.breed ?? '',
+    //         birthDate:  bDay ?? '',
+    //         weight: pet?.weight ?? 0,
+    //         sex: pet?.sex ?? '',
+    //         photoUrl: pet?.photoUrl ?? '',
+    //         confirm: false
+    //     }
+    // });
+    // const species = Object.keys(petBreedMap);
+    // const breeds = [];
+    // for (const [key, value] of Object.entries(petBreedMap)) {
+    //     if (key === form.species) breeds.push(...value);
+    // }
+    //
+    // const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    //     event.preventDefault();
+    //
+    //     const eventTarget = event.target;
+    //     setForm(prev => ({...prev, [eventTarget.name]: eventTarget.value}));
+    // }
+    //
+    // const handleSubmit = async (event: { preventDefault: () => void; }) => {
+    //     event.preventDefault();
+    //     const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
+    //     if (!isConfirmed) return;
+    //     setForm(prev => ({...prev, confirm: true}));
+    //
+    //     if (pet) {
+    //
+    //         await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
+    //
+    //     } else {
+    //         const petDto: ICreatePetDto = toServerPetObjectCreate(form);
+    //         addPet.mutate(petDto)
+    //     }
+    //
+    //     navigate('/my_pets');
+    // }
+    //
+    // const doSetForm = (name: string, value: string) => {
+    //     setForm(prev => ({...prev,  [name]: value }))
+    // }
 
     return (
         <div>
@@ -80,46 +80,46 @@ export const PetForm = ({ pet }: Props) => {
             {form.step === 1 &&
                 (<TypeBreedStep form={form} />)}
 
-            form.step === 3 &&
+            {form.step === 3 &&
                 (<AvatarStep form={form} />)}
         </div>
     )
 
-    return (
-        <div>
-            <form className={style.box} onSubmit={handleSubmit}>
-                <label htmlFor={'name'}>Name: </label>
-                <input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />
-
-                <DropMenu values={species}
-                          onSelect={(value: string) => doSetForm('species', value)}
-                          value={form.species}
-                          name={'species'}
-                />
-
-                <DropMenu values={breeds as unknown as readonly string[]}
-                          onSelect={(value: string) => doSetForm('breed', value)}
-                          value={form.breed}
-                          name={'breed'}
-                />
-
-                <label htmlFor={'birthDate'}>Birth date: </label>
-                <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth date'} />
-
-                <DropMenu values={[...petSex]}
-                          onSelect={(value: string) => doSetForm('sex', value)}
-                          value={form.sex}
-                          name={'sex'}
-                />
-
-                <label htmlFor={'weight'}>Weight: </label>
-                <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
-
-                <button>
-                    <label htmlFor={'submit'}>Confirm</label>
-                    <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
-                </button>
-            </form>
-        </div>
-    );
+    // return (
+    //     <div>
+    //         <form className={style.box} onSubmit={handleSubmit}>
+    //             <label htmlFor={'name'}>Name: </label>
+    //             <input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />
+    //
+    //             <DropMenu values={species}
+    //                       onSelect={(value: string) => doSetForm('species', value)}
+    //                       value={form.species}
+    //                       name={'species'}
+    //             />
+    //
+    //             <DropMenu values={breeds as unknown as readonly string[]}
+    //                       onSelect={(value: string) => doSetForm('breed', value)}
+    //                       value={form.breed}
+    //                       name={'breed'}
+    //             />
+    //
+    //             <label htmlFor={'birthDate'}>Birth date: </label>
+    //             <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth date'} />
+    //
+    //             <DropMenu values={[...petSex]}
+    //                       onSelect={(value: string) => doSetForm('sex', value)}
+    //                       value={form.sex}
+    //                       name={'sex'}
+    //             />
+    //
+    //             <label htmlFor={'weight'}>Weight: </label>
+    //             <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
+    //
+    //             <button>
+    //                 <label htmlFor={'submit'}>Confirm</label>
+    //                 <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
+    //             </button>
+    //         </form>
+    //     </div>
+    // );
 };
