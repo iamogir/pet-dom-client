@@ -14,7 +14,7 @@ export function fromServerPetObject(obj: IPetDto): IPet {
     }
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
     return newObj;
-}
+} //to change
 
 export function fromServerArrayPetsObject(obj: IPetsDto): IPets {
     return {
