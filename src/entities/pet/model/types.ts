@@ -3,10 +3,10 @@ import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
 interface IPetBase {
     name: string;
     species: string;
-    breed: string;
-    birthDate: string;
-    weight: number;
-    sex: string;
+    breed?: string;
+    birthDate?: string;
+    weight?: number;
+    sex?: string;
     photoUrl?: string;
 }
 
@@ -14,10 +14,10 @@ export interface IPet<T extends PetSpecies = PetSpecies> {
     id: string;
     name: string;
     species: T;
-    breed: PetBreed<T>;
-    birthDate: Date;
-    weight: number;
-    sex: PetSex;
+    breed?: PetBreed<T>;
+    birthDate?: Date;
+    weight?: number;
+    sex?: PetSex;
     photoUrl?: string;
 }
 
