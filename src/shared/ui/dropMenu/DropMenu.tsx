@@ -5,10 +5,11 @@ interface Props {
     values: readonly string[],
     onSelect: (value: string) => void,
     value: string
-    name: string
+    name: string,
+    label: string,
 }
 
-export const DropMenu = ({ values, onSelect, value, name }: Props) => {
+export const DropMenu = ({ values, onSelect, value, name, label }: Props) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -27,7 +28,7 @@ export const DropMenu = ({ values, onSelect, value, name }: Props) => {
 
     return (
         <div ref={ref} >
-            <label htmlFor={name}>{name}: </label>
+            <label htmlFor={name}>{label}: </label>
             <input type={'text'} readOnly={true} value={value} name={name} onClick={handleShowBlock} />
 
             {isOpen && (

@@ -15,22 +15,24 @@ export const TypeBreedStep = ({ form }: Props) => {
     }
 
     return (
-        <div>
+        <>
             <DropMenu values={species}
                       onSelect={(value: string) => form.setFormFields('species' as keyof FormData, value)}
                       value={form.formData.species}
                       name={'species'}
+                      label={'He looks like... who?'}
             />
 
             <DropMenu values={breeds as unknown as readonly string[]}
                       onSelect={(value: string) => form.setFormFields('breed' as keyof FormData, value)}
                       value={form.formData.breed}
                       name={'breed'}
+                      label={'Does he have a breed?'}
             />
 
             <button onClick={form.prevStep}>Back</button>
             <button onClick={form.nextStep}>Next</button>
-        </div>
+        </>
     );
 
 };
