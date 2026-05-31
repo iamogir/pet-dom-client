@@ -13,14 +13,14 @@ const parsePetObject = (obj: IPetForm): IPetParsed => {
     const newObj : IPetParsed = {
         name: obj.name,
         species: species,
-        breed: parsePetBreed(species, obj.breed),
-        birthDate: obj.birthDate,
-        weight: obj.weight,
-        sex: parsePetSex(obj.sex),
         isParsed: true
     }
 
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
+    if (obj.breed) newObj.breed = parsePetBreed(species, obj.breed);
+    if (obj.birthDate) newObj.birthDate = obj.birthDate;
+    if (obj.weight) newObj.weight = obj.weight;
+    if (obj.sex) newObj.sex = parsePetSex(obj.sex);
     return newObj;
 }
 
@@ -29,9 +29,9 @@ const parsePetObjectCreate = (obj: IPetFormCreate): IPetParsedCreate => {
     const newObj : IPetParsedCreate = {
         name: obj.name,
         species: species,
-        breed: parsePetBreed(species, obj.breed),
     }
 
+    if (obj.breed) newObj.breed = parsePetBreed(species, obj.breed);
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
     return newObj;
 }

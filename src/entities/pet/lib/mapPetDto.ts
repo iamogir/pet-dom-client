@@ -15,7 +15,7 @@ export function fromServerPetObject(obj: IPetDto): IPet {
     if (obj.sex) newObj.sex = parsePetSex(obj.sex);
 
     return newObj;
-} //to change
+}
 
 export function fromServerArrayPetsObject(obj: IPetsDto): IPets {
     return {

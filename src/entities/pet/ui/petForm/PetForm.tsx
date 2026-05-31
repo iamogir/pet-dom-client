@@ -18,9 +18,9 @@ export const PetForm = ({ pet }: Props) => {
     const navigate = useNavigate();
     const editPet = useEditPet();
     const [form, setForm] = useState<IPetForm>(() => {
-        const bDay = pet?.birthDate.getFullYear() + '-' +
+        const bDay = pet?.birthDate?.getFullYear() + '-' +
             String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
-            String(pet?.birthDate.getDate()).padStart(2, '0');
+            String(pet?.birthDate?.getDate()).padStart(2, '0');
         return {
             name: pet?.name ?? '',
             species: pet?.species?? '',
