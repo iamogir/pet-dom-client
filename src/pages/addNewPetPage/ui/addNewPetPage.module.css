@@ -5,6 +5,8 @@
     box-shadow: var(--shadow-md);
     border-radius: var(--radius-lg);
 
+    padding: 40px 0;
+
 }
 
 .box > h1 {
@@ -12,6 +14,10 @@
     color: var(--color-primary);
     margin-bottom: 10px;
 
+}
+
+.steps {
+    color: var(--color-primary);
 }
 
 @media (min-width: 768px){

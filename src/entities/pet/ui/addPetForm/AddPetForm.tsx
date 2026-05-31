@@ -2,6 +2,7 @@ import {AvatarStep, NameStep, TypeBreedStep, useAddPetForm} from "features/addPe
 import {useAddNewPet} from "entities/pet/hooks";
 import type {ICreatePetDto} from "entities/pet/model";
 import {toServerPetObjectCreate} from "entities/pet/lib";
+import style from './addPetForm.module.css'
 
 export const AddPetForm = () => {
 
@@ -16,7 +17,7 @@ export const AddPetForm = () => {
     }
 
     return (
-        <div>
+        <section className={style.box}>
             {form.step === 0 &&
                 (<NameStep form={form} />)}
 
@@ -25,6 +26,6 @@ export const AddPetForm = () => {
 
             {form.step === 2 &&
                 (<AvatarStep form={form} onSubmit={handleSubmit} isPending={isPending}  />)}
-        </div>
+        </section>
     );
 };
