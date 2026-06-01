@@ -25,7 +25,7 @@ export const TypeBreedStep = ({ form }: Props) => {
 
             <DropMenu values={breeds as unknown as readonly string[]}
                       onSelect={(value: string) => form.setFormFields('breed' as keyof FormData, value)}
-                      value={form.formData.breed}
+                      value={form.formData.breed} //check and fix
                       name={'breed'}
                       label={'Does he have a breed?'}
             />
