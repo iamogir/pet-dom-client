@@ -18,7 +18,7 @@ export const TypeBreedStep = ({ form }: Props) => {
         <>
             <DropMenu values={species}
                       onSelect={(value: string) => form.setFormFields('species' as keyof FormData, value)}
-                      value={form.formData.species}
+                      value={form.formData.species} //check too
                       name={'species'}
                       label={'He looks like... who?'}
             />
