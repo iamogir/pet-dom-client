@@ -1,6 +1,8 @@
 import {useAddPetForm} from "features/addPet";
 import {DropMenu} from "shared/ui/dropMenu";
 import {petBreedMap} from "entities/pet/model";
+import {Button} from "shared/ui/button";
+import style from './typeBreedStep.module.css'
 
 interface Props {
     form: ReturnType<typeof useAddPetForm>;
@@ -30,8 +32,10 @@ export const TypeBreedStep = ({ form }: Props) => {
                       label={'Does he have a breed?'}
             />
 
-            <button onClick={form.prevStep}>Back</button>
-            <button onClick={form.nextStep}>Next</button>
+            <div className={style.buttons}>
+                <Button onClick={form.prevStep} text={'Back'}/>
+                <Button onClick={form.nextStep} text={'Next'}/>
+            </div>
         </>
     );
 

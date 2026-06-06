@@ -1,5 +1,5 @@
 .inputCustom > input {
-    cursor: default !important;
+    cursor: pointer !important;
 }
 
 .border {
