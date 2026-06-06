@@ -28,10 +28,10 @@ export const DropMenu = ({ values, onSelect, value, name, label }: Props) => {
 
     return (
         <div ref={ref} >
-            <label htmlFor={name}>{label}: </label>
+            <label htmlFor={name}>{label}</label>
             <input type={'text'} readOnly={true} value={value} name={name} onClick={handleShowBlock} />
 
-            {isOpen && (
+            {(isOpen && values.length > 0) && (
                 <div className={style.border}>
                     {values.map(el => <div key={el} onClick={() => { onSelect(el); setIsOpen(false)}}>{el}</div>)}
                 </div>
