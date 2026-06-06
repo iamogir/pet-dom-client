@@ -28,7 +28,7 @@ export const DropMenu = ({ values, onSelect, value, name, label }: Props) => {
     })
 
     return (
-        <div ref={ref} >
+        <div className={style.menu} ref={ref} >
             {/*<label htmlFor={name}>{label}</label>*/}
             {/*<input type={'text'} readOnly={true} value={value} name={name} onClick={handleShowBlock} />*/}
 
@@ -38,6 +38,7 @@ export const DropMenu = ({ values, onSelect, value, name, label }: Props) => {
                    readOnly={true}
                    name={name}
                    onClick={handleShowBlock}
+                   className={style.inputCustom}
             />
 
             {(isOpen && values.length > 0) && (

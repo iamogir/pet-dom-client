@@ -10,11 +10,12 @@ interface Props {
     name?: string,
     readOnly?: boolean,
     onClick?: MouseEventHandler<HTMLInputElement>,
+    className?: string,
 }
 
-export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick }: Props) => {
+export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className }: Props) => {
     return (
-        <article className={style.info}>
+        <article className={`${style.info} ${className}`}>
             <label htmlFor={name}>{label}</label>
             <input type={type}
                    name={name}
