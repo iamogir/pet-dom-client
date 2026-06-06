@@ -1,5 +1,6 @@
 import style from './dropMenu.module.css'
 import {useEffect, useRef, useState} from "react";
+import {Input} from "shared/ui/input";
 
 interface Props {
     values: readonly string[],
@@ -28,8 +29,16 @@ export const DropMenu = ({ values, onSelect, value, name, label }: Props) => {
 
     return (
         <div ref={ref} >
-            <label htmlFor={name}>{label}</label>
-            <input type={'text'} readOnly={true} value={value} name={name} onClick={handleShowBlock} />
+            {/*<label htmlFor={name}>{label}</label>*/}
+            {/*<input type={'text'} readOnly={true} value={value} name={name} onClick={handleShowBlock} />*/}
+
+            <Input value={value}
+                   label={label}
+                   type={'text'}
+                   readOnly={true}
+                   name={name}
+                   onClick={handleShowBlock}
+            />
 
             {(isOpen && values.length > 0) && (
                 <div className={style.border}>
