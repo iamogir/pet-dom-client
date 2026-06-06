@@ -1,4 +1,5 @@
 import {useAddPetForm} from "features/addPet";
+import {Button} from "shared/ui/button";
 
 interface Props {
     form: ReturnType<typeof useAddPetForm>;
@@ -9,10 +10,11 @@ interface Props {
 export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
     return (
         <div>
-            Avatar step
+            <label >He looks like:</label>
+            <input type={'file'} />
 
-            <button onClick={form.prevStep}>Back</button>
-            <button onClick={onSubmit} disabled={isPending}>Submit</button>
+            <Button onClick={form.prevStep} text={'Back'}/>
+            <Button onClick={onSubmit} text={'Submit'} disabled={isPending}/>
         </div>
     );
 };
