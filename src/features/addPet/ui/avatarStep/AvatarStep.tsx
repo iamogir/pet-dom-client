@@ -13,6 +13,8 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
             <label >He looks like:</label>
             <input type={'file'} />
 
+            //check up
+
             <Button onClick={form.prevStep} text={'Back'}/>
             <Button onClick={onSubmit} text={'Submit'} disabled={isPending}/>
         </div>
