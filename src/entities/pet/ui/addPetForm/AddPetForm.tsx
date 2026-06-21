@@ -12,6 +12,7 @@ export const AddPetForm = () => {
     const handleSubmit = () => {
 
         const petDto: ICreatePetDto = toServerPetObjectCreate(form.formData);
+        console.log(petDto);
         mutate(petDto)
 
     }

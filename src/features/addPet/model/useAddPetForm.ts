@@ -8,7 +8,8 @@ export const useAddPetForm = () => {
         name: '',
         species: '',
         breed: '',
-        photoUrl: ''
+        photoUrl: '',
+        avatar: undefined,
     });
 
     const nextStep = () => {
@@ -19,7 +20,7 @@ export const useAddPetForm = () => {
         setStep((prev) => prev - 1);
     }
 
-    const setFormFields = (field: keyof FormData, value: string) => {
+    const setFormFields = (field: keyof FormData, value: string | File) => {
         setFormData((prev) => ({ ...prev, [field]: value }));
     }
 
@@ -28,7 +29,8 @@ export const useAddPetForm = () => {
             name: '',
             species: '',
             breed: '',
-            photoUrl: ''
+            photoUrl: '',
+            avatar: undefined,
         })
     }
 

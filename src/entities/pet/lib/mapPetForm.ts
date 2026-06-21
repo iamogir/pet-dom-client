@@ -33,6 +33,7 @@ const parsePetObjectCreate = (obj: IPetFormCreate): IPetParsedCreate => {
 
     if (obj.breed) newObj.breed = parsePetBreed(species, obj.breed);
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;
+    if (obj.avatar) newObj.avatar = obj.avatar;
     return newObj;
 }
 

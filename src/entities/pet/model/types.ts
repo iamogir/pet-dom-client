@@ -33,13 +33,16 @@ export interface IPetForm extends IPetBase {
     confirm: boolean;
 }
 
-export type ICreatePetDto = Omit<IPetBase, 'birthDate' | 'sex' | 'weight'>;
+export interface ICreatePetDto extends Omit<IPetBase, 'birthDate' | 'sex' | 'weight'> {
+    avatar?: File;
+}
 export type IPetFormCreate = ICreatePetDto;
 export interface IPetParsedCreate<T extends PetSpecies = PetSpecies> {
     name: string;
     species: T;
     breed?: PetBreed<T>;
     photoUrl?: string;
+    avatar?: File;
 }
 
 export interface IUpdatedPetDto extends IPetBase{

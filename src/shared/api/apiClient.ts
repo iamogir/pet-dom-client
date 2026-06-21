@@ -17,11 +17,11 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit): Pro
 
     const response: Response = await fetchClient(endpoint, {
         ...options,
-        headers: {
-            // 'Content-Type': 'application/json',
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-            ...options?.headers
-        },
+        // headers: {
+        //     ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        //     ...options?.headers
+        // },
+        headers,
     });
 
     if (response.status === 401) {

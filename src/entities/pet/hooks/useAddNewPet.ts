@@ -1,7 +1,7 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {addNewPet, petQueryKeys} from "entities/pet/api";
 import type {ICreatePetDto, IPet, IPets} from "entities/pet/model";
-import {fromServerPetObject} from "entities/pet/lib";
+import {fromLocalCreatePetObject} from "entities/pet/lib/mapPetDto.ts";
 
 export const useAddNewPet = () => {
 
@@ -14,7 +14,7 @@ export const useAddNewPet = () => {
             const prevPets = queryClient.getQueryData<IPets>(petQueryKeys.all);
 
             queryClient.setQueryData(petQueryKeys.all, (old: IPets = {data: [], meta: {total: 0}}): IPets => {
-                const newPet: IPet = fromServerPetObject({ ...newCreatedPet, id: crypto.randomUUID() });
+                const newPet: IPet = fromLocalCreatePetObject(newCreatedPet);
                 console.log(old.data)
                 return {
                     ...old,
