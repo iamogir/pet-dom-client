@@ -5,15 +5,20 @@ import {ApiError, AuthError} from "shared/api"
 export const apiClient = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
     const token = getToken();
     const headers = new Headers(options?.headers);
+    const isFormData = options?.body instanceof FormData;
 
     if (token && !headers.has('Authorization')) {
         headers.set('Authorization', `Bearer ${token}`);
     }
 
+    if (!isFormData && !headers.has('Content-Type')) {
+        headers.set('Content-Type', 'application/json');
+    }
+
     const response: Response = await fetchClient(endpoint, {
         ...options,
         headers: {
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json',
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
             ...options?.headers
         },
