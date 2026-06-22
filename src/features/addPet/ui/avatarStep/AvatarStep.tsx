@@ -16,7 +16,6 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
 
     return (
         <div>
-            {/*<label >He looks like:</label>*/}
             <Input type={'file'}
                    label={"Want to upload a photo?"}
                    name={'avatar'}
@@ -27,13 +26,6 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                        form.setFormFields(e.target.name as keyof FormData, file)
                    }}
             />
-            {/*<input name={'avatar'} type={'file'} accept="image/jpeg,image/png,image/webp,image/heic,image/heif"*/}
-            {/*       onChange={(e) => {*/}
-            {/*           const file = e.target.files?.[0];*/}
-            {/*           if (!file) return;*/}
-            {/*           form.setFormFields(e.target.name as keyof FormData, file)*/}
-            {/*       }}*/}
-            {/*/>*/}
 
             {form.formData.avatar && canPreviewLocally(form.formData.avatar) ? (<img src={URL.createObjectURL(form.formData.avatar)} alt="Pet preview" />) :
                 form.formData.avatar ? ( <p>Everything is fine! The file has been uploaded successfully. A preview will appear soon.</p>) : null}
