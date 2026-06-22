@@ -4,16 +4,17 @@ import type {ChangeEvent, MouseEventHandler} from "react";
 interface Props {
     label?: string,
     onChange?: (e: ChangeEvent<HTMLInputElement, HTMLInputElement>) => void,
-    value: string,
+    value?: string,
     placeholder?: string
-    type: 'text' | 'password' | 'email' | 'number' | 'tel',
+    type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'file',
     name?: string,
     readOnly?: boolean,
     onClick?: MouseEventHandler<HTMLInputElement>,
     className?: string,
+    accept?: string,
 }
 
-export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className }: Props) => {
+export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept }: Props) => {
     return (
         <article className={`${style.info} ${className}`}>
             <label htmlFor={name}>{label}</label>
@@ -24,6 +25,7 @@ export const Input = ({ label, onChange, value, placeholder, type, name, readOnl
                    placeholder={placeholder}
                    readOnly={readOnly}
                    onClick={onClick}
+                   accept={accept}
             />
         </article>
     );
