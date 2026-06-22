@@ -1,0 +1,14 @@
+.inputBox {
+
+}
+
+.imageBox {
+    width: 100%;
+    height: max-content;
+    border: 15px solid var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+
+.imageBox > img {
+    width: 100%;
+}

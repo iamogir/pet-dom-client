@@ -1,6 +1,7 @@
 import {useAddPetForm} from "features/addPet";
 import {Button} from "shared/ui/button";
 import {Input} from "shared/ui/input";
+import style from './avatarStep.module.css'
 
 interface Props {
     form: ReturnType<typeof useAddPetForm>;
@@ -20,6 +21,7 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                    label={"Want to upload a photo?"}
                    name={'avatar'}
                    accept={"image/jpeg,image/png,image/webp,image/heic,image/heif"}
+                   className={style.inputBox}
                    onChange={(e) => {
                        const file = e.target.files?.[0];
                        if (!file) return;
@@ -27,8 +29,12 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                    }}
             />
 
-            {form.formData.avatar && canPreviewLocally(form.formData.avatar) ? (<img src={URL.createObjectURL(form.formData.avatar)} alt="Pet preview" />) :
-                form.formData.avatar ? ( <p>Everything is fine! The file has been uploaded successfully. A preview will appear soon.</p>) : null}
+            <div className={style.imageBox}>
+                {form.formData.avatar && canPreviewLocally(form.formData.avatar) ? (
+                    <img src={URL.createObjectURL(form.formData.avatar)} alt="Pet preview"/>) :
+                form.formData.avatar ? (
+                    <p>Everything is fine! The file has been uploaded successfully. A preview will appear soon.</p>) : null}
+            </div>
 
             <Button onClick={form.prevStep} text={'Back'}/>
             <Button onClick={onSubmit} text={'Submit'} disabled={isPending}/>

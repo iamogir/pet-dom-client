@@ -15,6 +15,24 @@ interface Props {
 }
 
 export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept }: Props) => {
+    if (type === 'file')
+        return (
+            <article className={`${style.info} ${className}`}>
+                <p className={style.title}>{label}</p>
+                <label htmlFor={name} className={style.fileButton}>
+                    Add photo
+                </label>
+                <input
+                    id={name}
+                    className={style.fileInput}
+                    type="file"
+                    name={name}
+                    accept={accept}
+                    onChange={onChange}
+                />
+            </article>
+        )
+
     return (
         <article className={`${style.info} ${className}`}>
             <label htmlFor={name}>{label}</label>
