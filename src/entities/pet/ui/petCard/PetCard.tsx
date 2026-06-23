@@ -16,8 +16,6 @@ export const PetCard = ({ pet }: Props) => {
 
     const petAge = pet.birthDate ? new Date().getFullYear() - pet.birthDate.getFullYear() : null;
 
-    console.log(pet)
-
     // const bDay: string = String(pet.birthDate.getDate()).padStart(2, '0') + '/' + String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '/' + pet.birthDate.getFullYear();
     // const queryClient = useQueryClient();
     // const navigate = useNavigate();

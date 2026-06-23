@@ -25,7 +25,9 @@
     height: 70%;
     border-radius: var(--radius-md) var(--radius-md) 0 0 ;
     background-repeat: no-repeat;
-    background-size: auto 90px;
+    /*background-size: auto 90px;*/
+    /*background-size: cover;*/
+    background-size: 250px auto;
     background-position: center;
     background-color: var(--color-surface-secondary);
     padding: 5px;
