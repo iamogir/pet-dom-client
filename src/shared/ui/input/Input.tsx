@@ -1,5 +1,6 @@
 import style from './input.module.css'
 import type {ChangeEvent, MouseEventHandler} from "react";
+import {Button} from "shared/ui/button";
 
 interface Props {
     label?: string,
@@ -9,12 +10,15 @@ interface Props {
     type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'file',
     name?: string,
     readOnly?: boolean,
-    onClick?: MouseEventHandler<HTMLInputElement>,
+    onClick?: () => void | MouseEventHandler<HTMLInputElement>,
     className?: string,
     accept?: string,
 }
 
 export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept }: Props) => {
+
+    console.log(value)
+
     if (type === 'file')
         return (
             <article className={`${style.info} ${className}`}>
@@ -22,6 +26,7 @@ export const Input = ({ label, onChange, value, placeholder, type, name, readOnl
                 <label htmlFor={name} className={style.fileButton}>
                     Add photo
                 </label>
+                { value && value !== '' && onClick && <Button onClick={onClick} text={'Unpin photo'}/> }
                 <input
                     id={name}
                     className={style.fileInput}

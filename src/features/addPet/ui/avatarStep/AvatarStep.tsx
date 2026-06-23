@@ -60,7 +60,9 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                    label={"Want to upload a photo?"}
                    name={'avatar'}
                    accept={"image/jpeg,image/png,image/webp,image/heic,image/heif"}
+                   value={form.formData.avatar?.name}
                    className={style.inputBox}
+                   onClick={handleUnpinPhoto}
                    onChange={(e) => {
                        const file = e.target.files?.[0];
                        if (!file) return;
