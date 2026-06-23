@@ -9,9 +9,9 @@ export const AddPetForm = () => {
     const form = useAddPetForm();
     const { mutate, isPending } = useAddNewPet();
 
-    const handleSubmit = () => {
+    const handleSubmit = (avatar?: File) => {
 
-        const petDto: ICreatePetDto = toServerPetObjectCreate(form.formData);
+        const petDto: ICreatePetDto = toServerPetObjectCreate({ ...form.formData, avatar });
         console.log(petDto);
         mutate(petDto)
 
