@@ -17,16 +17,16 @@ interface Props {
 
 export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept }: Props) => {
 
-    console.log(value)
-
     if (type === 'file')
         return (
             <article className={`${style.info} ${className}`}>
                 <p className={style.title}>{label}</p>
-                <label htmlFor={name} className={style.fileButton}>
-                    Add photo
-                </label>
-                { value && value !== '' && onClick && <Button onClick={onClick} text={'Unpin photo'}/> }
+                <div>
+                    <label htmlFor={name} className={style.fileButton}>
+                        Add photo
+                    </label>
+                    {value && value !== '' && onClick && <Button onClick={onClick} text={'Unpin photo'}/>}
+                </div>
                 <input
                     id={name}
                     className={style.fileInput}
