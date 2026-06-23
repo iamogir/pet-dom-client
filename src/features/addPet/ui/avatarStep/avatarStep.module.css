@@ -7,8 +7,18 @@
     height: max-content;
     border: 15px solid var(--color-surface);
     border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
 }
 
 .imageBox > img {
     width: 100%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons > button {
+    width: 49%;
 }

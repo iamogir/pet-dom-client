@@ -16,7 +16,7 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
     };
 
     return (
-        <div>
+        <>
             <Input type={'file'}
                    label={"Want to upload a photo?"}
                    name={'avatar'}
@@ -29,15 +29,21 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                    }}
             />
 
-            <div className={style.imageBox}>
-                {form.formData.avatar && canPreviewLocally(form.formData.avatar) ? (
-                    <img src={URL.createObjectURL(form.formData.avatar)} alt="Pet preview"/>) :
-                form.formData.avatar ? (
-                    <p>Everything is fine! The file has been uploaded successfully. A preview will appear soon.</p>) : null}
-            </div>
 
-            <Button onClick={form.prevStep} text={'Back'}/>
-            <Button onClick={onSubmit} text={'Submit'} disabled={isPending}/>
-        </div>
+                {form.formData.avatar && canPreviewLocally(form.formData.avatar) ? (
+                        <div className={style.imageBox}>
+                            <img src={URL.createObjectURL(form.formData.avatar)} alt="Pet preview"/>
+                        </div>) :
+                form.formData.avatar ? (
+                    <div className={style.imageBox}>
+                        <p>Everything is fine! The file has been uploaded successfully. A preview will appear soon.</p>
+                    </div>) : null}
+
+
+            <div className={style.buttons}>
+                <Button onClick={form.prevStep} text={'Back'}/>
+                <Button onClick={onSubmit} text={'Submit'} disabled={isPending}/>
+            </div>
+        </>
     );
 };
