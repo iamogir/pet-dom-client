@@ -71,12 +71,12 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
             />
 
             {previewUrl && form.formData.avatar && canPreviewLocally(form.formData.avatar) ? (
-                <div className={style.imageBox} style={{ position: 'relative', width: 300, height: 300 }}>
+                <div className={style.imageBox}>
                     <Cropper
                         image={previewUrl}
                         crop={crop}
                         zoom={zoom}
-                        aspect={1}
+                        aspect={16/9}
                         onCropChange={setCrop}
                         onZoomChange={setZoom}
                         onCropComplete={(_, areaPixels) => {
