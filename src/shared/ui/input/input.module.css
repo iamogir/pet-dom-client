@@ -10,22 +10,30 @@
 
 .info > div {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
+    margin-top: 10px;
 }
 
-/*.info > div > label {*/
-/*    border: none;*/
-/*    border-radius: var(--radius-lg);*/
-/*    background: var(--color-primary);*/
-/*    width: 100%;*/
-/*    color: var(--color-surface);*/
-/*    padding: 10px 20px;*/
-/*    font-family: inherit;*/
-/*    font-size: var(--font-size-md);*/
-/*    font-weight: var(--font-weight-semibold);*/
-/*    cursor: pointer;*/
-/*}*/
+.info > div > label {
+    border: none;
+    margin-top: 0;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    /*width: 100%;*/
+    color: var(--color-surface);
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    margin-right: 10px;
+
+}
+
+.info > div > label, .info > div > button {
+    width: 30%;
+}
 
 .info > div > label, .title {
     font-size: var(--font-size-md);
