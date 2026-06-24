@@ -1,0 +1,94 @@
+:root {
+
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1440px;
+
+    /* COLORS */
+
+    --color-bg: #f8f4ed;
+    --color-surface: #ffffff;
+    --color-surface-opacity: rgba(255, 255, 255, 0.5);
+    --color-surface-secondary: #dddddd;
+    --color-bg-pink: #f7ddd1;
+    --color-bg-blue: rgb(193, 228, 235);
+
+    --color-primary: #EA7946;
+    --color-primary-hover: #FFB597;
+
+    --color-text: #386685;
+    --color-text-secondary: #916053;
+    --color-text-primary: #141d25;
+    --color-text-third: #758695;
+
+    --color-border: #3F4B55;
+
+    --color-success: #FF8C59;
+    --color-error: #ab2d07;
+
+    /* RADIUS */
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* SPACING */
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* TYPOGRAPHY */
+
+    --font-family: 'YouTube Sans Dark', system-ui, sans-serif;
+
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 32px;
+
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* TYPOGRAPHY SCALE */
+
+    --text-h1: 700 32px/40px 'YouTube Sans Dark', system-ui, sans-serif;
+    --text-h2: 700 24px/32px 'YouTube Sans Dark', system-ui, sans-serif;
+
+    --text-h3: 600 20px/28px 'YouTube Sans Dark', system-ui, sans-serif;
+
+    --text-body: 400 16px/24px 'YouTube Sans Dark', system-ui, sans-serif;
+    --text-body-sm: 400 14px/20px 'YouTube Sans Dark', system-ui, sans-serif;
+
+    --text-caption: 400 12px/16px 'YouTube Sans Dark', system-ui, sans-serif;
+
+    /* BUTTON TOKENS */
+
+    --btn-height-sm: 32px;
+
+    --btn-height-md: 40px;
+
+    --btn-height-lg: 48px;
+
+    --btn-radius: 12px;
+
+    --btn-padding-x: 16px;
+
+    --btn-padding-y: 10px;
+
+    --btn-font: var(--text-body-sm);
+
+    /* SHADOWS */
+
+    --shadow-sm:
+            0 1px 2px rgba(0,0,0,0.06);
+
+    --shadow-md:
+            0 4px 12px rgba(0,0,0,0.08);
+}

@@ -1,13 +1,11 @@
-import {useAddNewPet, useEditPet} from "entities/pet/hooks";
+import {useEditPet} from "entities/pet/hooks";
 import style from "./petForm.module.css";
 import {
-    type ICreatePetDto,
-    imagePlaceholder,
     type IPet,
     type IPetForm, petBreedMap, petSex,
 } from "entities/pet/model";
 import {type ChangeEvent, useState} from "react";
-import {toServerPetObjectCreate, toServerPetObjectUpdate} from "entities/pet/lib";
+import {toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
 
@@ -19,11 +17,10 @@ export const PetForm = ({ pet }: Props) => {
 
     const navigate = useNavigate();
     const editPet = useEditPet();
-    const addPet = useAddNewPet();
     const [form, setForm] = useState<IPetForm>(() => {
-        const bDay = pet?.birthDate.getFullYear() + '-' +
+        const bDay = pet?.birthDate?.getFullYear() + '-' +
             String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
-            String(pet?.birthDate.getDate()).padStart(2, '0');
+            String(pet?.birthDate?.getDate()).padStart(2, '0');
         return {
             name: pet?.name ?? '',
             species: pet?.species?? '',
@@ -31,7 +28,7 @@ export const PetForm = ({ pet }: Props) => {
             birthDate:  bDay ?? '',
             weight: pet?.weight ?? 0,
             sex: pet?.sex ?? '',
-            photoUrl: pet?.photoUrl ?? imagePlaceholder,
+            photoUrl: pet?.photoUrl ?? '',
             confirm: false
         }
     });
@@ -55,12 +52,7 @@ export const PetForm = ({ pet }: Props) => {
         setForm(prev => ({...prev, confirm: true}));
 
         if (pet) {
-
             await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
-
-        } else {
-            const petDto: ICreatePetDto = toServerPetObjectCreate(form);
-            addPet.mutate(petDto)
         }
 
         navigate('/my_pets');
@@ -70,23 +62,19 @@ export const PetForm = ({ pet }: Props) => {
         setForm(prev => ({...prev,  [name]: value }))
     }
 
+
+
     return (
         <div>
             <form className={style.box} onSubmit={handleSubmit}>
                 <label htmlFor={'name'}>Name: </label>
                 <input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />
 
-                {/*<label htmlFor={'species'}>Species: </label>*/}
-                {/*<input type={'text'} name={'species'} onChange={handleChange} value={form.species} placeholder={'Species'} />*/}
-
                 <DropMenu values={species}
                           onSelect={(value: string) => doSetForm('species', value)}
                           value={form.species}
                           name={'species'}
                 />
-
-                {/*<label htmlFor={'breed'}>Breed: </label>*/}
-                {/*<input type={'text'} name={'breed'} onChange={handleChange} value={form.breed} placeholder={'Breed'} />*/}
 
                 <DropMenu values={breeds as unknown as readonly string[]}
                           onSelect={(value: string) => doSetForm('breed', value)}
@@ -97,9 +85,6 @@ export const PetForm = ({ pet }: Props) => {
                 <label htmlFor={'birthDate'}>Birth date: </label>
                 <input type={'date'} name={'birthDate'} onChange={handleChange} value={form.birthDate} placeholder={'Birth date'} />
 
-                {/*<label htmlFor={'sex'}>Sex: </label>*/}
-                {/*<input type={'text'} name={'sex'} onChange={handleChange} value={form.sex} placeholder={'Sex'} />*/}
-
                 <DropMenu values={[...petSex]}
                           onSelect={(value: string) => doSetForm('sex', value)}
                           value={form.sex}
@@ -109,10 +94,6 @@ export const PetForm = ({ pet }: Props) => {
                 <label htmlFor={'weight'}>Weight: </label>
                 <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
 
-                {/*<label htmlFor={'photoUrl'}>Pet photo: </label>*/}
-                {/*<input type={'text'} name={'photoUrl'} onChange={handleChange} value={form.photoUrl} placeholder={'Photo'} />*/}
-
-                <br/>
                 <button>
                     <label htmlFor={'submit'}>Confirm</label>
                     <input type={'submit'} name={'submit'} style={{display: 'none'}}/>

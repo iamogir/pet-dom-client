@@ -1,0 +1,1 @@
+export { getCroppedImage } from './getCroppedImage.ts'

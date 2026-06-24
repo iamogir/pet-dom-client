@@ -3,10 +3,10 @@ import type {PetBreed, PetSex, PetSpecies} from "entities/pet/model";
 interface IPetBase {
     name: string;
     species: string;
-    breed: string;
-    birthDate: string;
-    weight: number;
-    sex: string;
+    breed?: string;
+    birthDate?: string;
+    weight?: number;
+    sex?: string;
     photoUrl?: string;
 }
 
@@ -14,10 +14,10 @@ export interface IPet<T extends PetSpecies = PetSpecies> {
     id: string;
     name: string;
     species: T;
-    breed: PetBreed<T>;
-    birthDate: Date;
-    weight: number;
-    sex: PetSex;
+    breed?: PetBreed<T>;
+    birthDate?: Date;
+    weight?: number;
+    sex?: PetSex;
     photoUrl?: string;
 }
 
@@ -33,7 +33,17 @@ export interface IPetForm extends IPetBase {
     confirm: boolean;
 }
 
-export type ICreatePetDto = IPetBase;
+export interface ICreatePetDto extends Omit<IPetBase, 'birthDate' | 'sex' | 'weight'> {
+    avatar?: File;
+}
+export type IPetFormCreate = ICreatePetDto;
+export interface IPetParsedCreate<T extends PetSpecies = PetSpecies> {
+    name: string;
+    species: T;
+    breed?: PetBreed<T>;
+    photoUrl?: string;
+    avatar?: File;
+}
 
 export interface IUpdatedPetDto extends IPetBase{
     id: string;

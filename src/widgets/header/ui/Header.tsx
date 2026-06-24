@@ -1,25 +1,18 @@
 import style from './header.module.css'
-import {useNavigate} from "react-router-dom";
-import {useAuth} from "features/auth/context";
-// import {useMe} from "features/auth/hooks";
+import {Navigation} from "widgets/navigation";
+import {useLocation} from "react-router-dom";
+
 
 export const Header = () => {
 
-    // const user = useMe();
-    const navigate = useNavigate();
-    const {logout} = useAuth();
+    const location = useLocation();
 
-    const handleLogout = () => {
-        logout()
-        navigate("/sign_in");
-    }
+    const isCreatePetPage = location.pathname === 'add_pet';
 
     return (
         <div className={style.box}>
-            <button onClick={() => navigate('/home')}>Home</button>
-            <button onClick={() => navigate('/user/me')}>My profile</button>
-            <button onClick={() => navigate('/my_pets')}>Global pets</button>
-            <button onClick={handleLogout}>Sign o u t</button>
+            <h1>PETDOM</h1>
+            <Navigation/>
         </div>
     );
 };

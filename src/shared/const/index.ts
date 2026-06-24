@@ -1,1 +1,1 @@
-export { BASE_URL } from './common.ts'
+export { BASE_URL, navItemsMobile, navItemsDesk } from './common.ts'

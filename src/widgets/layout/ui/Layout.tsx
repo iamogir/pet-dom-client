@@ -3,12 +3,24 @@ import {Header} from "widgets/header";
 import {Footer} from "widgets/footer";
 import {Outlet} from "react-router-dom";
 import {Sidebar} from "widgets/sidebar";
-import {Navigation} from "widgets/navigation";
+import {BottomMenu} from "widgets/bottomMenu";
 
 export const Layout = () => {
+
+    // const location = useLocation();
+    // const navigate = useNavigate();
+    //
+    // const state = location.state as {
+    //     backgroundLocation?: Location;
+    // };
+    // const isModalRoute = !!state?.backgroundLocation;
+    // const closeModal = () => {
+    //     navigate(-1);
+    // };
+
     return (
         <>
-            <nav aria-label="Sidebar navigation">
+            <nav aria-label="Sidebar navigation" style={{ display: 'none'}}>
                 <Sidebar/>
             </nav>
 
@@ -24,9 +36,13 @@ export const Layout = () => {
                 </footer>
             </div>
 
-            <nav aria-label="Mobile navigation" className={style.hide}>
-                <Navigation/>
-            </nav>
+            <BottomMenu/>
+
+            {/*{isModalRoute && (*/}
+            {/*    <Modal onClose={closeModal}>*/}
+            {/*        <AddNewPetPage/>*/}
+            {/*    </Modal>*/}
+            {/*)}*/}
         </>
     );
 };

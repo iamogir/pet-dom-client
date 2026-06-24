@@ -1,15 +1,14 @@
-import {Link} from "react-router-dom";
-import {PetForm} from "entities/pet/ui/petForm";
+import style from './addNewPetPage.module.css'
+import {AddPetForm} from "entities/pet/ui/addPetForm";
 
 export const AddNewPetPage = () => {
 
     return (
-        <div>
-            <h2>Write information about your new pet:</h2>
-            <br/>
-            <PetForm/>
-            <Link to={'/user'}><button>Back to profile</button></Link>
-
+        <div className={style.box}>
+            <h1>New Companion</h1>
+            <p>Let's create a profile for your new best friend.</p>
+            <p className={style.steps}> !! Progress dots !!</p>
+            <AddPetForm/>
         </div>
     );
 };

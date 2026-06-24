@@ -1,6 +1,29 @@
 .box {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 30px;
-    /*margin-bottom: 70px;*/
+    display: none;
+}
+
+
+@media (min-width: 768px){
+
+    .box {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 30px;
+        box-shadow: var(--shadow-sm)
+    }
+
+    .box > h1 {
+        font: var(--text-h1);
+        color: var(--color-text-secondary);
+
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1440px) {
+
 }

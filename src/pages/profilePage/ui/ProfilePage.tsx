@@ -3,7 +3,7 @@ import {useUserById} from "entities/user/hooks";
 import {UserCard} from "entities/user/ui/userCard";
 import {PetCard} from "entities/pet/ui/petCard";
 import style from './profilePage.module.css'
-import {useAllPetsByUserId} from "entities/pet/hooks";
+import {useAllPetsByUserId, useDeletePetById} from "entities/pet/hooks";
 import {Loader} from "shared/ui/loader";
 import {ErrorState} from "shared/ui/errorState";
 import {EmptyState} from "features/emptyState/ui";
@@ -17,6 +17,7 @@ export const ProfilePage = ({ id }: Props) => {
     const { isLoading, data, error } = useUserById(id);
     const petsByUserQuery = useAllPetsByUserId(id);
     const navigate = useNavigate();
+    const deletePet = useDeletePetById();
 
     return (
         <div>
@@ -38,7 +39,7 @@ export const ProfilePage = ({ id }: Props) => {
                         </div>
                         { petsByUserQuery.isLoading ? <Loader/> :
                             (!petsByUserQuery.data ? <EmptyState variant={"pets"}/> :
-                                petsByUserQuery.data.data.map(p => <PetCard key={p.id} pet={p} />)
+                                    petsByUserQuery.data.data.map(p => <div> <PetCard key={p.id} pet={p} /><button onClick={() => deletePet.mutate(p.id)}>delete</button></div>)
                             )
                         }
                     </section>

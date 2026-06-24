@@ -1,0 +1,65 @@
+.box {
+    height: 200px;
+    flex: 0 0 250px;
+    /*background-color: red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: var(--color-primary) dashed 2px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+
+}
+
+.box:hover {
+    border: var(--color-primary-hover) dashed 2px;
+    transform: translateY(-4px) scale(1.02);
+
+}
+
+.addBtn {
+    width: 35px;
+    height: 35px;
+    color: var(--color-text);
+    background-color: var(--color-bg-blue);
+    border-radius: 50%;
+    padding: 5px;
+
+}
+
+.box:hover > .addBtn {
+    color: var(--color-bg-blue);
+    background-color: rgb(193, 228, 235, 0.5);
+}
+
+.box > p {
+    color: var(--color-text);
+    margin-top: 10px;
+
+}
+
+.box:hover > p {
+    color: var(--color-bg-blue);
+}
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 1024px) {
+
+    .box {
+        height: 250px;
+        flex: 0 0 350px;
+    }
+
+}
+
+@media (min-width: 1440px) {
+
+}

@@ -31,44 +31,4 @@ export const petBreedMap = {
 export type PetSpecies = keyof typeof petBreedMap;
 export type PetBreed<T extends PetSpecies> = (typeof petBreedMap)[T][number];
 
-// type Dog = PetBreed<'dog'>;
-// type Cat = PetBreed<'cat'>;
-
-// export const petType = [
-//     {
-//         name: 'cat',
-//         breeds: catBreed
-//     },
-//     {
-//         name: 'dog',
-//         breeds: dogBreed
-//     },
-//     {
-//         name: 'hamster',
-//         breeds: hamsterBreed
-//     },
-//     {
-//         name: 'rabbit',
-//         breeds: rabbitBreed
-//     },
-//     {
-//         name: 'hare',
-//         breeds: hareBreed
-//     },
-//     {
-//         name: 'bird',
-//         breeds: birdBreed
-//     }
-// ] as const;
-
-// export const petSpecies = [ 'cat', 'dog', 'bird', 'rabbit' ] as const;
-// export const petSpecies = petType.map(el => el.name);
-// export type PetSpecies = typeof petSpecies[number]; //Keyof typeof !!
-
-
-
-// export type PetBreed = DogBreed | CatBreed | BirdBreed | HamsterBreed | RabbitBreed | HareBreed;
-
-
-
-export const imagePlaceholder = 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-cat-one-line-drawing-vector-illustration-minimalism-style-png-image_5330621.jpg';
+// export const imagePlaceholder = 'https://png.pngtree.com/png-clipart/20200401/original/pngtree-cat-one-line-drawing-vector-illustration-minimalism-style-png-image_5330621.jpg';
