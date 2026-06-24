@@ -34,7 +34,7 @@ export const TypeBreedStep = ({ form }: Props) => {
 
             <div className={style.buttons}>
                 <Button onClick={form.prevStep} text={'Back'}/>
-                <Button onClick={form.nextStep} text={'Next'}/>
+                <Button onClick={form.nextStep} text={'Next'} disabled={!form.formData.breed}/>
             </div>
         </>
     );

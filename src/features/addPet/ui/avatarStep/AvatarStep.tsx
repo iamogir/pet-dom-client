@@ -83,8 +83,8 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                             setCroppedAreaPixels(areaPixels);
                         }}
                     />
-                    <input type="range" min={1} max={3} step={0.1} value={zoom}
-                        onChange={(e) => setZoom(Number(e.target.value))} />
+                    {/*<input type="range" min={1} max={3} step={0.1} value={zoom}*/}
+                    {/*    onChange={(e) => setZoom(Number(e.target.value))} />*/}
                 </div>
             ) :
                 form.formData.avatar ? (
