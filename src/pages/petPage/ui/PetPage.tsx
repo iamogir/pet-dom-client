@@ -1,10 +1,11 @@
 import {Link} from "react-router-dom";
 import {UserCard} from "entities/user/ui/userCard";
-import {usePetById} from "entities/pet/hooks";
+import {useGetAiAdvice, usePetById} from "entities/pet/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllUsersByPetId} from "entities/user/hooks";
 import {Loader} from "shared/ui/loader";
 import {EmptyState} from "features/emptyState/ui";
+import {Button} from "shared/ui/button";
 
 interface Props {
     petId: string
@@ -14,9 +15,10 @@ export const PetPage = ({ petId }: Props) => {
 
     const { isLoading, error, data } = useAllUsersByPetId(petId);
     const petData = usePetById(petId);
+    const adviceAi = useGetAiAdvice();
 
     return (
-        <div>
+        <>
             {petData.isLoading ? <Loader/> :
                 petData.error ? <EmptyState variant={'pets'}/> :
                     petData.data ? <PetCard pet={petData.data}/> :
@@ -30,7 +32,13 @@ export const PetPage = ({ petId }: Props) => {
                     }
                 </div>
             }
+            <Button onClick={() => adviceAi.mutate(petId)} text={'Get AI health advice'} />
+            <span>(...</span>
+            {adviceAi.isPending && <Loader/>}
+            {adviceAi.data && <section>{adviceAi.data.advice}</section>}
+            <span>...)</span>
+
             <Link to='/home'><button>to home</button></Link>
-        </div>
+        </>
     );
 };
