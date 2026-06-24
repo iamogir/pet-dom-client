@@ -1,3 +1,10 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+}
+
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -5,4 +12,24 @@
 
 .buttons > button {
     width: 49%;
+}
+
+@media (min-width: 768px) {
+    .container {
+        align-items: center;
+    }
+
+    .buttons > button {
+        width: 320px;
+        margin-right: 10px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1440px) {
+
 }

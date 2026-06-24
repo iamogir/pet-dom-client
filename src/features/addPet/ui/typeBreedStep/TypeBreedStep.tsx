@@ -17,7 +17,7 @@ export const TypeBreedStep = ({ form }: Props) => {
     }
 
     return (
-        <>
+        <article className={style.container}>
             <DropMenu values={species}
                       onSelect={(value: string) => form.setFormFields('species' as keyof FormData, value)}
                       value={form.formData.species}
@@ -34,9 +34,9 @@ export const TypeBreedStep = ({ form }: Props) => {
 
             <div className={style.buttons}>
                 <Button onClick={form.prevStep} text={'Back'}/>
-                <Button onClick={form.nextStep} text={'Next'} disabled={!form.formData.breed}/>
+                <Button onClick={form.nextStep} text={'Next'} disabled={!form.formData.species}/>
             </div>
-        </>
+        </article>
     );
 
 };

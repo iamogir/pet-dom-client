@@ -55,7 +55,7 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
     }, [previewUrl]);
 
     return (
-        <>
+        <article className={style.container}>
             <Input type={'file'}
                    label={"Want to upload a photo?"}
                    name={'avatar'}
@@ -97,6 +97,6 @@ export const AvatarStep = ({ form, onSubmit, isPending }: Props) => {
                 <Button onClick={form.prevStep} text={'Back'}/>
                 <Button onClick={handleSubmit} text={'Submit'} disabled={isPending}/>
             </div>
-        </>
+        </article>
     );
 };

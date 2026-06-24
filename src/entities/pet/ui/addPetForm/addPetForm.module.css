@@ -1,9 +1,17 @@
 .box {
-    display: flex;
-    flex-direction: column;
     width: 90%;
     min-height: 200px;
-    height: auto;
-    justify-content: space-between;
     margin-top: 15px
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1440px) {
+
 }
