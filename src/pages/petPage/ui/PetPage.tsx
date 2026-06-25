@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 import {UserCard} from "entities/user/ui/userCard";
-import {useGetAiAdvice, usePetById} from "entities/pet/hooks";
+import {usePetById} from "entities/pet/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useAllUsersByPetId} from "entities/user/hooks";
 import {Loader} from "shared/ui/loader";
 import {EmptyState} from "features/emptyState/ui";
 import {Button} from "shared/ui/button";
+import {useGetAiAdvice} from "features/aiAdvice";
 
 interface Props {
     petId: string

@@ -1,5 +1,6 @@
 import {useMutation} from "@tanstack/react-query";
-import {getAiAdvice} from "entities/pet/api";
+import {getAiAdvice} from "features/aiAdvice";
+
 
 export const useGetAiAdvice = () => {
     return useMutation({

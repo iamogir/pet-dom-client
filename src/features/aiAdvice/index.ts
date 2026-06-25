@@ -1,2 +1,2 @@
-export { getAiAdvice } from 'features/aiAdvice/api/getAiAdvice.ts'
-export { useGetAiAdvice } from 'features/aiAdvice/hooks/useGetAiAdvice.ts'
+export { getAiAdvice } from './api/getAiAdvice.ts'
+export { useGetAiAdvice } from './hooks/useGetAiAdvice.ts'
