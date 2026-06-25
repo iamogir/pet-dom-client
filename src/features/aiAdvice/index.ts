@@ -1,0 +1,1 @@
+export { getAiAdvice } from 'features/aiAdvice/api/getAiAdvice.ts'
