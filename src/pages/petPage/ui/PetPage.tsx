@@ -18,6 +18,8 @@ export const PetPage = ({ petId }: Props) => {
     const petData = usePetById(petId);
     const adviceAi = useGetAiAdvice();
 
+    //TODO next work with that
+
     return (
         <>
             {petData.isLoading ? <Loader/> :
