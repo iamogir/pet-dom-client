@@ -20,17 +20,24 @@ export const PetCardProfile = ({ pet }: Props) => {
             <section className={style.data}>
                 <p>{pet.name}</p>
                 <span>{pet.species.toUpperCase()}</span>
-                <p><span>{pet.breed || 'No breed'}</span><span>•</span><span>{petAge || 'Unknown age'}</span></p>
+                <p>
+                    <span>{pet.breed || ''}</span>
+                    <span>{petAge ? '•' : ''}</span>
+                    <span>{petAge ? petAge + ' y.o.' : ''}</span></p>
             </section>
             <section className={style.info}>
-                <div>
-                    <p>WEIGHT</p>
-                    <p>{pet.weight || ''}</p>
-                </div>
-                <div>
-                    <p>BIRTH DAY</p>
-                    <p>{pet.weight || ''}</p>
-                </div>
+                { pet.weight &&
+                    <div>
+                        <p>WEIGHT</p>
+                        <p>{pet.weight}</p>
+                    </div>
+                }
+                { pet.birthDate &&
+                    <div>
+                        <p>BIRTH DAY</p>
+                        <p>{pet.birthDate.toDateString()}</p>
+                    </div>
+                }
             </section>
             <Button onClick={() => navigate('/edit_pet/' + pet.id)} text={'Edit profile'} />
         </article>
