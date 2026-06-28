@@ -8,6 +8,7 @@ import {Button} from "shared/ui/button";
 import {useGetAiAdvice} from "features/aiAdvice";
 import style from './petPage.module.css'
 import {PetCardProfile} from "entities/pet/ui/petCardProfile";
+import {UserSmallCard} from "entities/user/ui/userSmallCard";
 
 interface Props {
     petId: string
@@ -35,6 +36,14 @@ export const PetPage = ({ petId }: Props) => {
                     <span>when</span>
                 </p>
             </div>
+            {isLoading ? <Loader/> :
+                <div className={style.box}>
+                    <p>Primary Caretakers</p>
+                    { error ? <EmptyState variant={'users'}/> :
+                        data?.data.map(u => <UserSmallCard key={u.id} user={u} />)
+                    }
+                </div>
+            }
             {isLoading ? <Loader/> :
                 <div>
                     <h2>all users of selected pet:</h2>
