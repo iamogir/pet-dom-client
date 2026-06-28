@@ -21,12 +21,19 @@ export const PetPage = ({ petId }: Props) => {
 
     return (
         <>
-            <div>
-                {petData.isLoading ? <Loader/> :
-                    petData.error ? <EmptyState variant={'pets'}/> :
-                        petData.data ? <PetCardProfile pet={petData.data}/> :
-                            <p>NOTHING TO SHOW</p>
-                }
+            {petData.isLoading ? <Loader/> :
+                petData.error ? <EmptyState variant={'pets'}/> :
+                    petData.data ? <PetCardProfile pet={petData.data}/> :
+                        <p>NOTHING TO SHOW</p>
+            }
+            <div className={style.vaccine}>
+                <p>Next vaccination</p>
+                <p>... Rabies ...</p>
+                <p>
+                    <span>few days</span>
+                    <span> • </span>
+                    <span>when</span>
+                </p>
             </div>
             {isLoading ? <Loader/> :
                 <div>

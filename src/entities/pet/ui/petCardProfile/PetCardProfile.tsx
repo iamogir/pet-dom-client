@@ -43,5 +43,3 @@ export const PetCardProfile = ({ pet }: Props) => {
         </article>
     );
 };
-
-export default PetCardProfile;

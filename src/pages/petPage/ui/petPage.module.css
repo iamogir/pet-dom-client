@@ -1,0 +1,28 @@
+.vaccine {
+    background-color: var(--color-bg-blue);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 10px;
+    color: var(--color-text-third);
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.vaccine > p:first-child {
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.vaccine > p:nth-child(2) {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+.vaccine > p:last-child {
+    font-style: italic;
+    font-size: var(--font-size-sm);
+}
+
