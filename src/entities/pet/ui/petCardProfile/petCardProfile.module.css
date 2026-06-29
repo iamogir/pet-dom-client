@@ -81,9 +81,25 @@
         display: flex;
     }
 
+    .container > img {
+        margin-right: 10px;
+    }
+
+    .container > div {
+        width: 30%;
+    }
+
+    .container > div > button {
+        width: 100%;
+    }
+
 }
 
 @media (min-width: 1024px) {
+
+    .container {
+        width: 80%;
+    }
 
 }
 
