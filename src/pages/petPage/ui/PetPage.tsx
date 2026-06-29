@@ -28,24 +28,26 @@ export const PetPage = ({ petId }: Props) => {
                         petData.data ? <PetCardProfile pet={petData.data}/> :
                             <p>NOTHING TO SHOW</p>
                 }
-                <div className={style.vaccine}>
-                    <p>Next vaccination</p>
-                    <p>... Rabies ...</p>
-                    <p>
-                        <span>few days</span>
-                        <span> • </span>
-                        <span>when</span>
-                    </p>
+                <div className={style.infoCards}>
+                    <div className={style.vaccine}>
+                        <p>Next vaccination</p>
+                        <p>... Rabies ...</p>
+                        <p>
+                            <span>few days</span>
+                            <span> • </span>
+                            <span>when</span>
+                        </p>
+                    </div>
+
+                    {isLoading ? <Loader/> :
+                        <div className={style.box}>
+                            <p>Primary Caretakers</p>
+                            {error ? <EmptyState variant={'users'}/> :
+                                data?.data.map(u => <UserSmallCard key={u.id} user={u}/>)
+                            }
+                        </div>
+                    }</div>
             </div>
-            </div>
-            {isLoading ? <Loader/> :
-                <div className={style.box}>
-                    <p>Primary Caretakers</p>
-                    { error ? <EmptyState variant={'users'}/> :
-                        data?.data.map(u => <UserSmallCard key={u.id} user={u} />)
-                    }
-                </div>
-            }
             {isLoading ? <Loader/> :
                 <div>
                     <h2>all users of selected pet:</h2>
