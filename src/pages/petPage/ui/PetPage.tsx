@@ -20,7 +20,7 @@ export const PetPage = ({ petId }: Props) => {
     const petData = usePetById(petId);
     const adviceAi = useGetAiAdvice();
 
-    //todo chack if all right
+    //todo check if all right
 
     return (
         <>
