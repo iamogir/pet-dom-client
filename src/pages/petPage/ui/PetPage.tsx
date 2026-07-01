@@ -21,6 +21,7 @@ export const PetPage = ({ petId }: Props) => {
     const adviceAi = useGetAiAdvice();
 
     //todo check if all right
+    //tomorrow !
 
     return (
         <>
