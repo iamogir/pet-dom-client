@@ -1,5 +1,3 @@
-import {Link} from "react-router-dom";
-import {UserCard} from "entities/user/ui/userCard";
 import {usePetById} from "entities/pet/hooks";
 import {useAllUsersByPetId} from "entities/user/hooks";
 import {Loader} from "shared/ui/loader";
@@ -48,21 +46,17 @@ export const PetPage = ({ petId }: Props) => {
                         </div>
                     }</div>
             </div>
-            {isLoading ? <Loader/> :
-                <div>
-                    <h2>all users of selected pet:</h2>
-                    { error ? <EmptyState variant={'users'}/> :
-                            data?.data.map(u => <UserCard key={u.id} user={u} />)
-                    }
-                </div>
-            }
-            <Button onClick={() => adviceAi.mutate(petId)} text={'Get AI health advice'} />
-            <span>(...</span>
-            {adviceAi.isPending && <Loader/>}
-            {adviceAi.data && <section>{adviceAi.data.advice}</section>}
-            <span>...)</span>
 
-            <Link to='/home'><button>to home</button></Link>
+            <div className={style.container}>
+                <div style={{height: '400px', width: '80%', backgroundColor: 'white', padding: '10px', marginBottom: '10px'}}>
+                    Weight diagram
+                </div>
+                <article className={style.aiCard}>
+                    <Button onClick={() => adviceAi.mutate(petId)} text={'Get AI health advice'}/>
+                    {adviceAi.isPending && <Loader/>}
+                    {adviceAi.data && <p>{adviceAi.data.advice}</p>}
+                </article>
+            </div>
         </>
     );
 };

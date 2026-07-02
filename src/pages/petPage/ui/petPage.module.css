@@ -40,6 +40,28 @@
     font-weight: var(--font-weight-semibold);
 }
 
+.aiCard {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.aiCard > p {
+    background-color: var(--color-bg-pink);
+    border-radius: var(--radius-md);
+    /*color: var(--color-surface);*/
+    padding: 10px;
+}
+
+.aiCard > button {
+    width: 40%;
+    margin-bottom: 10px;
+}
+
 @media (min-width: 768px) {
 
 }
