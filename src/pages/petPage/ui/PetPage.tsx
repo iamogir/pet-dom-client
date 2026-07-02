@@ -20,9 +20,6 @@ export const PetPage = ({ petId }: Props) => {
     const petData = usePetById(petId);
     const adviceAi = useGetAiAdvice();
 
-    //todo check if all right
-    //tomorrow !
-
     return (
         <>
             <div className={style.container}>
