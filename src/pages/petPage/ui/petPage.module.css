@@ -73,8 +73,12 @@
         justify-content: space-between;
     }
 
-    .infoCards {
+    .infoCards, .aiCard {
         width: 19%;
+    }
+
+    .aiCard > button {
+        width: 100%;
     }
 
 }
