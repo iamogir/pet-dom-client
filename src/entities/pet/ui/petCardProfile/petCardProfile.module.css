@@ -81,6 +81,10 @@
         display: flex;
     }
 
+    .container > span {
+        display: none;
+    }
+
     .container > img {
         margin-right: 10px;
     }
@@ -91,6 +95,13 @@
 
     .container > div > button {
         width: 100%;
+    }
+
+    .data > span {
+        display: block;
+        color: var(--color-text-third);
+        padding-bottom: 4px;
+        margin-right: 5px;
     }
 
 }

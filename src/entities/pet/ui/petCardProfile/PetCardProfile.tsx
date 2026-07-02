@@ -10,7 +10,6 @@ interface Props {
 export const PetCardProfile = ({ pet }: Props) => {
 
     const petAge = pet.birthDate ? new Date().getFullYear() - pet.birthDate.getFullYear() : null;
-
     const navigate = useNavigate();
 
     return (
@@ -20,7 +19,7 @@ export const PetCardProfile = ({ pet }: Props) => {
             <div>
                 <section className={style.data}>
                     <p>{pet.name}</p>
-                    <span>{pet.species.toUpperCase()}</span>
+                    <span>{pet.species + (pet.breed ? ' •' : '')}</span>
                     <p>
                         <span>{pet.breed || ''}</span>
                         <span>{petAge ? '•' : ''}</span>
