@@ -19,6 +19,8 @@ export const PetPage = ({ petId }: Props) => {
     const adviceAi = useGetAiAdvice();
 
     //todo profile card next
+    //generate card
+    //do card
 
     return (
         <>
