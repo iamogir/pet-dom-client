@@ -20,7 +20,6 @@ export const PetPage = ({ petId }: Props) => {
 
     //todo profile card next
     //generate card
-    //do card
 
     return (
         <>
