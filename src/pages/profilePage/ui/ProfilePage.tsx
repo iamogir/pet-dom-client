@@ -32,7 +32,10 @@ export const ProfilePage = ({ id }: Props) => {
                     <p>OWNER</p>
                 </section>
                 <section className={style.info}>
-                    <Input type={'text'} value={data?.email} disabled={true}/>
+                    <Input type={'text'} label={'Email'} value={data?.email} disabled={true}/>
+                    <Input type={'text'} label={'Phone number'} value={data?.phone} disabled={true}/>
+                    <Input type={'text'} label={'Location'} value={data?.country} disabled={true}/>
+                    <Input type={'text'} label={'Birthday'} value={data?.birthDate.toDateString()} disabled={true}/>
 
                 </section>
 
