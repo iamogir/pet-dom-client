@@ -7,6 +7,7 @@ import {useAllPetsByUserId, useDeletePetById} from "entities/pet/hooks";
 import {Loader} from "shared/ui/loader";
 import {ErrorState} from "shared/ui/errorState";
 import {EmptyState} from "features/emptyState/ui";
+import {Input} from "shared/ui/input";
 
 interface Props {
     id: string
@@ -21,14 +22,17 @@ export const ProfilePage = ({ id }: Props) => {
 
     return (
         <>
-            <h1>Welcome to your profile!</h1>
-            <h2>Check pets, sent tasks to family members and keep pet health excellent!</h2>
+            <div className={style.head}>
+                <h1>Welcome to your profile!</h1>
+                <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
+            </div>
             <article className={style.box}>
                 <section className={style.data}>
                     <p>{data?.firstName} {data?.lastName}</p>
                     <p>OWNER</p>
                 </section>
                 <section className={style.info}>
+                    <Input type={'text'} value={data?.email} disabled={true}/>
 
                 </section>
 
