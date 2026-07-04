@@ -8,6 +8,7 @@ import {Loader} from "shared/ui/loader";
 import {ErrorState} from "shared/ui/errorState";
 import {EmptyState} from "features/emptyState/ui";
 import {Input} from "shared/ui/input";
+import {Button} from "shared/ui/button";
 
 interface Props {
     id: string
@@ -20,6 +21,10 @@ export const ProfilePage = ({ id }: Props) => {
     const navigate = useNavigate();
     const deletePet = useDeletePetById();
 
+    const handleEditProfile = () => {
+
+    }
+
     return (
         <>
             <div className={style.head}>
@@ -27,19 +32,18 @@ export const ProfilePage = ({ id }: Props) => {
                 <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
             </div>
             <article className={style.box}>
-                <section className={style.data}>
-                    <p>{data?.firstName} {data?.lastName}</p>
-                    <p>OWNER</p>
-                </section>
+                <p>{data?.firstName} {data?.lastName}</p>
+                <div>
+                    <Button onClick={handleEditProfile} text={'Edit'}/>
+                </div>
                 <section className={style.info}>
                     <Input type={'text'} label={'Email'} value={data?.email} disabled={true}/>
                     <Input type={'text'} label={'Phone number'} value={data?.phone} disabled={true}/>
                     <Input type={'text'} label={'Location'} value={data?.country} disabled={true}/>
                     <Input type={'text'} label={'Birthday'} value={data?.birthDate.toDateString()} disabled={true}/>
-
                 </section>
-
             </article>
+
             {isLoading ? <Loader/> :
                 (error ? <ErrorState/> :
                     <section className={style.cards}>
