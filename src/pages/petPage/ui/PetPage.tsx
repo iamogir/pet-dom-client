@@ -18,9 +18,6 @@ export const PetPage = ({ petId }: Props) => {
     const petData = usePetById(petId);
     const adviceAi = useGetAiAdvice();
 
-    //todo profile card next
-    //generate card
-
     return (
         <>
             <div className={style.container}>
