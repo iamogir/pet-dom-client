@@ -1,0 +1,1 @@
+export { UserSmallCard } from './UserSmallCard.tsx'

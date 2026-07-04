@@ -3,3 +3,4 @@ export { toServerPetObjectCreate, toServerPetObjectUpdate } from './mapPetForm.t
 export { assertPetSpecies, assertPetBreeds, assertPetSex } from './guards.ts'
 export { parsePetSpecies, parsePetBreed, parsePetSex } from "./parsers.ts";
 export { getPetAvatar } from './getPetAvatar';
+export { fromAiAdviceDto } from './mapAiAdvice.ts'
