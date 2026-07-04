@@ -7,7 +7,6 @@ import {useAllPetsByUserId, useDeletePetById} from "entities/pet/hooks";
 import {Loader} from "shared/ui/loader";
 import {ErrorState} from "shared/ui/errorState";
 import {EmptyState} from "features/emptyState/ui";
-import {Input} from "shared/ui/input";
 import {Button} from "shared/ui/button";
 
 interface Props {
@@ -21,10 +20,6 @@ export const ProfilePage = ({ id }: Props) => {
     const navigate = useNavigate();
     const deletePet = useDeletePetById();
 
-    const handleEditProfile = () => {
-
-    }
-
     return (
         <>
             <div className={style.head}>
@@ -34,13 +29,25 @@ export const ProfilePage = ({ id }: Props) => {
             <article className={style.box}>
                 <p>{data?.firstName} {data?.lastName}</p>
                 <div>
-                    <Button onClick={handleEditProfile} text={'Edit'}/>
+                    <Button onClick={() => navigate('/edit_user/' + data?.id)} text={'Edit'}/>
                 </div>
                 <section className={style.info}>
-                    <Input type={'text'} label={'Email'} value={data?.email} disabled={true}/>
-                    <Input type={'text'} label={'Phone number'} value={data?.phone} disabled={true}/>
-                    <Input type={'text'} label={'Location'} value={data?.country} disabled={true}/>
-                    <Input type={'text'} label={'Birthday'} value={data?.birthDate.toDateString()} disabled={true}/>
+                    <div>
+                        <p>Email address</p>
+                        <p>{data?.email}</p>
+                    </div>
+                    <div>
+                        <p>Phone number</p>
+                        <p>{data?.phone}</p>
+                    </div>
+                    <div>
+                        <p>Country</p>
+                        <p>{data?.country}</p>
+                    </div>
+                    <div>
+                        <p>Gender</p>
+                        <p>{data?.gender}</p>
+                    </div>
                 </section>
             </article>
 
