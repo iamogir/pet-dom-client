@@ -20,11 +20,19 @@ export const ProfilePage = ({ id }: Props) => {
     const deletePet = useDeletePetById();
 
     return (
-        <div>
-            <section className={style.upper}>
-                <h2>Welcome to your profile!</h2>
-                <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
-            </section>
+        <>
+            <h1>Welcome to your profile!</h1>
+            <h2>Check pets, sent tasks to family members and keep pet health excellent!</h2>
+            <article className={style.box}>
+                <section className={style.data}>
+                    <p>{data?.firstName} {data?.lastName}</p>
+                    <p>OWNER</p>
+                </section>
+                <section className={style.info}>
+
+                </section>
+
+            </article>
             {isLoading ? <Loader/> :
                 (error ? <ErrorState/> :
                     <section className={style.cards}>
@@ -45,6 +53,6 @@ export const ProfilePage = ({ id }: Props) => {
                     </section>
                 )
             }
-        </div>
+        </>
     );
 };

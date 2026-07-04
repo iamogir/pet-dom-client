@@ -12,7 +12,6 @@ export const UserCard = ( { user }: Props ) => {
     const navigate = useNavigate();
 
     return (
-
         <article className={style.box}>
             <Link to={'/user/' + user.id}>
                 <ul>
