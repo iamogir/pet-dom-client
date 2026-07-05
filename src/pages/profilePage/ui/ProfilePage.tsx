@@ -20,7 +20,7 @@ export const ProfilePage = ({ id }: Props) => {
     const deletePet = useDeletePetById();
 
     return (
-        <>
+        <div className={style.page}>
             <div className={style.head}>
                 <h1>Welcome to your profile!</h1>
                 <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
@@ -68,6 +68,6 @@ export const ProfilePage = ({ id }: Props) => {
                     </section>
                 )
             }
-        </>
+        </div>
     );
 };
