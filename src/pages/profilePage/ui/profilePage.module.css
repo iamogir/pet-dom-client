@@ -58,3 +58,19 @@
     align-items: center;
     margin: 10px 0;
 }
+
+.block > p {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+
+}
+
+.block > p > button {
+    width: 30%;
+    height: 25px;
+    padding: 0;
+    margin: 0 5px;
+    max-width: 150px;
+}
