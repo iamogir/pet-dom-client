@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom";
 import {useUserById} from "entities/user/hooks";
-import {UserCard} from "entities/user/ui/userCard";
 import {PetCard} from "entities/pet/ui/petCard";
 import style from './profilePage.module.css'
 import {useAllPetsByUserId, useDeletePetById} from "entities/pet/hooks";
@@ -53,13 +52,11 @@ export const ProfilePage = ({ id }: Props) => {
 
             {isLoading ? <Loader/> :
                 (error ? <ErrorState/> :
-                    <section className={style.cards}>
-                        {data ? <UserCard key={data.id} user={data} /> : null }
-
+                    <section>
                         <div className={style.block}>
-                            <h3>Your pets, {data?.firstName}, be careful...</h3>
+                            <h3>Your pets are here!</h3>
                             <p>Not enough? Want to
-                                <button onClick={() => navigate('/add_pet')}>add new pet</button>
+                                <Button onClick={() => navigate('/add_pet')} text={'Add new pet'} />
                                 ?
                             </p>
                         </div>

@@ -52,10 +52,6 @@
     color: var(--color-primary);
 }
 
-.cards {
-
-}
-
 .block {
     display: flex;
     flex-direction: column;
