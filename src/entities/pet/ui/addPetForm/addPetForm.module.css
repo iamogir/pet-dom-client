@@ -1,7 +1,7 @@
 .box {
     width: 90%;
     min-height: 200px;
-    margin-top: 15px
+    margin-top: 15px;
 }
 
 @media (min-width: 768px) {
