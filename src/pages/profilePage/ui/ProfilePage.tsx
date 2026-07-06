@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useUserById} from "entities/user/hooks";
 import {PetCard} from "entities/pet/ui/petCard";
 import style from './profilePage.module.css'
-import {useAllPetsByUserId, useDeletePetById} from "entities/pet/hooks";
+import {useAllPetsByUserId} from "entities/pet/hooks";
 import {Loader} from "shared/ui/loader";
 import {ErrorState} from "shared/ui/errorState";
 import {EmptyState} from "features/emptyState/ui";
@@ -17,7 +17,6 @@ export const ProfilePage = ({ id }: Props) => {
     const { isLoading, data, error } = useUserById(id);
     const petsByUserQuery = useAllPetsByUserId(id);
     const navigate = useNavigate();
-    const deletePet = useDeletePetById();
 
     return (
         <div className={style.page}>
@@ -62,7 +61,13 @@ export const ProfilePage = ({ id }: Props) => {
                         </div>
                         { petsByUserQuery.isLoading ? <Loader/> :
                             (!petsByUserQuery.data ? <EmptyState variant={"pets"}/> :
-                                    petsByUserQuery.data.data.map(p => <div> <PetCard key={p.id} pet={p} /><button onClick={() => deletePet.mutate(p.id)}>delete</button></div>)
+                                    <div className={style.cards}>
+                                        {petsByUserQuery.data.data.map(p =>
+
+                                            <PetCard key={p.id} pet={p} />
+
+                                    )}
+                                    </div>
                             )
                         }
                     </section>

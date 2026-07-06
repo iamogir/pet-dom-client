@@ -82,6 +82,28 @@
     max-width: 150px;
 }
 
+.cards > article {
+    margin-right: 0;
+    flex: 0 0 300px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+@media (min-width: 570px) {
+
+    .cards > article {
+        height: 200px;
+        width: 250px;
+        flex: 0 0 250px;
+    }
+
+}
+
 @media (min-width: 768px) {
 
     .box {
