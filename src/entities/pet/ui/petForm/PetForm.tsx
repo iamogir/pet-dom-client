@@ -8,6 +8,7 @@ import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
+import {Input} from "shared/ui/input";
 
 interface Props {
     pet?: IPet;
@@ -65,21 +66,23 @@ export const PetForm = ({ pet }: Props) => {
 
 
     return (
-        <div>
             <form className={style.box} onSubmit={handleSubmit}>
-                <label htmlFor={'name'}>Name: </label>
-                <input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />
+                <Input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} label={'Name'}/>
+                {/*<label htmlFor={'name'}>Name: </label>*/}
+                {/*<input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />*/}
 
                 <DropMenu values={species}
                           onSelect={(value: string) => doSetForm('species', value)}
                           value={form.species}
                           name={'species'}
+                          label={'Species'}
                 />
 
                 <DropMenu values={breeds as unknown as readonly string[]}
                           onSelect={(value: string) => doSetForm('breed', value)}
-                          value={form.breed}
+                          value={form.breed ?? ''}
                           name={'breed'}
+                          label={'Breed'}
                 />
 
                 <label htmlFor={'birthDate'}>Birth date: </label>
@@ -87,18 +90,19 @@ export const PetForm = ({ pet }: Props) => {
 
                 <DropMenu values={[...petSex]}
                           onSelect={(value: string) => doSetForm('sex', value)}
-                          value={form.sex}
+                          value={form.sex ?? ''}
                           name={'sex'}
+                          label={'Sex'}
                 />
 
-                <label htmlFor={'weight'}>Weight: </label>
-                <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
+                {/*<label htmlFor={'weight'}>Weight: </label>*/}
+                {/*<input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />*/}
+                <Input type={'number'} name={'weight'} label={'Weight'} onChange={handleChange} value={form.weight?.toString()} placeholder={'0'} />
 
                 <button>
                     <label htmlFor={'submit'}>Confirm</label>
                     <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
                 </button>
             </form>
-        </div>
     );
 };

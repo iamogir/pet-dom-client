@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: 100%;
+}
+
+.box > article, .box > div, .box > div > article {
+    width: 100%;
 }
 
 @media (min-width: 768px){
