@@ -29,6 +29,8 @@
     width: 20%;
 }
 
+/*todo: check design on site*/
+
 .box > button:hover {
     background: var(--color-primary-hover);
 }
