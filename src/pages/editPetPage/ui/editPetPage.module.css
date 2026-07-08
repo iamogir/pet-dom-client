@@ -7,3 +7,25 @@
 .container > h1 {
     margin-bottom: 10px;
 }
+
+.container > button {
+    background: var(--color-error);
+    width: 25%;
+    margin-top: 10px;
+}
+
+@media (min-width: 768px){
+
+    .container > button {
+        width: 20%;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1440px) {
+
+}
