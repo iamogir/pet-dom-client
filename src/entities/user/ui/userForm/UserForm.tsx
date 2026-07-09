@@ -52,7 +52,6 @@ export const UserForm = ({user} : Props) => {
     }
 
     return (
-        <div>
             <form className={style.box} onSubmit={handleSubmit}>
                 {/*<label htmlFor={'firstName'}>First name: </label>*/}
                 {/*<input type={'text'} name={'firstName'} onChange={handleChange} value={form.firstName} placeholder={'First Name'} />*/}
@@ -97,6 +96,5 @@ export const UserForm = ({user} : Props) => {
                     <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
                 </button>
             </form>
-        </div>
     );
 };

@@ -1,5 +1,43 @@
 .box {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
+    width: 100%;
+}
+
+.box > article,
+.box > div,
+.box > div > article {
+    width: 100%;
+}
+
+.box > article,
+.box > div {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px){
+
+    .box > article, .box > div {
+        width: 70%;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .box > article,
+    .box > div {
+        width: 40%;
+    }
+
+}
+
+@media (min-width: 1440px) {
+
+    .box > article,
+    .box > div {
+        width: 30%;
+    }
+
 }
