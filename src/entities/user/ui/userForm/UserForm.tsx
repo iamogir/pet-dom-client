@@ -6,6 +6,7 @@ import {toServerUserObjectUpdate, userCountry, userGender} from "entities/user/l
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
 import {Input} from "shared/ui/input";
+import {Button} from "shared/ui/button";
 
 interface Props {
     user: IUser
@@ -91,10 +92,7 @@ export const UserForm = ({user} : Props) => {
                 <label htmlFor={'avatarUrl'}>Profile photo: </label>
                 <input type={'text'} name={'avatarUrl'} onChange={handleChange} value={form.avatarUrl} placeholder={'Avatar'} />
 
-                <button>
-                    <label htmlFor={'submit'}>Confirm</label>
-                    <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
-                </button>
+                <button type={'submit'}>Confirm</button>
             </form>
     );
 };

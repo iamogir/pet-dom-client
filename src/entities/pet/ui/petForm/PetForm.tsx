@@ -99,10 +99,7 @@ export const PetForm = ({ pet }: Props) => {
                 {/*<input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />*/}
                 <Input type={'number'} name={'weight'} label={'Weight'} onChange={handleChange} value={form.weight?.toString()} placeholder={'0'} />
 
-                <button>
-                    <label htmlFor={'submit'}>Confirm</label>
-                    <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
-                </button>
+                <button type={'submit'}>Confirm</button>
             </form>
     );
 };
