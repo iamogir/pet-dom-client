@@ -5,6 +5,7 @@ import {useEditUserById} from "entities/user/hooks";
 import {toServerUserObjectUpdate, userCountry, userGender} from "entities/user/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
+import {Input} from "shared/ui/input";
 
 interface Props {
     user: IUser
@@ -53,14 +54,20 @@ export const UserForm = ({user} : Props) => {
     return (
         <div>
             <form className={style.box} onSubmit={handleSubmit}>
-                <label htmlFor={'firstName'}>First name: </label>
-                <input type={'text'} name={'firstName'} onChange={handleChange} value={form.firstName} placeholder={'First Name'} />
+                {/*<label htmlFor={'firstName'}>First name: </label>*/}
+                {/*<input type={'text'} name={'firstName'} onChange={handleChange} value={form.firstName} placeholder={'First Name'} />*/}
 
-                <label htmlFor={'lastName'}>Last name: </label>
-                <input type={'text'} name={'lastName'} onChange={handleChange} value={form.lastName} placeholder={'Last Name'} />
+                <Input type={'text'} name={'firstName'} onChange={handleChange} value={form.firstName} placeholder={'First Name'} label={'First Name'} />
 
-                <label htmlFor={'phoneNumber'}>Phone: </label>
-                <input type={'tel'} name={'phoneNumber'} onChange={handleChange} value={form.phone} placeholder={'+972 54 851 99 65'} />
+                {/*<label htmlFor={'lastName'}>Last name: </label>*/}
+                {/*<input type={'text'} name={'lastName'} onChange={handleChange} value={form.lastName} placeholder={'Last Name'} />*/}
+
+                <Input type={'text'} name={'lastName'} onChange={handleChange} value={form.lastName} placeholder={'Last Name'} label={'Last Name'} />
+
+                {/*<label htmlFor={'phoneNumber'}>Phone: </label>*/}
+                {/*<input type={'tel'} name={'phoneNumber'} onChange={handleChange} value={form.phone} placeholder={'+972 54 851 99 65'} />*/}
+
+                <Input type={'tel'} name={'phoneNumber'} onChange={handleChange} value={form.phone} placeholder={'+972 54 851 99 65'} label={'Phone'} />
 
                 {/*<label htmlFor={'country'}>Living country: </label>*/}
                 {/*<input type={'text'} name={'country'} onChange={handleChange} value={form.country} placeholder={'Country'} />*/}
@@ -69,12 +76,14 @@ export const UserForm = ({user} : Props) => {
                           onSelect={(value: string) => doSetForm('country', value)}
                           value={form.country}
                           name={'country'}
+                          label={'Country'}
                 />
 
                 <DropMenu values={userGender}
                           onSelect={(value: string) => doSetForm('gender', value)}
                           value={form.gender}
                           name={'gender'}
+                          label={'Gender'}
                 />
 
                 <label htmlFor={'birthDate'}>B-day: </label>
@@ -83,7 +92,6 @@ export const UserForm = ({user} : Props) => {
                 <label htmlFor={'avatarUrl'}>Profile photo: </label>
                 <input type={'text'} name={'avatarUrl'} onChange={handleChange} value={form.avatarUrl} placeholder={'Avatar'} />
 
-                <br/>
                 <button>
                     <label htmlFor={'submit'}>Confirm</label>
                     <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
