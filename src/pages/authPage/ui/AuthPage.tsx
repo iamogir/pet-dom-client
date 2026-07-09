@@ -7,6 +7,7 @@ import type {ILoginForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
 import {ErrorState} from "shared/ui/errorState";
+import {Input} from "shared/ui/input";
 
 export const AuthPage = () => {
 
@@ -52,12 +53,14 @@ export const AuthPage = () => {
             <section className={style.content}>
                 <h1>SIGN IN</h1>
                 <form onSubmit={handleLogIn}>
-                    <label htmlFor={'email'}>
-                        <input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'abc@mail.com'} />
-                    </label>
-                    <label htmlFor={'password'}>
-                        <input type={'password'} name={'password'} onChange={handleChange} value={form.password} placeholder={'*****'} />
-                    </label>
+                    {/*<label htmlFor={'email'}>*/}
+                    {/*    <input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'abc@mail.com'} />*/}
+                    {/*</label>*/}
+                    <Input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'abc@mail.com'} label={'Email'} />
+                    {/*<label htmlFor={'password'}>*/}
+                    {/*    <input type={'password'} name={'password'} onChange={handleChange} value={form.password} placeholder={'*****'} />*/}
+                    {/*</label>*/}
+                    <Input type={'password'} name={'password'} onChange={handleChange} value={form.password} placeholder={'*****'} label={'Password'} />
 
                     <button type="submit" className={style.btn}>Log in</button>
                 </form>
