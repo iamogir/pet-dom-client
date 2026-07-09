@@ -6,7 +6,6 @@ import {toServerUserObjectUpdate, userCountry, userGender} from "entities/user/l
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
 import {Input} from "shared/ui/input";
-import {Button} from "shared/ui/button";
 
 interface Props {
     user: IUser

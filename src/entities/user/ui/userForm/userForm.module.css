@@ -29,8 +29,6 @@
     width: 20%;
 }
 
-
-
 .box > button:hover {
     background: var(--color-primary-hover);
 }
