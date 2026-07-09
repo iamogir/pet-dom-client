@@ -49,7 +49,8 @@ export const AuthPage = () => {
 
     return ( error ? <ErrorState/> :
         <main className={style.box}>
-            <h2>Welcome, please, sign in to your account or <Link to={'/sign_up'}><span>sign up</span></Link></h2>
+            <h2>Welcome, please, sign in to your account or
+                <Link to={'/sign_up'}><span> sign up</span></Link></h2>
             <section className={style.content}>
                 <h1>SIGN IN</h1>
                 <form onSubmit={handleLogIn}>
