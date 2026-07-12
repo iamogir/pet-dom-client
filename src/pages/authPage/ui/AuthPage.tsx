@@ -47,8 +47,6 @@ export const AuthPage = () => {
 
     }
 
-    //make some changes
-
     return ( error ? <ErrorState/> :
         <main className={style.box}>
             <h2>Welcome, please, sign in to your account or
