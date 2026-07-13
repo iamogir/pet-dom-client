@@ -7,6 +7,7 @@ import type {IRegisterForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
 import {ValidationError} from "shared/api";
+import {Input} from "shared/ui/input";
 
 export const RegisterPage = () => {
 
@@ -65,6 +66,8 @@ export const RegisterPage = () => {
 
                     <label htmlFor={'firstName'}>first name:
                         <input type={'text'} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} /></label>
+
+                    <Input type={"text"} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} label={'First name'}/>
 
                     <label htmlFor={'lastName'}>last name:
                         <input type={'text'} name={'lastName'} value={form.lastName} onChange={handleChange} placeholder={'Babuskina'} /></label>
