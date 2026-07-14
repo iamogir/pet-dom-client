@@ -17,20 +17,27 @@
 
 .content {
     margin: 10px 0;
-    padding: 50px 130px 100px 130px;
-    border: 1px solid white;
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(148, 89, 89, 0.72);
+
+    width: 90%;
+    min-height: 200px;
 }
 
 .content > form {
     display: flex;
     flex-direction: column;
     margin: 20px 0;
-    align-items: end;
+    align-items: center;
+    width: 90%;
+}
+
+.content > form > article {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .btn {
@@ -52,6 +59,14 @@
 
 @media (min-width: 768px){
 
+    .content {
+        width: 70%;
+    }
+
+    .content > form {
+        width: 70%;
+    }
+
     .btn {
         width: 40%;
     }
@@ -60,9 +75,24 @@
 
 @media (min-width: 1024px) {
 
+    .content {
+        width: 40%;
+    }
+
+    .content > form {
+        width: 70%;
+    }
+
 }
 
 @media (min-width: 1440px) {
 
+    .content {
+        width: 30%;
+    }
+
+    .content > form {
+        width: 60%;
+    }
 
 }
