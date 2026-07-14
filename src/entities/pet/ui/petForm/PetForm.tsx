@@ -34,7 +34,6 @@ export const PetForm = ({ pet }: Props) => {
             weight: pet.weight ?? 0,
             sex: pet.sex ?? '',
             photoUrl: pet.photoUrl ?? '',
-            confirm: false
         }
     });
     const species = Object.keys(petBreedMap);
@@ -54,7 +53,6 @@ export const PetForm = ({ pet }: Props) => {
         event.preventDefault();
         const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
         if (!isConfirmed) return;
-        setForm(prev => ({...prev, confirm: true}));
 
         if (pet) {
             await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
@@ -78,7 +76,6 @@ export const PetForm = ({ pet }: Props) => {
                           name={'species'}
                           label={'Species'}
                 />
-
                 <DropMenu values={breeds as unknown as readonly string[]}
                           onSelect={(value: string) => doSetForm('breed', value)}
                           value={form.breed ?? ''}
@@ -95,9 +92,6 @@ export const PetForm = ({ pet }: Props) => {
                           name={'sex'}
                           label={'Sex'}
                 />
-
-                {/*<label htmlFor={'weight'}>Weight: </label>*/}
-                {/*<input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />*/}
                 <Input type={'number'} name={'weight'} label={'Weight'} onChange={handleChange} value={form.weight?.toString()} placeholder={'0'} />
 
                 <button type={'submit'}>Confirm</button>
