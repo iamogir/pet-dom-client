@@ -11,7 +11,7 @@ import {DropMenu} from "shared/ui/dropMenu";
 import {Input} from "shared/ui/input";
 
 interface Props {
-    pet?: IPet;
+    pet: IPet;
 }
 
 export const PetForm = ({ pet }: Props) => {
@@ -19,17 +19,21 @@ export const PetForm = ({ pet }: Props) => {
     const navigate = useNavigate();
     const editPet = useEditPet();
     const [form, setForm] = useState<IPetForm>(() => {
-        const bDay = pet?.birthDate?.getFullYear() + '-' +
-            String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
-            String(pet?.birthDate?.getDate()).padStart(2, '0');
+
+        let bDay = '';
+        if (pet.birthDate) {
+            bDay = pet.birthDate.getFullYear() + '-' +
+                String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '-' +
+                String(pet.birthDate.getDate()).padStart(2, '0');
+        }
         return {
-            name: pet?.name ?? '',
-            species: pet?.species?? '',
-            breed: pet?.breed ?? '',
-            birthDate:  bDay ?? '',
-            weight: pet?.weight ?? 0,
-            sex: pet?.sex ?? '',
-            photoUrl: pet?.photoUrl ?? '',
+            name: pet.name,
+            species: pet.species,
+            breed: pet.breed ?? '',
+            birthDate:  bDay,
+            weight: pet.weight ?? 0,
+            sex: pet.sex ?? '',
+            photoUrl: pet.photoUrl ?? '',
             confirm: false
         }
     });
@@ -68,9 +72,6 @@ export const PetForm = ({ pet }: Props) => {
     return (
             <form className={style.box} onSubmit={handleSubmit}>
                 <Input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} label={'Name'}/>
-                {/*<label htmlFor={'name'}>Name: </label>*/}
-                {/*<input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />*/}
-
                 <DropMenu values={species}
                           onSelect={(value: string) => doSetForm('species', value)}
                           value={form.species}
