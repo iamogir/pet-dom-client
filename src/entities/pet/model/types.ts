@@ -30,8 +30,8 @@ export interface IPetParsed extends IPetBase {
 }
 
 export interface IPetForm {
-    name?: string;
-    species?: string;
+    name: string;
+    species: string;
     breed?: string;
     birthDate?: string;
     weight?: number;
