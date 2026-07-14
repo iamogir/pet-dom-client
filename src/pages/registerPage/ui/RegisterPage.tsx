@@ -55,12 +55,14 @@ export const RegisterPage = () => {
 
     return ( error instanceof ValidationError ? <p>{error.message}</p> :
         <main className={style.box}>
-            <h2>Welcome, let's get acquainted or <Link to={'/sign_in'}><span>sign in</span></Link> to your account!</h2>
+            <h2>Welcome, let's get acquainted or
+                <Link to={'/sign_in'}>
+                    <span> sign in</span>
+                </Link> to your account!
+            </h2>
             <section className={style.content}>
                 <h1>SIGN UP</h1>
                 <form onSubmit={handleSignUp}>
-
-
 
                     {/*<label htmlFor={'firstName'}>first name:*/}
                     {/*    <input type={'text'} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} /></label>*/}
@@ -94,8 +96,6 @@ export const RegisterPage = () => {
 
                     <label htmlFor={'birthDate'}>b-day:
                         <input type={'date'} name={'birthDate'} value={form.birthDate} onChange={handleChange} placeholder={'1990-02-01'} /></label>
-
-
 
                     <div>
                         <span> gender: </span>
