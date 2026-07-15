@@ -8,9 +8,10 @@ import {type ChangeEvent, useState} from "react";
 import {toServerPetObjectUpdate} from "entities/pet/lib";
 import {useNavigate} from "react-router-dom";
 import {DropMenu} from "shared/ui/dropMenu";
+import {Input} from "shared/ui/input";
 
 interface Props {
-    pet?: IPet;
+    pet: IPet;
 }
 
 export const PetForm = ({ pet }: Props) => {
@@ -18,18 +19,21 @@ export const PetForm = ({ pet }: Props) => {
     const navigate = useNavigate();
     const editPet = useEditPet();
     const [form, setForm] = useState<IPetForm>(() => {
-        const bDay = pet?.birthDate?.getFullYear() + '-' +
-            String(pet?.birthDate ? (pet?.birthDate.getMonth() + 1) : '').padStart(2, '0') + '-' +
-            String(pet?.birthDate?.getDate()).padStart(2, '0');
+
+        let bDay = '';
+        if (pet.birthDate) {
+            bDay = pet.birthDate.getFullYear() + '-' +
+                String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '-' +
+                String(pet.birthDate.getDate()).padStart(2, '0');
+        }
         return {
-            name: pet?.name ?? '',
-            species: pet?.species?? '',
-            breed: pet?.breed ?? '',
-            birthDate:  bDay ?? '',
-            weight: pet?.weight ?? 0,
-            sex: pet?.sex ?? '',
-            photoUrl: pet?.photoUrl ?? '',
-            confirm: false
+            name: pet.name,
+            species: pet.species,
+            breed: pet.breed ?? '',
+            birthDate:  bDay,
+            weight: pet.weight ?? 0,
+            sex: pet.sex ?? '',
+            photoUrl: pet.photoUrl ?? '',
         }
     });
     const species = Object.keys(petBreedMap);
@@ -49,7 +53,6 @@ export const PetForm = ({ pet }: Props) => {
         event.preventDefault();
         const isConfirmed = confirm('Check pet data: \n' + form.name + '\n' + form.species + '\n' + form.breed + '\n' + form.birthDate + '\n' + form.weight + '\n' + form.sex);
         if (!isConfirmed) return;
-        setForm(prev => ({...prev, confirm: true}));
 
         if (pet) {
             await editPet.mutateAsync(toServerPetObjectUpdate(pet.id, form));
@@ -65,21 +68,19 @@ export const PetForm = ({ pet }: Props) => {
 
 
     return (
-        <div>
             <form className={style.box} onSubmit={handleSubmit}>
-                <label htmlFor={'name'}>Name: </label>
-                <input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} />
-
+                <Input type={'text'} name={'name'} onChange={handleChange} value={form.name} placeholder={'Name'} label={'Name'}/>
                 <DropMenu values={species}
                           onSelect={(value: string) => doSetForm('species', value)}
                           value={form.species}
                           name={'species'}
+                          label={'Species'}
                 />
-
                 <DropMenu values={breeds as unknown as readonly string[]}
                           onSelect={(value: string) => doSetForm('breed', value)}
-                          value={form.breed}
+                          value={form.breed ?? ''}
                           name={'breed'}
+                          label={'Breed'}
                 />
 
                 <label htmlFor={'birthDate'}>Birth date: </label>
@@ -87,18 +88,13 @@ export const PetForm = ({ pet }: Props) => {
 
                 <DropMenu values={[...petSex]}
                           onSelect={(value: string) => doSetForm('sex', value)}
-                          value={form.sex}
+                          value={form.sex ?? ''}
                           name={'sex'}
+                          label={'Sex'}
                 />
+                <Input type={'number'} name={'weight'} label={'Weight'} onChange={handleChange} value={form.weight?.toString()} placeholder={'0'} />
 
-                <label htmlFor={'weight'}>Weight: </label>
-                <input type={'number'} name={'weight'} onChange={handleChange} value={form.weight} placeholder={'Weight'} />
-
-                <button>
-                    <label htmlFor={'submit'}>Confirm</label>
-                    <input type={'submit'} name={'submit'} style={{display: 'none'}}/>
-                </button>
+                <button type={'submit'}>Confirm</button>
             </form>
-        </div>
     );
 };

@@ -47,6 +47,7 @@ export const toServerPetObjectUpdate = (petId: string, obj: IPetForm): IUpdatedP
     return {
         id: petId,
         ...newObj,
+        birthDate: newObj.birthDate === '' ? undefined : newObj.birthDate,
         photoUrl: obj.photoUrl ?? undefined
     };
 

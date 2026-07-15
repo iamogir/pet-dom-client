@@ -29,8 +29,14 @@ export interface IPetParsed extends IPetBase {
     isParsed: boolean;
 }
 
-export interface IPetForm extends IPetBase {
-    confirm: boolean;
+export interface IPetForm {
+    name: string;
+    species: string;
+    breed?: string;
+    birthDate?: string;
+    weight?: number;
+    sex?: string;
+    photoUrl?: string;
 }
 
 export interface ICreatePetDto extends Omit<IPetBase, 'birthDate' | 'sex' | 'weight'> {

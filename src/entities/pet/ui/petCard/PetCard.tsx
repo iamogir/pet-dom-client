@@ -49,7 +49,7 @@ export const PetCard = ({ pet }: Props) => {
                         <Paw className={style.icon}/>
                         {pet.breed ? <p>{pet.breed}</p> : <p>{pet.species}</p>}
                     </div>
-                    {petAge &&
+                    {petAge !== null && petAge !== undefined &&
                         <div>
                             <Calendar className={style.icon}/>
                             <p>{petAge} years</p>

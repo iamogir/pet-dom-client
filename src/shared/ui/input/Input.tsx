@@ -13,9 +13,10 @@ interface Props {
     onClick?: () => void | MouseEventHandler<HTMLInputElement>,
     className?: string,
     accept?: string,
+    disabled?: boolean
 }
 
-export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept }: Props) => {
+export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept, disabled }: Props) => {
 
     if (type === 'file')
         return (
@@ -34,6 +35,7 @@ export const Input = ({ label, onChange, value, placeholder, type, name, readOnl
                     name={name}
                     accept={accept}
                     onChange={onChange}
+                    disabled={disabled}
                 />
             </article>
         )
@@ -49,6 +51,7 @@ export const Input = ({ label, onChange, value, placeholder, type, name, readOnl
                    readOnly={readOnly}
                    onClick={onClick}
                    accept={accept}
+                   disabled={disabled}
             />
         </article>
     );

@@ -7,6 +7,7 @@ import type {IRegisterForm, IUserResponse} from "features/auth/types";
 import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
 import {ValidationError} from "shared/api";
+import {Input} from "shared/ui/input";
 
 export const RegisterPage = () => {
 
@@ -54,28 +55,44 @@ export const RegisterPage = () => {
 
     return ( error instanceof ValidationError ? <p>{error.message}</p> :
         <main className={style.box}>
-            <h2>Welcome, let's get acquainted or <Link to={'/sign_in'}><span>sign in</span></Link> to your account!</h2>
+            <h2>Welcome, let's get acquainted or
+                <Link to={'/sign_in'}>
+                    <span> sign in</span>
+                </Link> to your account!
+            </h2>
             <section className={style.content}>
                 <h1>SIGN UP</h1>
                 <form onSubmit={handleSignUp}>
 
-                    <label htmlFor={'firstName'}>first name:
-                        <input type={'text'} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} /></label>
+                    {/*<label htmlFor={'firstName'}>first name:*/}
+                    {/*    <input type={'text'} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} /></label>*/}
 
-                    <label htmlFor={'lastName'}>last name:
-                        <input type={'text'} name={'lastName'} value={form.lastName} onChange={handleChange} placeholder={'Babuskina'} /></label>
+                    <Input type={"text"} name={'firstName'} value={form.firstName} onChange={handleChange} placeholder={'Zina'} label={'First name'}/>
 
-                    <label htmlFor={'email'}>e-mail:
-                        <input type={'email'} name={'email'} value={form.email} onChange={handleChange} placeholder={'abc@mail.com'} /></label>
+                    {/*<label htmlFor={'lastName'}>last name:*/}
+                    {/*    <input type={'text'} name={'lastName'} value={form.lastName} onChange={handleChange} placeholder={'Babuskina'} /></label>*/}
 
-                    <label htmlFor={'password'}>password:
-                        <input type={'password'} name={'password'} value={form.password} onChange={handleChange} placeholder={'*****'} /></label>
+                    <Input type={"text"} name={'lastName'} value={form.lastName} onChange={handleChange} placeholder={'Babuskina'} label={'Last name'} />
 
-                    <label htmlFor={'phone'}>phone number:
-                        <input type={'tel'} name={'phone'} value={form.phone} onChange={handleChange} placeholder={'+972 54 851 99 65'} /></label>
+                    {/*<label htmlFor={'email'}>e-mail:*/}
+                    {/*    <input type={'email'} name={'email'} value={form.email} onChange={handleChange} placeholder={'abc@mail.com'} /></label>*/}
 
-                    <label htmlFor={'country'}>country:
-                        <input type={'text'} name={'country'} value={form.country} onChange={handleChange} placeholder={'Israel'} /></label>
+                    <Input type={'email'} name={'email'} value={form.email} onChange={handleChange} placeholder={'abc@mail.com'} label={'Email'} />
+
+                    {/*<label htmlFor={'password'}>password:*/}
+                    {/*    <input type={'password'} name={'password'} value={form.password} onChange={handleChange} placeholder={'*****'} /></label>*/}
+
+                    <Input type={'password'} name={'password'} value={form.password} onChange={handleChange} placeholder={'*****'} label={'Password'} />
+
+                    {/*<label htmlFor={'phone'}>phone number:*/}
+                    {/*    <input type={'tel'} name={'phone'} value={form.phone} onChange={handleChange} placeholder={'+972 54 851 99 65'} /></label>*/}
+
+                    <Input type={'tel'} name={'phone'} value={form.phone} onChange={handleChange} placeholder={'+972 54 851 99 65'} label={'Phone number'}/>
+
+                    {/*<label htmlFor={'country'}>country:*/}
+                    {/*    <input type={'text'} name={'country'} value={form.country} onChange={handleChange} placeholder={'Israel'} /></label>*/}
+
+                    <Input type={'text'} name={'country'} value={form.country} onChange={handleChange} placeholder={'Israel'} label={'Country'} />
 
                     <label htmlFor={'birthDate'}>b-day:
                         <input type={'date'} name={'birthDate'} value={form.birthDate} onChange={handleChange} placeholder={'1990-02-01'} /></label>
