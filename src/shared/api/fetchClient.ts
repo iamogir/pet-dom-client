@@ -1,29 +1,17 @@
 import {BASE_URL} from "shared/const";
 
+const joinUrl = (baseUrl: string, endpoint: string) => {
+    const normalizedBase = baseUrl.replace(/\/+$/, '');
+    const normalizedEndpoint = endpoint.replace(/^\/+/, '');
+
+    return `${normalizedBase}/${normalizedEndpoint}`;
+};
 
 export const fetchClient = async (endpoint: string, options?: RequestInit)=> {
 
-    // const token = getToken();
     const headers = new Headers(options?.headers);
 
-    // if (options?.body && !headers.has('Content-Type')) {
-    //     headers.set('Content-Type', 'application/json');
-    // }
-    // if (token && !headers.has('Authorization')) {
-    //     headers.set('Authorization', `Bearer ${token}`);
-    // }
-
-    // if (response.status === 401) {
-    //    removeToken();
-    //     console.log('Unauthorized');
-    // }
-
-    // if (!response.ok) {
-    //     const error = await response.text()
-    //     throw new Error(error)
-    // }
-
-    return await fetch(BASE_URL + endpoint, {
+    return await fetch(joinUrl(BASE_URL, endpoint), {
         ...options,
         headers,
     });
