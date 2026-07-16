@@ -1,4 +1,4 @@
-import {AuthError, ServerError} from "shared/api/errors.ts";
+import {ApiError, AuthError, ServerError} from "shared/api/errors.ts";
 import {fullLogout} from "features/auth/adapter";
 import {toast} from "react-toastify";
 
@@ -14,8 +14,8 @@ export const handleGlobalError = (error: unknown) => {
         return;
     }
 
-    if (error instanceof AuthError) {
-        toast.error('Server error, try later');
+    if (error instanceof ApiError) {
+        toast.error(error.message || 'Request failed');
         return;
     }
 
