@@ -1,4 +1,4 @@
-import type {IPetOwnerDto} from "entities/petOwner/model";
+import type {IPetOwnerDto} from "src/mocks/types";
 
 export const allPetOwners: IPetOwnerDto[] = [
     {

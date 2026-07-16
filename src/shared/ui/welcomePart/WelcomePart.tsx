@@ -36,7 +36,8 @@ export const WelcomePart = () => {
             <p>
                 Today {today}/{month}/{year} and outside is so
                 <span> <Weather
-                    city={data?.city ?? data?.country ?? 'Israel'
+                    // TODO: use user's city when city is added to the user profile. city={data?.city ?? data?.country ?? 'Israel'
+                    city={data?.country ?? 'Israel'
                 }/></span> now.
             </p>
         </div>

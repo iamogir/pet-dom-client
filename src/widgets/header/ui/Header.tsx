@@ -1,13 +1,12 @@
 import style from './header.module.css'
 import {Navigation} from "widgets/navigation";
-import {useLocation} from "react-router-dom";
 
 
 export const Header = () => {
 
-    const location = useLocation();
+    // const location = useLocation();
 
-    const isCreatePetPage = location.pathname === 'add_pet';
+    // const isCreatePetPage = location.pathname === 'add_pet';
 
     return (
         <div className={style.box}>

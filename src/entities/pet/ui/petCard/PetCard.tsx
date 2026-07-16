@@ -1,6 +1,6 @@
 import {type IPet} from "entities/pet/model";
 import style from './petCard.module.css'
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 // import {useDeletePetById} from "entities/pet/hooks";
 // import {useQueryClient} from "@tanstack/react-query";
 // import {petQueryKeys} from "entities/pet/api";
