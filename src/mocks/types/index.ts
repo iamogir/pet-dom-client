@@ -1,0 +1,1 @@
+export type { IPetOwnerDto } from './types.ts'

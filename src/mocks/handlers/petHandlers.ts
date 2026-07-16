@@ -1,7 +1,10 @@
 import {http, HttpResponse} from "msw";
 import {allPetOwners, allPets} from "src/mocks/data";
 import type {ICreatePetDto, IPetDto} from "entities/pet/model";
-import type {IPetOwnerDto} from "entities/petOwner/model";
+import type {IPetOwnerDto} from "src/mocks/types";
+
+const petId = crypto.randomUUID();
+const mockCurrentUserId = '00';
 
 export const petHandlers = [
     http.get('/api/all_pets', () => {
@@ -20,20 +23,17 @@ export const petHandlers = [
     http.post('/api/add_new_pet', async (req) => {
         const obj:ICreatePetDto = (await req.request.json()) as unknown as ICreatePetDto;
         const newPet: IPetDto = {
-            id: '00' + obj.weight,
+            id: petId,
             name: obj.name,
             species: obj.species,
             breed: obj.breed,
-            birthDate: obj.birthDate,
-            weight: obj.weight,
-            sex: obj.sex,
         }
         if (obj.photoUrl) newPet.photoUrl = obj.photoUrl;
         allPets.push(newPet)
 
         const newPetOwner: IPetOwnerDto = {
-            id: '000' + obj.weight,
-            userId: obj.ownerId,
+            id: crypto.randomUUID(),
+            userId: mockCurrentUserId,
             petId: newPet.id,
             ownerRole: 'owner'
         }
