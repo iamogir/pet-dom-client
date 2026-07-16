@@ -1,6 +1,6 @@
-import {getToken} from "features/auth/utils";
 import {fetchClient} from './fetchClient.ts'
 import {ApiError, AuthError, ServerError, ValidationError} from './errors.ts';
+import {getToken} from './access.ts';
 
 export const apiClient = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
     const token = getToken();
