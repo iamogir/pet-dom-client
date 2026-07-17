@@ -1,5 +1,5 @@
 import style from './homePage.module.css'
-import {WelcomePart} from "shared/ui/welcomePart";
+import {WelcomePart} from "./welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useMyPets} from "entities/pet/hooks";
 import {EmptyState} from "features/emptyState/ui";
