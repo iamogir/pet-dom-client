@@ -8,6 +8,7 @@ import {useQueryClient} from "@tanstack/react-query";
 import {userQueryKeys} from "entities/user/api";
 import {ValidationError} from "shared/api";
 import {Input} from "shared/ui/input";
+import {ErrorState} from "shared/ui/errorState";
 
 export const RegisterPage = () => {
 
@@ -53,7 +54,7 @@ export const RegisterPage = () => {
 
     }
 
-    return ( error instanceof ValidationError ? <p>{error.message}</p> :
+    return ( error instanceof ValidationError ? <ErrorState message={error.message} title={'Validation error'} /> :
         <main className={style.box}>
             <h2>Welcome, let's get acquainted or
                 <Link to={'/sign_in'}>
