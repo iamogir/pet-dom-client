@@ -47,7 +47,7 @@ export const AuthPage = () => {
 
     }
 
-    return ( error ? <ErrorState/> :
+    return ( error ? <ErrorState title={'Login failed'} message={error.message}/> :
         <main className={style.box}>
             <h2>Welcome, please, sign in to your account or
                 <Link to={'/sign_up'}><span> sign up</span></Link></h2>
