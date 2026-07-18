@@ -12,7 +12,6 @@ export const AddPetForm = () => {
     const handleSubmit = (avatar?: File) => {
 
         const petDto: ICreatePetDto = toServerPetObjectCreate({ ...form.formData, avatar });
-        console.log(petDto);
         mutate(petDto)
 
     }
