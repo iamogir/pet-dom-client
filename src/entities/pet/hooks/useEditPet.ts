@@ -9,11 +9,6 @@ export const useEditPet = () => {
 
     return useMutation({
         mutationFn: editPet,
-        // onSuccess: (updatedPet:IPet) => {
-        //     queryClient.setQueryData(petQueryKeys.all,
-        //         (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
-        //     )
-        // }
         onMutate: async (updatedPet: IUpdatedPetDto)=> {
             await queryClient.cancelQueries({ queryKey: petQueryKeys.all });
             const prevPets = queryClient.getQueryData<IPets>(petQueryKeys.all);
@@ -33,7 +28,6 @@ export const useEditPet = () => {
         },
         onSuccess: (updatedPet:IPet) => {
             queryClient.setQueryData(petQueryKeys.single(updatedPet.id),
-                // (old: IPet[] = []) => old.map(p => p.id === updatedPet.id ? updatedPet : p)
                 updatedPet
             )
         },

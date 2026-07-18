@@ -4,10 +4,6 @@ import {Navigation} from "widgets/navigation";
 
 export const Header = () => {
 
-    // const location = useLocation();
-
-    // const isCreatePetPage = location.pathname === 'add_pet';
-
     return (
         <div className={style.box}>
             <h1>PETDOM</h1>

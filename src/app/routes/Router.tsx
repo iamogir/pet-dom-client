@@ -66,13 +66,6 @@ export const router = createBrowserRouter([
                             <EditProfilePage/>
                          </RequireAuth>
             }
-
-            // temp!
-            // ,
-            // {
-            //     path: 'all_app_pets',
-            //     element: <PetListPage/>
-            // }
         ],
         errorElement: <ErrorPage/>
     },

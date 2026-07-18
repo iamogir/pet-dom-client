@@ -1,9 +1,6 @@
 import {type IPet} from "entities/pet/model";
 import style from './petCard.module.css'
 import {Link} from "react-router-dom";
-// import {useDeletePetById} from "entities/pet/hooks";
-// import {useQueryClient} from "@tanstack/react-query";
-// import {petQueryKeys} from "entities/pet/api";
 import {getPetAvatar} from "entities/pet/lib";
 import Paw from 'shared/assert/icons/paw-filled.svg?react'
 import Calendar from '../../../../shared/assert/icons/calendar.svg?react'
@@ -15,24 +12,6 @@ interface Props {
 export const PetCard = ({ pet }: Props) => {
 
     const petAge = pet.birthDate ? new Date().getFullYear() - pet.birthDate.getFullYear() : null;
-
-    // const bDay: string = String(pet.birthDate.getDate()).padStart(2, '0') + '/' + String(pet.birthDate.getMonth() + 1).padStart(2, '0') + '/' + pet.birthDate.getFullYear();
-    // const queryClient = useQueryClient();
-    // const navigate = useNavigate();
-    // const { mutateAsync } = useDeletePetById(
-    //     {
-    //     onSuccess: () =>
-    //         queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
-    //     }
-    // );
-
-    // const handleDelete = async () => {
-    //     const isConfirmed = confirm("Are you sure you want to delete this pet?");
-    //     if (isConfirmed) {
-    //         const deletedPet = await mutateAsync(pet.id);
-    //         alert('Pet ' + deletedPet.name + ' was successfully deleted.')
-    //     }
-    // }
 
     return (
         <article className={style.box}>

@@ -1,5 +1,5 @@
 import style from './homePage.module.css'
-import {WelcomePart} from "shared/ui/welcomePart";
+import {WelcomePart} from "./welcomePart";
 import {PetCard} from "entities/pet/ui/petCard";
 import {useMyPets} from "entities/pet/hooks";
 import {EmptyState} from "features/emptyState/ui";
@@ -12,7 +12,6 @@ import {useNavigate} from "react-router-dom";
 export const HomePage = () => {
 
     const {data, isLoading, error} = useMyPets();
-    // const temp = useAllPetsByUserId("292060dd-24dd-48e5-b2be-be1d6f2855cd");
     const navigate = useNavigate();
     const petBox = useRef<HTMLDivElement | null>(null);
     const [showLeft, setShowLeft] = useState(false);

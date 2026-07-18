@@ -1,8 +1,5 @@
-// import style from "pages/homePage/ui/homePage.module.css";
 import {PetCard} from "entities/pet/ui/petCard";
-import {useAllPets,
-    // useMyPets
-} from "entities/pet/hooks";
+import {useAllPets} from "entities/pet/hooks";
 import {useSearchParams} from "react-router-dom";
 import {PetFilter, PetSearch} from "pages/petListPage";
 import type {ChangeEvent} from "react";
@@ -15,7 +12,6 @@ export const PetListPage = () => {
     const type = searchParams.get("type") || '';
     const breed = searchParams.get("breed") || '';
 
-    // const userPets = useMyPets();
     const petsQuery = useAllPets();
 
     const filterResults = petsQuery.data?.data.filter(el => {
