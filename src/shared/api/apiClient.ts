@@ -17,15 +17,10 @@ export const apiClient = async <T>(endpoint: string, options?: RequestInit): Pro
 
     const response: Response = await fetchClient(endpoint, {
         ...options,
-        // headers: {
-        //     ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        //     ...options?.headers
-        // },
         headers,
     });
 
     if (response.status === 401) {
-        // removeToken();
         throw new AuthError();
     }
 
