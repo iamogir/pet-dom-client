@@ -41,7 +41,7 @@ export const RegisterPage = () => {
         const res: IUserResponse = await mutateAsync(toServerFormRegister(form));
 
         if (!res) {
-            alert('Failed to register');
+            return;
         }
         setToken(res.access_token);
         queryClient.setQueryData(userQueryKeys.me(), res.user);
