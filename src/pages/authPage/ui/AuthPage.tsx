@@ -14,6 +14,7 @@ export const AuthPage = () => {
     const { mutateAsync, error } = useLogin();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
+    const [formError, setFormError] = useState('');
     const [form, setForm] = useState<ILoginForm>({
         email: '',
         password: '',
@@ -35,7 +36,7 @@ export const AuthPage = () => {
         event.preventDefault()
 
         if (form.email === '' || form.password === '') {
-            alert('Try again.');
+            setFormError('Enter email and password');
             return;
         }
 
@@ -56,6 +57,7 @@ export const AuthPage = () => {
                 <form onSubmit={handleLogIn}>
                     <Input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'abc@mail.com'} label={'Email'} />
                     <Input type={'password'} name={'password'} onChange={handleChange} value={form.password} placeholder={'*****'} label={'Password'} />
+                    {formError !== '' && <p>{formError}</p>}
 
                     <button type="submit" className={style.btn}>Log in</button>
                 </form>
