@@ -14,7 +14,6 @@ interface Props {
     className?: string,
     accept?: string,
     disabled?: boolean
-    //TODO maybe add like ...props ?
 }
 
 export const Input = ({ label, onChange, value, placeholder, type, name, readOnly, onClick, className, accept, disabled }: Props) => {
