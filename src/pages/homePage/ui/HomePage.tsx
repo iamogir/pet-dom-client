@@ -44,7 +44,6 @@ export const HomePage = () => {
 
     return (
         <>
-            {/*{ temp.data?.data.map((el) => <PetCard key={el.id} pet={el}/>)}*/}
             <WelcomePart/>
             <div className={style.text}>
                 <p>MY PETS</p>

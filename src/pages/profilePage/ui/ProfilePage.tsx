@@ -24,6 +24,7 @@ export const ProfilePage = ({ id }: Props) => {
                 <h1>Welcome to your profile!</h1>
                 <h3>Check pets, sent tasks to family members and keep pet health excellent!</h3>
             </div>
+            {isLoading ? <Loader /> :
             <article className={style.box}>
                 <p>{data?.firstName} {data?.lastName}</p>
                 <div>
@@ -47,7 +48,7 @@ export const ProfilePage = ({ id }: Props) => {
                         <p>{data?.gender}</p>
                     </div>
                 </section>
-            </article>
+            </article>}
 
             {isLoading ? <Loader/> :
                 (error ? <ErrorState/> :

@@ -3,7 +3,7 @@ import {AuthContext} from "features/auth/context";
 
 export const useAuth = () => {
     const context = useContext(AuthContext);
-    if (!context) throw new Error("useAuth must be used within useAuth");
+    if (!context) throw new Error("useAuth must be used within AuthProvider");
 
     return context;
 }

@@ -1,6 +1,7 @@
 import type {ReactNode} from "react";
 import {Navigate} from "react-router-dom";
 import {useMe} from "features/auth/hooks";
+import {Loader} from "shared/ui/loader";
 
 interface Props {
     children: ReactNode;
@@ -10,7 +11,7 @@ export const RequireGuest = ({ children }: Props) => {
 
     const { data, isLoading } = useMe();
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loader/>;
     if (data) return <Navigate to={'/my_pets'} replace/>
 
     return children;

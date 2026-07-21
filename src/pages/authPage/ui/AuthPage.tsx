@@ -14,6 +14,7 @@ export const AuthPage = () => {
     const { mutateAsync, error } = useLogin();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
+    const [formError, setFormError] = useState('');
     const [form, setForm] = useState<ILoginForm>({
         email: '',
         password: '',
@@ -35,7 +36,7 @@ export const AuthPage = () => {
         event.preventDefault()
 
         if (form.email === '' || form.password === '') {
-            alert('Try again.');
+            setFormError('Enter email and password');
             return;
         }
 
@@ -47,21 +48,16 @@ export const AuthPage = () => {
 
     }
 
-    return ( error ? <ErrorState/> :
+    return ( error ? <ErrorState title={'Login failed'} message={error.message}/> :
         <main className={style.box}>
             <h2>Welcome, please, sign in to your account or
                 <Link to={'/sign_up'}><span> sign up</span></Link></h2>
             <section className={style.content}>
                 <h1>SIGN IN</h1>
                 <form onSubmit={handleLogIn}>
-                    {/*<label htmlFor={'email'}>*/}
-                    {/*    <input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'abc@mail.com'} />*/}
-                    {/*</label>*/}
                     <Input type={'email'} name={'email'} onChange={handleChange} value={form.email} placeholder={'abc@mail.com'} label={'Email'} />
-                    {/*<label htmlFor={'password'}>*/}
-                    {/*    <input type={'password'} name={'password'} onChange={handleChange} value={form.password} placeholder={'*****'} />*/}
-                    {/*</label>*/}
                     <Input type={'password'} name={'password'} onChange={handleChange} value={form.password} placeholder={'*****'} label={'Password'} />
+                    {formError !== '' && <p>{formError}</p>}
 
                     <button type="submit" className={style.btn}>Log in</button>
                 </form>
