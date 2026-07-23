@@ -1,5 +1,9 @@
-import { describe, expect, it } from "vitest";
-import {fromServerArrayPetsObject, fromServerPetObject} from "entities/pet/lib/mapPetDto.ts";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import {fromLocalCreatePetObject, fromServerArrayPetsObject, fromServerPetObject} from "entities/pet/lib/mapPetDto.ts";
+
+afterEach(() => {
+    vi.restoreAllMocks();
+});
 
 describe("fromServerPetObject", () => {
     it("maps pet DTO and converts birth date to Date", () => {
@@ -57,6 +61,25 @@ describe("fromServerArrayPetsObject", () => {
             meta: {
                 total: 1,
             },
+        });
+    });
+});
+
+describe("fromLocalCreatePetObject", () => {
+    it("creates a local pet with generated id", () => {
+        vi.spyOn(globalThis.crypto, "randomUUID").mockReturnValue(
+            "00000000-0000-4000-8000-000000000001"
+        );
+
+        const result = fromLocalCreatePetObject({
+            name: "Mika",
+            species: "dog",
+        });
+
+        expect(result).toEqual({
+            id: "00000000-0000-4000-8000-000000000001",
+            name: "Mika",
+            species: "dog",
         });
     });
 });
