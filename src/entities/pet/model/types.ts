@@ -25,9 +25,7 @@ export interface IPetDto extends IPetBase {
     id: string;
 }
 
-export interface IPetParsed extends IPetBase {
-    isParsed: boolean;
-}
+export type IPetParsed = IPetBase
 
 export interface IPetForm {
     name: string;
