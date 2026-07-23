@@ -63,4 +63,14 @@ describe("toServerPetObjectUpdate", () => {
             photoUrl: "https://example.com/mika.jpg",
         });
     });
+
+    it("converts an empty birth date to undefined", () => {
+        const result = toServerPetObjectUpdate("pet-1", {
+            name: "Mika",
+            species: "dog",
+            birthDate: "",
+        });
+
+        expect(result.birthDate).toBeUndefined();
+    });
 });
