@@ -17,6 +17,16 @@ describe("fromServerPetObject", () => {
             birthDate: new Date("2022-05-10"),
         });
     });
+
+    it("throws an error for invalid species from server", () => {
+        expect(() =>
+            fromServerPetObject({
+                id: "pet-1",
+                name: "Mika",
+                species: "dinosaur",
+            })
+        ).toThrow("invalid species");
+    });
 });
 
 describe("fromServerArrayPetsObject", () => {
