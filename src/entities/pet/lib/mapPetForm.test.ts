@@ -29,6 +29,15 @@ describe('toServerPetObjectCreate', () => {
             photoUrl: "https://example.com/mika.jpg",
         });
     });
+
+    it("throws an error for invalid species", () => {
+        expect(() =>
+            toServerPetObjectCreate({
+                name: "Mika",
+                species: "dinosaur",
+            })
+        ).toThrow("invalid species");
+    });
 })
 
 describe("toServerPetObjectUpdate", () => {
