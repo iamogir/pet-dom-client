@@ -81,4 +81,31 @@ describe("apiClient", () => {
 
         expect(headers.get("Authorization")).toBe("Bearer custom-token");
     });
+
+    it("adds JSON content type for a regular request", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        await apiClient("/pets", {
+            method: "POST",
+            body: JSON.stringify({
+                name: "Mika",
+            }),
+        });
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.get("Content-Type")).toBe("application/json");
+    });
 });
