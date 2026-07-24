@@ -31,7 +31,7 @@ export function fromLocalCreatePetObject(obj: ICreatePetDto): IPet {
         name: obj.name,
         species: species,
     }
-    if (obj.photoUrl && obj.avatar) newObj.photoUrl = URL.createObjectURL(obj.avatar);
+    if (obj.avatar) newObj.photoUrl = URL.createObjectURL(obj.avatar);
 
     return newObj;
 }

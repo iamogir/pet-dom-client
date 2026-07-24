@@ -82,4 +82,26 @@ describe("fromLocalCreatePetObject", () => {
             species: "dog",
         });
     });
+
+    it("creates a local photo URL from avatar", () => {
+        vi.spyOn(globalThis.crypto, "randomUUID").mockReturnValue(
+            "00000000-0000-4000-8000-000000000001"
+        );
+        vi.spyOn(globalThis.URL, "createObjectURL").mockReturnValue(
+            "blob:mika-avatar"
+        );
+
+        const avatar = new File(["avatar"], "mika.png", {
+            type: "image/png",
+        });
+
+        const result = fromLocalCreatePetObject({
+            name: "Mika",
+            species: "dog",
+            avatar,
+        });
+
+        expect(globalThis.URL.createObjectURL).toHaveBeenCalledWith(avatar);
+        expect(result.photoUrl).toBe("blob:mika-avatar");
+    });
 });
