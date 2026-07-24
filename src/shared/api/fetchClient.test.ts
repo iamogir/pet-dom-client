@@ -22,4 +22,35 @@ describe("fetchClient", () => {
         );
         expect(result).toBe(response);
     });
+
+    it("passes request options and custom headers to fetch", async () => {
+        const response = new Response(null, { status: 200 });
+        const fetchMock = vi
+            .spyOn(globalThis, "fetch")
+            .mockResolvedValue(response);
+
+        const body = JSON.stringify({ name: "Mika" });
+
+        await fetchClient("pets", {
+            method: "POST",
+            body,
+            headers: {
+                "X-Request-Id": "request-1",
+            },
+        });
+
+        expect(fetchMock).toHaveBeenCalledWith(
+            "http://localhost:3000/pets",
+            expect.objectContaining({
+                method: "POST",
+                body,
+                headers: expect.any(Headers),
+            })
+        );
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.get("X-Request-Id")).toBe("request-1");
+    });
 });
