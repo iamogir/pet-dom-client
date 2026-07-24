@@ -83,4 +83,20 @@ describe("fromServerAllUsersDto", () => {
             })
         ).toThrow("invalid user country");
     });
+
+    it("throws an error for invalid gender from server", () => {
+        expect(() =>
+            fromServerUserDto({
+                id: "user-1",
+                email: "mika@example.com",
+                password: "secret",
+                firstName: "Mika",
+                lastName: "Smith",
+                phone: "+972500000000",
+                country: "Israel",
+                birthDate: "1995-06-15",
+                gender: "unknown",
+            })
+        ).toThrow("invalid user gender");
+    });
 });
