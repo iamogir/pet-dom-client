@@ -108,4 +108,32 @@ describe("apiClient", () => {
 
         expect(headers.get("Content-Type")).toBe("application/json");
     });
+
+    it("does not set content type for FormData", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        const formData = new FormData();
+        formData.append("name", "Mika");
+
+        await apiClient("/pets", {
+            method: "POST",
+            body: formData,
+        });
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.has("Content-Type")).toBe(false);
+    });
 });
