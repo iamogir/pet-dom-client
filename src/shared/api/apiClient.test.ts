@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { apiClient } from "./apiClient";
+import {AuthError} from "shared/api/errors.ts";
 
 afterEach(() => {
     vi.restoreAllMocks();
@@ -135,5 +136,19 @@ describe("apiClient", () => {
         const headers = new Headers(requestOptions.headers);
 
         expect(headers.has("Content-Type")).toBe(false);
+    });
+
+    it("throws AuthError for a 401 response", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(null, {
+                status: 401,
+            })
+        );
+
+        await expect(apiClient("/pets")).rejects.toBeInstanceOf(AuthError);
     });
 });
