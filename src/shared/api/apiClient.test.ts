@@ -33,4 +33,26 @@ describe("apiClient", () => {
 
         expect(result).toEqual(responseData);
     });
+
+    it("adds authorization header when token exists", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue("token-123"),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        await apiClient("/pets");
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.get("Authorization")).toBe("Bearer token-123");
+    });
 });
