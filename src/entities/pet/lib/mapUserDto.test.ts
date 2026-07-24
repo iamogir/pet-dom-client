@@ -67,4 +67,20 @@ describe("fromServerAllUsersDto", () => {
             },
         });
     });
+
+    it("throws an error for invalid country from server", () => {
+        expect(() =>
+            fromServerUserDto({
+                id: "user-1",
+                email: "mika@example.com",
+                password: "secret",
+                firstName: "Mika",
+                lastName: "Smith",
+                phone: "+972500000000",
+                country: "Atlantis",
+                birthDate: "1995-06-15",
+                gender: "female",
+            })
+        ).toThrow("invalid user country");
+    });
 });
