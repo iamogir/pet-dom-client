@@ -83,4 +83,64 @@ describe("useDeletePetById", () => {
 
         queryClient.clear();
     });
+
+    it("restores previous cache when deletion fails", async () => {
+        const queryClient = new QueryClient({
+            defaultOptions: {
+                queries: {
+                    retry: false,
+                },
+                mutations: {
+                    retry: false,
+                },
+            },
+        });
+
+        const mika: IPet = {
+            id: "pet-1",
+            name: "Mika",
+            species: "dog",
+        };
+
+        const luna: IPet = {
+            id: "pet-2",
+            name: "Luna",
+            species: "cat",
+        };
+
+        const previousPets: IPets = {
+            data: [mika, luna],
+            meta: {
+                total: 2,
+            },
+        };
+
+        queryClient.setQueryData(petQueryKeys.all, previousPets);
+
+        vi.mocked(deletePetById).mockRejectedValue(
+            new Error("Request failed")
+        );
+
+        const wrapper = ({ children }: { children: ReactNode }) => (
+            <QueryClientProvider client={queryClient}>
+                {children}
+            </QueryClientProvider>
+        );
+
+        const { result } = renderHook(() => useDeletePetById(), {
+            wrapper,
+        });
+
+        await act(async () => {
+            await expect(
+                result.current.mutateAsync("pet-1")
+            ).rejects.toThrow("Request failed");
+        });
+
+        expect(queryClient.getQueryData(petQueryKeys.all)).toEqual(
+            previousPets
+        );
+
+        queryClient.clear();
+    });
 });
