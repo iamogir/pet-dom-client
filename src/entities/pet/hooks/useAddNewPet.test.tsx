@@ -98,4 +98,67 @@ describe("useAddNewPet", () => {
 
         queryClient.clear();
     });
+
+    it("restores previous cache when pet creation fails", async () => {
+        const queryClient = new QueryClient({
+            defaultOptions: {
+                queries: {
+                    retry: false,
+                },
+                mutations: {
+                    retry: false,
+                },
+            },
+        });
+
+        const mika: IPet = {
+            id: "pet-1",
+            name: "Mika",
+            species: "dog",
+        };
+
+        const previousPets: IPets = {
+            data: [mika],
+            meta: {
+                total: 1,
+            },
+        };
+
+        queryClient.setQueryData(petQueryKeys.all, previousPets);
+
+        vi.stubGlobal("crypto", {
+            randomUUID: vi.fn().mockReturnValue(
+                "00000000-0000-4000-8000-000000000002"
+            ),
+        });
+
+        vi.mocked(addNewPet).mockRejectedValue(
+            new Error("Request failed")
+        );
+
+        const wrapper = ({ children }: { children: ReactNode }) => (
+            <QueryClientProvider client={queryClient}>
+                {children}
+            </QueryClientProvider>
+        );
+
+        const { result } = renderHook(() => useAddNewPet(), {
+            wrapper,
+        });
+
+        await act(async () => {
+            await expect(
+                result.current.mutateAsync({
+                    name: "Luna",
+                    species: "cat",
+                })
+            ).rejects.toThrow("Request failed");
+        });
+
+        expect(queryClient.getQueryData(petQueryKeys.all)).toEqual(
+            previousPets
+        );
+
+        queryClient.clear();
+    });
 });
