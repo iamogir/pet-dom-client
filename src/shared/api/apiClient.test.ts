@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { apiClient } from "./apiClient";
-import {AuthError, ServerError, ValidationError} from "shared/api/errors.ts";
+import {ApiError, AuthError, ServerError, ValidationError} from "shared/api/errors.ts";
 
 afterEach(() => {
     vi.restoreAllMocks();
@@ -181,5 +181,22 @@ describe("apiClient", () => {
         );
 
         await expect(apiClient("/pets")).rejects.toBeInstanceOf(ServerError);
+    });
+
+    it("throws ApiError with response message for other failed responses", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response("Pet not found", {
+                status: 404,
+            })
+        );
+
+        const request = apiClient("/pets/pet-1");
+
+        await expect(request).rejects.toBeInstanceOf(ApiError);
+        await expect(request).rejects.toThrow("Pet not found");
     });
 });
