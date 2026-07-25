@@ -13,7 +13,6 @@ const parsePetObject = (obj: IPetForm): IPetParsed => {
     const newObj : IPetParsed = {
         name: obj.name,
         species: species,
-        isParsed: true
     }
 
     if (obj.photoUrl) newObj.photoUrl = obj.photoUrl;

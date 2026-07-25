@@ -1,0 +1,202 @@
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { apiClient } from "./apiClient";
+import {ApiError, AuthError, ServerError, ValidationError} from "shared/api/errors.ts";
+
+afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+});
+
+describe("apiClient", () => {
+    it("returns parsed JSON for a successful response", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        const responseData = {
+            id: "pet-1",
+            name: "Mika",
+        };
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify(responseData), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        const result = await apiClient<{
+            id: string;
+            name: string;
+        }>("/pets/pet-1");
+
+        expect(result).toEqual(responseData);
+    });
+
+    it("adds authorization header when token exists", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue("token-123"),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        await apiClient("/pets");
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.get("Authorization")).toBe("Bearer token-123");
+    });
+
+    it("preserves an explicitly provided authorization header", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue("stored-token"),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        await apiClient("/pets", {
+            headers: {
+                Authorization: "Bearer custom-token",
+            },
+        });
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.get("Authorization")).toBe("Bearer custom-token");
+    });
+
+    it("adds JSON content type for a regular request", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        await apiClient("/pets", {
+            method: "POST",
+            body: JSON.stringify({
+                name: "Mika",
+            }),
+        });
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.get("Content-Type")).toBe("application/json");
+    });
+
+    it("does not set content type for FormData", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({}), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
+
+        const formData = new FormData();
+        formData.append("name", "Mika");
+
+        await apiClient("/pets", {
+            method: "POST",
+            body: formData,
+        });
+
+        const requestOptions = fetchMock.mock.calls[0][1] as RequestInit;
+        const headers = new Headers(requestOptions.headers);
+
+        expect(headers.has("Content-Type")).toBe(false);
+    });
+
+    it("throws AuthError for a 401 response", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(null, {
+                status: 401,
+            })
+        );
+
+        await expect(apiClient("/pets")).rejects.toBeInstanceOf(AuthError);
+    });
+
+    it("throws ValidationError with response message for a 400 response", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response("Name is required", {
+                status: 400,
+            })
+        );
+
+        const request = apiClient("/pets");
+
+        await expect(request).rejects.toBeInstanceOf(ValidationError);
+        await expect(request).rejects.toThrow("Name is required");
+    });
+
+    it("throws ServerError for a 500 response", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(null, {
+                status: 500,
+            })
+        );
+
+        await expect(apiClient("/pets")).rejects.toBeInstanceOf(ServerError);
+    });
+
+    it("throws ApiError with response message for other failed responses", async () => {
+        vi.stubGlobal("localStorage", {
+            getItem: vi.fn().mockReturnValue(null),
+        });
+
+        vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response("Pet not found", {
+                status: 404,
+            })
+        );
+
+        const request = apiClient("/pets/pet-1");
+
+        await expect(request).rejects.toBeInstanceOf(ApiError);
+        await expect(request).rejects.toThrow("Pet not found");
+    });
+});
