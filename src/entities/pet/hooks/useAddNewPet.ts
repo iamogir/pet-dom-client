@@ -15,7 +15,6 @@ export const useAddNewPet = () => {
 
             queryClient.setQueryData(petQueryKeys.all, (old: IPets = {data: [], meta: {total: 0}}): IPets => {
                 const newPet: IPet = fromLocalCreatePetObject(newCreatedPet);
-                console.log(old.data)
                 return {
                     ...old,
                     data: [ ...old.data, newPet],

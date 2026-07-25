@@ -31,6 +31,12 @@ export const useEditPet = () => {
                 updatedPet
             )
         },
+        onError: (_error, _updatedPet, context) => {
+            queryClient.setQueryData(
+                petQueryKeys.all,
+                context?.prevPets
+            );
+        },
         onSettled: () => queryClient.invalidateQueries({ queryKey: petQueryKeys.all})
     })
 }
