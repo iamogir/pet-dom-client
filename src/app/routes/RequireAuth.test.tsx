@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { MemoryRouter } from "react-router-dom";
+import {MemoryRouter, Route, Routes} from "react-router-dom";
 import {
     cleanup,
     render,
@@ -67,6 +67,37 @@ describe("RequireAuth", () => {
         );
 
         expect(screen.getByText("Loading")).toBeTruthy();
+        expect(
+            screen.queryByText("Protected content")
+        ).toBeNull();
+    });
+
+    it("redirects unauthenticated user to sign-in page", () => {
+        vi.mocked(useMe).mockReturnValue({
+            data: undefined,
+            isLoading: false,
+        } as ReturnType<typeof useMe>);
+
+        render(
+            <MemoryRouter initialEntries={["/private"]}>
+                <Routes>
+                    <Route
+                        path="/private"
+                        element={
+                            <RequireAuth>
+                                <p>Protected content</p>
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="/sign_in"
+                        element={<p>Sign in page</p>}
+                    />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText("Sign in page")).toBeTruthy();
         expect(
             screen.queryByText("Protected content")
         ).toBeNull();
