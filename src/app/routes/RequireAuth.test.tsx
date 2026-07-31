@@ -1,7 +1,11 @@
 // @vitest-environment jsdom
 
 import { MemoryRouter } from "react-router-dom";
-import { render, screen } from "@testing-library/react";
+import {
+    cleanup,
+    render,
+    screen,
+} from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { useMe } from "features/auth/hooks";
 import { RequireAuth } from "./RequireAuth";
@@ -15,6 +19,7 @@ vi.mock("shared/ui/loader", () => ({
 }));
 
 afterEach(() => {
+    cleanup();
     vi.clearAllMocks();
 });
 
@@ -45,5 +50,25 @@ describe("RequireAuth", () => {
         expect(
             screen.getByText("Protected content")
         ).toBeTruthy();
+    });
+
+    it("renders loader while authentication is loading", () => {
+        vi.mocked(useMe).mockReturnValue({
+            data: undefined,
+            isLoading: true,
+        } as ReturnType<typeof useMe>);
+
+        render(
+            <MemoryRouter>
+                <RequireAuth>
+                    <p>Protected content</p>
+                </RequireAuth>
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText("Loading")).toBeTruthy();
+        expect(
+            screen.queryByText("Protected content")
+        ).toBeNull();
     });
 });
