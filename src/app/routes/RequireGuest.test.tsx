@@ -1,6 +1,10 @@
 // @vitest-environment jsdom
 
-import { MemoryRouter } from "react-router-dom";
+import {
+    MemoryRouter,
+    Route,
+    Routes,
+} from "react-router-dom";
 import {
     cleanup,
     render,
@@ -56,6 +60,44 @@ describe("RequireGuest", () => {
         );
 
         expect(screen.getByText("Loading")).toBeTruthy();
+        expect(screen.queryByText("Guest content")).toBeNull();
+    });
+
+    it("redirects authenticated user to pets page", () => {
+        vi.mocked(useMe).mockReturnValue({
+            data: {
+                id: "user-1",
+                email: "mika@example.com",
+                firstName: "Mika",
+                lastName: "Smith",
+                phone: "+972500000000",
+                country: "Israel",
+                birthDate: new Date("1995-06-15"),
+                gender: "female",
+            },
+            isLoading: false,
+        } as ReturnType<typeof useMe>);
+
+        render(
+            <MemoryRouter initialEntries={["/sign_in"]}>
+                <Routes>
+                    <Route
+                        path="/sign_in"
+                        element={
+                            <RequireGuest>
+                                <p>Guest content</p>
+                            </RequireGuest>
+                        }
+                    />
+                    <Route
+                        path="/my_pets"
+                        element={<p>My pets page</p>}
+                    />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText("My pets page")).toBeTruthy();
         expect(screen.queryByText("Guest content")).toBeNull();
     });
 });
