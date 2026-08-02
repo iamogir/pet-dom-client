@@ -40,4 +40,22 @@ describe("RequireGuest", () => {
 
         expect(screen.getByText("Guest content")).toBeTruthy();
     });
+
+    it("renders loader while authentication is loading", () => {
+        vi.mocked(useMe).mockReturnValue({
+            data: undefined,
+            isLoading: true,
+        } as ReturnType<typeof useMe>);
+
+        render(
+            <MemoryRouter>
+                <RequireGuest>
+                    <p>Guest content</p>
+                </RequireGuest>
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText("Loading")).toBeTruthy();
+        expect(screen.queryByText("Guest content")).toBeNull();
+    });
 });
